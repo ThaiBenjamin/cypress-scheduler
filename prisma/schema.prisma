@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Notice the url line is completely gone!
+}
+
+model Course {
+  id              String   @id @default(uuid())
+  term            String   
+  crn             String
+  subject         String
+  courseNumber    String
+  title           String
+  units           Float
+  instructionMode String?
+  seatsAvailable  Int
+  maxEnrollment   Int
+  professors      String[] 
+  
+  meetings        Meeting[]
+
+  @@unique([crn, term]) 
+}
+
+model Meeting {
+  id          String   @id @default(uuid())
+  type        String
+  days        String[]
+  startTime   String?
+  endTime     String?
+  building    String?
+  room        String?
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
