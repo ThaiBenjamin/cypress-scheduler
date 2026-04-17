@@ -42,4 +42,6 @@ jobs:
       - name: Update Supabase Database
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }} 
-        run: npx tsx seed.ts
+        run: |
+          npx prisma generate
+          npx tsx seed.ts
