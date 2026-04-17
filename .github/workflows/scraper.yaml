@@ -2,7 +2,9 @@ name: Daily Cypress Scraper
 
 on:
   schedule:
+    # Runs every day at 10:00 AM UTC (2:00 AM / 3:00 AM Pacific)
     - cron: '0 10 * * *' 
+  # Allows you to click the "Run workflow" button manually
   workflow_dispatch: 
 
 jobs:
@@ -10,35 +12,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Download your code to the cloud computer
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # 2. Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      # 3. Install Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
+      # 4. Install Node Modules
       - name: Install Node Modules
         run: npm install
 
+      # 5. Install Python Dependencies
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests 
 
-      - name: 👀 X-Ray Vision (List Files)
-        run: |
-          pwd
-          ls -la
-
+      # 6. Run the Scraper (downloads live data to cypress_data.json)
       - name: Run Python Scraper
         run: python scraper.py
 
+      # 7. Update Database (builds Prisma client, then seeds the data)
       - name: Update Supabase Database
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }} 
