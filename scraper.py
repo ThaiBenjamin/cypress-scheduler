@@ -2,7 +2,17 @@ import requests
 import json
 import sys
 
-URL = "https://schedule.nocccd.edu/data/202530/sections.json"
+TERMS = [
+    {
+        "name": "2026-Summer", 
+        "url": "https://schedule.nocccd.edu/data/202530/sections.json"
+    },
+    {
+        "name": "2026-Fall", 
+        # You can drop the "?p=..." cache buster at the end, the clean URL is perfect!
+        "url": "https://schedule.nocccd.edu/data/202610/sections.json" 
+    }
+]
 
 def scrape_classes():
     print("🚀 Starting NOCCCD Direct Download Scraper...")

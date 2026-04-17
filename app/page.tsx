@@ -24,6 +24,8 @@ function getCourseColor(crn: string) {
 
 function generateEventsFromMeetings(course: any) {
   const events: any[] = [];
+  if (!course.meetings) return events; // Safety check
+  
   course.meetings.forEach((meeting: any) => {
     if (!meeting.startTime || !meeting.endTime || !meeting.days || meeting.days.length === 0) return;
     const [startH, startM] = meeting.startTime.split(":").map(Number);
@@ -54,7 +56,6 @@ function checkConflict(newEvents: any[], existingEvents: any[]) {
   return null;
 }
 
-// --- NEW: TYPES FOR MULTIPLE SCHEDULES ---
 type Schedule = {
   id: string;
   name: string;
@@ -63,6 +64,9 @@ type Schedule = {
 
 export default function Home() {
   const [subjectQuery, setSubjectQuery] = useState("");
+  // --- NEW: Term State for the Dropdown (Defaulting to the Summer data we just seeded!) ---
+  const [termQuery, setTermQuery] = useState("2026-Summer"); 
+  
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [activeTab, setActiveTab] = useState<"search" | "added">("search");
@@ -70,12 +74,10 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false); 
   const calendarRef = useRef<HTMLDivElement>(null);
 
-  // --- NEW: MASTER STATE FOR SCHEDULES ---
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [activeScheduleId, setActiveScheduleId] = useState<string>("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // LOAD MULTIPLE SCHEDULES
   useEffect(() => {
     const saved = localStorage.getItem("cypress_multi_schedules");
     if (saved) {
@@ -87,7 +89,6 @@ export default function Home() {
         console.error("Failed to parse saved schedules");
       }
     } else {
-      // Create a default schedule for brand new users
       const defaultId = Date.now().toString();
       setSchedules([{ id: defaultId, name: "Summer 2026 Plan", courses: [] }]);
       setActiveScheduleId(defaultId);
@@ -95,7 +96,6 @@ export default function Home() {
     setIsLoaded(true);
   }, []);
 
-  // SAVE MULTIPLE SCHEDULES
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem("cypress_multi_schedules", JSON.stringify({
@@ -105,7 +105,6 @@ export default function Home() {
     }
   }, [schedules, activeScheduleId, isLoaded]);
 
-  // --- DERIVED STATE (Calculates what to show based on the active bucket) ---
   const activeSchedule = schedules.find(s => s.id === activeScheduleId) || schedules[0];
   const activeCourses = activeSchedule?.courses || [];
   
@@ -115,7 +114,6 @@ export default function Home() {
     return events;
   }, [activeCourses]);
 
-  // --- SCHEDULE MANAGEMENT FUNCTIONS ---
   const handleCreateNewSchedule = () => {
     const newId = Date.now().toString();
     const newName = `New Schedule ${schedules.length + 1}`;
@@ -139,12 +137,11 @@ export default function Home() {
       const updatedSchedules = schedules.filter(s => s.id !== id);
       setSchedules(updatedSchedules);
       if (activeScheduleId === id) {
-        setActiveScheduleId(updatedSchedules[0].id); // Fallback to the first remaining schedule
+        setActiveScheduleId(updatedSchedules[0].id); 
       }
     }
   };
 
-  // --- UPDATED COURSE FUNCTIONS (They only affect the active bucket) ---
   const addCourseToSchedule = (course: any) => {
     const newEvents = generateEventsFromMeetings(course);
     const conflict = checkConflict(newEvents, myScheduleEvents);
@@ -154,7 +151,6 @@ export default function Home() {
     }
     if (newEvents.length === 0) alert(`⚠️ ${course.subject} ${course.courseNumber} is Online/TBA. No times to show!`);
     
-    // Inject the course into the active schedule ONLY
     setSchedules(prev => prev.map(s => s.id === activeScheduleId ? { ...s, courses: [...s.courses, course] } : s));
   };
 
@@ -172,12 +168,13 @@ export default function Home() {
     }
   };
 
+  // --- NEW: Search fetch now includes BOTH Subject and Term ---
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!subjectQuery) return;
     setIsSearching(true);
     try {
-      const res = await fetch(`/api/courses?subject=${subjectQuery}`);
+      const res = await fetch(`/api/courses?subject=${subjectQuery}&term=${termQuery}`);
       const data = await res.json();
       setSearchResults(data);
     } catch (err) {
@@ -192,7 +189,7 @@ export default function Home() {
       const dataUrl = await toPng(calendarRef.current, { pixelRatio: 2, backgroundColor: "#ffffff" });
       const link = document.createElement("a");
       link.href = dataUrl;
-      link.download = `${activeSchedule?.name.replace(/\s+/g, '-')}-schedule.png`; // Uses the schedule name!
+      link.download = `${activeSchedule?.name.replace(/\s+/g, '-')}-schedule.png`; 
       link.click();
     } catch (error) {
       alert("Oops! Something went wrong while saving the image.");
@@ -213,15 +210,17 @@ export default function Home() {
         <div className="flex justify-between items-start">
           <div className="flex-1">
             <h2 className="font-extrabold text-blue-900">{course.subject} {course.courseNumber}</h2>
-            <p className="text-xs font-medium text-gray-700 mb-2">{course.title}</p>
+            <p className="text-xs font-medium text-gray-700 mb-2">{course.title || "Title TBA"}</p>
             <div className="flex flex-wrap gap-1 mb-2">
-              {course.meetings.map((m: any, i: number) => (
-                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${m.days.length > 0 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                  {m.days.length > 0 ? `${m.days.join("")} ${m.startTime}` : "ONLINE"}
+              {course.meetings?.map((m: any, i: number) => (
+                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${m.days && m.days.length > 0 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+                  {m.days && m.days.length > 0 ? `${m.days.join("")} ${m.startTime}` : "ONLINE"}
                 </span>
               ))}
             </div>
-            <p className="text-[10px] text-gray-400 font-mono">CRN: {course.crn} • {course.units} Units</p>
+            <p className="text-[10px] text-gray-400 font-mono">
+              CRN: {course.crn} • {course.seatsAvailable} Seats Available
+            </p>
           </div>
           {isAdded ? (
             <button onClick={() => removeCourseFromSchedule(course)} className="ml-4 bg-red-100 text-red-700 border border-red-300 text-xs font-bold py-2 px-3 rounded-lg">REMOVE</button>
@@ -241,7 +240,6 @@ export default function Home() {
         <div className="p-6 pb-0 border-b border-gray-200 relative">
           <h1 className="text-3xl font-black text-blue-900 tracking-tight mb-4">Cypress Scheduler</h1>
           
-          {/* NEW: THE SCHEDULE DROPDOWN MENU */}
           <div className="relative mb-6">
             <button 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -253,7 +251,6 @@ export default function Home() {
               </svg>
             </button>
 
-            {/* Dropdown Panel */}
             {isDropdownOpen && (
               <div className="absolute top-full left-0 w-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50">
                 <div className="max-h-60 overflow-y-auto">
@@ -266,11 +263,9 @@ export default function Home() {
                       <span className="font-bold text-gray-800 text-sm flex-1 truncate pr-2">{schedule.name}</span>
                       
                       <div className="flex gap-2 shrink-0">
-                        {/* Rename Pencil Icon */}
                         <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} className="text-gray-400 hover:text-blue-600 p-1">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                         </button>
-                        {/* Delete Trash Icon */}
                         <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} className="text-gray-400 hover:text-red-600 p-1">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
@@ -310,16 +305,30 @@ export default function Home() {
           {/* SEARCH TAB */}
           {activeTab === "search" && (
             <div>
-              <form onSubmit={handleSearch} className="mb-6 flex gap-2">
-                <input 
-                  type="text" 
-                  placeholder="Subject (e.g. ACCT, ENGL)" 
-                  value={subjectQuery}
-                  onChange={(e) => setSubjectQuery(e.target.value)}
-                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition">
-                  {isSearching ? "..." : "Search"}
+              <form onSubmit={handleSearch} className="mb-6 flex flex-col gap-3">
+                {/* NEW: Term Dropdown & Search Input aligned beautifully */}
+                <div className="flex gap-2">
+                  <select 
+                    value={termQuery}
+                    onChange={(e) => setTermQuery(e.target.value)}
+                    className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-gray-50 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                  >
+                    <option value="2026-Summer">Summer 2026</option>
+                    <option value="2026-Fall">Fall 2026</option>
+                    <option value="2026-Spring">Spring 2026</option>
+                  </select>
+
+                  <input 
+                    type="text" 
+                    placeholder="Subject (e.g. ENGL)" 
+                    value={subjectQuery}
+                    onChange={(e) => setSubjectQuery(e.target.value)}
+                    className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
+                  />
+                </div>
+                
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition shadow-sm">
+                  {isSearching ? "Searching..." : "Search Classes"}
                 </button>
               </form>
 
@@ -365,7 +374,6 @@ export default function Home() {
         </div>
 
         <div ref={calendarRef} className="flex-1 bg-white rounded-2xl shadow-2xl p-6 border border-gray-200 overflow-hidden relative">
-          {/* Watermark of Schedule Name for the PNG Export */}
           <h2 className="absolute top-6 left-6 text-2xl font-black text-gray-200 opacity-50 select-none z-0 pointer-events-none">{activeSchedule?.name}</h2>
           
           <Calendar
