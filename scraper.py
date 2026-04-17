@@ -2,6 +2,7 @@ import requests
 import json
 import sys
 
+# The Master List of Semesters
 TERMS = [
     {
         "name": "2026-Summer", 
@@ -9,37 +10,45 @@ TERMS = [
     },
     {
         "name": "2026-Fall", 
-        # You can drop the "?p=..." cache buster at the end, the clean URL is perfect!
         "url": "https://schedule.nocccd.edu/data/202610/sections.json" 
     }
 ]
 
 def scrape_classes():
-    print("🚀 Starting NOCCCD Direct Download Scraper...")
+    print("🚀 Starting NOCCCD Multi-Term Scraper...")
     
-    # We pretend to be a normal browser so the school's firewall doesn't block us
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         "Accept": "application/json"
     }
     
+    all_classes = []
+
     try:
-        print(f"📡 Downloading class data directly from NOCCCD servers...")
-        response = requests.get(URL, headers=headers)
-        
-        if response.status_code != 200:
-            print(f"❌ Failed to download data. Server returned: {response.status_code}")
-            sys.exit(1)
+        # Loop through every term in our list
+        for term in TERMS:
+            print(f"📡 Downloading {term['name']} data...")
             
-        # Parse the downloaded data
-        raw_data = response.json()
-        print(f"✅ Successfully downloaded {len(raw_data)} total classes!")
-        
-        # Save it to the file so your seed.ts script can read it
+            # Notice how it uses term["url"] here instead of the old URL variable!
+            response = requests.get(term["url"], headers=headers)
+            
+            if response.status_code == 200:
+                raw_data = response.json()
+                
+                # INJECTION: Stamp every class with our custom term name so the database knows what it is!
+                for course in raw_data:
+                    course["my_custom_term"] = term["name"]
+                    
+                all_classes.extend(raw_data)
+                print(f"✅ Successfully downloaded {len(raw_data)} classes for {term['name']}!")
+            else:
+                print(f"❌ Failed to download {term['name']}. Server returned: {response.status_code}")
+
+        # Save all the combined semesters into one massive file
         with open('cypress_data.json', 'w', encoding='utf-8') as file:
-            json.dump(raw_data, file, indent=4)
+            json.dump(all_classes, file, indent=4)
             
-        print("💾 Saved live data to cypress_data.json. Ready for database injection!")
+        print(f"💾 Saved {len(all_classes)} TOTAL classes to cypress_data.json. Ready for injection!")
         
     except Exception as e:
         print(f"❌ A critical error occurred: {e}")
