@@ -4,12 +4,12 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import fs from 'fs/promises';
 import path from 'path';
 
-// 1. Set up the PostgreSQL connection pool using your GitHub Secrets
+// Set up the PostgreSQL connection pool using your GitHub Secrets
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 
-// 2. Initialize Prisma WITH the required adapter
+// Initialize Prisma WITH the required adapter
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
@@ -20,6 +20,10 @@ async function main() {
     const fileData = await fs.readFile(filePath, 'utf-8');
     const courses = JSON.parse(fileData);
 
+    // 🧹 THE CAR WASH: Wipe out the old, mislabeled data before we inject
+    console.log("🧹 Wiping old database records to prevent ghost classes...");
+    await prisma.course.deleteMany({}); 
+
     console.log(`🚀 Starting database injection for ${courses.length} courses...`);
 
     for (const course of courses) {
@@ -28,7 +32,8 @@ async function main() {
       await prisma.course.upsert({
         where: {
           crn_term: {
-            term: "2026-Summer",
+            // Read the dynamic stamp from Python (Summer OR Fall)
+            term: course.my_custom_term, 
             crn: course.sectCrn
           }
         },
@@ -38,7 +43,9 @@ async function main() {
         },
         create: {
           crn: course.sectCrn,
-          term: "2026-Summer",
+          // Read the dynamic stamp from Python (Summer OR Fall)
+          term: course.my_custom_term, 
+          
           subject: course.sectSubjCode || "Unknown",
           courseNumber: course.sectCrseNumb || "Unknown",
           title: "TBD", 
@@ -54,7 +61,7 @@ async function main() {
       });
     }
 
-    console.log("✅ Database successfully seeded!");
+    console.log("✅ Database successfully seeded with perfectly labeled data!");
     
   } catch (error) {
     console.error("❌ Error during seeding:", error);

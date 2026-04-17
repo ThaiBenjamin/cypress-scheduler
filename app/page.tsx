@@ -24,21 +24,35 @@ function getCourseColor(crn: string) {
 
 function generateEventsFromMeetings(course: any) {
   const events: any[] = [];
-  if (!course.meetings) return events; // Safety check
+  if (!course.meetings) return events; 
   
+  // Create a memory bank to track times we've already scheduled for this class
+  const seenTimes = new Set();
+
   course.meetings.forEach((meeting: any) => {
     if (!meeting.startTime || !meeting.endTime || !meeting.days || meeting.days.length === 0) return;
+    
     const [startH, startM] = meeting.startTime.split(":").map(Number);
     const [endH, endM] = meeting.endTime.split(":").map(Number);
+    
     meeting.days.forEach((day: string) => {
       const dateOffset = dayMap[day];
       if (dateOffset) {
-        events.push({
-          title: `${course.subject} ${course.courseNumber}`,
-          start: new Date(2024, 0, dateOffset, startH, startM),
-          end: new Date(2024, 0, dateOffset, endH, endM),
-          courseInfo: course
-        });
+        
+        // Create a unique ID for this block (e.g., "Tu-11:00-13:00")
+        const timeKey = `${day}-${meeting.startTime}-${meeting.endTime}`;
+        
+        // If we haven't seen this block yet, add it to the calendar!
+        if (!seenTimes.has(timeKey)) {
+          seenTimes.add(timeKey);
+          
+          events.push({
+            title: `${course.subject} ${course.courseNumber}`,
+            start: new Date(2024, 0, dateOffset, startH, startM),
+            end: new Date(2024, 0, dateOffset, endH, endM),
+            courseInfo: course
+          });
+        }
       }
     });
   });
@@ -64,7 +78,6 @@ type Schedule = {
 
 export default function Home() {
   const [subjectQuery, setSubjectQuery] = useState("");
-  // --- NEW: Term State for the Dropdown (Defaulting to the Summer data we just seeded!) ---
   const [termQuery, setTermQuery] = useState("2026-Summer"); 
   
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -168,7 +181,6 @@ export default function Home() {
     }
   };
 
-  // --- NEW: Search fetch now includes BOTH Subject and Term ---
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!subjectQuery) return;
@@ -202,6 +214,16 @@ export default function Home() {
 
   const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
     const courseColor = getCourseColor(course.crn);
+
+    // --- NEW DEDUPLICATION LOGIC ---
+    // Convert meetings to tags
+    const allTags = course.meetings?.map((m: any) => 
+      m.days && m.days.length > 0 ? `${m.days.join("")} ${m.startTime}` : "ONLINE"
+    ) || [];
+
+    // Use a Set to destroy duplicates
+    const uniqueTags = Array.from(new Set(allTags));
+
     return (
       <div 
         className={`p-4 border rounded-xl shadow-sm transition-all ${isAdded ? 'bg-white' : 'border-gray-200 bg-white hover:border-blue-300'}`}
@@ -212,9 +234,10 @@ export default function Home() {
             <h2 className="font-extrabold text-blue-900">{course.subject} {course.courseNumber}</h2>
             <p className="text-xs font-medium text-gray-700 mb-2">{course.title || "Title TBA"}</p>
             <div className="flex flex-wrap gap-1 mb-2">
-              {course.meetings?.map((m: any, i: number) => (
-                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${m.days && m.days.length > 0 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                  {m.days && m.days.length > 0 ? `${m.days.join("")} ${m.startTime}` : "ONLINE"}
+              {/* Map over the unique tags instead of all meetings */}
+              {uniqueTags.map((tag: string, i: number) => (
+                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag !== 'ONLINE' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+                  {tag}
                 </span>
               ))}
             </div>
@@ -306,7 +329,6 @@ export default function Home() {
           {activeTab === "search" && (
             <div>
               <form onSubmit={handleSearch} className="mb-6 flex flex-col gap-3">
-                {/* NEW: Term Dropdown & Search Input aligned beautifully */}
                 <div className="flex gap-2">
                   <select 
                     value={termQuery}
