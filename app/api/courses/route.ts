@@ -34,7 +34,7 @@ export async function GET(request: Request) {
     // 2. THE FIX: Rank the results by relevance!
     const queryLower = q.toLowerCase();
     
-    courses.sort((a: { subject: number; courseNumber: number; }, b: { subject: number; courseNumber: number; }) => {
+    courses.sort((a, b) => {
       // Give each course a "score" based on where the match is
       const getScore = (course: any) => {
         const subj = course.subject.toLowerCase();
