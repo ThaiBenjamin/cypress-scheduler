@@ -2,11 +2,8 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import format from "date-fns/format";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import getDay from "date-fns/getDay";
-import enUS from "date-fns/locale/en-US";
+import { format, parse, startOfWeek, getDay } from "date-fns";
+import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -617,7 +614,7 @@ export default function Home() {
         style={isAdded ? { borderLeft: `6px solid ${courseColor}` } : {}}
       >
         <div className="flex justify-between items-start gap-4">
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 pr-4">
             <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
               {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
             </h2>
