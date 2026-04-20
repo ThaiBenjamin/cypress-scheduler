@@ -5,6 +5,11 @@ import sys
 # The Master List of Semesters
 TERMS = [
     {
+        "name": "2026-Spring/Winter",
+        "sections_url": "https://schedule.nocccd.edu/data/202520/sections.json",
+        "courses_url": "https://schedule.nocccd.edu/data/202520/courses.json"
+    },
+    {
         "name": "2026-Summer", 
         "sections_url": "https://schedule.nocccd.edu/data/202530/sections.json",
         "courses_url": "https://schedule.nocccd.edu/data/202530/courses.json"
@@ -14,6 +19,7 @@ TERMS = [
         "sections_url": "https://schedule.nocccd.edu/data/202610/sections.json",
         "courses_url": "https://schedule.nocccd.edu/data/202610/courses.json"
     }
+    
 ]
 
 def scrape_classes():

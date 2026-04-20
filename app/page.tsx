@@ -123,7 +123,9 @@ export default function Home() {
   const toastTimerRef = useRef<any>(null);
 
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
-  const [expandedInfoGroups, setExpandedInfoGroups] = useState<Record<string, boolean>>({});
+  
+  // NEW: State to hold the course we want to show in the Info Modal
+  const [infoModalCourse, setInfoModalCourse] = useState<any>(null);
 
   const [past, setPast] = useState<HistoryState[]>([]);
   const [future, setFuture] = useState<HistoryState[]>([]);
@@ -314,7 +316,7 @@ export default function Home() {
           subject: course.subject,
           courseNumber: course.courseNumber,
           title: course.title,
-          description: course.description, // Added description here
+          description: course.description, 
           sections: []
         });
       }
@@ -326,13 +328,6 @@ export default function Home() {
 
   const toggleGroup = (groupId: string) => {
     setExpandedGroups(prev => ({
-      ...prev,
-      [groupId]: !prev[groupId]
-    }));
-  };
-
-  const toggleGroupInfo = (groupId: string) => {
-    setExpandedInfoGroups(prev => ({
       ...prev,
       [groupId]: !prev[groupId]
     }));
@@ -601,8 +596,6 @@ export default function Home() {
   if (!isLoaded) return null; 
 
   const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
-    const [showInfo, setShowInfo] = useState(false);
-    
     const courseColor = getCourseColor(course.crn);
     let allTags: string[] = course.meetings?.map((m: any) => {
       if (m.days && m.days.length > 0) {
@@ -631,28 +624,23 @@ export default function Home() {
               <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
                 {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
               </h2>
-              {course.description && (
-                <button 
-                  onClick={(e) => { e.stopPropagation(); setShowInfo(!showInfo); }}
-                  className={`p-1 rounded-full transition-colors ${showInfo ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300'}`}
-                  title="Course Information"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                  </svg>
-                </button>
-              )}
+              {/* THE NEW MODAL INFO BUTTON */}
+              <button 
+                onClick={(e) => { 
+                  e.stopPropagation(); 
+                  setInfoModalCourse(course);
+                }}
+                className="p-1 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer"
+                title="Course Information"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+              </button>
             </div>
 
             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
             
-            {showInfo && course.description && (
-              <div className="mb-3 p-3 bg-gray-50 dark:bg-gray-900/80 rounded-lg border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400 leading-relaxed cursor-text" onClick={(e) => e.stopPropagation()}>
-                <span className="font-bold text-gray-800 dark:text-gray-200 mb-1 block">Course Description</span>
-                {course.description}
-              </div>
-            )}
-
             <div className="flex flex-wrap gap-1 mb-2">
               {uniqueTags.map((tag: string, i: number) => (
                 <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag === 'ONLINE' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>
@@ -1095,31 +1083,22 @@ export default function Home() {
                             
                             <div className="flex items-center gap-2 mb-0.5">
                               <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
-                              {group.description && (
-                                <button 
-                                  onClick={(e) => { 
-                                    e.stopPropagation(); 
-                                    toggleGroupInfo(group.id);
-                                  }}
-                                  className={`p-1 rounded-full transition-colors ${expandedInfoGroups[group.id] ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300'}`}
-                                  title="Course Information"
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                                  </svg>
-                                </button>
-                              )}
+                              {/* THE NEW MODAL INFO BUTTON */}
+                              <button 
+                                onClick={(e) => { 
+                                  e.stopPropagation(); 
+                                  setInfoModalCourse(group);
+                                }}
+                                className="p-1 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer"
+                                title="Course Information"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 pointer-events-none">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                </svg>
+                              </button>
                             </div>
 
                             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 break-words">{group.title}</p>
-                            
-                            {expandedInfoGroups[group.id] && group.description && (
-                              <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-900/80 rounded-lg border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400 leading-relaxed cursor-text" onClick={(e) => e.stopPropagation()}>
-                                <span className="font-bold text-gray-800 dark:text-gray-200 mb-1 block">Course Description</span>
-                                {group.description}
-                              </div>
-                            )}
-
                           </div>
                           <div className="flex items-center gap-3 shrink-0 mt-1 sm:mt-0">
                             <span className="hidden sm:inline-block text-xs font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 px-2.5 py-1 rounded-md border border-orange-100 dark:border-orange-800 pointer-events-none whitespace-nowrap">
@@ -1178,7 +1157,7 @@ export default function Home() {
                                           onClick={(e) => e.stopPropagation()}
                                         >
                                           {profName}
-                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75" viewBox="0 0 20 20" fill="currentColor">
+                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75 pointer-events-none" viewBox="0 0 20 20" fill="currentColor">
                                             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                                             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                                           </svg>
@@ -1197,7 +1176,7 @@ export default function Home() {
                                   <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0">
                                     {isAdded ? (
                                       <button onClick={() => removeCourseFromSchedule(section)} className="w-full sm:w-auto bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-md transition-colors text-center cursor-pointer flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 pointer-events-none">
                                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
                                       </button>
@@ -1241,7 +1220,58 @@ export default function Home() {
 
       </div>
 
-      {/* DETAILED INFO MODAL */}
+      {/* NEW: THE COURSE INFO MODAL OVERLAY */}
+      {infoModalCourse && (
+        <div 
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" 
+          onClick={() => setInfoModalCourse(null)}
+        >
+          <div 
+            className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-xl w-full border border-gray-600 text-white" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-white pr-4">
+                  {infoModalCourse.title || "Course Information"}
+                </h3>
+                <p className="text-gray-400 font-bold mt-1 text-sm">
+                  {infoModalCourse.subject} {infoModalCourse.courseNumber}
+                </p>
+              </div>
+              <button 
+                onClick={() => setInfoModalCourse(null)} 
+                className="text-gray-400 hover:text-white transition-colors cursor-pointer shrink-0"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+            </div>
+
+            <div className="text-gray-200 text-sm leading-relaxed mb-6">
+              {infoModalCourse.description ? (
+                infoModalCourse.description
+              ) : (
+                <div className="bg-orange-900/30 border border-orange-800 text-orange-200 p-4 rounded-lg">
+                  <span className="font-bold block mb-2">Description missing!</span>
+                  Your API route is not sending the <code>description</code> field to the frontend. <br/><br/>
+                  Open your <code>app/api/courses/route.ts</code> (or similar file) and ensure <code>description: true</code> is included in your Prisma <code>select</code> statement so it reaches this page!
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-end">
+              <button 
+                onClick={() => setInfoModalCourse(null)} 
+                className="px-6 py-2.5 text-sm font-bold bg-[#4a4a4a] text-gray-200 hover:bg-gray-500 hover:text-white rounded-md transition-colors cursor-pointer shadow-sm"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* DETAILED EVENT CLICK MODAL */}
       {selectedEvent && (() => {
         const isCustomEvent = selectedEvent.courseInfo?.crn?.startsWith("CUS-");
 
