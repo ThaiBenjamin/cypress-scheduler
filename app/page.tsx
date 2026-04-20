@@ -123,6 +123,7 @@ export default function Home() {
   const toastTimerRef = useRef<any>(null);
 
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
+  const [expandedInfoGroups, setExpandedInfoGroups] = useState<Record<string, boolean>>({});
 
   const [past, setPast] = useState<HistoryState[]>([]);
   const [future, setFuture] = useState<HistoryState[]>([]);
@@ -313,6 +314,7 @@ export default function Home() {
           subject: course.subject,
           courseNumber: course.courseNumber,
           title: course.title,
+          description: course.description, // Added description here
           sections: []
         });
       }
@@ -324,6 +326,13 @@ export default function Home() {
 
   const toggleGroup = (groupId: string) => {
     setExpandedGroups(prev => ({
+      ...prev,
+      [groupId]: !prev[groupId]
+    }));
+  };
+
+  const toggleGroupInfo = (groupId: string) => {
+    setExpandedInfoGroups(prev => ({
       ...prev,
       [groupId]: !prev[groupId]
     }));
@@ -592,6 +601,8 @@ export default function Home() {
   if (!isLoaded) return null; 
 
   const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
+    const [showInfo, setShowInfo] = useState(false);
+    
     const courseColor = getCourseColor(course.crn);
     let allTags: string[] = course.meetings?.map((m: any) => {
       if (m.days && m.days.length > 0) {
@@ -615,10 +626,33 @@ export default function Home() {
       >
         <div className="flex justify-between items-start gap-4">
           <div className="flex-1 min-w-0 pr-4">
-            <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
-              {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
-            </h2>
+            
+            <div className="flex items-center gap-2 mb-0.5">
+              <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
+                {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
+              </h2>
+              {course.description && (
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setShowInfo(!showInfo); }}
+                  className={`p-1 rounded-full transition-colors ${showInfo ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300'}`}
+                  title="Course Information"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
+            
+            {showInfo && course.description && (
+              <div className="mb-3 p-3 bg-gray-50 dark:bg-gray-900/80 rounded-lg border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400 leading-relaxed cursor-text" onClick={(e) => e.stopPropagation()}>
+                <span className="font-bold text-gray-800 dark:text-gray-200 mb-1 block">Course Description</span>
+                {course.description}
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-1 mb-2">
               {uniqueTags.map((tag: string, i: number) => (
                 <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag === 'ONLINE' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>
@@ -1058,8 +1092,34 @@ export default function Home() {
                           onClick={() => toggleGroup(group.id)}
                         >
                           <div className="flex-1 min-w-0 pr-4">
-                            <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
+                            
+                            <div className="flex items-center gap-2 mb-0.5">
+                              <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
+                              {group.description && (
+                                <button 
+                                  onClick={(e) => { 
+                                    e.stopPropagation(); 
+                                    toggleGroupInfo(group.id);
+                                  }}
+                                  className={`p-1 rounded-full transition-colors ${expandedInfoGroups[group.id] ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300'}`}
+                                  title="Course Information"
+                                >
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                  </svg>
+                                </button>
+                              )}
+                            </div>
+
                             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 break-words">{group.title}</p>
+                            
+                            {expandedInfoGroups[group.id] && group.description && (
+                              <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-900/80 rounded-lg border border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400 leading-relaxed cursor-text" onClick={(e) => e.stopPropagation()}>
+                                <span className="font-bold text-gray-800 dark:text-gray-200 mb-1 block">Course Description</span>
+                                {group.description}
+                              </div>
+                            )}
+
                           </div>
                           <div className="flex items-center gap-3 shrink-0 mt-1 sm:mt-0">
                             <span className="hidden sm:inline-block text-xs font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 px-2.5 py-1 rounded-md border border-orange-100 dark:border-orange-800 pointer-events-none whitespace-nowrap">
