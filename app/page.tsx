@@ -106,7 +106,7 @@ type Theme = "light" | "dark" | "system";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState(""); 
-  const [termQuery, setTermQuery] = useState("2026-Fall"); 
+  const [termQuery, setTermQuery] = useState("2026-Winter/Spring"); 
   
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -123,8 +123,6 @@ export default function Home() {
   const toastTimerRef = useRef<any>(null);
 
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
-  
-  // NEW: State to hold the course we want to show in the Info Modal
   const [infoModalCourse, setInfoModalCourse] = useState<any>(null);
 
   const [past, setPast] = useState<HistoryState[]>([]);
@@ -223,7 +221,7 @@ export default function Home() {
       }
     } else {
       const defaultId = Date.now().toString();
-      const defaultSchedules = [{ id: defaultId, name: "Fall 2026 Plan", courses: [] }];
+      const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
       setSchedules(defaultSchedules);
       setActiveScheduleId(defaultId);
       setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
@@ -306,6 +304,12 @@ export default function Home() {
   }, [showWeekends]);
 
   const groupedSearchResults = useMemo(() => {
+    // 🛑 THE SAFETY CHECK 🛑
+    // If the API returns an error, searchResults won't be an array. Return early to avoid the crash!
+    if (!Array.isArray(searchResults)) {
+      return [];
+    }
+
     const groups = new Map<string, any>();
     
     searchResults.forEach(course => {
@@ -413,16 +417,22 @@ export default function Home() {
     try {
       const res = await fetch(`/api/courses?q=${encodeURIComponent(query)}&term=${term}`);
       const data = await res.json();
-      setSearchResults(data);
       
-      if (data.length > 0) {
-        const firstKey = `${data[0].subject} ${data[0].courseNumber}`;
-        setExpandedGroups({ [firstKey]: true });
+      // 🛑 THE SECOND SAFETY CHECK 🛑
+      if (Array.isArray(data)) {
+        setSearchResults(data);
+        if (data.length > 0) {
+          const firstKey = `${data[0].subject} ${data[0].courseNumber}`;
+          setExpandedGroups({ [firstKey]: true });
+        } else {
+          setExpandedGroups({});
+        }
       } else {
-        setExpandedGroups({});
+        setSearchResults([]);
       }
     } catch (err) {
       console.error("Search failed", err);
+      setSearchResults([]);
     }
     setIsSearching(false);
   }, []);
@@ -624,7 +634,6 @@ export default function Home() {
               <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
                 {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
               </h2>
-              {/* THE NEW MODAL INFO BUTTON */}
               <button 
                 onClick={(e) => { 
                   e.stopPropagation(); 
@@ -640,7 +649,7 @@ export default function Home() {
             </div>
 
             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
-            
+
             <div className="flex flex-wrap gap-1 mb-2">
               {uniqueTags.map((tag: string, i: number) => (
                 <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag === 'ONLINE' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>
@@ -1046,7 +1055,7 @@ export default function Home() {
                     >
                       <option value="2026-Fall">Fall 2026</option>
                       <option value="2026-Summer">Summer 2026</option>
-                      <option value="2026-Spring">Winter/Spring 2026</option>
+                      <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
 
                     <input 
@@ -1083,7 +1092,6 @@ export default function Home() {
                             
                             <div className="flex items-center gap-2 mb-0.5">
                               <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
-                              {/* THE NEW MODAL INFO BUTTON */}
                               <button 
                                 onClick={(e) => { 
                                   e.stopPropagation(); 
@@ -1220,7 +1228,7 @@ export default function Home() {
 
       </div>
 
-      {/* NEW: THE COURSE INFO MODAL OVERLAY */}
+      {/* THE COURSE INFO MODAL OVERLAY */}
       {infoModalCourse && (
         <div 
           className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" 

@@ -5,7 +5,7 @@ import sys
 # The Master List of Semesters
 TERMS = [
     {
-        "name": "2026-Spring/Winter",
+        "name": "2026-Winter/Spring",
         "sections_url": "https://schedule.nocccd.edu/data/202520/sections.json",
         "courses_url": "https://schedule.nocccd.edu/data/202520/courses.json"
     },
