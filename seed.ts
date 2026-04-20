@@ -65,7 +65,7 @@ async function main() {
           title: course.my_custom_title || "TBD", 
           units: course.my_custom_units || 0,     
           instructionMode: course.sectMeetings?.[0]?.schdDesc || "Unknown",
-          description: course.crseText || "No description available.", 
+          description: course.my_custom_description || "No description available.", 
           seatsAvailable: course.sectSeatsAvail || 0,
           maxEnrollment: course.sectMaxEnrl || 0,
           professors: course.sectInstrName ? [course.sectInstrName] : [],

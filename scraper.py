@@ -28,7 +28,7 @@ def scrape_classes():
 
     try:
         for term in TERMS:
-            print(f"\n📡 Fetching Catalog (Titles/Units) for {term['name']}...")
+            print(f"\n📡 Fetching Catalog (Titles/Units/Descriptions) for {term['name']}...")
             catalog_response = requests.get(term["courses_url"], headers=headers)
             catalog_dict = {}
             
@@ -42,7 +42,8 @@ def scrape_classes():
                     
                     catalog_dict[unique_id] = {
                         "title": course.get("crseTitle", "Title TBA"),
-                        "units": course.get("crseCredHrLow", 0)
+                        "units": course.get("crseCredHrLow", 0),
+                        "description": course.get("crseText", "") # <-- Added description here!
                     }
                 print(f"✅ Built Catalog Dictionary with {len(catalog_dict)} master courses.")
             else:
@@ -68,11 +69,12 @@ def scrape_classes():
                         subj = str(section.get("sectSubjCode", "")).replace(" ", "").upper()
                         lookup_id = subj + clean_num
                         
-                        catalog_info = catalog_dict.get(lookup_id, {"title": "Title TBA", "units": 0})
+                        catalog_info = catalog_dict.get(lookup_id, {"title": "Title TBA", "units": 0, "description": ""})
                         
                         section["my_custom_term"] = term["name"]
                         section["my_custom_title"] = catalog_info["title"]
                         section["my_custom_units"] = catalog_info["units"]
+                        section["my_custom_description"] = catalog_info["description"] # <-- Stitched it onto the section!
                         
                         all_classes.append(section)
                         cypress_count += 1
