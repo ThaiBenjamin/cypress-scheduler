@@ -138,6 +138,40 @@ export default function Home() {
   
   const [is24Hour, setIs24Hour] = useState(false);
 
+  const [sidebarWidth, setSidebarWidth] = useState(33.33); 
+  const isDragging = useRef(false);
+
+  const startDrag = useCallback(() => {
+    isDragging.current = true;
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none'; 
+  }, []);
+
+  const onDrag = useCallback((e: any) => {
+    if (!isDragging.current) return;
+    let newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
+    if (newWidth < 20) newWidth = 20;
+    if (newWidth > 60) newWidth = 60;
+    setSidebarWidth(newWidth);
+  }, []);
+
+  const stopDrag = useCallback(() => {
+    if (isDragging.current) {
+      isDragging.current = false;
+      document.body.style.cursor = 'default';
+      document.body.style.userSelect = 'auto';
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('mouseup', stopDrag);
+    return () => {
+      window.removeEventListener('mousemove', onDrag);
+      window.removeEventListener('mouseup', stopDrag);
+    };
+  }, [onDrag, stopDrag]);
+
   const saveStateToHistory = () => {
     setPast(p => [...p, { 
       schedules: JSON.parse(JSON.stringify(schedules)), 
@@ -189,6 +223,9 @@ export default function Home() {
 
     const savedTimeFormat = localStorage.getItem("cypress_time_format");
     if (savedTimeFormat) setIs24Hour(savedTimeFormat === 'true');
+    
+    const savedSidebarWidth = localStorage.getItem("cypress_sidebar_width");
+    if (savedSidebarWidth) setSidebarWidth(parseFloat(savedSidebarWidth));
 
     setIsLoaded(true);
     setHasUnsavedChanges(false); 
@@ -212,6 +249,11 @@ export default function Home() {
     if (!isLoaded) return;
     localStorage.setItem("cypress_time_format", is24Hour.toString());
   }, [is24Hour, isLoaded]);
+  
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem("cypress_sidebar_width", sidebarWidth.toString());
+  }, [sidebarWidth, isLoaded]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -437,8 +479,10 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
+  // UPDATED: Now only shows "Mon", "Tue" instead of "01 Mon"
   const calendarFormats = useMemo(() => ({
     timeGutterFormat: is24Hour ? 'HH:mm' : 'h a',
+    dayFormat: 'EEE', 
   }), [is24Hour]);
 
   const totalUnits = activeCourses.reduce((sum, course) => sum + (course.units || 0), 0);
@@ -555,7 +599,10 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-950 font-sans relative overflow-hidden transition-colors duration-300">
       
+      {/* UPDATED: Added display: none for the .rbc-allday-cell to remove the gap! */}
       <style dangerouslySetInnerHTML={{__html: `
+        .rbc-allday-cell { display: none !important; }
+        
         .rbc-calendar { color: #111827 !important; font-family: inherit; }
         .rbc-header { color: #111827 !important; font-weight: 800 !important; font-size: 0.875rem; padding: 10px 0 !important; text-transform: uppercase; border-bottom: 2px solid #e5e7eb !important; }
         .rbc-time-view { border: 1px solid #d1d5db !important; border-radius: 8px; overflow: hidden; background: white; }
@@ -666,10 +713,13 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div 
+        className="flex flex-1 overflow-hidden relative"
+        style={{ '--sidebar-width': `${sidebarWidth}%` } as React.CSSProperties}
+      >
         
         {/* CALENDAR AREA */}
-        <div className={`w-full lg:w-2/3 p-4 lg:p-8 flex-col z-10 transition-all duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
+        <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
             
@@ -737,6 +787,7 @@ export default function Home() {
               min={new Date(2024, 0, 1, 7, 0)}
               max={new Date(2024, 0, 1, 22, 0)}
               defaultDate={new Date(2024, 0, 1)}
+              scrollToTime={new Date(2024, 0, 1, 7, 0)} /* UPDATED: Forces scrollbar to the very top */
               formats={calendarFormats}
               toolbar={false}
               className="rounded-lg cursor-pointer relative z-10"
@@ -754,8 +805,21 @@ export default function Home() {
           </div>
         </div>
 
+        {/* RESIZER BAR */}
+        <div
+          onMouseDown={startDrag}
+          className="hidden lg:flex w-2 cursor-col-resize bg-gray-200 dark:bg-gray-800 hover:bg-orange-400 dark:hover:bg-orange-500 items-center justify-center z-30 flex-shrink-0 group border-l border-r border-gray-300 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
+          title="Drag to resize panels"
+        >
+          <div className="flex flex-col gap-1.5 opacity-40 group-hover:opacity-100">
+            <div className="w-1 h-1 bg-gray-600 dark:bg-gray-300 group-hover:bg-white rounded-full"></div>
+            <div className="w-1 h-1 bg-gray-600 dark:bg-gray-300 group-hover:bg-white rounded-full"></div>
+            <div className="w-1 h-1 bg-gray-600 dark:bg-gray-300 group-hover:bg-white rounded-full"></div>
+          </div>
+        </div>
+
         {/* SIDEBAR AREA */}
-        <div className={`w-full lg:w-1/3 p-0 flex-col bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 shadow-xl z-20 transition-all duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
+        <div className={`w-full lg:w-[var(--sidebar-width)] p-0 flex-col bg-white dark:bg-gray-900 shadow-xl z-20 transition-colors duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
           <div className="p-4 sm:p-6 pb-0 border-b border-gray-200 dark:border-gray-800 relative">
             
             <div className="flex space-x-4 mb-6 overflow-x-auto">
