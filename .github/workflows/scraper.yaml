@@ -27,6 +27,8 @@ jobs:
           python-version: '3.10'
 
       - name: Install Node Modules
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }} 
         run: npm install
 
       - name: Install Python Dependencies
