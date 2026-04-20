@@ -16,6 +16,7 @@ model Course {
   title           String
   units           Float
   instructionMode String?
+  description     String?
   seatsAvailable  Int
   maxEnrollment   Int
   professors      String[] 
