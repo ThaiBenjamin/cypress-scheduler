@@ -1,0 +1,47 @@
+name: Daily Cypress Scraper
+
+on:
+  schedule:
+    # Automatically runs every day at 10:00 AM UTC (2:00 AM or 3:00 AM Pacific)
+    - cron: '0 10 * * *' 
+  
+  # This keeps the manual button just in case you ever need to force an update!
+  workflow_dispatch: 
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Node Modules
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm install
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests 
+
+      - name: Run Python Scraper
+        run: python scraper.py
+
+      - name: Update Supabase Database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }} 
+        run: |
+          npx prisma generate
+          npx tsx seed.ts
