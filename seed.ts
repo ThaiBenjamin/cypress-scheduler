@@ -77,7 +77,9 @@ async function main() {
               
               // THE FIX: We added the missing 'type' argument!
               // We grab it from NOCCCD, or default to "Class" if it's missing.
-              type: m.mtypDesc || m.schdDesc || "Class" 
+              type: m.mtypDesc || m.schdDesc || "Class",
+              building: m.bldgCode || "",
+              room: m.roomCode || ""
               
             })).filter((m: any) => m.startTime !== "") 
           }
