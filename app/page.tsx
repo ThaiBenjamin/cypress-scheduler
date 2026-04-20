@@ -593,7 +593,7 @@ export default function Home() {
 
   const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
     const courseColor = getCourseColor(course.crn);
-    let allTags = course.meetings?.map((m: any) => {
+    let allTags: string[] = course.meetings?.map((m: any) => {
       if (m.days && m.days.length > 0) {
         const start = formatTimeDisplay(m.startTime, is24Hour);
         const end = formatTimeDisplay(m.endTime, is24Hour);
@@ -603,7 +603,7 @@ export default function Home() {
     }) || [];
     
     if (allTags.length === 0) allTags = ["ONLINE"];
-    const uniqueTags = Array.from(new Set(allTags));
+    const uniqueTags: string[] = Array.from(new Set(allTags));
 
     const profName = course.professors?.[0];
     const rmpUrl = getRmpUrl(profName);
@@ -1084,7 +1084,7 @@ export default function Home() {
                             {group.sections.map((section: any) => {
                               const isAdded = activeCourses.some((c) => c.crn === section.crn);
                               
-                              let allTags = section.meetings?.map((m: any) => {
+                              let allTags: string[] = section.meetings?.map((m: any) => {
                                 if (m.days && m.days.length > 0) {
                                   const start = formatTimeDisplay(m.startTime, is24Hour);
                                   const end = formatTimeDisplay(m.endTime, is24Hour);
@@ -1094,7 +1094,7 @@ export default function Home() {
                               }) || [];
                               
                               if (allTags.length === 0) allTags = ["ONLINE"];
-                              const uniqueTags = Array.from(new Set(allTags));
+                              const uniqueTags: string[] = Array.from(new Set(allTags));
 
                               const profName = section.professors?.[0];
                               const rmpUrl = getRmpUrl(profName);
