@@ -443,12 +443,10 @@ export default function Home() {
 
   const totalUnits = activeCourses.reduce((sum, course) => sum + (course.units || 0), 0);
 
-  // --- CUSTOM CALENDAR EVENT COMPONENT ---
   const CustomEvent = useCallback(({ event }: any) => {
     const startTime = formatTimeDisplay(event.meetingInfo?.startTime, is24Hour);
     const endTime = formatTimeDisplay(event.meetingInfo?.endTime, is24Hour);
     
-    // Look for the clean Prisma database keys
     let location = "TBA";
     if (event.meetingInfo?.building || event.meetingInfo?.room) {
       const bldg = event.meetingInfo.building || "";
@@ -557,7 +555,6 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-950 font-sans relative overflow-hidden transition-colors duration-300">
       
-      {/* HIGH CONTRAST CSS FOR REACT-BIG-CALENDAR */}
       <style dangerouslySetInnerHTML={{__html: `
         .rbc-calendar { color: #111827 !important; font-family: inherit; }
         .rbc-header { color: #111827 !important; font-weight: 800 !important; font-size: 0.875rem; padding: 10px 0 !important; text-transform: uppercase; border-bottom: 2px solid #e5e7eb !important; }
@@ -583,7 +580,6 @@ export default function Home() {
         .dark .watermark-text { color: #374151 !important; }
       `}} />
 
-      {/* TOP NAVIGATION BAR */}
       <nav className="h-16 bg-[#d9531e] text-white flex items-center justify-between px-4 sm:px-6 shadow-md z-30 shrink-0">
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">Cypress Scheduler</h1>
         
@@ -614,7 +610,6 @@ export default function Home() {
             </svg>
           </button>
 
-          {/* DROPDOWN MENU */}
           {isSettingsMenuOpen && (
             <div className="absolute top-full right-0 mt-3 w-64 bg-[#2d2d2d] border border-gray-700 text-white rounded-lg shadow-2xl p-4 z-50">
               
@@ -652,7 +647,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* MOBILE VIEW TOGGLE BUTTON */}
       <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
         <button 
           onClick={() => setIsMobileCalendarOpen(!isMobileCalendarOpen)}
@@ -673,9 +667,8 @@ export default function Home() {
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* =========================================
-            LEFT SIDE: CALENDAR AREA
-        ========================================= */}
+        
+        {/* CALENDAR AREA */}
         <div className={`w-full lg:w-2/3 p-4 lg:p-8 flex-col z-10 transition-all duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
@@ -761,9 +754,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* =========================================
-            RIGHT SIDE: SIDEBAR / SEARCH AREA
-        ========================================= */}
+        {/* SIDEBAR AREA */}
         <div className={`w-full lg:w-1/3 p-0 flex-col bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 shadow-xl z-20 transition-all duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
           <div className="p-4 sm:p-6 pb-0 border-b border-gray-200 dark:border-gray-800 relative">
             
@@ -997,19 +988,100 @@ export default function Home() {
 
       </div>
 
-      {/* DELETE MODAL */}
-      {selectedEvent && (
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 max-w-sm w-full mx-4 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-gray-100 mb-1">{selectedEvent.title}</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-6">{selectedEvent.courseInfo.title}</p>
-            <div className="flex gap-3">
-              <button onClick={() => setSelectedEvent(null)} className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold py-3 px-4 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">Cancel</button>
-              <button onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-xl transition-colors">Remove</button>
+      {/* DETAILED INFO MODAL */}
+      {selectedEvent && (() => {
+        let location = "TBA";
+        if (selectedEvent.meetingInfo?.building || selectedEvent.meetingInfo?.room) {
+          const bldg = selectedEvent.meetingInfo.building || "";
+          const room = selectedEvent.meetingInfo.room || "";
+          if (bldg.toUpperCase() === "ONLINE") {
+            location = "ONLINE";
+          } else {
+            location = `${bldg} ${room}`.trim();
+          }
+        } else if (selectedEvent.meetingInfo?.location) {
+          location = selectedEvent.meetingInfo.location;
+        } else if (selectedEvent.courseInfo?.location) {
+          location = selectedEvent.courseInfo.location;
+        }
+
+        const instructors = selectedEvent.courseInfo?.professors?.length > 0 
+          ? selectedEvent.courseInfo.professors.join(', ') 
+          : "STAFF";
+
+        return (
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-5 max-w-sm w-full mx-4 border border-gray-200 dark:border-gray-700">
+              
+              <div className="flex items-start justify-between mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+                <button 
+                  onClick={() => {
+                    setSearchQuery(selectedEvent.title); 
+                    setTermQuery(selectedEvent.courseInfo.term);
+                    setActiveTab("search");
+                    setSelectedEvent(null);
+                  }}
+                  className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold text-lg sm:text-xl text-left transition-colors"
+                  title="Search for this class"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  {selectedEvent.title} {selectedEvent.meetingInfo?.type ? selectedEvent.meetingInfo.type.toUpperCase().substring(0, 3) : "LEC"}
+                </button>
+                
+                <button 
+                  onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} 
+                  className="text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0"
+                  title="Remove from schedule"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-4 text-sm sm:text-base">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-700 dark:text-gray-300">Section code</span>
+                  <span className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-gray-800 dark:text-gray-200 font-mono font-medium">
+                    {selectedEvent.courseInfo.crn}
+                  </span>
+                </div>
+                
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-700 dark:text-gray-300">Term</span>
+                  <span className="text-gray-800 dark:text-gray-200 font-medium">{selectedEvent.courseInfo.term}</span>
+                </div>
+                
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-700 dark:text-gray-300">Instructors</span>
+                  <span className="text-gray-800 dark:text-gray-200 font-medium truncate max-w-[60%] text-right" title={instructors}>
+                    {instructors}
+                  </span>
+                </div>
+                
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-gray-700 dark:text-gray-300">Location</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-medium truncate max-w-[60%] text-right" title={location}>
+                    {location}
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <button 
+                  onClick={() => setSelectedEvent(null)} 
+                  className="w-full py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-300 font-bold transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* WARNING TOAST NOTIFICATION */}
       {toastMessage && (

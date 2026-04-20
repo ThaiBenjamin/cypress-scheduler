@@ -7,34 +7,36 @@ export async function GET(request: Request) {
     const q = searchParams.get('q');
     const term = searchParams.get('term');
 
-    const whereClause: any = { term: term };
-    
-    // THE OMNIBAR LOGIC: Search across multiple columns at once!
-    if (q) {
-      whereClause.OR = [
-        { crn: { contains: q, mode: 'insensitive' } },          // e.g. "308" -> finds 30863
-        { subject: { contains: q, mode: 'insensitive' } },      // e.g. "EN" -> finds ENGL
-        { courseNumber: { contains: q, mode: 'insensitive' } }, // e.g. "100" -> finds 100C
-        { title: { contains: q, mode: 'insensitive' } },        // e.g. "math" -> finds Calculus
-      ];
-    }
-
     // If the search bar is empty, return an empty array instantly
     if (!q || q.trim() === '') {
       return NextResponse.json([]);
     }
 
+    // 1. Split the search query into individual words
+    // Example: "MATH 250BC" becomes ["MATH", "250BC"]
+    const searchWords = q.trim().split(/\s+/).filter(Boolean);
+
     const courses = await db.course.findMany({
-      where: whereClause,
+      where: {
+        term: term || undefined,
+        // 2. Require EVERY word in the search query to match at least one column
+        AND: searchWords.map((word) => ({
+          OR: [
+            { crn: { contains: word, mode: 'insensitive' } },
+            { subject: { contains: word, mode: 'insensitive' } },
+            { courseNumber: { contains: word, mode: 'insensitive' } },
+            { title: { contains: word, mode: 'insensitive' } },
+          ],
+        })),
+      },
       include: { meetings: true },
-      take: 100, // Limit to 100 so we don't crash the browser while typing!
+      orderBy: [
+        { subject: 'asc' },
+        { courseNumber: 'asc' },
+      ],
+      take: 100, // Limit to 100 so we don't crash the browser
     });
 
-    // --- OPTIONAL: In-Memory fuzzy search for Professors ---
-    // Because Prisma doesn't easily fuzzy-search inside string arrays, 
-    // we can grab all classes for the term and filter professors in memory 
-    // if the main query didn't find anything, but the 4-way OR covers 95% of use cases.
-    
     return NextResponse.json(courses);
   } catch (error) {
     console.error("Database Error:", error);
