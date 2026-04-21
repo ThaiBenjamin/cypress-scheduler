@@ -5,7 +5,11 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
+import dynamic from 'next/dynamic';
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
+// Safely import the map so it doesn't crash Server Side Rendering
+const CourseMap = dynamic(() => import('./CourseMap'), { ssr: false });
 
 const locales = { "en-US": enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
@@ -108,9 +112,10 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState(""); 
   const [termQuery, setTermQuery] = useState("2026-Winter/Spring"); 
   
+  // UPDATED: Added "map" to the activeTab state options!
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [activeTab, setActiveTab] = useState<"search" | "added">("search");
+  const [activeTab, setActiveTab] = useState<"search" | "added" | "map">("search");
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false); 
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -304,8 +309,6 @@ export default function Home() {
   }, [showWeekends]);
 
   const groupedSearchResults = useMemo(() => {
-    // 🛑 THE SAFETY CHECK 🛑
-    // If the API returns an error, searchResults won't be an array. Return early to avoid the crash!
     if (!Array.isArray(searchResults)) {
       return [];
     }
@@ -418,7 +421,6 @@ export default function Home() {
       const res = await fetch(`/api/courses?q=${encodeURIComponent(query)}&term=${term}`);
       const data = await res.json();
       
-      // 🛑 THE SECOND SAFETY CHECK 🛑
       if (Array.isArray(data)) {
         setSearchResults(data);
         if (data.length > 0) {
@@ -832,12 +834,12 @@ export default function Home() {
         style={{ '--sidebar-width': `${sidebarWidth}%` } as React.CSSProperties}
       >
         
-        {/* CALENDAR AREA */}
+        {/* CALENDAR AREA (ALWAYS VISIBLE NOW) */}
         <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
             
-            {/* --- NEW: TOP LEFT SCHEDULE SELECTOR --- */}
+            {/* TOP LEFT SCHEDULE SELECTOR */}
             <div className="relative group">
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -1021,6 +1023,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* SIDEBAR NAVIGATION TABS */}
         <div className={`w-full lg:w-[var(--sidebar-width)] p-0 flex-col bg-white dark:bg-gray-900 shadow-xl z-20 transition-colors duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
           <div className="p-4 sm:p-6 pb-0 border-b border-gray-200 dark:border-gray-800 relative">
             
@@ -1037,12 +1040,21 @@ export default function Home() {
               >
                 Added ({activeCourses.length}) - {totalUnits} Units
               </button>
+              {/* NEW: MAP TAB */}
+              <button 
+                onClick={() => setActiveTab("map")}
+                className={`pb-3 text-sm font-bold border-b-2 px-2 transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1 ${activeTab === "map" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                Map
+              </button>
             </div>
             
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-24 lg:pb-6 relative">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-24 lg:pb-6 relative flex flex-col">
             
+            {/* SEARCH TAB */}
             {activeTab === "search" && (
               <div>
                 <div className="mb-6 flex flex-col gap-3">
@@ -1223,6 +1235,14 @@ export default function Home() {
                 )}
               </div>
             )}
+
+            {/* THE NEW MAP TAB */}
+            {activeTab === "map" && (
+              <div className="flex-1 w-full flex flex-col min-h-[70vh] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden relative z-0 shadow-sm">
+                <CourseMap activeCourses={activeCourses} getCourseColor={getCourseColor} />
+              </div>
+            )}
+
           </div>
         </div>
 
