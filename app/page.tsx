@@ -18,7 +18,6 @@ const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th":
 
 const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1"];
 
-// This list matches your map! We use it to populate the Custom Event Dropdown.
 const BUILDING_DATA: Record<string, string> = {
   'BBF': 'Baseball Field', 'BK': 'Book Store', 'BUS': 'Business', 'CCCPLX': 'Cypress College Complex',
   '1VPA': 'Fine Arts', 'FASS': 'Fine Arts Swing Space', 'G1': 'Gym 1', 'G2': 'Gym 2',
@@ -143,7 +142,7 @@ export default function Home() {
   const [customEventStartTime, setCustomEventStartTime] = useState("10:30");
   const [customEventEndTime, setCustomEventEndTime] = useState("15:30");
   const [customEventDays, setCustomEventDays] = useState<string[]>([]);
-  const [customEventBuilding, setCustomEventBuilding] = useState<string>(""); // NEW LOCATION STATE
+  const [customEventBuilding, setCustomEventBuilding] = useState<string>(""); 
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
@@ -519,7 +518,7 @@ export default function Home() {
           startTime: customEventStartTime,
           endTime: customEventEndTime,
           type: "Event",
-          building: customEventBuilding // Location attaches here to show on Map!
+          building: customEventBuilding 
         }
       ]
     };
@@ -731,17 +730,13 @@ export default function Home() {
                 <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Redo<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
               </div>
               <div className="relative flex items-center justify-center">
-                <button onClick={clearActiveSchedule} className="peer p-2 hover:text-red-500 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
-                <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Clear Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
-              </div>
-              <div className="relative flex items-center justify-center">
                 <button 
                   onClick={() => {
                     setCustomEventName("");
                     setCustomEventStartTime("10:30");
                     setCustomEventEndTime("15:30");
                     setCustomEventDays([]);
-                    setCustomEventBuilding(""); // Reset location
+                    setCustomEventBuilding(""); 
                     setCustomEventScheduleId(activeScheduleId);
                     setEditingCustomEventCrn(null);
                     setIsCustomEventModalOpen(true);
@@ -790,17 +785,35 @@ export default function Home() {
         </div>
 
         <div className={`w-full lg:w-[var(--sidebar-width)] p-0 flex-col bg-white dark:bg-gray-900 shadow-xl z-20 transition-colors duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
-          <div className="p-4 sm:p-6 pb-0 border-b border-gray-200 dark:border-gray-800 relative">
-            <div className="flex space-x-4 mb-6 overflow-x-auto">
-              <button onClick={() => setActiveTab("search")} className={`pb-3 text-sm font-bold border-b-2 px-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "search" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}>Search</button>
-              <button onClick={() => setActiveTab("added")} className={`pb-3 text-sm font-bold border-b-2 px-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "added" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}>Added ({activeCourses.length}) - {totalUnits} Units</button>
-              <button onClick={() => setActiveTab("map")} className={`pb-3 text-sm font-bold border-b-2 px-2 transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1 ${activeTab === "map" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg> Map
+          
+          {/* UPDATED FULL-WIDTH TABS */}
+          <div className="p-4 sm:p-6 pb-0 relative">
+            <div className="flex w-full mb-6 overflow-x-auto border-b border-gray-200 dark:border-gray-800">
+              <button 
+                onClick={() => setActiveTab("search")} 
+                className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "search" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                Search
+              </button>
+              <button 
+                onClick={() => setActiveTab("added")} 
+                className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "added" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                Added
+              </button>
+              <button 
+                onClick={() => setActiveTab("map")} 
+                className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "map" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                Map
               </button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-24 lg:pb-6 relative flex flex-col">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 pt-0 pb-24 lg:pb-6 relative flex flex-col">
             {activeTab === "search" && (
               <div>
                 <div className="mb-6 flex flex-col gap-3">
@@ -892,13 +905,22 @@ export default function Home() {
               </div>
             )}
 
+            {/* UPDATED ADDED TAB HEADER */}
             {activeTab === "added" && (
               <div className="space-y-4">
-                {activeCourses.length > 0 && (
-                   <div className="flex justify-end mb-2">
-                      <button onClick={clearActiveSchedule} className="text-xs font-bold text-red-500 hover:text-red-700 underline cursor-pointer">Clear This Schedule</button>
-                   </div>
-                )}
+                
+                {/* NEW TITLE HEADER */}
+                <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+                  <h2 className="text-base sm:text-lg font-black text-gray-800 dark:text-gray-200">
+                    {activeSchedule?.name || "My Plan"} ({totalUnits} Units)
+                  </h2>
+                  {activeCourses.length > 0 && (
+                    <button onClick={clearActiveSchedule} className="text-xs font-bold text-red-500 hover:text-red-700 underline cursor-pointer transition-colors">
+                      Clear Schedule
+                    </button>
+                  )}
+                </div>
+
                 {activeCourses.length === 0 ? (
                   <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">This schedule is empty.</p>
                 ) : (
@@ -969,7 +991,7 @@ export default function Home() {
                       setCustomEventStartTime(selectedEvent.meetingInfo.startTime);
                       setCustomEventEndTime(selectedEvent.meetingInfo.endTime);
                       setCustomEventDays(selectedEvent.meetingInfo.days);
-                      setCustomEventBuilding(selectedEvent.meetingInfo.building || ""); // Set location when editing
+                      setCustomEventBuilding(selectedEvent.meetingInfo.building || "");
                       setCustomEventScheduleId(activeScheduleId);
                       setEditingCustomEventCrn(selectedEvent.courseInfo.crn);
                       setIsCustomEventModalOpen(true);
@@ -1036,7 +1058,6 @@ export default function Home() {
                 <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-300 pointer-events-none">Event Name</label>
               </div>
 
-              {/* NEW LOCATION SELECTOR */}
               <div className="relative">
                 <select 
                   value={customEventBuilding}
