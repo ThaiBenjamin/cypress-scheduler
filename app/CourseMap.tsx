@@ -5,7 +5,6 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, ZoomControl, Polyline }
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Dictionary including Official Names and Coordinates
 const BUILDING_DATA: Record<string, { name: string, coords: [number, number] }> = {
   'BBF': { name: 'Baseball Field', coords: [33.828350865002704, -118.02147325915115] },
   'BK': { name: 'Book Store', coords: [33.82782899995476, -118.0256343519516] },
@@ -106,7 +105,7 @@ const createRedSearchMarker = () => {
   });
 };
 
-export default function CourseMap({ activeCourses, getCourseColor }: { activeCourses: any[], getCourseColor: (crn: string) => string }) {
+export default function CourseMap({ activeCourses, getCourseColor, onColorChange }: { activeCourses: any[], getCourseColor: (crn: string) => string, onColorChange: (crn: string, color: string) => void }) {
   const mapCenter: [number, number] = [33.827513179286186, -118.02476871801096];
 
   const [isMapReady, setIsMapReady] = useState(false);
@@ -194,7 +193,7 @@ export default function CourseMap({ activeCourses, getCourseColor }: { activeCou
     return { markers };
   }, [activeCourses, activeDay, getCourseColor]);
 
-  // Calculate the direct dashed lines between classes
+  // Clean, simple dashed lines between classes
   const routeSegments = useMemo(() => {
     const segments: {path: [number, number][], color: string}[] = [];
     
@@ -229,7 +228,8 @@ export default function CourseMap({ activeCourses, getCourseColor }: { activeCou
 
   return (
     <div className={`relative w-full h-full transition-opacity duration-300 ${isMapReady ? 'opacity-100' : 'opacity-0'}`}>
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[1000] w-11/12 max-w-md shadow-lg font-sans flex flex-col">
+      
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[1000] w-11/12 max-w-md shadow-lg font-sans flex flex-col pointer-events-auto">
         <div className="bg-white dark:bg-[#2d2d2d] flex items-center justify-between px-1 text-[11px] sm:text-xs font-bold text-gray-500 dark:text-gray-400 rounded-t-xl shadow-sm z-20">
           {availableDays.map((day) => (
             <button
@@ -279,18 +279,11 @@ export default function CourseMap({ activeCourses, getCourseColor }: { activeCou
         
         <TileLayer attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
         
-        {/* RENDER THE DIRECT DASHED PATHS */}
         {routeSegments.map((segment, idx) => (
           <Polyline 
             key={`route-${idx}`} 
             positions={segment.path} 
-            pathOptions={{ 
-              color: segment.color, 
-              weight: 4,
-              opacity: 0.9,
-              dashArray: "8, 8", // This creates the dashed "walking trail" effect!
-              lineCap: "round"
-            }} 
+            pathOptions={{ color: segment.color, weight: 4, opacity: 0.9, dashArray: "8, 8", lineCap: "round" }} 
           />
         ))}
 
@@ -309,9 +302,22 @@ export default function CourseMap({ activeCourses, getCourseColor }: { activeCou
                   </h3>
                   <div className="text-sm text-gray-700 mb-1"><span className="font-bold">Class: </span>{marker.course.subject ? `${marker.course.subject} ` : ''}{marker.course.courseNumber}</div>
                   <div className="text-sm text-gray-700 mb-4"><span className="font-bold">Room: </span>{marker.meeting.building} {marker.meeting.room || ''}</div>
-                  <a href={`https://www.google.com/maps/dir/?api=1&destination=${marker.coords[0]},${marker.coords[1]}`} target="_blank" rel="noopener noreferrer" className="w-full bg-orange-600 hover:bg-orange-700 text-white !text-white hover:!text-white font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm no-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg> DIRECTIONS
-                  </a>
+                  
+                  {/* NEW MAP POPUP FOOTER */}
+                  <div className="mt-3 pt-3 border-t border-gray-200 flex items-center justify-between gap-2">
+                    <div className="relative group flex items-center justify-center w-9 h-9 text-gray-400 hover:text-orange-500 transition-colors cursor-pointer bg-gray-50 rounded-md border border-gray-200 shrink-0" title="Change Color">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" /></svg>
+                      <input 
+                        type="color" 
+                        value={getCourseColor(marker.course.crn)}
+                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
+                        onChange={(e) => onColorChange(marker.course.crn, e.target.value)} 
+                      />
+                    </div>
+                    <a href={`https://www.google.com/maps/dir/?api=1&destination=${marker.coords[0]},${marker.coords[1]}`} target="_blank" rel="noopener noreferrer" className="flex-1 bg-orange-600 hover:bg-orange-700 text-white !text-white hover:!text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm no-underline h-9">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg> DIRECTIONS
+                    </a>
+                  </div>
                 </div>
               </Popup>
             </Marker>

@@ -54,6 +54,9 @@ async function main() {
         update: {
           seatsAvailable: course.sectSeatsAvail,
           maxEnrollment: course.sectMaxEnrl,
+          // NEW: Update live waitlist numbers!
+          waitCount: course.my_custom_wait_count || 0,
+          waitCapacity: course.my_custom_wait_capacity || 0,
           title: course.my_custom_title || "TBD",
           units: course.my_custom_units || 0,
         },
@@ -68,6 +71,11 @@ async function main() {
           description: course.my_custom_description || "No description available.", 
           seatsAvailable: course.sectSeatsAvail || 0,
           maxEnrollment: course.sectMaxEnrl || 0,
+          
+          // NEW: Save the waitlist numbers on creation!
+          waitCount: course.my_custom_wait_count || 0,
+          waitCapacity: course.my_custom_wait_capacity || 0,
+          
           professors: course.sectInstrName ? [course.sectInstrName] : [],
           
           meetings: {
@@ -76,7 +84,6 @@ async function main() {
               startTime: formatTime(m.beginTime),
               endTime: formatTime(m.endTime),
               
-              // THE FIX: We added the missing 'type' argument!
               // We grab it from NOCCCD, or default to "Class" if it's missing.
               type: m.mtypDesc || m.schdDesc || "Class",
               building: m.bldgCode || "",
@@ -88,7 +95,7 @@ async function main() {
       });
     }
 
-    console.log("✅ Database successfully seeded with full meeting times!");
+    console.log("✅ Database successfully seeded with full meeting and waitlist data!");
     
   } catch (error) {
     console.error("❌ Error during seeding:", error);

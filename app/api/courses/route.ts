@@ -27,11 +27,13 @@ export async function GET(request: Request) {
           ],
         })),
       },
+      // By using 'include' instead of 'select', Prisma automatically grabs 
+      // all the top-level columns (including your new waitCount and waitCapacity!)
       include: { meetings: true },
       take: 100, 
     });
 
-    // 2. THE FIX: Rank the results by relevance!
+    // 2. Rank the results by relevance
     const queryLower = q.toLowerCase();
     
     courses.sort((a, b) => {

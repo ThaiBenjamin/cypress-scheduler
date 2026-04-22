@@ -19,6 +19,8 @@ model Course {
   description     String?
   seatsAvailable  Int
   maxEnrollment   Int
+  waitCount       Int?     @default(0)
+  waitCapacity    Int?     @default(0)
   professors      String[] 
   
   meetings        Meeting[]

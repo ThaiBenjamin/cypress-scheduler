@@ -19,7 +19,6 @@ TERMS = [
         "sections_url": "https://schedule.nocccd.edu/data/202610/sections.json",
         "courses_url": "https://schedule.nocccd.edu/data/202610/courses.json"
     }
-    
 ]
 
 def scrape_classes():
@@ -49,7 +48,7 @@ def scrape_classes():
                     catalog_dict[unique_id] = {
                         "title": course.get("crseTitle", "Title TBA"),
                         "units": course.get("crseCredHrLow", 0),
-                        "description": course.get("crseText", "") # <-- Added description here!
+                        "description": course.get("crseText", "") 
                     }
                 print(f"✅ Built Catalog Dictionary with {len(catalog_dict)} master courses.")
             else:
@@ -64,8 +63,6 @@ def scrape_classes():
                 cypress_count = 0
                 
                 for section in sections_data:
-                    
-                    # THE ULTIMATE FIX: Stop guessing letters. Use the strict NOCCCD Campus ID!
                     # 1 = Cypress College
                     if str(section.get("sectCampCode")) == "1":
                         
@@ -80,8 +77,14 @@ def scrape_classes():
                         section["my_custom_term"] = term["name"]
                         section["my_custom_title"] = catalog_info["title"]
                         section["my_custom_units"] = catalog_info["units"]
-                        section["my_custom_description"] = catalog_info["description"] # <-- Stitched it onto the section!
+                        section["my_custom_description"] = catalog_info["description"]
                         
+                        # --- NEW WAITLIST FIELDS ADDED HERE ---
+                        # We use .get(..., 0) so if the field is missing, it safely defaults to 0
+                        section["my_custom_wait_count"] = int(section.get("sectWaitCount") or 0)
+                        section["my_custom_wait_capacity"] = int(section.get("sectWaitCapacity") or section.get("sectWaitCapactiy") or 0)
+                        # --------------------------------------
+
                         all_classes.append(section)
                         cypress_count += 1
                         

@@ -30,12 +30,6 @@ const BUILDING_DATA: Record<string, string> = {
   'LOT5': 'Parking Lot 5', 'LOT6': 'Parking Lot 6', 'LOT7': 'Parking Lot 7', 'LOT8': 'Parking Lot 8',
 };
 
-function getCourseColor(crn: string) {
-  let hash = 0;
-  for (let i = 0; i < crn.length; i++) hash = (Math.imul(31, hash) + crn.charCodeAt(i)) | 0;
-  return COURSE_COLORS[Math.abs(hash) % COURSE_COLORS.length];
-}
-
 function formatTimeDisplay(time24: string, is24Hour: boolean) {
   if (!time24) return "";
   const [hourStr, minStr] = time24.split(":");
@@ -118,6 +112,8 @@ export default function Home() {
   const [activeScheduleId, setActiveScheduleId] = useState<string>("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const [customColors, setCustomColors] = useState<Record<string, string>>({});
+
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = useRef<any>(null);
 
@@ -146,6 +142,19 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+
+  const getCourseColor = useCallback((crn: string) => {
+    if (customColors[crn]) return customColors[crn];
+    let hash = 0;
+    for (let i = 0; i < crn.length; i++) hash = (Math.imul(31, hash) + crn.charCodeAt(i)) | 0;
+    return COURSE_COLORS[Math.abs(hash) % COURSE_COLORS.length];
+  }, [customColors]);
+
+  const handleColorChange = (crn: string, newColor: string) => {
+    const updatedColors = { ...customColors, [crn]: newColor };
+    setCustomColors(updatedColors);
+    localStorage.setItem("cypress_custom_colors", JSON.stringify(updatedColors));
+  };
 
   const startDrag = useCallback(() => {
     isDragging.current = true;
@@ -220,6 +229,11 @@ export default function Home() {
       setSchedules(defaultSchedules);
       setActiveScheduleId(defaultId);
       setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
+    }
+
+    const savedColors = localStorage.getItem("cypress_custom_colors");
+    if (savedColors) {
+      try { setCustomColors(JSON.parse(savedColors)); } catch(e){}
     }
 
     const savedTheme = localStorage.getItem("cypress_theme") as Theme;
@@ -316,10 +330,17 @@ export default function Home() {
   };
 
   const handleCreateNewSchedule = () => {
+    const suggestedName = `Plan ${schedules.length + 1}`;
+    const newName = window.prompt("Name your new schedule:", suggestedName);
+    
+    if (!newName || newName.trim() === "") {
+      setIsDropdownOpen(false);
+      return; 
+    }
+
     saveStateToHistory();
     const newId = Date.now().toString();
-    const newName = `New Schedule ${schedules.length + 1}`;
-    setSchedules([...schedules, { id: newId, name: newName, courses: [] }]);
+    setSchedules([...schedules, { id: newId, name: newName.trim(), courses: [] }]);
     setActiveScheduleId(newId);
     setIsDropdownOpen(false);
   };
@@ -593,13 +614,22 @@ export default function Home() {
               <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono">CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled</p>
             )}
           </div>
-          <div className="shrink-0 flex items-center justify-end pt-1">
+
+          <div className="shrink-0 flex items-center justify-end pt-1 gap-2">
             {isAdded ? (
-              <button onClick={() => removeCourseFromSchedule(course)} className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-lg cursor-pointer transition-colors hover:bg-red-100 dark:hover:bg-red-900/50 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-              </button>
+              <>
+                <div className="relative group flex items-center justify-center text-gray-400 hover:text-orange-500 transition-colors cursor-pointer w-9 h-9 bg-gray-50 dark:bg-gray-800 rounded-lg p-2 border border-gray-200 dark:border-gray-700" title="Change Color">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
+                  </svg>
+                  <input type="color" value={getCourseColor(course.crn)} className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onChange={(e) => handleColorChange(course.crn, e.target.value)} />
+                </div>
+                <button onClick={() => removeCourseFromSchedule(course)} className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-lg cursor-pointer transition-colors hover:bg-red-100 dark:hover:bg-red-900/50 flex items-center justify-center w-9 h-9">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                </button>
+              </>
             ) : (
-              <button onClick={() => addCourseToSchedule(course)} className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg cursor-pointer transition-colors shadow-sm flex items-center justify-center">
+              <button onClick={() => addCourseToSchedule(course)} className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg cursor-pointer transition-colors shadow-sm flex items-center justify-center w-9 h-9">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
               </button>
             )}
@@ -786,7 +816,6 @@ export default function Home() {
 
         <div className={`w-full lg:w-[var(--sidebar-width)] p-0 flex-col bg-white dark:bg-gray-900 shadow-xl z-20 transition-colors duration-300 ${isMobileCalendarOpen ? 'hidden lg:flex' : 'flex'}`}>
           
-          {/* UPDATED FULL-WIDTH TABS */}
           <div className="p-4 sm:p-6 pb-0 relative">
             <div className="flex w-full mb-6 overflow-x-auto border-b border-gray-200 dark:border-gray-800">
               <button 
@@ -905,11 +934,9 @@ export default function Home() {
               </div>
             )}
 
-            {/* UPDATED ADDED TAB HEADER */}
             {activeTab === "added" && (
               <div className="space-y-4">
                 
-                {/* NEW TITLE HEADER */}
                 <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
                   <h2 className="text-base sm:text-lg font-black text-gray-800 dark:text-gray-200">
                     {activeSchedule?.name || "My Plan"} ({totalUnits} Units)
@@ -931,7 +958,11 @@ export default function Home() {
 
             {activeTab === "map" && (
               <div className="flex-1 w-full flex flex-col min-h-[70vh] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden relative z-0 shadow-sm">
-                <CourseMap activeCourses={activeCourses} getCourseColor={getCourseColor} />
+                <CourseMap 
+                  activeCourses={activeCourses} 
+                  getCourseColor={getCourseColor} 
+                  onColorChange={handleColorChange} 
+                />
               </div>
             )}
           </div>
@@ -983,7 +1014,26 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
             {isCustomEvent ? (
               <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-6 max-w-xs w-full mx-4 border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-gray-100 mb-6 truncate">{selectedEvent.title}</h3>
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-gray-100 truncate pr-2">{selectedEvent.title}</h3>
+                  <div className="relative group flex items-center justify-center shrink-0 pt-1">
+                    <div 
+                      className="peer relative w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-orange-500 transition-colors cursor-pointer shrink-0" 
+                      title="Change color"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
+                      </svg>
+                      <input 
+                        type="color" 
+                        value={getCourseColor(selectedEvent.courseInfo.crn)}
+                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
+                        onChange={(e) => handleColorChange(selectedEvent.courseInfo.crn, e.target.value)} 
+                      />
+                    </div>
+                    <div className="absolute top-[110%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Change Color<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                  </div>
+                </div>
                 <div className="flex flex-col gap-3">
                   <button 
                     onClick={() => {
@@ -1015,10 +1065,29 @@ export default function Home() {
                     </button>
                     <div className="absolute top-[110%] left-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Search for this class<div className="absolute bottom-full left-4 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                   </div>
-                  <div className="relative group flex items-center justify-center">
-                    <button onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} className="peer text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
-                    <div className="absolute top-[110%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Remove from schedule<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                  
+                  <div className="flex items-center gap-3 shrink-0 pt-1">
+                    <div className="relative group flex items-center justify-center">
+                      <div className="peer relative w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-orange-500 transition-colors cursor-pointer shrink-0" title="Change color">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
+                        </svg>
+                        <input 
+                          type="color" 
+                          value={getCourseColor(selectedEvent.courseInfo.crn)}
+                          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
+                          onChange={(e) => handleColorChange(selectedEvent.courseInfo.crn, e.target.value)} 
+                        />
+                      </div>
+                      <div className="absolute top-[110%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Change Color<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
+
+                    <div className="relative group flex items-center justify-center">
+                      <button onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} className="peer text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                      <div className="absolute top-[110%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Remove from schedule<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
                   </div>
+
                 </div>
                 <div className="space-y-4 text-sm sm:text-base">
                   <div className="flex justify-between items-center">
