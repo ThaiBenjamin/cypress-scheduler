@@ -93,6 +93,34 @@ function checkConflict(newEvents: any[], existingEvents: any[]) {
   return null;
 }
 
+function CourseStatusBadge({ course }: { course: any }) {
+  const seatsAvailable = course.seatsAvailable || 0;
+  const waitCount = course.waitCount || 0;
+  const waitCapacity = course.waitCapacity || 0;
+
+  if (seatsAvailable > 0) {
+    return (
+      <span className="bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 border border-green-200 dark:border-green-800 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider whitespace-nowrap">
+        OPEN ({seatsAvailable} Seat{seatsAvailable !== 1 ? 's' : ''})
+      </span>
+    );
+  }
+
+  if (waitCapacity > 0 && waitCount < waitCapacity) {
+    return (
+      <span className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-500 border border-yellow-200 dark:border-yellow-800 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider whitespace-nowrap">
+        WAITLIST ({waitCount}/{waitCapacity})
+      </span>
+    );
+  }
+
+  return (
+    <span className="bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-400 border border-red-200 dark:border-red-800 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider whitespace-nowrap">
+      FULL
+    </span>
+  );
+}
+
 type Schedule = { id: string; name: string; courses: any[]; };
 type HistoryState = { schedules: Schedule[]; activeId: string; };
 type Theme = "light" | "dark" | "system";
@@ -597,9 +625,11 @@ export default function Home() {
               </button>
             </div>
             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
+            
+            {/* UPDATED: TIME BADGES ARE NOW SLATE/GRAY */}
             <div className="flex flex-wrap gap-1 mb-2">
               {uniqueTags.map((tag: string, i: number) => (
-                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag === 'ONLINE' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>{tag}</span>
+                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
               ))}
               {rmpUrl && course.subject ? (
                 <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
@@ -610,8 +640,14 @@ export default function Home() {
                 <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
               ) : null}
             </div>
+
             {course.subject && (
-              <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono">CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled</p>
+              <div className="flex flex-wrap items-center gap-2 mt-3">
+                <CourseStatusBadge course={course} />
+                <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono">
+                  CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled
+                </p>
+              </div>
             )}
           </div>
 
@@ -900,7 +936,7 @@ export default function Home() {
                                   <div className="w-full sm:w-auto flex-1 min-w-0 pr-4">
                                     <div className="flex flex-wrap gap-1 mb-1.5 w-full">
                                       {uniqueTags.map((tag: string, i: number) => (
-                                        <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold ${tag === 'ONLINE' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>{tag}</span>
+                                        <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
                                       ))}
                                       {rmpUrl ? (
                                         <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
@@ -911,7 +947,10 @@ export default function Home() {
                                         <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
                                       ) : null}
                                     </div>
-                                    <p className="text-[10px] text-gray-500 font-mono font-medium">CRN: {section.crn} • {(section.maxEnrollment || 0) - (section.seatsAvailable || 0)}/{section.maxEnrollment || 0} Enrolled</p>
+                                    <div className="flex flex-wrap items-center gap-2 mt-2">
+                                      <CourseStatusBadge course={section} />
+                                      <p className="text-[10px] text-gray-500 font-mono font-medium">CRN: {section.crn} • {(section.maxEnrollment || 0) - (section.seatsAvailable || 0)}/{section.maxEnrollment || 0} Enrolled</p>
+                                    </div>
                                   </div>
                                   <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0">
                                     {isAdded ? (
