@@ -23,6 +23,8 @@ type CourseCardProps = {
   renderStatusBadge: (course: any) => ReactNode;
   onToggleNotification?: (course: any) => void;
   isNotificationEnabled?: boolean;
+  isNotificationDisabled?: boolean;
+  notificationDisabledReason?: string;
 };
 
 /**
@@ -44,6 +46,8 @@ export default function CourseCard({
   renderStatusBadge,
   onToggleNotification,
   isNotificationEnabled = false,
+  isNotificationDisabled = false,
+  notificationDisabledReason,
 }: CourseCardProps) {
   const courseColor = getCourseColor(course.crn);
 
@@ -125,12 +129,17 @@ export default function CourseCard({
           {onToggleNotification && (
             <button
               onClick={() => onToggleNotification(course)}
-              className={`p-2 rounded-lg border transition-colors cursor-pointer flex items-center justify-center w-9 h-9 ${
+              disabled={isNotificationDisabled}
+              className={`p-2 rounded-lg border transition-colors flex items-center justify-center w-9 h-9 ${
                 isNotificationEnabled
                   ? "bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700"
-                  : "bg-white text-gray-500 border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700"
+                  : "bg-white text-gray-500 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700"
+              } ${
+                isNotificationDisabled
+                  ? "opacity-40 cursor-not-allowed"
+                  : "cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
               }`}
-              title="Notification settings"
+              title={isNotificationDisabled ? notificationDisabledReason || "Notifications unavailable for this term." : "Notification settings"}
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill={isNotificationEnabled ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />

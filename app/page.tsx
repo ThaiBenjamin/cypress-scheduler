@@ -21,6 +21,52 @@ const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales
 const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th": 5, "F": 6, "Sa": 7 };
 
 const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1", "#14b8a6"];
+const TERM_ORDER = { "Winter/Spring": 0, "Summer": 1, "Fall": 2 } as const;
+
+function parseTermLabel(term: string): { year: number; season: keyof typeof TERM_ORDER } | null {
+  const [yearRaw, seasonRaw] = String(term || "").split("-");
+  if (!yearRaw || !seasonRaw || !(seasonRaw in TERM_ORDER)) return null;
+  const year = Number(yearRaw);
+  if (!Number.isFinite(year)) return null;
+  return { year, season: seasonRaw as keyof typeof TERM_ORDER };
+}
+
+function getCurrentAcademicTerm(date: Date): { year: number; season: keyof typeof TERM_ORDER } {
+  const month = date.getMonth();
+  if (month <= 4) return { year: date.getFullYear(), season: "Winter/Spring" };
+  if (month <= 7) return { year: date.getFullYear(), season: "Summer" };
+  return { year: date.getFullYear(), season: "Fall" };
+}
+
+function getDropDeadlineForTerm(year: number, season: keyof typeof TERM_ORDER): Date {
+  if (season === "Winter/Spring") return new Date(year, 0, 31, 23, 59, 59, 999);
+  if (season === "Summer") return new Date(year, 5, 15, 23, 59, 59, 999);
+  return new Date(year, 8, 15, 23, 59, 59, 999);
+}
+
+function getNotificationEligibility(term: string, today = new Date()): { allowed: boolean; reason?: string } {
+  const target = parseTermLabel(term);
+  if (!target) return { allowed: false, reason: "Notifications are only available for standard academic terms." };
+
+  const current = getCurrentAcademicTerm(today);
+  const targetRank = target.year * 10 + TERM_ORDER[target.season];
+  const currentRank = current.year * 10 + TERM_ORDER[current.season];
+
+  if (targetRank < currentRank) {
+    return { allowed: false, reason: "Notifications are only available for the current term (before drop deadline) and future terms." };
+  }
+
+  if (targetRank > currentRank) {
+    return { allowed: true };
+  }
+
+  const dropDeadline = getDropDeadlineForTerm(current.year, current.season);
+  if (today.getTime() > dropDeadline.getTime()) {
+    return { allowed: false, reason: `The drop deadline has passed for ${term}.` };
+  }
+
+  return { allowed: true };
+}
 
 function formatTimeDisplay(time24: string, is24Hour: boolean) {
   if (!time24) return "";
@@ -474,6 +520,13 @@ export default function Home() {
   }, [notificationWatches]);
 
   const openNotificationModalForCourse = (course: any) => {
+    const eligibility = getNotificationEligibility(course.term || termQuery);
+    if (!eligibility.allowed) {
+      setToastMessage(eligibility.reason || "Notifications are unavailable for this course term.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
     setNotificationModalCourse(course);
   };
 
@@ -509,6 +562,24 @@ export default function Home() {
     };
     setNotificationWatches((prev) => ({ ...prev, [course.crn]: watch }));
   };
+
+  const removeNotificationWatch = useCallback((crn: string) => {
+    setNotificationWatches((prev) => {
+      const next = { ...prev };
+      delete next[crn];
+      return next;
+    });
+  }, []);
+
+  const clearAllNotificationWatches = useCallback(() => {
+    setNotificationWatches({});
+  }, []);
+
+  const activeNotificationWatches = useMemo(
+    () => Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)),
+    [notificationWatches]
+  );
+  const hasActiveNotificationWatches = activeNotificationWatches.length > 0;
 
   useEffect(() => {
     const hasAnyWatch = Object.values(notificationWatches).some((watch) => Object.values(watch.flags).some(Boolean));
@@ -1125,19 +1196,37 @@ export default function Home() {
                       className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
                       title="Notification menu"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill={Object.values(notificationWatches).some((w) => Object.values(w.flags).some(Boolean)) ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                     </button>
                     {isNotificationMenuOpen && (
                       <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
-                        <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                          {hasActiveNotificationWatches && (
+                            <button
+                              onClick={clearAllNotificationWatches}
+                              className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                            >
+                              Remove all
+                            </button>
+                          )}
+                        </div>
                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
                         <div className="space-y-1 max-h-48 overflow-auto">
-                          {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).length === 0 && (
+                          {!hasActiveNotificationWatches && (
                             <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
                           )}
-                          {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).map((watch) => (
-                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200">
-                              <span className="font-bold">{watch.title}</span> ({watch.crn})
+                          {activeNotificationWatches.map((watch) => (
+                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                              <span className="min-w-0 truncate">
+                                <span className="font-bold">{watch.title}</span> ({watch.crn})
+                              </span>
+                              <button
+                                onClick={() => removeNotificationWatch(watch.crn)}
+                                className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                              >
+                                Remove
+                              </button>
                             </div>
                           ))}
                         </div>
@@ -1290,7 +1379,7 @@ export default function Home() {
                     {/* Notification Menu Toggle */}
                     <div className="relative group">
                       <button onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill={Object.values(notificationWatches).some((w) => Object.values(w.flags).some(Boolean)) ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                       </button>
                       {!isNotificationMenuOpen && (
                         <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Notifications<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
@@ -1299,15 +1388,33 @@ export default function Home() {
                         <div className="fixed inset-0 z-[70]" onClick={() => setIsNotificationMenuOpen(false)}>
                           <div className="absolute inset-0 bg-black/20" />
                           <div className="absolute top-28 left-1/2 -translate-x-1/2 w-80 max-w-[calc(100vw-2rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4" onClick={(e) => e.stopPropagation()}>
-                            <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                            <div className="flex items-center justify-between gap-3">
+                              <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                              {hasActiveNotificationWatches && (
+                                <button
+                                  onClick={clearAllNotificationWatches}
+                                  className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                                >
+                                  Remove all
+                                </button>
+                              )}
+                            </div>
                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
                             <div className="space-y-1 max-h-48 overflow-auto">
-                              {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).length === 0 && (
+                              {!hasActiveNotificationWatches && (
                                 <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
                               )}
-                              {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).map((watch) => (
-                                <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200">
-                                  <span className="font-bold">{watch.title}</span> ({watch.crn})
+                              {activeNotificationWatches.map((watch) => (
+                                <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                                  <span className="min-w-0 truncate">
+                                    <span className="font-bold">{watch.title}</span> ({watch.crn})
+                                  </span>
+                                  <button
+                                    onClick={() => removeNotificationWatch(watch.crn)}
+                                    className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                                  >
+                                    Remove
+                                  </button>
                                 </div>
                               ))}
                             </div>
@@ -1328,25 +1435,30 @@ export default function Home() {
                 {activeCourses.length === 0 ? (
                   <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">This schedule is empty.</p>
                 ) : (
-                  activeCourses.map((course) => (
-                    <CourseCard
-                      key={course.crn}
-                      course={course}
-                      isAdded={true}
-                      is24Hour={is24Hour}
-                      visibleColumns={visibleColumns}
-                      getCourseColor={getCourseColor}
-                      formatTimeDisplay={formatTimeDisplay}
-                      getRmpUrl={getRmpUrl}
-                      onOpenInfo={setInfoModalCourse}
-                      onColorChange={handleColorChange}
-                      onRemoveCourse={removeCourseFromSchedule}
-                      onAddCourse={addCourseToSchedule}
-                      renderStatusBadge={(targetCourse) => <CourseStatusBadge course={targetCourse} />}
-                      onToggleNotification={openNotificationModalForCourse}
-                      isNotificationEnabled={isCourseNotificationEnabled(course.crn)}
-                    />
-                  ))
+                  activeCourses.map((course) => {
+                    const notificationEligibility = getNotificationEligibility(course.term || termQuery);
+                    return (
+                      <CourseCard
+                        key={course.crn}
+                        course={course}
+                        isAdded={true}
+                        is24Hour={is24Hour}
+                        visibleColumns={visibleColumns}
+                        getCourseColor={getCourseColor}
+                        formatTimeDisplay={formatTimeDisplay}
+                        getRmpUrl={getRmpUrl}
+                        onOpenInfo={setInfoModalCourse}
+                        onColorChange={handleColorChange}
+                        onRemoveCourse={removeCourseFromSchedule}
+                        onAddCourse={addCourseToSchedule}
+                        renderStatusBadge={(targetCourse) => <CourseStatusBadge course={targetCourse} />}
+                        onToggleNotification={openNotificationModalForCourse}
+                        isNotificationEnabled={isCourseNotificationEnabled(course.crn)}
+                        isNotificationDisabled={!notificationEligibility.allowed}
+                        notificationDisabledReason={notificationEligibility.reason}
+                      />
+                    );
+                  })
                 )}
               </div>
             )}
