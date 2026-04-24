@@ -150,6 +150,12 @@ type NotificationWatch = {
   lastRestrictionSignature: string;
 };
 
+function createDefaultScheduleState() {
+  const defaultId = Date.now().toString();
+  const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+  return { defaultId, defaultSchedules };
+}
+
 export default function Home() {
   const [initialScheduleState] = useState(() => {
     const defaultId = Date.now().toString();
