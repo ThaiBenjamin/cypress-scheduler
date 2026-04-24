@@ -156,6 +156,12 @@ function createDefaultScheduleState() {
   return { defaultId, defaultSchedules };
 }
 
+function createDefaultScheduleState() {
+  const defaultId = Date.now().toString();
+  const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+  return { defaultId, defaultSchedules };
+}
+
 export default function Home() {
   const [initialScheduleState] = useState(createDefaultScheduleState);
   const [searchQuery, setSearchQuery] = useState(""); 
