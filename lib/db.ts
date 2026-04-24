@@ -1,6 +1,8 @@
-import { PrismaClient } from '@prisma/client';
+import * as PrismaClientPkg from '@prisma/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
+
+const PrismaClient = (PrismaClientPkg as any).PrismaClient;
 
 // Create the connection pool once
 const pool = new Pool({ 
