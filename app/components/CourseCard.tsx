@@ -21,6 +21,8 @@ type CourseCardProps = {
   onRemoveCourse: (course: any) => void;
   onAddCourse: (course: any) => void;
   renderStatusBadge: (course: any) => ReactNode;
+  onToggleNotification?: (course: any) => void;
+  isNotificationEnabled?: boolean;
 };
 
 /**
@@ -40,6 +42,8 @@ export default function CourseCard({
   onRemoveCourse,
   onAddCourse,
   renderStatusBadge,
+  onToggleNotification,
+  isNotificationEnabled = false,
 }: CourseCardProps) {
   const courseColor = getCourseColor(course.crn);
 
@@ -118,6 +122,21 @@ export default function CourseCard({
         </div>
 
         <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
+          {onToggleNotification && (
+            <button
+              onClick={() => onToggleNotification(course)}
+              className={`p-2 rounded-lg border transition-colors cursor-pointer flex items-center justify-center w-9 h-9 ${
+                isNotificationEnabled
+                  ? "bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700"
+                  : "bg-white text-gray-500 border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700"
+              }`}
+              title="Notification settings"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill={isNotificationEnabled ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+              </svg>
+            </button>
+          )}
           {isAdded ? (
             <>
               <div className="relative group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" title="Change Color">
