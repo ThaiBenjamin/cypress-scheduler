@@ -337,10 +337,34 @@ export default function Home() {
       fetch(`/api/schedules?email=${session.user.email}`)
         .then((res) => res.json())
         .then((data) => {
+          const guestSnapshotRaw = localStorage.getItem("cypress_guest_snapshot");
+          const guestSnapshot = guestSnapshotRaw ? JSON.parse(guestSnapshotRaw) : null;
+
           if (Array.isArray(data) && data.length > 0) {
-            setSchedules(data);
-            setActiveScheduleId(data[0].id);
-            setLastSavedStateString(JSON.stringify({ schedules: data, activeId: data[0].id }));
+            let merged = data;
+            let nextActiveId = data[0].id;
+
+            if (guestSnapshot?.schedules?.length > 0) {
+              const imported = guestSnapshot.schedules.map((sched: any, index: number) => ({
+                ...sched,
+                id: `${sched.id}-guest-${Date.now()}-${index}`,
+                name: `${sched.name} (Imported)`,
+              }));
+              merged = [...data, ...imported];
+              nextActiveId = imported[0].id;
+              setLastSavedStateString(JSON.stringify({ schedules: [], activeId: "" }));
+              localStorage.removeItem("cypress_guest_snapshot");
+            } else {
+              setLastSavedStateString(JSON.stringify({ schedules: data, activeId: data[0].id }));
+            }
+
+            setSchedules(merged);
+            setActiveScheduleId(nextActiveId);
+          } else if (guestSnapshot?.schedules?.length > 0) {
+            setSchedules(guestSnapshot.schedules);
+            setActiveScheduleId(guestSnapshot.activeId || guestSnapshot.schedules[0]?.id || "");
+            setLastSavedStateString(JSON.stringify({ schedules: [], activeId: "" }));
+            localStorage.removeItem("cypress_guest_snapshot");
           }
         })
         .catch((err) => console.error("Failed to load cloud schedules", err));
@@ -391,6 +415,7 @@ export default function Home() {
   }, [hasUnsavedChanges]);
 
   const handleGoogleSignIn = () => {
+    localStorage.setItem("cypress_guest_snapshot", JSON.stringify({ schedules, activeId: activeScheduleId }));
     signIn('google');
   };
 
@@ -1271,18 +1296,21 @@ export default function Home() {
                         <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Notifications<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                       )}
                       {isNotificationMenuOpen && (
-                        <div className="absolute top-[120%] left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
-                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
-                          <div className="space-y-1 max-h-48 overflow-auto">
-                            {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).length === 0 && (
-                              <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
-                            )}
-                            {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).map((watch) => (
-                              <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200">
-                                <span className="font-bold">{watch.title}</span> ({watch.crn})
-                              </div>
-                            ))}
+                        <div className="fixed inset-0 z-[70]" onClick={() => setIsNotificationMenuOpen(false)}>
+                          <div className="absolute inset-0 bg-black/20" />
+                          <div className="absolute top-28 left-1/2 -translate-x-1/2 w-80 max-w-[calc(100vw-2rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                            <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                            <div className="space-y-1 max-h-48 overflow-auto">
+                              {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).length === 0 && (
+                                <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                              )}
+                              {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).map((watch) => (
+                                <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200">
+                                  <span className="font-bold">{watch.title}</span> ({watch.crn})
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       )}
