@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Course {
-  id              String   @id @default(uuid())
+  id              String    @id @default(uuid())
   term            String   
   crn             String
   subject         String
@@ -19,8 +19,8 @@ model Course {
   description     String?
   seatsAvailable  Int
   maxEnrollment   Int
-  waitCount       Int?     @default(0)
-  waitCapacity    Int?     @default(0)
+  waitCount       Int?      @default(0)
+  waitCapacity    Int?      @default(0)
   professors      String[] 
   
   meetings        Meeting[]
@@ -38,4 +38,14 @@ model Meeting {
   room        String?
   courseId    String
   course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+// NEW: Model for saving user schedules to the cloud
+model SavedSchedule {
+  id        String   @id @default(uuid())
+  userEmail String   // Matches the user's Google email
+  name      String   // e.g., "Plan 1"
+  courses   Json     // Stores the entire array of classes and custom events
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

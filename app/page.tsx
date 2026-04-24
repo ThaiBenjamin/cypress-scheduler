@@ -6,6 +6,7 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
 import dynamic from 'next/dynamic';
+import { signIn, signOut, useSession } from "next-auth/react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 // Safely import the map so it doesn't crash Server Side Rendering
@@ -16,7 +17,7 @@ const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales
 
 const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th": 5, "F": 6, "Sa": 7 };
 
-const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1"];
+const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1", "#14b8a6"];
 
 const BUILDING_DATA: Record<string, string> = {
   'BBF': 'Baseball Field', 'BK': 'Book Store', 'BUS': 'Business', 'CCCPLX': 'Cypress College Complex',
@@ -142,6 +143,15 @@ export default function Home() {
 
   const [customColors, setCustomColors] = useState<Record<string, string>>({});
 
+  const [isColumnDropdownOpen, setIsColumnDropdownOpen] = useState(false);
+  const [visibleColumns, setVisibleColumns] = useState({
+    title: true,
+    times: true,
+    instructors: true,
+    status: true,
+    crn: true
+  });
+
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = useRef<any>(null);
 
@@ -153,8 +163,15 @@ export default function Home() {
 
   const [isMobileCalendarOpen, setIsMobileCalendarOpen] = useState(true);
   const [theme, setTheme] = useState<Theme>("system");
-  const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
   
+  // MENU STATE
+  const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+  const settingsMenuRef = useRef<HTMLDivElement>(null);
+  
+  // REAL NEXT-AUTH STATE
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const { data: session } = useSession();
+
   const [is24Hour, setIs24Hour] = useState(false);
 
   const [sidebarWidth, setSidebarWidth] = useState(33.33); 
@@ -170,6 +187,19 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+
+  // Close Settings Menu on Outside Click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (settingsMenuRef.current && !settingsMenuRef.current.contains(event.target as Node)) {
+        setIsSettingsMenuOpen(false);
+      }
+    };
+    if (isSettingsMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isSettingsMenuOpen]);
 
   const getCourseColor = useCallback((crn: string) => {
     if (customColors[crn]) return customColors[crn];
@@ -240,6 +270,7 @@ export default function Home() {
     setActiveScheduleId(nextState.activeId);
   };
 
+  // LOCAL STORAGE LOAD
   useEffect(() => {
     const savedSchedules = localStorage.getItem("cypress_multi_schedules");
     if (savedSchedules) {
@@ -275,6 +306,22 @@ export default function Home() {
 
     setIsLoaded(true);
   }, []);
+
+  // CLOUD STORAGE OVERRIDE LOAD
+  useEffect(() => {
+    if (session?.user?.email) {
+      fetch(`/api/schedules?email=${session.user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) {
+            setSchedules(data);
+            setActiveScheduleId(data[0].id);
+            setLastSavedStateString(JSON.stringify({ schedules: data, activeId: data[0].id }));
+          }
+        })
+        .catch((err) => console.error("Failed to load cloud schedules", err));
+    }
+  }, [session?.user?.email]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -314,10 +361,60 @@ export default function Home() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [hasUnsavedChanges]);
 
-  const handleSaveSchedule = () => {
-    const dataToSave = JSON.stringify({ schedules, activeId: activeScheduleId });
-    localStorage.setItem("cypress_multi_schedules", dataToSave);
-    setLastSavedStateString(dataToSave);
+  const handleGoogleSignIn = () => {
+    signIn('google');
+  };
+
+  const handleSignOut = async () => {
+    // 1. Wipe the browser's memory of the schedules
+    localStorage.removeItem("cypress_multi_schedules");
+    
+    // 2. Reset the live screen to a blank slate
+    const defaultId = Date.now().toString();
+    const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+    setSchedules(defaultSchedules);
+    setActiveScheduleId(defaultId);
+    setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
+
+    // 3. Close the menu and terminate the Google session
+    setIsSettingsMenuOpen(false);
+    await signOut();
+  };
+
+  const handleSaveSchedule = async () => {
+    if (!session?.user?.email) {
+      setIsSignInModalOpen(true);
+      return;
+    }
+
+    try {
+      await Promise.all(
+        schedules.map((sched) =>
+          fetch('/api/schedules', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: sched.id,
+              userEmail: session.user.email,
+              name: sched.name,
+              courses: sched.courses,
+            }),
+          })
+        )
+      );
+
+      const dataToSave = JSON.stringify({ schedules, activeId: activeScheduleId });
+      localStorage.setItem("cypress_multi_schedules", dataToSave);
+      setLastSavedStateString(dataToSave);
+
+      setToastMessage("Schedules securely saved to the cloud! ☁️");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+
+    } catch (error) {
+      console.error("Failed to save to cloud:", error);
+      alert("Something went wrong saving to the cloud. Please try again.");
+    }
   };
 
   const activeSchedule = schedules.find(s => s.id === activeScheduleId) || schedules[0];
@@ -371,6 +468,23 @@ export default function Home() {
     setSchedules([...schedules, { id: newId, name: newName.trim(), courses: [] }]);
     setActiveScheduleId(newId);
     setIsDropdownOpen(false);
+  };
+
+  const handleCopySchedule = () => {
+    if (!activeSchedule) return;
+    const suggestedName = `Copy of ${activeSchedule.name}`;
+    const newName = window.prompt("Name your copied schedule:", suggestedName);
+    
+    if (!newName || newName.trim() === "") return;
+
+    saveStateToHistory();
+    const newId = Date.now().toString();
+    setSchedules([...schedules, { 
+      id: newId, 
+      name: newName.trim(), 
+      courses: JSON.parse(JSON.stringify(activeSchedule.courses)) 
+    }]);
+    setActiveScheduleId(newId);
   };
 
   const handleRenameSchedule = (id: string, currentName: string) => {
@@ -594,6 +708,7 @@ export default function Home() {
 
   const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
     const courseColor = getCourseColor(course.crn);
+
     let allTags: string[] = course.meetings?.map((m: any) => {
       if (m.days && m.days.length > 0) {
         const start = formatTimeDisplay(m.startTime, is24Hour);
@@ -624,42 +739,56 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
               </button>
             </div>
-            <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
             
-            {/* UPDATED: TIME BADGES ARE NOW SLATE/GRAY */}
-            <div className="flex flex-wrap gap-1 mb-2">
-              {uniqueTags.map((tag: string, i: number) => (
-                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
-              ))}
-              {rmpUrl && course.subject ? (
-                <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
-                  {profName}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
-                </a>
-              ) : profName && profName.toUpperCase() === "STAFF" ? (
-                <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
-              ) : null}
-            </div>
+            {(!isAdded || visibleColumns.title) && (
+              <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
+            )}
 
-            {course.subject && (
+            {(!isAdded || visibleColumns.times || visibleColumns.instructors) && (
+              <div className="flex flex-wrap gap-1 mb-2">
+                {(!isAdded || visibleColumns.times) && uniqueTags.map((tag: string, i: number) => (
+                  <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
+                ))}
+                
+                {(!isAdded || visibleColumns.instructors) && (
+                  rmpUrl && course.subject ? (
+                    <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
+                      {profName}
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
+                    </a>
+                  ) : profName && profName.toUpperCase() === "STAFF" ? (
+                    <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
+                  ) : null
+                )}
+              </div>
+            )}
+
+            {course.subject && (!isAdded || visibleColumns.status || visibleColumns.crn) && (
               <div className="flex flex-wrap items-center gap-2 mt-3">
-                <CourseStatusBadge course={course} />
-                <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono">
-                  CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled
-                </p>
+                {(!isAdded || visibleColumns.status) && <CourseStatusBadge course={course} />}
+                
+                {(!isAdded || visibleColumns.crn) && (
+                  <p className="text-[10px] text-gray-500 font-mono font-medium">
+                    CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled
+                  </p>
+                )}
               </div>
             )}
           </div>
 
-          <div className="shrink-0 flex items-center justify-end pt-1 gap-2">
+          <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
             {isAdded ? (
               <>
-                <div className="relative group flex items-center justify-center text-gray-400 hover:text-orange-500 transition-colors cursor-pointer w-9 h-9 bg-gray-50 dark:bg-gray-800 rounded-lg p-2 border border-gray-200 dark:border-gray-700" title="Change Color">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
-                  </svg>
-                  <input type="color" value={getCourseColor(course.crn)} className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" onChange={(e) => handleColorChange(course.crn, e.target.value)} />
+                <div className="relative group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" title="Change Color">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
+                  <input 
+                    type="color" 
+                    value={getCourseColor(course.crn)}
+                    className="absolute inset-0 opacity-0 cursor-pointer w-[200%] h-[200%] -top-1/2 -left-1/2" 
+                    onChange={(e) => handleColorChange(course.crn, e.target.value)} 
+                  />
                 </div>
+
                 <button onClick={() => removeCourseFromSchedule(course)} className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-lg cursor-pointer transition-colors hover:bg-red-100 dark:hover:bg-red-900/50 flex items-center justify-center w-9 h-9">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                 </button>
@@ -706,35 +835,78 @@ export default function Home() {
       <nav className="h-16 bg-[#d9531e] text-white flex items-center justify-between px-4 sm:px-6 shadow-md z-30 shrink-0">
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">Cypress Scheduler</h1>
         <div className="flex items-center gap-2 sm:gap-4 relative">
+          
           <button onClick={handleSaveSchedule} disabled={!hasUnsavedChanges} className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
             <span className="hidden sm:inline">SAVE</span>
           </button>
-          <div className="relative flex items-center justify-center group">
+
+          {/* UNIFIED SETTINGS / USER MENU CONTAINER */}
+          <div className="relative flex items-center justify-center gap-2" ref={settingsMenuRef}>
+            
+            {!session ? (
+              <button onClick={() => setIsSignInModalOpen(true)} className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded transition-colors hover:bg-white/20 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" /></svg>
+                <span className="hidden sm:inline tracking-wider">SIGN IN</span>
+              </button>
+            ) : (
+              <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-sm transition-colors hover:bg-white/30 cursor-pointer shadow-sm" title="Profile Settings">
+                {session.user?.name?.charAt(0).toUpperCase() || "U"}
+              </button>
+            )}
+
             <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
+
             {!isSettingsMenuOpen && (
               <div className="absolute top-[120%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">
                 Settings<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div>
               </div>
             )}
+
+            {/* NEW UNIFIED SETTINGS DROPDOWN */}
+            {isSettingsMenuOpen && (
+              <div className="absolute top-full right-0 mt-3 w-72 bg-[#333333] border border-gray-700 text-white rounded-xl shadow-2xl p-5 z-50 flex flex-col text-left cursor-default">
+                
+                {session && (
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="flex items-center justify-center w-14 h-14 bg-slate-500 rounded-full font-bold text-2xl text-white shrink-0">
+                      {session.user?.name?.charAt(0).toUpperCase() || "U"}
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-bold text-lg truncate leading-tight">{session.user?.name || "User"}</span>
+                      <span className="text-gray-400 text-sm truncate">{session.user?.email || "user@example.com"}</span>
+                    </div>
+                  </div>
+                )}
+
+                <h3 className="text-lg font-bold mb-3">Theme</h3>
+                <div className="flex rounded-md overflow-hidden border border-gray-600 mb-6 bg-[#2d2d2d]">
+                  <button onClick={() => setTheme('light')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'light' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>☀️ Light</button>
+                  <button onClick={() => setTheme('system')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 border-l border-r border-gray-600 cursor-pointer ${theme === 'system' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>⚙️ System</button>
+                  <button onClick={() => setTheme('dark')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'dark' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>🌙 Dark</button>
+                </div>
+
+                <h3 className="text-lg font-bold mb-3">Time</h3>
+                <div className="flex rounded-md overflow-hidden border border-gray-600 mb-4 bg-[#2d2d2d]">
+                  <button onClick={() => setIs24Hour(false)} className={`flex-1 py-2 text-sm font-bold transition-colors cursor-pointer ${!is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>12 Hour</button>
+                  <button onClick={() => setIs24Hour(true)} className={`flex-1 py-2 text-sm font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
+                </div>
+
+                {session && (
+                  <>
+                    <div className="border-t border-gray-600 my-4"></div>
+                    <button onClick={handleSignOut} className="flex items-center gap-4 py-2 text-sm font-bold text-white hover:text-gray-300 transition-colors cursor-pointer w-full text-left">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+                      LOG OUT
+                    </button>
+                  </>
+                )}
+
+              </div>
+            )}
           </div>
-          {isSettingsMenuOpen && (
-            <div className="absolute top-full right-0 mt-3 w-64 bg-[#2d2d2d] border border-gray-700 text-white rounded-lg shadow-2xl p-4 z-50">
-              <h3 className="text-base font-bold mb-2">Theme</h3>
-              <div className="flex rounded-md overflow-hidden border border-gray-600 mb-4">
-                <button onClick={() => setTheme('light')} className={`flex-1 py-1.5 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'light' ? 'bg-[#d9531e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>☀️ Light</button>
-                <button onClick={() => setTheme('system')} className={`flex-1 py-1.5 text-xs font-bold flex items-center justify-center gap-1.5 border-l border-r border-gray-600 cursor-pointer ${theme === 'system' ? 'bg-[#d9531e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>💻 Sys</button>
-                <button onClick={() => setTheme('dark')} className={`flex-1 py-1.5 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'dark' ? 'bg-[#d9531e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>🌙 Dark</button>
-              </div>
-              <h3 className="text-base font-bold mb-2">Time Format</h3>
-              <div className="flex rounded-md overflow-hidden border border-gray-600 mb-2">
-                <button onClick={() => setIs24Hour(false)} className={`flex-1 py-1.5 text-xs font-bold transition-colors cursor-pointer ${!is24Hour ? 'bg-[#d9531e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>12 Hour</button>
-                <button onClick={() => setIs24Hour(true)} className={`flex-1 py-1.5 text-xs font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#d9531e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
-              </div>
-            </div>
-          )}
         </div>
       </nav>
 
@@ -973,18 +1145,66 @@ export default function Home() {
               </div>
             )}
 
+            {/* ADDED TAB */}
             {activeTab === "added" && (
-              <div className="space-y-4">
+              <div className="space-y-4 relative">
                 
-                <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
-                  <h2 className="text-base sm:text-lg font-black text-gray-800 dark:text-gray-200">
-                    {activeSchedule?.name || "My Plan"} ({totalUnits} Units)
-                  </h2>
-                  {activeCourses.length > 0 && (
-                    <button onClick={clearActiveSchedule} className="text-xs font-bold text-red-500 hover:text-red-700 underline cursor-pointer transition-colors">
-                      Clear Schedule
-                    </button>
-                  )}
+                {/* STICKY ACTION HEADER */}
+                <div className="sticky top-0 z-40 bg-gray-50/95 dark:bg-gray-900/95 backdrop-blur-xl py-3 border-b border-gray-200 dark:border-gray-800 -mx-4 px-4 sm:-mx-6 sm:px-6 mb-4 flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    
+                    {/* Copy Button */}
+                    <div className="relative group">
+                      <button onClick={handleCopySchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" /></svg>
+                      </button>
+                      <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
+
+                    {/* Clear/Trash Button */}
+                    <div className="relative group">
+                      <button onClick={clearActiveSchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
+                      </button>
+                      <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Clear Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
+
+                    {/* Column Visibility Toggle */}
+                    <div className="relative group">
+                      <button onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)} className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isColumnDropdownOpen ? 'bg-orange-100 text-orange-600 border-orange-300 dark:bg-orange-900/30 dark:border-orange-700 dark:text-orange-400' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+                      </button>
+                      
+                      {!isColumnDropdownOpen && (
+                        <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Show/Hide Info<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                      )}
+
+                      {/* Dropdown Menu */}
+                      {isColumnDropdownOpen && (
+                        <div className="absolute top-[120%] left-0 mt-2 w-48 bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2 z-50 overflow-hidden">
+                          <div className="px-4 py-1.5 text-[10px] font-black text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800 mb-1 bg-gray-50 dark:bg-gray-900/50">Visible Info</div>
+                          {Object.entries(visibleColumns).map(([key, isVisible]) => (
+                            <label key={key} className="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                              <input 
+                                type="checkbox" 
+                                checked={isVisible} 
+                                onChange={() => setVisibleColumns(prev => ({ ...prev, [key]: !prev[key as keyof typeof prev] }))} 
+                                className="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 cursor-pointer border-gray-300 dark:border-gray-600 dark:bg-gray-800" 
+                              />
+                              <span className="text-sm font-bold text-gray-700 dark:text-gray-200 capitalize select-none">{key}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Plan Name & Units */}
+                  <div>
+                    <h2 className="text-lg sm:text-xl font-black text-gray-800 dark:text-gray-200 tracking-tight">
+                      {activeSchedule?.name || "My Plan"} <span className="text-gray-500 dark:text-gray-400 font-bold text-base">({totalUnits} Units)</span>
+                    </h2>
+                  </div>
                 </div>
 
                 {activeCourses.length === 0 ? (
@@ -1008,6 +1228,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* MODALS */}
       {infoModalCourse && (
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" onClick={() => setInfoModalCourse(null)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-xl w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
@@ -1050,23 +1271,22 @@ export default function Home() {
         const instructors = selectedEvent.courseInfo?.professors?.length > 0 ? selectedEvent.courseInfo.professors.join(', ') : "STAFF";
 
         return (
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={() => setSelectedEvent(null)}>
             {isCustomEvent ? (
-              <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-6 max-w-xs w-full mx-4 border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-6 max-w-xs w-full mx-4 border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-gray-100 truncate pr-2">{selectedEvent.title}</h3>
+                  
                   <div className="relative group flex items-center justify-center shrink-0 pt-1">
                     <div 
-                      className="peer relative w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-orange-500 transition-colors cursor-pointer shrink-0" 
+                      className="peer relative flex items-center justify-center w-7 h-7 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" 
                       title="Change color"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
-                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
                       <input 
                         type="color" 
                         value={getCourseColor(selectedEvent.courseInfo.crn)}
-                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
+                        className="absolute inset-0 opacity-0 cursor-pointer w-[200%] h-[200%] -top-1/2 -left-1/2" 
                         onChange={(e) => handleColorChange(selectedEvent.courseInfo.crn, e.target.value)} 
                       />
                     </div>
@@ -1095,7 +1315,7 @@ export default function Home() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-5 max-w-sm w-full mx-4 border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-5 max-w-sm w-full mx-4 border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-start justify-between mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
                   <div className="relative group">
                     <button onClick={() => { setSearchQuery(selectedEvent.title); setTermQuery(selectedEvent.courseInfo.term); setActiveTab("search"); setSelectedEvent(null); }} className="peer flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold text-lg sm:text-xl text-left transition-colors cursor-pointer">
@@ -1105,16 +1325,18 @@ export default function Home() {
                     <div className="absolute top-[110%] left-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Search for this class<div className="absolute bottom-full left-4 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                   </div>
                   
-                  <div className="flex items-center gap-3 shrink-0 pt-1">
+                  <div className="flex items-center gap-2 shrink-0 pt-1">
+                    
                     <div className="relative group flex items-center justify-center">
-                      <div className="peer relative w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-orange-500 transition-colors cursor-pointer shrink-0" title="Change color">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.813-3.814a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.995 15.995 0 0 0-4.648 4.764m3.42 3.42a15.996 15.996 0 0 0 4.648-4.764l3.814-3.813a1.151 1.151 0 0 0-1.63-1.63l-3.813 3.814a15.996 15.996 0 0 0-4.764 4.648m3.42 3.42a15.995 15.995 0 0 0 4.648-4.764" />
-                        </svg>
+                      <div 
+                        className="peer relative flex items-center justify-center w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" 
+                        title="Change color"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
                         <input 
                           type="color" 
                           value={getCourseColor(selectedEvent.courseInfo.crn)}
-                          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full" 
+                          className="absolute inset-0 opacity-0 cursor-pointer w-[200%] h-[200%] -top-1/2 -left-1/2" 
                           onChange={(e) => handleColorChange(selectedEvent.courseInfo.crn, e.target.value)} 
                         />
                       </div>
@@ -1122,7 +1344,7 @@ export default function Home() {
                     </div>
 
                     <div className="relative group flex items-center justify-center">
-                      <button onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} className="peer text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                      <button onClick={() => removeCourseFromSchedule(selectedEvent.courseInfo)} className="peer w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors cursor-pointer shrink-0"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
                       <div className="absolute top-[110%] right-0 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Remove from schedule<div className="absolute bottom-full right-2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                     </div>
                   </div>
@@ -1155,8 +1377,35 @@ export default function Home() {
         );
       })()}
 
+      {/* SIGN IN MODAL */}
+      {isSignInModalOpen && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setIsSignInModalOpen(false)}>
+          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-700 flex flex-col" onClick={e => e.stopPropagation()}>
+            <h3 className="text-xl font-black text-white mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
+            
+            <button onClick={handleGoogleSignIn} className="w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center gap-3 transition-colors shadow-lg cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#fff" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/></svg>
+              SIGN IN WITH GOOGLE
+            </button>
+
+            <div className="mt-8 flex items-center text-gray-400 text-xs w-full">
+              <div className="flex-1 border-t border-gray-600"></div>
+              <span className="px-3 cursor-pointer hover:text-white transition-colors flex items-center gap-1 font-medium">
+                Have schedules saved to an old user ID? 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3"><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+              </span>
+              <div className="flex-1 border-t border-gray-600"></div>
+            </div>
+
+            <div className="mt-10 flex justify-end">
+              <button onClick={() => setIsSignInModalOpen(false)} className="text-sm font-bold text-gray-400 hover:text-white transition-colors cursor-pointer">CANCEL</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {isCustomEventModalOpen && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white">
             <h3 className="text-xl font-bold mb-6">{editingCustomEventCrn ? "Edit Custom Event" : "Add a Custom Event"}</h3>
             
