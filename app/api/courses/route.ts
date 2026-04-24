@@ -100,9 +100,9 @@ async function getFallbackCourses(q: string, term: string | null) {
   const catalog = JSON.parse(raw) as any[];
   const searchWords = q.split(/\s+/).filter(Boolean);
 
-  return catalog
+  const normalizedCourses = catalog
     .map((row) => {
-      const mappedTerm = mapTermCodeToLabel(row.sectTermCode);
+      const mappedTerm = mapTermCodeToLabel(row.sectTermCode, row.sectMeetings?.[0]?.startDate);
       const meetings = (row.sectMeetings || []).map((meeting: any) => ({
         type: meeting.mtypDesc || meeting.mtypCode || 'Meeting',
         days: extractMeetingDays(meeting),
@@ -129,18 +129,32 @@ async function getFallbackCourses(q: string, term: string | null) {
         professors: row.sectInstrName ? [String(row.sectInstrName)] : [],
         meetings,
       };
-    })
+    });
+
+  const searchFilter = (course: any) => {
+    const haystack = `${course.crn} ${course.subject} ${course.courseNumber} ${course.title} ${course.description || ''}`.toLowerCase();
+    return searchWords.every((word) => haystack.includes(word.toLowerCase()));
+  };
+
+  const termMatches = normalizedCourses
     .filter((course) => !term || course.term === term)
-    .filter((course) => {
-      const haystack = `${course.crn} ${course.subject} ${course.courseNumber} ${course.title} ${course.description || ''}`.toLowerCase();
-      return searchWords.every((word) => haystack.includes(word.toLowerCase()));
-    })
-    .slice(0, 100);
+    .filter(searchFilter);
+
+  if (termMatches.length > 0) {
+    return termMatches.slice(0, 100);
+  }
+
+  // If term-specific data is unavailable, gracefully fall back to any term so search still works.
+  return normalizedCourses.filter(searchFilter).slice(0, 100);
 }
 
-function mapTermCodeToLabel(termCode: string): string {
+function mapTermCodeToLabel(termCode: string, startDate?: string): string {
   const code = String(termCode || '');
-  const year = code.slice(0, 4);
+  const fallbackYear = code.slice(0, 4);
+  const dateYear = typeof startDate === "string" && startDate.split("/").length === 3
+    ? startDate.split("/")[2]
+    : "";
+  const year = dateYear || fallbackYear;
   const suffix = code.slice(4);
   if (suffix === '30') return `${year}-Summer`;
   if (suffix === '10') return `${year}-Winter/Spring`;
