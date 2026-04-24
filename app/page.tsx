@@ -7,6 +7,8 @@ import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
 import dynamic from 'next/dynamic';
 import { signIn, signOut, useSession } from "next-auth/react";
+import { BUILDINGS } from "@/lib/scheduler/buildings";
+import CourseCard from "./components/CourseCard";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 // Safely import the map so it doesn't crash Server Side Rendering
@@ -15,21 +17,10 @@ const CourseMap = dynamic(() => import('./CourseMap'), { ssr: false });
 const locales = { "en-US": enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
 
+/** Maps abbreviated meeting day labels to static week dates used by react-big-calendar. */
 const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th": 5, "F": 6, "Sa": 7 };
 
 const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1", "#14b8a6"];
-
-const BUILDING_DATA: Record<string, string> = {
-  'BBF': 'Baseball Field', 'BK': 'Book Store', 'BUS': 'Business', 'CCCPLX': 'Cypress College Complex',
-  '1VPA': 'Fine Arts', 'FASS': 'Fine Arts Swing Space', 'G1': 'Gym 1', 'G2': 'Gym 2',
-  'HUM': 'Humanities', 'H/HUM': 'Humanities Lecture Hall', 'L/LRC': 'Library/Learning Resource Center',
-  'M&O': 'Maintenance & Operations', 'POOL': 'Pool', 'SBF': 'Softball Field', 'SLL': 'Student Life & Leadership',
-  'SC': 'Student Center', 'SEM': 'Science Engineering Math', 'SOCCER': 'Soccer Field', 'TA': 'Theater Arts',
-  'TC': 'Tennis Courts', 'TE1': 'Tech Ed 1', 'TE2': 'Tech Ed 2', 'TE3': 'Tech Ed 3',
-  'TRACK': 'Track & Field', 'VRC': 'Veterans Resource Center', 'NOCE': 'NOCE/ESL Classes',
-  'LOT1': 'Parking Lot 1', 'LOT2': 'Parking Lot 2', 'LOT3': 'Parking Lot 3', 'LOT4': 'Parking Lot 4',
-  'LOT5': 'Parking Lot 5', 'LOT6': 'Parking Lot 6', 'LOT7': 'Parking Lot 7', 'LOT8': 'Parking Lot 8',
-};
 
 function formatTimeDisplay(time24: string, is24Hour: boolean) {
   if (!time24) return "";
@@ -51,6 +42,10 @@ function getRmpUrl(profName: string) {
   return `https://www.ratemyprofessors.com/search/professors?q=${encodeURIComponent(query)}`;
 }
 
+/**
+ * Converts each meeting occurrence into a visual calendar event block.
+ * Events are pinned to a dummy week to make overlap checks deterministic.
+ */
 function generateEventsFromMeetings(course: any) {
   const events: any[] = [];
   if (!course.meetings) return events; 
@@ -126,7 +121,14 @@ type Schedule = { id: string; name: string; courses: any[]; };
 type HistoryState = { schedules: Schedule[]; activeId: string; };
 type Theme = "light" | "dark" | "system";
 
+function createDefaultScheduleState() {
+  const defaultId = Date.now().toString();
+  const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+  return { defaultId, defaultSchedules };
+}
+
 export default function Home() {
+  const [initialScheduleState] = useState(createDefaultScheduleState);
   const [searchQuery, setSearchQuery] = useState(""); 
   const [termQuery, setTermQuery] = useState("2026-Winter/Spring"); 
   
@@ -137,8 +139,8 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false); 
   const calendarRef = useRef<HTMLDivElement>(null);
 
-  const [schedules, setSchedules] = useState<Schedule[]>([]);
-  const [activeScheduleId, setActiveScheduleId] = useState<string>("");
+  const [schedules, setSchedules] = useState<Schedule[]>(initialScheduleState.defaultSchedules);
+  const [activeScheduleId, setActiveScheduleId] = useState<string>(initialScheduleState.defaultId);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [customColors, setCustomColors] = useState<Record<string, string>>({});
@@ -176,7 +178,12 @@ export default function Home() {
 
   const [sidebarWidth, setSidebarWidth] = useState(33.33); 
   const isDragging = useRef(false);
-  const [lastSavedStateString, setLastSavedStateString] = useState<string>("");
+  const [lastSavedStateString, setLastSavedStateString] = useState<string>(
+    JSON.stringify({
+      schedules: initialScheduleState.defaultSchedules,
+      activeId: initialScheduleState.defaultId,
+    })
+  );
 
   const [isCustomEventModalOpen, setIsCustomEventModalOpen] = useState(false);
   const [customEventName, setCustomEventName] = useState("");
@@ -270,29 +277,11 @@ export default function Home() {
     setActiveScheduleId(nextState.activeId);
   };
 
-  // LOCAL STORAGE LOAD
+  // Local startup state: schedule data is intentionally not persisted without sign-in.
   useEffect(() => {
-    const savedSchedules = localStorage.getItem("cypress_multi_schedules");
-    if (savedSchedules) {
-      try {
-        const parsed = JSON.parse(savedSchedules);
-        setSchedules(parsed.schedules);
-        setActiveScheduleId(parsed.activeId);
-        setLastSavedStateString(JSON.stringify({ schedules: parsed.schedules, activeId: parsed.activeId }));
-      } catch (e) {
-        console.error("Failed to parse saved schedules");
-      }
-    } else {
-      const defaultId = Date.now().toString();
-      const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
-      setSchedules(defaultSchedules);
-      setActiveScheduleId(defaultId);
-      setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
-    }
-
     const savedColors = localStorage.getItem("cypress_custom_colors");
     if (savedColors) {
-      try { setCustomColors(JSON.parse(savedColors)); } catch(e){}
+      try { setCustomColors(JSON.parse(savedColors)); } catch {}
     }
 
     const savedTheme = localStorage.getItem("cypress_theme") as Theme;
@@ -366,23 +355,20 @@ export default function Home() {
   };
 
   const handleSignOut = async () => {
-    // 1. Wipe the browser's memory of the schedules
-    localStorage.removeItem("cypress_multi_schedules");
-    
-    // 2. Reset the live screen to a blank slate
-    const defaultId = Date.now().toString();
-    const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+    // Reset the live screen to a blank slate when leaving an authenticated session.
+    const { defaultId, defaultSchedules } = createDefaultScheduleState();
     setSchedules(defaultSchedules);
     setActiveScheduleId(defaultId);
     setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
 
-    // 3. Close the menu and terminate the Google session
+    // Close the menu and terminate the Google session.
     setIsSettingsMenuOpen(false);
     await signOut();
   };
 
   const handleSaveSchedule = async () => {
-    if (!session?.user?.email) {
+    const userEmail = session?.user?.email;
+    if (!userEmail) {
       setIsSignInModalOpen(true);
       return;
     }
@@ -395,7 +381,7 @@ export default function Home() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               id: sched.id,
-              userEmail: session.user.email,
+              userEmail,
               name: sched.name,
               courses: sched.courses,
             }),
@@ -403,9 +389,7 @@ export default function Home() {
         )
       );
 
-      const dataToSave = JSON.stringify({ schedules, activeId: activeScheduleId });
-      localStorage.setItem("cypress_multi_schedules", dataToSave);
-      setLastSavedStateString(dataToSave);
+      setLastSavedStateString(JSON.stringify({ schedules, activeId: activeScheduleId }));
 
       setToastMessage("Schedules securely saved to the cloud! ☁️");
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
@@ -706,104 +690,6 @@ export default function Home() {
 
   if (!isLoaded) return null; 
 
-  const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
-    const courseColor = getCourseColor(course.crn);
-
-    let allTags: string[] = course.meetings?.map((m: any) => {
-      if (m.days && m.days.length > 0) {
-        const start = formatTimeDisplay(m.startTime, is24Hour);
-        const end = formatTimeDisplay(m.endTime, is24Hour);
-        return end ? `${m.days.join("")} ${start} - ${end}` : `${m.days.join("")} ${start}`;
-      }
-      return "ONLINE";
-    }) || [];
-    
-    if (allTags.length === 0) allTags = ["ONLINE"];
-    const uniqueTags: string[] = Array.from(new Set(allTags));
-
-    const profName = course.professors?.[0];
-    const rmpUrl = getRmpUrl(profName);
-
-    return (
-      <div 
-        className={`p-4 border rounded-xl shadow-sm transition-all ${isAdded ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-500 cursor-default'}`}
-        style={isAdded ? { borderLeft: `6px solid ${courseColor}` } : {}}
-      >
-        <div className="flex justify-between items-start gap-4">
-          <div className="flex-1 min-w-0 pr-4">
-            <div className="flex items-center gap-2 mb-0.5">
-              <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
-                {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
-              </h2>
-              <button onClick={(e) => { e.stopPropagation(); setInfoModalCourse(course); }} className="p-1 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer" title="Course Information">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
-              </button>
-            </div>
-            
-            {(!isAdded || visibleColumns.title) && (
-              <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
-            )}
-
-            {(!isAdded || visibleColumns.times || visibleColumns.instructors) && (
-              <div className="flex flex-wrap gap-1 mb-2">
-                {(!isAdded || visibleColumns.times) && uniqueTags.map((tag: string, i: number) => (
-                  <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
-                ))}
-                
-                {(!isAdded || visibleColumns.instructors) && (
-                  rmpUrl && course.subject ? (
-                    <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
-                      {profName}
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
-                    </a>
-                  ) : profName && profName.toUpperCase() === "STAFF" ? (
-                    <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
-                  ) : null
-                )}
-              </div>
-            )}
-
-            {course.subject && (!isAdded || visibleColumns.status || visibleColumns.crn) && (
-              <div className="flex flex-wrap items-center gap-2 mt-3">
-                {(!isAdded || visibleColumns.status) && <CourseStatusBadge course={course} />}
-                
-                {(!isAdded || visibleColumns.crn) && (
-                  <p className="text-[10px] text-gray-500 font-mono font-medium">
-                    CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-
-          <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
-            {isAdded ? (
-              <>
-                <div className="relative group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" title="Change Color">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
-                  <input 
-                    type="color" 
-                    value={getCourseColor(course.crn)}
-                    className="absolute inset-0 opacity-0 cursor-pointer w-[200%] h-[200%] -top-1/2 -left-1/2" 
-                    onChange={(e) => handleColorChange(course.crn, e.target.value)} 
-                  />
-                </div>
-
-                <button onClick={() => removeCourseFromSchedule(course)} className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-lg cursor-pointer transition-colors hover:bg-red-100 dark:hover:bg-red-900/50 flex items-center justify-center w-9 h-9">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                </button>
-              </>
-            ) : (
-              <button onClick={() => addCourseToSchedule(course)} className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg cursor-pointer transition-colors shadow-sm flex items-center justify-center w-9 h-9">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-950 font-sans relative overflow-hidden transition-colors duration-300">
       
@@ -836,9 +722,14 @@ export default function Home() {
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">Cypress Scheduler</h1>
         <div className="flex items-center gap-2 sm:gap-4 relative">
           
-          <button onClick={handleSaveSchedule} disabled={!hasUnsavedChanges} className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}>
+          <button
+            onClick={handleSaveSchedule}
+            disabled={!session || !hasUnsavedChanges}
+            title={!session ? "Sign in to save schedules to your account" : "Save schedules"}
+            className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${session && hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
-            <span className="hidden sm:inline">SAVE</span>
+            <span className="hidden sm:inline">{session ? "SAVE" : "SIGN IN TO SAVE"}</span>
           </button>
 
           {/* UNIFIED SETTINGS / USER MENU CONTAINER */}
@@ -1210,7 +1101,23 @@ export default function Home() {
                 {activeCourses.length === 0 ? (
                   <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">This schedule is empty.</p>
                 ) : (
-                  activeCourses.map((course) => <CourseCard key={course.crn} course={course} isAdded={true} />)
+                  activeCourses.map((course) => (
+                    <CourseCard
+                      key={course.crn}
+                      course={course}
+                      isAdded={true}
+                      is24Hour={is24Hour}
+                      visibleColumns={visibleColumns}
+                      getCourseColor={getCourseColor}
+                      formatTimeDisplay={formatTimeDisplay}
+                      getRmpUrl={getRmpUrl}
+                      onOpenInfo={setInfoModalCourse}
+                      onColorChange={handleColorChange}
+                      onRemoveCourse={removeCourseFromSchedule}
+                      onAddCourse={addCourseToSchedule}
+                      renderStatusBadge={(targetCourse) => <CourseStatusBadge course={targetCourse} />}
+                    />
+                  ))
                 )}
               </div>
             )}
@@ -1422,8 +1329,8 @@ export default function Home() {
                   className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 appearance-none cursor-pointer"
                 >
                   <option value="">No Location (TBA)</option>
-                  {Object.entries(BUILDING_DATA).map(([code, name]) => (
-                    <option key={code} value={code}>{name} ({code})</option>
+                  {Object.entries(BUILDINGS).map(([code, building]) => (
+                    <option key={code} value={code}>{building.name} ({code})</option>
                   ))}
                 </select>
                 <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-gray-400 pointer-events-none">Location (Map Pin)</label>
