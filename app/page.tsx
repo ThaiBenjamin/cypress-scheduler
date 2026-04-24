@@ -150,12 +150,6 @@ type NotificationWatch = {
   lastRestrictionSignature: string;
 };
 
-function createDefaultScheduleState() {
-  const defaultId = Date.now().toString();
-  const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
-  return { defaultId, defaultSchedules };
-}
-
 export default function Home() {
   const [initialScheduleState] = useState(() => {
     const defaultId = Date.now().toString();
@@ -1100,6 +1094,7 @@ export default function Home() {
                     <input type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
                   </div>
                   <div className="flex items-center justify-end">
+                    <div className="relative">
                     <button
                       onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)}
                       className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
@@ -1107,6 +1102,23 @@ export default function Home() {
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" fill={Object.values(notificationWatches).some((w) => Object.values(w.flags).some(Boolean)) ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                     </button>
+                    {isNotificationMenuOpen && (
+                      <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
+                        <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                        <div className="space-y-1 max-h-48 overflow-auto">
+                          {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).length === 0 && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                          )}
+                          {Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)).map((watch) => (
+                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200">
+                              <span className="font-bold">{watch.title}</span> ({watch.crn})
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -1259,7 +1271,7 @@ export default function Home() {
                         <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Notifications<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                       )}
                       {isNotificationMenuOpen && (
-                        <div className="absolute top-[120%] right-0 mt-2 w-72 bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
+                        <div className="absolute top-[120%] left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
                           <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
                           <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
                           <div className="space-y-1 max-h-48 overflow-auto">
