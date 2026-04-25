@@ -43,7 +43,7 @@ npm install
 2. Set up environment variables in `.env` (database + auth values).
 
    Recommended minimum variables:
-   - `DATABASE_URL`
+   - `DATABASE_URL` (or Supabase split vars below)
    - `GOOGLE_CLIENT_ID`
    - `GOOGLE_CLIENT_SECRET`
    - `NEXTAUTH_URL`
@@ -52,6 +52,14 @@ npm install
    - `NOTIFICATION_FROM_EMAIL`
    - `ALLOWED_EMAIL_DOMAIN` (optional, e.g. `student.fullcoll.edu`)
    - `DB_SSL_REJECT_UNAUTHORIZED` (production default is strict; set `false` only if your DB provider requires it)
+
+   Supabase split vars (alternative to `DATABASE_URL`):
+   - `SUPABASE_DB_HOST` (example: `qysbndckfwpnjlbhzwnx.supabase.co`)
+   - `SUPABASE_DB_PORT` (defaults to `5432`)
+   - `SUPABASE_DB_NAME` (defaults to `postgres`)
+   - `SUPABASE_DB_USER`
+   - `SUPABASE_DB_PASSWORD`
+   - `SUPABASE_DB_SSLMODE` (defaults to `require`)
 
 3. Run the app:
 
