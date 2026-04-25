@@ -1,13 +1,15 @@
-import { PrismaClient } from '@prisma/client';
+import * as PrismaClientPkg from '@prisma/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
 import fs from 'fs/promises';
+
+const PrismaClientCtor = (PrismaClientPkg as any).PrismaClient;
 import path from 'path';
 
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClientCtor({ adapter });
 
 function parseNocccdDays(meeting: any): string[] {
   const daysArray: string[] = [];
