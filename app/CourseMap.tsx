@@ -80,6 +80,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchedBuilding, setSearchedBuilding] = useState<{code: string, coords: [number, number]} | null>(null);
+  const [routeSegments, setRouteSegments] = useState<{ path: [number, number][], color: string }[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMapReady(true), 150);
@@ -162,21 +163,60 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
     return { markers };
   }, [activeCourses, activeDay, getCourseColor]);
 
-  // Clean, simple dashed lines between classes
-  const routeSegments = useMemo(() => {
-    const segments: {path: [number, number][], color: string}[] = [];
-    
-    if (activeDay === "ALL" || mapData.markers.length < 2) return segments;
-
-    for (let i = 0; i < mapData.markers.length - 1; i++) {
-      const start = mapData.markers[i].coords;
-      const end = mapData.markers[i + 1].coords;
-      const color = mapData.markers[i].color;
-      
-      segments.push({ path: [start, end], color });
+  useEffect(() => {
+    if (activeDay === "ALL" || mapData.markers.length < 2) {
+      setRouteSegments([]);
+      return;
     }
-    return segments;
-  }, [mapData.markers, activeDay]);
+
+    const baseSegments = mapData.markers.slice(0, -1).map((marker, idx) => ({
+      path: [marker.baseCoords, mapData.markers[idx + 1].baseCoords] as [number, number][],
+      color: marker.color,
+    }));
+    setRouteSegments(baseSegments);
+
+    let isCancelled = false;
+    const controller = new AbortController();
+
+    const fetchWalkingSegments = async () => {
+      const routedSegments = await Promise.all(
+        mapData.markers.slice(0, -1).map(async (marker, idx) => {
+          const next = mapData.markers[idx + 1];
+          const start = marker.baseCoords as [number, number];
+          const end = next.baseCoords as [number, number];
+          const fallback = { path: [start, end] as [number, number][], color: marker.color };
+          const samePoint = Math.abs(start[0] - end[0]) < 0.000001 && Math.abs(start[1] - end[1]) < 0.000001;
+          if (samePoint) return fallback;
+
+          try {
+            const response = await fetch(
+              `https://router.project-osrm.org/route/v1/foot/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson&steps=false`,
+              { signal: controller.signal }
+            );
+            if (!response.ok) return fallback;
+            const data = await response.json();
+            const coordinates = data?.routes?.[0]?.geometry?.coordinates;
+            if (!Array.isArray(coordinates) || coordinates.length < 2) return fallback;
+            const path = coordinates.map((coord: [number, number]) => [coord[1], coord[0]] as [number, number]);
+            return { path, color: marker.color };
+          } catch {
+            return fallback;
+          }
+        })
+      );
+
+      if (!isCancelled) {
+        setRouteSegments(routedSegments);
+      }
+    };
+
+    void fetchWalkingSegments();
+
+    return () => {
+      isCancelled = true;
+      controller.abort();
+    };
+  }, [activeDay, mapData.markers]);
 
   const filteredSearchList = useMemo(() => {
     const isExactMatch = searchedBuilding && searchQuery === `${BUILDINGS[searchedBuilding.code].name} (${searchedBuilding.code})`;
@@ -252,12 +292,11 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
           <Polyline 
             key={`route-${idx}`} 
             positions={segment.path} 
-            pathOptions={{ color: segment.color, weight: 4, opacity: 0.9, dashArray: "8, 8", lineCap: "round" }} 
+            pathOptions={{ color: segment.color, weight: 5, opacity: 0.85, lineCap: "round", lineJoin: "round" }} 
           />
         ))}
 
         {mapData.markers.map((marker, idx) => {
-          const isCustom = marker.course.crn?.startsWith("CUS-");
           const markerIcon = activeDay !== "ALL" && marker.orderNumber 
             ? createNumberedMarker(marker.color, marker.orderNumber) 
             : createColoredMarker(marker.color);
