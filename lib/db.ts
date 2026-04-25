@@ -9,6 +9,8 @@ const { url: resolvedDatabaseUrl } = resolveDatabaseUrl();
 const databaseHost = getDatabaseHost(resolvedDatabaseUrl);
 const isSupabaseHost = (databaseHost || '').endsWith('.supabase.co');
 
+const PrismaClient = (PrismaClientPkg as any).PrismaClient;
+
 // Create the connection pool once
 const rejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === 'false'
   ? false
