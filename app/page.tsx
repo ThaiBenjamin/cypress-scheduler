@@ -1504,7 +1504,6 @@ export default function Home() {
                               <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
                               <button onClick={(e) => { e.stopPropagation(); setInfoModalCourse(group); }} className="p-1 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer" title="Course Information"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 pointer-events-none"><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg></button>
                             </div>
-                            <p className="text-xs font-medium text-gray-700 dark:text-gray-300 break-words">{group.title}</p>
                           </div>
                           <div className="flex items-center gap-3 shrink-0 mt-1 sm:mt-0">
                             <span className="hidden sm:inline-block text-xs font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 px-2.5 py-1 rounded-md border border-orange-100 dark:border-orange-800 pointer-events-none whitespace-nowrap">{group.sections.length} {group.sections.length === 1 ? 'Section' : 'Sections'}</span>
@@ -1516,15 +1515,27 @@ export default function Home() {
                           <div className="bg-gray-50 dark:bg-gray-900/50 p-2 sm:p-3 space-y-2 border-t border-gray-200 dark:border-gray-700">
                             {group.sections.map((section: any) => {
                               const isAdded = activeCourses.some((c) => c.crn === section.crn);
+                              const instructionMode = String(section.instructionMode || "").toUpperCase();
                               let allTags: string[] = section.meetings?.map((m: any) => {
-                                if (m.days && m.days.length > 0) {
+                                const hasDays = Array.isArray(m.days) && m.days.length > 0;
+                                const hasTime = Boolean(m.startTime || m.endTime);
+                                if (hasDays || hasTime) {
                                   const start = formatTimeDisplay(m.startTime, is24Hour);
                                   const end = formatTimeDisplay(m.endTime, is24Hour);
-                                  return end ? `${m.days.join("")} ${start} - ${end}` : `${m.days.join("")} ${start}`;
+                                  const dayLabel = hasDays ? m.days.join("") : "TBA";
+                                  return end ? `${dayLabel} ${start} - ${end}` : `${dayLabel} ${start}`;
                                 }
+                                if (m.building || m.room) {
+                                  return `TBA ${[m.building, m.room].filter(Boolean).join(" ")}`.trim();
+                                }
+                                if (instructionMode.includes("HYB")) return "HYBRID";
                                 return "ONLINE";
                               }) || [];
-                              if (allTags.length === 0) allTags = ["ONLINE"];
+                              const hasNonRemoteTag = allTags.some((tag) => tag !== "ONLINE" && tag !== "HYBRID");
+                              if (hasNonRemoteTag) {
+                                allTags = allTags.filter((tag) => tag !== "ONLINE" && tag !== "HYBRID");
+                              }
+                              if (allTags.length === 0) allTags = [instructionMode.includes("HYB") ? "HYBRID" : "ONLINE"];
                               const uniqueTags: string[] = Array.from(new Set(allTags));
                               const profName = section.professors?.[0];
                               const rmpUrl = getRmpUrl(profName);

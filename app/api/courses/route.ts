@@ -3,7 +3,6 @@ import { db } from '@/lib/db';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { checkRateLimit, getClientAddress } from '@/lib/security/rate-limit';
-import { BUILDINGS } from '@/lib/scheduler/buildings';
 
 type CourseResult = Awaited<ReturnType<typeof db.course.findMany>>[number];
 const withSource = (data: unknown, source: "db" | "fallback", status = 200) =>
@@ -49,9 +48,7 @@ export async function GET(request: Request) {
       take: 100, 
     });
 
-    courses = courses
-      .filter(isLikelyCypressCourse)
-      .sort((a: CourseResult, b: CourseResult) => rankCompare(a, b, q, searchWords));
+    courses = courses.sort((a: CourseResult, b: CourseResult) => rankCompare(a, b, q, searchWords));
 
     if (courses.length > 0) {
       return withSource(courses, "db");
@@ -129,7 +126,6 @@ async function getFallbackCourses(q: string, term: string | null) {
     .slice(0, 100);
 }
 
-const CYPRESS_BUILDING_CODES = new Set(Object.keys(BUILDINGS).map((code) => code.toUpperCase()));
 const SUBJECT_SYNONYMS: Record<string, string[]> = {
   english: ['engl'],
   eng: ['engl'],
@@ -169,21 +165,6 @@ function expandQueryWord(word: string): string[] {
 function isCypressCampusCode(code: unknown): boolean {
   const normalized = String(code || '').toUpperCase();
   return normalized.startsWith('1');
-}
-
-function isLikelyCypressCourse(course: CourseResult): boolean {
-  const meetings: CourseResult["meetings"] = Array.isArray(course.meetings) ? course.meetings : [];
-  const buildingCodes: string[] = meetings
-    .map((meeting: CourseResult["meetings"][number]) => String(meeting.building || '').toUpperCase().trim())
-    .filter((code: string) => Boolean(code));
-
-  if (buildingCodes.length > 0) {
-    return buildingCodes.some((code: string) => CYPRESS_BUILDING_CODES.has(code));
-  }
-
-  const combinedText = `${course.title || ''} ${course.description || ''} ${(course.professors || []).join(' ')}`.toLowerCase();
-  if (combinedText.includes('fullerton')) return false;
-  return true;
 }
 
 function rankCompare(a: Pick<CourseResult, 'subject' | 'courseNumber' | 'title' | 'description' | 'crn'>, b: Pick<CourseResult, 'subject' | 'courseNumber' | 'title' | 'description' | 'crn'>, rawQuery: string, searchWords: string[]): number {

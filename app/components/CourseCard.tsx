@@ -69,6 +69,10 @@ export default function CourseCard({
       return "ONLINE";
     }) || [];
 
+  const hasNonRemoteTag = allTags.some((tag) => tag !== "ONLINE" && tag !== "HYBRID");
+  if (hasNonRemoteTag) {
+    allTags = allTags.filter((tag) => tag !== "ONLINE" && tag !== "HYBRID");
+  }
   if (allTags.length === 0) allTags = ["ONLINE"];
   const uniqueTags: string[] = Array.from(new Set(allTags));
 
@@ -97,7 +101,7 @@ export default function CourseCard({
             </button>
           </div>
 
-          {(!isAdded || visibleColumns.title) && (
+          {(isAdded && visibleColumns.title) && (
             <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
           )}
 
