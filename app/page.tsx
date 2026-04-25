@@ -261,6 +261,7 @@ export default function Home() {
   const [notificationModalCourse, setNotificationModalCourse] = useState<any>(null);
   const [courseHistory, setCourseHistory] = useState<CourseHistoryEvent[]>([]);
   const [lastSearchSource, setLastSearchSource] = useState<"db" | "fallback" | null>(null);
+  const [lastSearchSourceReason, setLastSearchSourceReason] = useState<string | null>(null);
   const [lastSearchAt, setLastSearchAt] = useState<string | null>(null);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -967,7 +968,9 @@ export default function Home() {
       const res = await fetch(`/api/courses?q=${encodeURIComponent(query)}&term=${term}`);
       const data = await res.json();
       const sourceHeader = res.headers.get("x-course-source");
+      const sourceReasonHeader = res.headers.get("x-course-source-reason");
       setLastSearchSource(sourceHeader === "fallback" ? "fallback" : "db");
+      setLastSearchSourceReason(sourceReasonHeader);
       setLastSearchAt(new Date().toISOString());
       if (Array.isArray(data)) {
         setSearchResults(data);
@@ -1429,6 +1432,8 @@ export default function Home() {
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
                       Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
                       {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
+                      {lastSearchSource === "fallback" && lastSearchSourceReason === "db_error" ? " • Database unavailable right now." : ""}
+                      {lastSearchSource === "fallback" && lastSearchSourceReason === "db_empty_after_search" ? " • No DB matches found for this query yet." : ""}
                     </p>
                   )}
                   <div className="flex items-center justify-end">

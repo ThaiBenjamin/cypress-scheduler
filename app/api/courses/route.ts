@@ -5,8 +5,19 @@ import path from 'node:path';
 import { checkRateLimit, getClientAddress } from '@/lib/security/rate-limit';
 
 type CourseResult = Awaited<ReturnType<typeof db.course.findMany>>[number];
-const withSource = (data: unknown, source: "db" | "fallback", status = 200) =>
-  NextResponse.json(data, { status, headers: { "X-Course-Source": source } });
+const withSource = (
+  data: unknown,
+  source: "db" | "fallback",
+  status = 200,
+  sourceReason?: string
+) =>
+  NextResponse.json(data, {
+    status,
+    headers: {
+      "X-Course-Source": source,
+      ...(sourceReason ? { "X-Course-Source-Reason": sourceReason } : {}),
+    },
+  });
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -30,41 +41,63 @@ export async function GET(request: Request) {
 
     // 1) Fetch from database using expanded query variants (e.g. "english" -> "engl")
     let courses = await db.course.findMany({
-      where: {
-        term: term || undefined,
-        AND: searchWords.map((word) => ({
-          OR: expandQueryWord(word).flatMap((variant) => ([
-            { crn: { contains: variant, mode: 'insensitive' } },
-            { subject: { contains: variant, mode: 'insensitive' } },
-            { courseNumber: { contains: variant, mode: 'insensitive' } },
-            { title: { contains: variant, mode: 'insensitive' } },
-            { description: { contains: variant, mode: 'insensitive' } },
-          ])),
-        })),
-      },
-      // By using 'include' instead of 'select', Prisma automatically grabs 
+      where: buildCourseSearchWhere(searchWords, term),
+      // By using 'include' instead of 'select', Prisma automatically grabs
       // all the top-level columns (including your new waitCount and waitCapacity!)
       include: { meetings: true },
-      take: 100, 
+      take: 100,
     });
 
     courses = courses.sort((a: CourseResult, b: CourseResult) => rankCompare(a, b, q, searchWords));
 
     if (courses.length > 0) {
-      return withSource(courses, "db");
+      return withSource(courses, "db", 200, "exact_term_match");
     }
 
-    return withSource(await getFallbackCourses(q, term), "fallback");
+    // 2) If no rows match the selected term, fall back to DB-only any-term search
+    // before touching local JSON fallback. This keeps results sourced from DB whenever possible.
+    if (term) {
+      const anyTermCourses = await db.course.findMany({
+        where: buildCourseSearchWhere(searchWords, null),
+        include: { meetings: true },
+        take: 100,
+      });
+
+      const sortedAnyTermCourses = anyTermCourses.sort((a: CourseResult, b: CourseResult) =>
+        rankCompare(a, b, q, searchWords)
+      );
+
+      if (sortedAnyTermCourses.length > 0) {
+        return withSource(sortedAnyTermCourses, "db", 200, "db_any_term_match");
+      }
+    }
+
+    return withSource(await getFallbackCourses(q, term), "fallback", 200, "db_empty_after_search");
   } catch (error) {
     console.error("Database Error, using local fallback:", error);
 
     try {
-      return withSource(await getFallbackCourses(q, term), "fallback");
+      return withSource(await getFallbackCourses(q, term), "fallback", 200, "db_error");
     } catch (fallbackError) {
       console.error('Fallback data load failed:', fallbackError);
       return NextResponse.json({ error: 'Failed to fetch courses' }, { status: 500, headers: { "X-Course-Source": "fallback" } });
     }
   }
+}
+
+function buildCourseSearchWhere(searchWords: string[], term: string | null) {
+  return {
+    term: term || undefined,
+    AND: searchWords.map((word) => ({
+      OR: expandQueryWord(word).flatMap((variant) => ([
+        { crn: { contains: variant, mode: 'insensitive' as const } },
+        { subject: { contains: variant, mode: 'insensitive' as const } },
+        { courseNumber: { contains: variant, mode: 'insensitive' as const } },
+        { title: { contains: variant, mode: 'insensitive' as const } },
+        { description: { contains: variant, mode: 'insensitive' as const } },
+      ])),
+    })),
+  };
 }
 
 async function getFallbackCourses(q: string, term: string | null) {
