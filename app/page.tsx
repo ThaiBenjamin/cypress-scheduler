@@ -617,14 +617,20 @@ export default function Home() {
             });
           }
 
-          setNotificationWatches((prev) => ({
-            ...prev,
-            [watch.crn]: {
-              ...prev[watch.crn],
-              lastStatus: latestStatus,
-              lastRestrictionSignature: latestRestrictionSignature,
-            },
-          }));
+          setNotificationWatches((prev) => {
+            if (!prev[watch.crn]) {
+              // Watch may have been removed while an async poll request was in flight.
+              return prev;
+            }
+            return {
+              ...prev,
+              [watch.crn]: {
+                ...prev[watch.crn],
+                lastStatus: latestStatus,
+                lastRestrictionSignature: latestRestrictionSignature,
+              },
+            };
+          });
         } catch {
           // Silent retry on next poll.
         }
