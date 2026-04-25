@@ -1,17 +1,32 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { checkRateLimit, getClientAddress } from '@/lib/security/rate-limit';
+
+type CourseResult = Awaited<ReturnType<typeof db.course.findMany>>[number];
+const withSource = (data: unknown, source: "db" | "fallback", status = 200) =>
+  NextResponse.json(data, { status, headers: { "X-Course-Source": source } });
 
 export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const q = searchParams.get('q');
-    const term = searchParams.get('term');
+  const { searchParams } = new URL(request.url);
+  const q = (searchParams.get('q') || '').trim();
+  const term = searchParams.get('term');
+  const ip = getClientAddress(request);
+  const rate = checkRateLimit(`courses:get:${ip}`, 240, 60_000);
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { error: "Too many searches. Please try again in a moment." },
+      { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } }
+    );
+  }
 
-    if (!q || q.trim() === '') {
-      return NextResponse.json([]);
+  try {
+    if (!q || q.length > 120) {
+      return withSource([], "db");
     }
 
-    const searchWords = q.trim().split(/\s+/).filter(Boolean);
+    const searchWords = q.split(/\s+/).filter(Boolean);
 
     // 1. Fetch from database just like before
     let courses = await db.course.findMany({
@@ -36,9 +51,9 @@ export async function GET(request: Request) {
     // 2. Rank the results by relevance
     const queryLower = q.toLowerCase();
     
-    courses.sort((a, b) => {
+    courses.sort((a: CourseResult, b: CourseResult) => {
       // Give each course a "score" based on where the match is
-      const getScore = (course: any) => {
+      const getScore = (course: CourseResult) => {
         const subj = course.subject.toLowerCase();
         const num = course.courseNumber.toLowerCase();
         const title = course.title.toLowerCase();
@@ -74,9 +89,104 @@ export async function GET(request: Request) {
       return 0;
     });
 
-    return NextResponse.json(courses);
+    if (courses.length > 0) {
+      return withSource(courses, "db");
+    }
+
+    return withSource(await getFallbackCourses(q, term), "fallback");
   } catch (error) {
-    console.error("Database Error:", error);
-    return NextResponse.json({ error: "Failed to fetch courses" }, { status: 500 });
+    console.error("Database Error, using local fallback:", error);
+
+    try {
+      return withSource(await getFallbackCourses(q, term), "fallback");
+    } catch (fallbackError) {
+      console.error('Fallback data load failed:', fallbackError);
+      return NextResponse.json({ error: 'Failed to fetch courses' }, { status: 500, headers: { "X-Course-Source": "fallback" } });
+    }
   }
+}
+
+async function getFallbackCourses(q: string, term: string | null) {
+  const raw = await readFile(path.join(process.cwd(), 'cypress_data.json'), 'utf-8');
+  const catalog = JSON.parse(raw) as any[];
+  const searchWords = q.split(/\s+/).filter(Boolean);
+
+  const normalizedCourses = catalog
+    .map((row) => {
+      const mappedTerm = mapTermCodeToLabel(row.sectTermCode, row.sectMeetings?.[0]?.startDate);
+      const meetings = (row.sectMeetings || []).map((meeting: any) => ({
+        type: meeting.mtypDesc || meeting.mtypCode || 'Meeting',
+        days: extractMeetingDays(meeting),
+        startTime: toClock(meeting.beginTime),
+        endTime: toClock(meeting.endTime),
+        building: meeting.bldgCode || undefined,
+        room: meeting.roomCode || undefined,
+      }));
+
+      return {
+        id: String(row.sectKey),
+        term: mappedTerm,
+        crn: String(row.sectCrn),
+        subject: String(row.sectSubjCode || ''),
+        courseNumber: String(row.sectCrseNumb || ''),
+        title: String(row.sectLongText || '').slice(0, 90) || 'Course',
+        units: 0,
+        instructionMode: row.sectInsmCode || null,
+        description: row.sectLongText || null,
+        seatsAvailable: Number(row.sectSeatsAvail || 0),
+        maxEnrollment: Number(row.sectMaxEnrl || 0),
+        waitCount: Number(row.sectWaitCount || 0),
+        waitCapacity: Number(row.sectWaitCapacity || 0),
+        professors: row.sectInstrName ? [String(row.sectInstrName)] : [],
+        meetings,
+      };
+    });
+
+  const searchFilter = (course: any) => {
+    const haystack = `${course.crn} ${course.subject} ${course.courseNumber} ${course.title} ${course.description || ''}`.toLowerCase();
+    return searchWords.every((word) => haystack.includes(word.toLowerCase()));
+  };
+
+  const termMatches = normalizedCourses
+    .filter((course) => !term || course.term === term)
+    .filter(searchFilter);
+
+  if (termMatches.length > 0) {
+    return termMatches.slice(0, 100);
+  }
+
+  // If term-specific data is unavailable, gracefully fall back to any term so search still works.
+  return normalizedCourses.filter(searchFilter).slice(0, 100);
+}
+
+function mapTermCodeToLabel(termCode: string, startDate?: string): string {
+  const code = String(termCode || '');
+  const fallbackYear = code.slice(0, 4);
+  const dateYear = typeof startDate === "string" && startDate.split("/").length === 3
+    ? startDate.split("/")[2]
+    : "";
+  const year = dateYear || fallbackYear;
+  const suffix = code.slice(4);
+  if (suffix === '30') return `${year}-Summer`;
+  if (suffix === '10') return `${year}-Winter/Spring`;
+  if (suffix === '70') return `${year}-Fall`;
+  return `${year}-Unknown`;
+}
+
+function toClock(rawTime?: string): string | undefined {
+  if (!rawTime || rawTime.length < 4) return undefined;
+  const padded = rawTime.padStart(4, '0');
+  return `${padded.slice(0, 2)}:${padded.slice(2, 4)}`;
+}
+
+function extractMeetingDays(meeting: Record<string, string>): string[] {
+  const days: string[] = [];
+  if (meeting.sunDay) days.push('Su');
+  if (meeting.monDay) days.push('M');
+  if (meeting.tueDay) days.push('Tu');
+  if (meeting.wedDay) days.push('W');
+  if (meeting.thuDay) days.push('Th');
+  if (meeting.friDay) days.push('F');
+  if (meeting.satDay) days.push('Sa');
+  return days;
 }
