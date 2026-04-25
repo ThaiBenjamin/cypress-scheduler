@@ -1,7 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import * as PrismaClientPkg from '@prisma/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
 import fs from 'fs/promises';
+
+const PrismaClient = (PrismaClientPkg as any).PrismaClient;
 import path from 'path';
 
 const connectionString = process.env.DATABASE_URL;
