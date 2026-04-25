@@ -279,6 +279,7 @@ export default function Home() {
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
   const [isTutorialOpen, setIsTutorialOpen] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
+  const [tutorialRect, setTutorialRect] = useState<DOMRect | null>(null);
   const settingsMenuRef = useRef<HTMLDivElement>(null);
   
   // REAL NEXT-AUTH STATE
@@ -305,13 +306,21 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
-  const tutorialSteps = [
-    { title: "1) Search", body: "Use the Search tab to choose a term and find classes by CRN, subject, or title." },
-    { title: "2) Add classes", body: "Add sections from search results, and check for conflict/travel warnings before finalizing." },
-    { title: "3) Added tab", body: "Manage your list, customize colors, copy/share schedules, and enable notification watches." },
-    { title: "4) Map + Calendar", body: "Use the map to understand building locations and the calendar to verify your weekly flow." },
-    { title: "5) Save + Share", body: "Sign in to save schedules to cloud and create secure share links for advising or friends." },
-  ];
+  const tutorialSteps = useMemo(
+    () => [
+      { title: "Welcome to Cypress Scheduler", body: "Use ← and → keys to navigate this tour. Press Esc to close anytime.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const },
+      { title: "Choose your plan", body: "Use this plan selector to switch, rename, or manage schedule plans.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const },
+      { title: "Search tab", body: "Start here to search by term, subject, title, or CRN.", selector: "[data-tour='search-tab']", placement: "bottom" as const },
+      { title: "Term filter", body: "Pick the academic term before searching to narrow results.", selector: "[data-tour='term-select']", placement: "bottom" as const },
+      { title: "Search input", body: "Type class keywords or CRNs to load matching sections.", selector: "[data-tour='search-input']", placement: "bottom" as const },
+      { title: "Added tab", body: "Open Added to review selected sections and edit your plan.", selector: "[data-tour='added-tab']", placement: "bottom" as const },
+      { title: "Share link", body: "Use this to copy a compact share link for advisors or friends.", selector: "[data-tour='share-button']", placement: "bottom" as const },
+      { title: "Notifications", body: "Track seat openings, waitlist changes, and restriction updates here.", selector: "[data-tour='notification-button']", placement: "bottom" as const },
+      { title: "Map tab", body: "Visualize where classes are located and compare routes across days.", selector: "[data-tour='map-tab']", placement: "bottom" as const },
+      { title: "Done", body: "You can relaunch this walkthrough from Settings → Start quick tutorial.", selector: "[data-tour='settings-button']", placement: "bottom" as const },
+    ],
+    []
+  );
 
   // Close Settings Menu on Outside Click
   useEffect(() => {
@@ -325,6 +334,49 @@ export default function Home() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isSettingsMenuOpen]);
+
+  useEffect(() => {
+    if (!isTutorialOpen) return;
+
+    const syncHighlight = () => {
+      const selector = tutorialSteps[tutorialStep]?.selector;
+      if (!selector) {
+        setTutorialRect(null);
+        return;
+      }
+      const el = document.querySelector(selector);
+      if (!el) {
+        setTutorialRect(null);
+        return;
+      }
+      const rect = (el as HTMLElement).getBoundingClientRect();
+      setTutorialRect(rect);
+      (el as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsTutorialOpen(false);
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1));
+      }
+      if (event.key === "ArrowLeft") {
+        setTutorialStep((step) => Math.max(0, step - 1));
+      }
+    };
+
+    syncHighlight();
+    window.addEventListener("resize", syncHighlight);
+    window.addEventListener("scroll", syncHighlight, true);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("resize", syncHighlight);
+      window.removeEventListener("scroll", syncHighlight, true);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isTutorialOpen, tutorialStep, tutorialSteps]);
 
   const getCourseColor = useCallback((crn: string) => {
     if (customColors[crn]) return customColors[crn];
@@ -1066,6 +1118,21 @@ export default function Home() {
     setCustomEventDays(prev => prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day]);
   };
 
+  const tutorialCardPosition = (() => {
+    if (!tutorialRect || typeof window === "undefined") return { top: 120, left: 40 };
+    const cardWidth = Math.min(620, window.innerWidth - 32);
+    const spaceBelow = window.innerHeight - tutorialRect.bottom;
+    const placeBelow = spaceBelow > 280;
+    const top = placeBelow
+      ? Math.min(window.innerHeight - 260, tutorialRect.bottom + 16)
+      : Math.max(16, tutorialRect.top - 240);
+    const left = Math.min(
+      Math.max(16, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
+      window.innerWidth - cardWidth - 16
+    );
+    return { top, left, width: cardWidth };
+  })();
+
   if (!isLoaded) return null; 
 
   return (
@@ -1124,7 +1191,7 @@ export default function Home() {
               </button>
             )}
 
-            <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} title="Open settings menu" aria-label="Open settings menu" className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
+            <button data-tour="settings-button" onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} title="Open settings menu" aria-label="Open settings menu" className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
 
@@ -1193,7 +1260,7 @@ export default function Home() {
       </nav>
 
       <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <button onClick={() => setIsMobileCalendarOpen(!isMobileCalendarOpen)} className="bg-gray-900 dark:bg-orange-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold flex items-center gap-2 active:scale-95 transition-transform border border-gray-700 dark:border-orange-500 cursor-pointer">
+        <button onClick={() => setIsMobileCalendarOpen(!isMobileCalendarOpen)} title={isMobileCalendarOpen ? "Switch to search panel" : "Switch to calendar panel"} className="bg-gray-900 dark:bg-orange-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold flex items-center gap-2 active:scale-95 transition-transform border border-gray-700 dark:border-orange-500 cursor-pointer">
           {isMobileCalendarOpen ? (
             <><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>Back to Search</>
           ) : (
@@ -1208,7 +1275,7 @@ export default function Home() {
         <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
             <div className="relative group">
-              <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="peer flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm font-bold py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+              <button data-tour="schedule-dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)} title="Switch active schedule plan" className="peer flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm font-bold py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
                 <span className="truncate max-w-[150px]">{activeSchedule?.name || "Loading..."}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
               </button>
@@ -1219,13 +1286,13 @@ export default function Home() {
                       <div key={schedule.id} className={`flex items-center justify-between p-3 border-b border-gray-100 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-gray-700 cursor-pointer ${activeScheduleId === schedule.id ? 'bg-orange-50 dark:bg-gray-700 border-l-4 border-l-orange-600' : 'border-l-4 border-l-transparent'}`} onClick={() => { setActiveScheduleId(schedule.id); setIsDropdownOpen(false); }}>
                         <span className="font-bold text-gray-800 dark:text-gray-200 text-sm flex-1 truncate pr-2">{schedule.name}</span>
                         <div className="flex gap-2 shrink-0">
-                          <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} className="text-gray-400 hover:text-orange-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
-                          <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} className="text-gray-400 hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                          <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} title="Rename schedule" className="text-gray-400 hover:text-orange-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
+                          <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} title="Delete schedule" className="text-gray-400 hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <button onClick={handleCreateNewSchedule} className="w-full p-4 text-sm font-bold text-orange-600 dark:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2 cursor-pointer">
+                  <button onClick={handleCreateNewSchedule} title="Create a new schedule plan" className="w-full p-4 text-sm font-bold text-orange-600 dark:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>Add New Schedule
                   </button>
                 </div>
@@ -1308,23 +1375,26 @@ export default function Home() {
           
           <div className="p-4 sm:p-6 pb-0 relative">
             <div className="flex w-full mb-6 overflow-x-auto border-b border-gray-200 dark:border-gray-800">
-              <button 
+              <button data-tour="search-tab"
                 onClick={() => setActiveTab("search")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "search" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open search panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                 Search
               </button>
-              <button 
+              <button data-tour="added-tab"
                 onClick={() => setActiveTab("added")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "added" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open added classes panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
                 Added
               </button>
-              <button 
+              <button data-tour="map-tab"
                 onClick={() => setActiveTab("map")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "map" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open map panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                 Map
@@ -1338,12 +1408,76 @@ export default function Home() {
                 <div className="mb-6 flex flex-col gap-3">
                   <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-[-8px]">Term</p>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <select value={termQuery} onChange={(e) => setTermQuery(e.target.value)} className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0">
+                    <select data-tour="term-select" value={termQuery} onChange={(e) => setTermQuery(e.target.value)} title="Choose academic term" className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0">
                       <option value="2026-Fall">Fall 2026</option>
                       <option value="2026-Summer">Summer 2026</option>
                       <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
-                    <input type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                  </div>
+                  {(lastSearchSource || lastSearchAt) && (
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                      Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
+                      {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-end">
+                    <div className="relative">
+                    <button
+                      onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)}
+                      className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
+                      title="Notification menu"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                    </button>
+                    {isNotificationMenuOpen && (
+                      <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                          {hasActiveNotificationWatches && (
+                            <button
+                              onClick={clearAllNotificationWatches}
+                              className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                            >
+                              Remove all
+                            </button>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                        <div className="space-y-1 max-h-48 overflow-auto">
+                          {!hasActiveNotificationWatches && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                          )}
+                          {activeNotificationWatches.map((watch) => (
+                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                              <span className="min-w-0 truncate">
+                                <span className="font-bold">{watch.title}</span> ({watch.crn})
+                              </span>
+                              <button
+                                onClick={() => removeNotificationWatch(watch.crn)}
+                                className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                          <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                          <div className="space-y-1 max-h-24 overflow-auto">
+                            {courseHistory.length === 0 && (
+                              <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                            )}
+                            {courseHistory.slice(0, 5).map((event, index) => (
+                              <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                <span className="font-bold">{event.title}</span> → {event.status}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    </div>
                   </div>
                   {(lastSearchSource || lastSearchAt) && (
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
@@ -1516,7 +1650,7 @@ export default function Home() {
 
                     {/* Share Link Button */}
                     <div className="relative group">
-                      <button onClick={handleCopyShareLink} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95" aria-label="Copy share link">
+                      <button data-tour="share-button" onClick={handleCopyShareLink} title="Copy short share link" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95" aria-label="Copy share link">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-4.5-4.5h6m0 0v6m0-6L10.5 15" /></svg>
                       </button>
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Share Link<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
@@ -1561,7 +1695,7 @@ export default function Home() {
 
                     {/* Notification Menu Toggle */}
                     <div className="relative group">
-                      <button onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} title="Open notification watches" aria-label="Open notification watches" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                      <button data-tour="notification-button" onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} title="Open notification watches" aria-label="Open notification watches" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                       </button>
                       {!isNotificationMenuOpen && (
@@ -1674,42 +1808,73 @@ export default function Home() {
 
       {/* MODALS */}
       {isTutorialOpen && (
-        <div
-          className="absolute inset-0 bg-black/65 backdrop-blur-sm flex items-center justify-center z-[90] p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Scheduler tutorial"
-          onClick={() => setIsTutorialOpen(false)}
-        >
-          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-lg w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
-            <p className="text-[11px] uppercase tracking-wider font-black text-orange-300 mb-1">Guided Tour</p>
-            <h3 className="text-2xl font-bold mb-3">{tutorialSteps[tutorialStep]?.title}</h3>
-            <p className="text-sm text-gray-200 leading-relaxed mb-6">{tutorialSteps[tutorialStep]?.body}</p>
-            <div className="flex items-center justify-between gap-2">
+        <div className="fixed inset-0 z-[95]" role="dialog" aria-modal="true" aria-label="Scheduler tutorial">
+          <div className="absolute inset-0 bg-black/70" onClick={() => setIsTutorialOpen(false)} />
+          {tutorialRect && (
+            <div
+              className="absolute rounded-xl ring-4 ring-blue-500/80 pointer-events-none transition-all duration-300"
+              style={{
+                top: tutorialRect.top - 6,
+                left: tutorialRect.left - 6,
+                width: tutorialRect.width + 12,
+                height: tutorialRect.height + 12,
+                boxShadow: "0 0 0 9999px rgba(0,0,0,0.55)",
+              }}
+            />
+          )}
+          <div
+            className="absolute bg-[#f0f0f0] text-gray-900 rounded-xl shadow-2xl border border-gray-300 p-6"
+            style={tutorialCardPosition}
+          >
+            <button
+              onClick={() => setIsTutorialOpen(false)}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black cursor-pointer"
+              aria-label="Close tutorial"
+              title="Close tutorial"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <p className="text-[11px] uppercase tracking-wider font-black text-blue-700 mb-1">Site tour</p>
+            <h3 className="text-3xl font-black mb-3">{tutorialSteps[tutorialStep]?.title}</h3>
+            <p className="text-lg leading-relaxed mb-6">{tutorialSteps[tutorialStep]?.body}</p>
+
+            <div className="flex items-center justify-between gap-4">
               <button
                 onClick={() => setTutorialStep((step) => Math.max(0, step - 1))}
                 disabled={tutorialStep === 0}
-                className="px-3 py-2 rounded-md border border-gray-500 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-gray-700 transition-colors"
-                title="Previous tutorial step"
+                className="text-4xl font-black text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:text-gray-900"
+                aria-label="Previous tutorial step"
               >
-                Back
+                ←
               </button>
-              <div className="text-xs text-gray-400">{tutorialStep + 1} / {tutorialSteps.length}</div>
+
+              <div className="flex items-center gap-3">
+                {tutorialSteps.map((_, index) => (
+                  <button
+                    key={`dot-${index}`}
+                    onClick={() => setTutorialStep(index)}
+                    className={`w-4 h-4 rounded-full border transition-colors ${index === tutorialStep ? "bg-blue-600 border-blue-600" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
+                    title={`Go to step ${index + 1}`}
+                    aria-label={`Go to tutorial step ${index + 1}`}
+                  />
+                ))}
+              </div>
+
               {tutorialStep < tutorialSteps.length - 1 ? (
                 <button
                   onClick={() => setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1))}
-                  className="px-3 py-2 rounded-md bg-orange-600 hover:bg-orange-700 text-sm font-bold cursor-pointer transition-colors"
-                  title="Next tutorial step"
+                  className="text-4xl font-black text-gray-600 hover:text-gray-900 cursor-pointer"
+                  aria-label="Next tutorial step"
                 >
-                  Next
+                  →
                 </button>
               ) : (
                 <button
                   onClick={() => setIsTutorialOpen(false)}
-                  className="px-3 py-2 rounded-md bg-green-600 hover:bg-green-700 text-sm font-bold cursor-pointer transition-colors"
-                  title="Finish tutorial"
+                  className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold cursor-pointer"
                 >
-                  Finish
+                  Done
                 </button>
               )}
             </div>
