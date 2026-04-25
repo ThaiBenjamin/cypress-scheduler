@@ -50,14 +50,22 @@ export default function CourseCard({
   notificationDisabledReason,
 }: CourseCardProps) {
   const courseColor = getCourseColor(course.crn);
+  const instructionMode = String(course.instructionMode || "").toUpperCase();
 
   let allTags: string[] =
     course.meetings?.map((m: any) => {
-      if (m.days && m.days.length > 0) {
+      const hasDays = Array.isArray(m.days) && m.days.length > 0;
+      const hasTime = Boolean(m.startTime || m.endTime);
+      if (hasDays || hasTime) {
         const start = formatTimeDisplay(m.startTime, is24Hour);
         const end = formatTimeDisplay(m.endTime, is24Hour);
-        return end ? `${m.days.join("")} ${start} - ${end}` : `${m.days.join("")} ${start}`;
+        const dayLabel = hasDays ? m.days.join("") : "TBA";
+        return end ? `${dayLabel} ${start} - ${end}` : `${dayLabel} ${start}`;
       }
+      if (m.building || m.room) {
+        return `TBA ${[m.building, m.room].filter(Boolean).join(" ")}`.trim();
+      }
+      if (instructionMode.includes("HYB")) return "HYBRID";
       return "ONLINE";
     }) || [];
 
