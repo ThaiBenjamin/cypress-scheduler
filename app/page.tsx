@@ -1130,15 +1130,15 @@ export default function Home() {
 
   const tutorialCardPosition = (() => {
     if (!tutorialRect || typeof window === "undefined") return { top: 120, left: 40 };
-    const cardWidth = Math.min(480, window.innerWidth - 24);
+    const cardWidth = Math.min(380, window.innerWidth - 20);
     const spaceBelow = window.innerHeight - tutorialRect.bottom;
-    const placeBelow = spaceBelow > 210;
+    const placeBelow = spaceBelow > 190;
     const top = placeBelow
-      ? Math.min(window.innerHeight - 220, tutorialRect.bottom + 12)
-      : Math.max(12, tutorialRect.top - 190);
+      ? Math.min(window.innerHeight - 190, tutorialRect.bottom + 10)
+      : Math.max(10, tutorialRect.top - 165);
     const left = Math.min(
-      Math.max(12, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
-      window.innerWidth - cardWidth - 12
+      Math.max(10, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
+      window.innerWidth - cardWidth - 10
     );
     return { top, left, width: cardWidth };
   })();
@@ -1755,7 +1755,7 @@ export default function Home() {
       {/* MODALS */}
       {isTutorialOpen && (
         <div className="fixed inset-0 z-[95]" role="dialog" aria-modal="true" aria-label="Scheduler tutorial">
-          <div className="absolute inset-0 bg-black/70" onClick={() => setIsTutorialOpen(false)} />
+          <div className="absolute inset-0 bg-black/35" onClick={() => setIsTutorialOpen(false)} />
           {tutorialRect && (
             <div
               className="absolute rounded-xl ring-4 ring-blue-500/80 pointer-events-none transition-all duration-300"
@@ -1764,12 +1764,12 @@ export default function Home() {
                 left: tutorialRect.left - 6,
                 width: tutorialRect.width + 12,
                 height: tutorialRect.height + 12,
-                boxShadow: "0 0 0 9999px rgba(0,0,0,0.55)",
+                boxShadow: "0 0 0 9999px rgba(0,0,0,0.24)",
               }}
             />
           )}
           <div
-            className="absolute bg-[#f0f0f0] text-gray-900 rounded-xl shadow-2xl border border-gray-300 p-6"
+            className="absolute bg-[#f2f3f5] text-gray-900 rounded-xl shadow-2xl border border-gray-300 p-4 sm:p-5"
             style={tutorialCardPosition}
           >
             <button
@@ -1781,26 +1781,26 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            <p className="text-[11px] uppercase tracking-wider font-black text-blue-700 mb-1">Site tour</p>
-            <h3 className="text-3xl font-black mb-3">{tutorialSteps[tutorialStep]?.title}</h3>
-            <p className="text-lg leading-relaxed mb-6">{tutorialSteps[tutorialStep]?.body}</p>
+            <p className="text-[10px] uppercase tracking-[0.16em] font-black text-blue-700 mb-1">Site tour</p>
+            <h3 className="text-2xl font-black mb-2">{tutorialSteps[tutorialStep]?.title}</h3>
+            <p className="text-base leading-relaxed mb-4">{tutorialSteps[tutorialStep]?.body}</p>
 
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-3">
               <button
                 onClick={() => setTutorialStep((step) => Math.max(0, step - 1))}
                 disabled={tutorialStep === 0}
-                className="text-4xl font-black text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:text-gray-900"
+                className="text-3xl font-black text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:text-gray-900"
                 aria-label="Previous tutorial step"
               >
                 ←
               </button>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 {tutorialSteps.map((_, index) => (
                   <button
                     key={`dot-${index}`}
                     onClick={() => setTutorialStep(index)}
-                    className={`w-4 h-4 rounded-full border transition-colors ${index === tutorialStep ? "bg-blue-600 border-blue-600" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
+                    className={`w-3 h-3 rounded-full border transition-colors ${index === tutorialStep ? "bg-blue-600 border-blue-600" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
                     title={`Go to step ${index + 1}`}
                     aria-label={`Go to tutorial step ${index + 1}`}
                   />
@@ -1810,7 +1810,7 @@ export default function Home() {
               {tutorialStep < tutorialSteps.length - 1 ? (
                 <button
                   onClick={() => setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1))}
-                  className="text-4xl font-black text-gray-600 hover:text-gray-900 cursor-pointer"
+                  className="text-3xl font-black text-gray-600 hover:text-gray-900 cursor-pointer"
                   aria-label="Next tutorial step"
                 >
                   →
