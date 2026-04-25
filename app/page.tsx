@@ -1479,6 +1479,70 @@ export default function Home() {
                     )}
                     </div>
                   </div>
+                  {(lastSearchSource || lastSearchAt) && (
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                      Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
+                      {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-end">
+                    <div className="relative">
+                    <button
+                      onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)}
+                      className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
+                      title="Notification menu"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                    </button>
+                    {isNotificationMenuOpen && (
+                      <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                          {hasActiveNotificationWatches && (
+                            <button
+                              onClick={clearAllNotificationWatches}
+                              className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                            >
+                              Remove all
+                            </button>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                        <div className="space-y-1 max-h-48 overflow-auto">
+                          {!hasActiveNotificationWatches && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                          )}
+                          {activeNotificationWatches.map((watch) => (
+                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                              <span className="min-w-0 truncate">
+                                <span className="font-bold">{watch.title}</span> ({watch.crn})
+                              </span>
+                              <button
+                                onClick={() => removeNotificationWatch(watch.crn)}
+                                className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                          <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                          <div className="space-y-1 max-h-24 overflow-auto">
+                            {courseHistory.length === 0 && (
+                              <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                            )}
+                            {courseHistory.slice(0, 5).map((event, index) => (
+                              <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                <span className="font-bold">{event.title}</span> → {event.status}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   {isSearching && <p className="text-orange-500 dark:text-orange-400 text-sm font-bold text-center mt-6 animate-pulse">Searching...</p>}
