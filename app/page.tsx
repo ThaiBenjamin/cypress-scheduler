@@ -308,16 +308,16 @@ export default function Home() {
   const [calendarView, setCalendarView] = useState<any>("work_week");
   const tutorialSteps = useMemo(
     () => [
-      { title: "Welcome to Cypress Scheduler", body: "Use ← and → keys to navigate this tour. Press Esc to close anytime.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const },
-      { title: "Choose your plan", body: "Use this plan selector to switch, rename, or manage schedule plans.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const },
-      { title: "Search tab", body: "Start here to search by term, subject, title, or CRN.", selector: "[data-tour='search-tab']", placement: "bottom" as const },
-      { title: "Term filter", body: "Pick the academic term before searching to narrow results.", selector: "[data-tour='term-select']", placement: "bottom" as const },
-      { title: "Search input", body: "Type class keywords or CRNs to load matching sections.", selector: "[data-tour='search-input']", placement: "bottom" as const },
-      { title: "Added tab", body: "Open Added to review selected sections and edit your plan.", selector: "[data-tour='added-tab']", placement: "bottom" as const },
-      { title: "Share link", body: "Use this to copy a compact share link for advisors or friends.", selector: "[data-tour='share-button']", placement: "bottom" as const },
-      { title: "Notifications", body: "Track seat openings, waitlist changes, and restriction updates here.", selector: "[data-tour='notification-button']", placement: "bottom" as const },
-      { title: "Map tab", body: "Visualize where classes are located and compare routes across days.", selector: "[data-tour='map-tab']", placement: "bottom" as const },
-      { title: "Done", body: "You can relaunch this walkthrough from Settings → Start quick tutorial.", selector: "[data-tour='settings-button']", placement: "bottom" as const },
+      { title: "Welcome to Cypress Scheduler", body: "Use ← and → keys to navigate this tour. Press Esc to close anytime.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Choose your plan", body: "Use this plan selector to switch, rename, or manage schedule plans.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Search tab", body: "Start here to search by term, subject, title, or CRN.", selector: "[data-tour='search-tab']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Term filter", body: "Pick the academic term before searching to narrow results.", selector: "[data-tour='term-select']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Search input", body: "Type class keywords or CRNs to load matching sections.", selector: "[data-tour='search-input']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Added tab", body: "Open Added to review selected sections and edit your plan.", selector: "[data-tour='added-tab']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Share link", body: "Use this to copy a compact share link for advisors or friends.", selector: "[data-tour='share-button']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Notifications", body: "Track seat openings, waitlist changes, and restriction updates here.", selector: "[data-tour='notification-button']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Map tab", body: "Visualize where classes are located and compare routes across days.", selector: "[data-tour='map-tab']", placement: "bottom" as const, tab: "map" as const },
+      { title: "Done", body: "You can relaunch this walkthrough from Settings → Start quick tutorial.", selector: "[data-tour='settings-button']", placement: "bottom" as const, tab: "search" as const },
     ],
     []
   );
@@ -337,6 +337,14 @@ export default function Home() {
 
   useEffect(() => {
     if (!isTutorialOpen) return;
+    const targetTab = tutorialSteps[tutorialStep]?.tab;
+    if (targetTab && targetTab !== activeTab) {
+      setActiveTab(targetTab);
+    }
+  }, [activeTab, isTutorialOpen, tutorialStep, tutorialSteps]);
+
+  useEffect(() => {
+    if (!isTutorialOpen) return;
 
     const syncHighlight = () => {
       const selector = tutorialSteps[tutorialStep]?.selector;
@@ -349,9 +357,11 @@ export default function Home() {
         setTutorialRect(null);
         return;
       }
-      const rect = (el as HTMLElement).getBoundingClientRect();
-      setTutorialRect(rect);
-      (el as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+      requestAnimationFrame(() => {
+        const rect = (el as HTMLElement).getBoundingClientRect();
+        setTutorialRect(rect);
+        (el as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+      });
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -376,7 +386,7 @@ export default function Home() {
       window.removeEventListener("scroll", syncHighlight, true);
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [isTutorialOpen, tutorialStep, tutorialSteps]);
+  }, [activeTab, isTutorialOpen, tutorialStep, tutorialSteps]);
 
   const getCourseColor = useCallback((crn: string) => {
     if (customColors[crn]) return customColors[crn];
@@ -1120,15 +1130,15 @@ export default function Home() {
 
   const tutorialCardPosition = (() => {
     if (!tutorialRect || typeof window === "undefined") return { top: 120, left: 40 };
-    const cardWidth = Math.min(620, window.innerWidth - 32);
+    const cardWidth = Math.min(480, window.innerWidth - 24);
     const spaceBelow = window.innerHeight - tutorialRect.bottom;
-    const placeBelow = spaceBelow > 280;
+    const placeBelow = spaceBelow > 210;
     const top = placeBelow
-      ? Math.min(window.innerHeight - 260, tutorialRect.bottom + 16)
-      : Math.max(16, tutorialRect.top - 240);
+      ? Math.min(window.innerHeight - 220, tutorialRect.bottom + 12)
+      : Math.max(12, tutorialRect.top - 190);
     const left = Math.min(
-      Math.max(16, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
-      window.innerWidth - cardWidth - 16
+      Math.max(12, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
+      window.innerWidth - cardWidth - 12
     );
     return { top, left, width: cardWidth };
   })();
@@ -1414,70 +1424,6 @@ export default function Home() {
                       <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
                     <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
-                  </div>
-                  {(lastSearchSource || lastSearchAt) && (
-                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
-                      Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
-                      {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
-                    </p>
-                  )}
-                  <div className="flex items-center justify-end">
-                    <div className="relative">
-                    <button
-                      onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)}
-                      className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
-                      title="Notification menu"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
-                    </button>
-                    {isNotificationMenuOpen && (
-                      <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
-                        <div className="flex items-center justify-between gap-3">
-                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
-                          {hasActiveNotificationWatches && (
-                            <button
-                              onClick={clearAllNotificationWatches}
-                              className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
-                            >
-                              Remove all
-                            </button>
-                          )}
-                        </div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
-                        <div className="space-y-1 max-h-48 overflow-auto">
-                          {!hasActiveNotificationWatches && (
-                            <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
-                          )}
-                          {activeNotificationWatches.map((watch) => (
-                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
-                              <span className="min-w-0 truncate">
-                                <span className="font-bold">{watch.title}</span> ({watch.crn})
-                              </span>
-                              <button
-                                onClick={() => removeNotificationWatch(watch.crn)}
-                                className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
-                              >
-                                Remove
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                          <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
-                          <div className="space-y-1 max-h-24 overflow-auto">
-                            {courseHistory.length === 0 && (
-                              <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
-                            )}
-                            {courseHistory.slice(0, 5).map((event, index) => (
-                              <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
-                                <span className="font-bold">{event.title}</span> → {event.status}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    </div>
                   </div>
                   {(lastSearchSource || lastSearchAt) && (
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
