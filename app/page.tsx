@@ -7,6 +7,8 @@ import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
 import dynamic from 'next/dynamic';
 import { signIn, signOut, useSession } from "next-auth/react";
+import { BUILDINGS } from "@/lib/scheduler/buildings";
+import CourseCard from "./components/CourseCard";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 // Safely import the map so it doesn't crash Server Side Rendering
@@ -15,21 +17,79 @@ const CourseMap = dynamic(() => import('./CourseMap'), { ssr: false });
 const locales = { "en-US": enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
 
+/** Maps abbreviated meeting day labels to static week dates used by react-big-calendar. */
 const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th": 5, "F": 6, "Sa": 7 };
 
 const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1", "#14b8a6"];
+const TERM_ORDER = { "Winter/Spring": 0, "Summer": 1, "Fall": 2 } as const;
+const COURSE_HISTORY_LIMIT = 25;
 
-const BUILDING_DATA: Record<string, string> = {
-  'BBF': 'Baseball Field', 'BK': 'Book Store', 'BUS': 'Business', 'CCCPLX': 'Cypress College Complex',
-  '1VPA': 'Fine Arts', 'FASS': 'Fine Arts Swing Space', 'G1': 'Gym 1', 'G2': 'Gym 2',
-  'HUM': 'Humanities', 'H/HUM': 'Humanities Lecture Hall', 'L/LRC': 'Library/Learning Resource Center',
-  'M&O': 'Maintenance & Operations', 'POOL': 'Pool', 'SBF': 'Softball Field', 'SLL': 'Student Life & Leadership',
-  'SC': 'Student Center', 'SEM': 'Science Engineering Math', 'SOCCER': 'Soccer Field', 'TA': 'Theater Arts',
-  'TC': 'Tennis Courts', 'TE1': 'Tech Ed 1', 'TE2': 'Tech Ed 2', 'TE3': 'Tech Ed 3',
-  'TRACK': 'Track & Field', 'VRC': 'Veterans Resource Center', 'NOCE': 'NOCE/ESL Classes',
-  'LOT1': 'Parking Lot 1', 'LOT2': 'Parking Lot 2', 'LOT3': 'Parking Lot 3', 'LOT4': 'Parking Lot 4',
-  'LOT5': 'Parking Lot 5', 'LOT6': 'Parking Lot 6', 'LOT7': 'Parking Lot 7', 'LOT8': 'Parking Lot 8',
-};
+function getBuildingCoordinates(code?: string): { lat: number; lng: number } | null {
+  if (!code) return null;
+  const found = BUILDINGS[code as keyof typeof BUILDINGS];
+  if (!found) return null;
+  return { lat: found.coords[0], lng: found.coords[1] };
+}
+
+function estimateWalkingMinutes(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const earthRadiusMeters = 6_371_000;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const haversine =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  const distanceMeters = 2 * earthRadiusMeters * Math.asin(Math.sqrt(haversine));
+  const averageWalkingSpeedMps = 1.35;
+  return Math.ceil(distanceMeters / averageWalkingSpeedMps / 60);
+}
+
+function parseTermLabel(term: string): { year: number; season: keyof typeof TERM_ORDER } | null {
+  const [yearRaw, seasonRaw] = String(term || "").split("-");
+  if (!yearRaw || !seasonRaw || !(seasonRaw in TERM_ORDER)) return null;
+  const year = Number(yearRaw);
+  if (!Number.isFinite(year)) return null;
+  return { year, season: seasonRaw as keyof typeof TERM_ORDER };
+}
+
+function getCurrentAcademicTerm(date: Date): { year: number; season: keyof typeof TERM_ORDER } {
+  const month = date.getMonth();
+  if (month <= 4) return { year: date.getFullYear(), season: "Winter/Spring" };
+  if (month <= 7) return { year: date.getFullYear(), season: "Summer" };
+  return { year: date.getFullYear(), season: "Fall" };
+}
+
+function getDropDeadlineForTerm(year: number, season: keyof typeof TERM_ORDER): Date {
+  if (season === "Winter/Spring") return new Date(year, 0, 31, 23, 59, 59, 999);
+  if (season === "Summer") return new Date(year, 5, 15, 23, 59, 59, 999);
+  return new Date(year, 8, 15, 23, 59, 59, 999);
+}
+
+function getNotificationEligibility(term: string, today = new Date()): { allowed: boolean; reason?: string } {
+  const target = parseTermLabel(term);
+  if (!target) return { allowed: false, reason: "Notifications are only available for standard academic terms." };
+
+  const current = getCurrentAcademicTerm(today);
+  const targetRank = target.year * 10 + TERM_ORDER[target.season];
+  const currentRank = current.year * 10 + TERM_ORDER[current.season];
+
+  if (targetRank < currentRank) {
+    return { allowed: false, reason: "Notifications are only available for the current term (before drop deadline) and future terms." };
+  }
+
+  if (targetRank > currentRank) {
+    return { allowed: true };
+  }
+
+  const dropDeadline = getDropDeadlineForTerm(current.year, current.season);
+  if (today.getTime() > dropDeadline.getTime()) {
+    return { allowed: false, reason: `The drop deadline has passed for ${term}.` };
+  }
+
+  return { allowed: true };
+}
 
 function formatTimeDisplay(time24: string, is24Hour: boolean) {
   if (!time24) return "";
@@ -51,6 +111,10 @@ function getRmpUrl(profName: string) {
   return `https://www.ratemyprofessors.com/search/professors?q=${encodeURIComponent(query)}`;
 }
 
+/**
+ * Converts each meeting occurrence into a visual calendar event block.
+ * Events are pinned to a dummy week to make overlap checks deterministic.
+ */
 function generateEventsFromMeetings(course: any) {
   const events: any[] = [];
   if (!course.meetings) return events; 
@@ -94,6 +158,20 @@ function checkConflict(newEvents: any[], existingEvents: any[]) {
   return null;
 }
 
+function getCourseAvailabilityStatus(course: any): "OPEN" | "WAITLIST" | "FULL" {
+  const seatsAvailable = course.seatsAvailable || 0;
+  const waitCount = course.waitCount || 0;
+  const waitCapacity = course.waitCapacity || 0;
+  if (seatsAvailable > 0) return "OPEN";
+  if (waitCapacity > 0 && waitCount < waitCapacity) return "WAITLIST";
+  return "FULL";
+}
+
+function getRestrictionSignature(course: any): string {
+  const restrictionCodes = (course.restrictions || course.restrictionCodes || []).join("|");
+  return restrictionCodes || "none";
+}
+
 function CourseStatusBadge({ course }: { course: any }) {
   const seatsAvailable = course.seatsAvailable || 0;
   const waitCount = course.waitCount || 0;
@@ -125,8 +203,35 @@ function CourseStatusBadge({ course }: { course: any }) {
 type Schedule = { id: string; name: string; courses: any[]; };
 type HistoryState = { schedules: Schedule[]; activeId: string; };
 type Theme = "light" | "dark" | "system";
+type NotificationFlags = {
+  open: boolean;
+  waitlist: boolean;
+  full: boolean;
+  restrictions: boolean;
+};
+type NotificationWatch = {
+  crn: string;
+  term: string;
+  title: string;
+  email: string;
+  flags: NotificationFlags;
+  lastStatus: "OPEN" | "WAITLIST" | "FULL";
+  lastRestrictionSignature: string;
+};
+type CourseHistoryEvent = {
+  crn: string;
+  title: string;
+  term: string;
+  status: "OPEN" | "WAITLIST" | "FULL";
+  at: string;
+};
 
 export default function Home() {
+  const [initialScheduleState] = useState(() => {
+    const defaultId = Date.now().toString();
+    const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
+    return { defaultId, defaultSchedules };
+  });
   const [searchQuery, setSearchQuery] = useState(""); 
   const [termQuery, setTermQuery] = useState("2026-Winter/Spring"); 
   
@@ -137,8 +242,8 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false); 
   const calendarRef = useRef<HTMLDivElement>(null);
 
-  const [schedules, setSchedules] = useState<Schedule[]>([]);
-  const [activeScheduleId, setActiveScheduleId] = useState<string>("");
+  const [schedules, setSchedules] = useState<Schedule[]>(initialScheduleState.defaultSchedules);
+  const [activeScheduleId, setActiveScheduleId] = useState<string>(initialScheduleState.defaultId);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [customColors, setCustomColors] = useState<Record<string, string>>({});
@@ -151,6 +256,12 @@ export default function Home() {
     status: true,
     crn: true
   });
+  const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
+  const [notificationWatches, setNotificationWatches] = useState<Record<string, NotificationWatch>>({});
+  const [notificationModalCourse, setNotificationModalCourse] = useState<any>(null);
+  const [courseHistory, setCourseHistory] = useState<CourseHistoryEvent[]>([]);
+  const [lastSearchSource, setLastSearchSource] = useState<"db" | "fallback" | null>(null);
+  const [lastSearchAt, setLastSearchAt] = useState<string | null>(null);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = useRef<any>(null);
@@ -166,6 +277,9 @@ export default function Home() {
   
   // MENU STATE
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+  const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const [tutorialRect, setTutorialRect] = useState<DOMRect | null>(null);
   const settingsMenuRef = useRef<HTMLDivElement>(null);
   
   // REAL NEXT-AUTH STATE
@@ -176,7 +290,12 @@ export default function Home() {
 
   const [sidebarWidth, setSidebarWidth] = useState(33.33); 
   const isDragging = useRef(false);
-  const [lastSavedStateString, setLastSavedStateString] = useState<string>("");
+  const [lastSavedStateString, setLastSavedStateString] = useState<string>(
+    JSON.stringify({
+      schedules: initialScheduleState.defaultSchedules,
+      activeId: initialScheduleState.defaultId,
+    })
+  );
 
   const [isCustomEventModalOpen, setIsCustomEventModalOpen] = useState(false);
   const [customEventName, setCustomEventName] = useState("");
@@ -187,6 +306,21 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+  const tutorialSteps = useMemo(
+    () => [
+      { title: "Welcome to Cypress Scheduler", body: "Use ← and → keys to navigate this tour. Press Esc to close anytime.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Choose your plan", body: "Use this plan selector to switch, rename, or manage schedule plans.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Search tab", body: "Start here to search by term, subject, title, or CRN.", selector: "[data-tour='search-tab']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Term filter", body: "Pick the academic term before searching to narrow results.", selector: "[data-tour='term-select']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Search input", body: "Type class keywords or CRNs to load matching sections.", selector: "[data-tour='search-input']", placement: "bottom" as const, tab: "search" as const },
+      { title: "Added tab", body: "Open Added to review selected sections and edit your plan.", selector: "[data-tour='added-tab']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Share link", body: "Use this to copy a compact share link for advisors or friends.", selector: "[data-tour='share-button']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Notifications", body: "Track seat openings, waitlist changes, and restriction updates here.", selector: "[data-tour='notification-button']", placement: "bottom" as const, tab: "added" as const },
+      { title: "Map tab", body: "Visualize where classes are located and compare routes across days.", selector: "[data-tour='map-tab']", placement: "bottom" as const, tab: "map" as const },
+      { title: "Done", body: "You can relaunch this walkthrough from Settings → Start quick tutorial.", selector: "[data-tour='settings-button']", placement: "bottom" as const, tab: "search" as const },
+    ],
+    []
+  );
 
   // Close Settings Menu on Outside Click
   useEffect(() => {
@@ -200,6 +334,59 @@ export default function Home() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isSettingsMenuOpen]);
+
+  useEffect(() => {
+    if (!isTutorialOpen) return;
+    const targetTab = tutorialSteps[tutorialStep]?.tab;
+    if (targetTab && targetTab !== activeTab) {
+      setActiveTab(targetTab);
+    }
+  }, [activeTab, isTutorialOpen, tutorialStep, tutorialSteps]);
+
+  useEffect(() => {
+    if (!isTutorialOpen) return;
+
+    const syncHighlight = () => {
+      const selector = tutorialSteps[tutorialStep]?.selector;
+      if (!selector) {
+        setTutorialRect(null);
+        return;
+      }
+      const el = document.querySelector(selector);
+      if (!el) {
+        setTutorialRect(null);
+        return;
+      }
+      requestAnimationFrame(() => {
+        const rect = (el as HTMLElement).getBoundingClientRect();
+        setTutorialRect(rect);
+        (el as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+      });
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsTutorialOpen(false);
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1));
+      }
+      if (event.key === "ArrowLeft") {
+        setTutorialStep((step) => Math.max(0, step - 1));
+      }
+    };
+
+    syncHighlight();
+    window.addEventListener("resize", syncHighlight);
+    window.addEventListener("scroll", syncHighlight, true);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("resize", syncHighlight);
+      window.removeEventListener("scroll", syncHighlight, true);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeTab, isTutorialOpen, tutorialStep, tutorialSteps]);
 
   const getCourseColor = useCallback((crn: string) => {
     if (customColors[crn]) return customColors[crn];
@@ -270,29 +457,11 @@ export default function Home() {
     setActiveScheduleId(nextState.activeId);
   };
 
-  // LOCAL STORAGE LOAD
+  // Local startup state: schedule data is intentionally not persisted without sign-in.
   useEffect(() => {
-    const savedSchedules = localStorage.getItem("cypress_multi_schedules");
-    if (savedSchedules) {
-      try {
-        const parsed = JSON.parse(savedSchedules);
-        setSchedules(parsed.schedules);
-        setActiveScheduleId(parsed.activeId);
-        setLastSavedStateString(JSON.stringify({ schedules: parsed.schedules, activeId: parsed.activeId }));
-      } catch (e) {
-        console.error("Failed to parse saved schedules");
-      }
-    } else {
-      const defaultId = Date.now().toString();
-      const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
-      setSchedules(defaultSchedules);
-      setActiveScheduleId(defaultId);
-      setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
-    }
-
     const savedColors = localStorage.getItem("cypress_custom_colors");
     if (savedColors) {
-      try { setCustomColors(JSON.parse(savedColors)); } catch(e){}
+      try { setCustomColors(JSON.parse(savedColors)); } catch {}
     }
 
     const savedTheme = localStorage.getItem("cypress_theme") as Theme;
@@ -304,19 +473,52 @@ export default function Home() {
     const savedSidebarWidth = localStorage.getItem("cypress_sidebar_width");
     if (savedSidebarWidth) setSidebarWidth(parseFloat(savedSidebarWidth));
 
+    const savedNotificationWatches = localStorage.getItem("cypress_notification_watches");
+    if (savedNotificationWatches) {
+      try { setNotificationWatches(JSON.parse(savedNotificationWatches)); } catch {}
+    }
+    const savedCourseHistory = localStorage.getItem("cypress_course_history");
+    if (savedCourseHistory) {
+      try { setCourseHistory(JSON.parse(savedCourseHistory)); } catch {}
+    }
+
     setIsLoaded(true);
   }, []);
 
   // CLOUD STORAGE OVERRIDE LOAD
   useEffect(() => {
     if (session?.user?.email) {
-      fetch(`/api/schedules?email=${session.user.email}`)
+      fetch('/api/schedules')
         .then((res) => res.json())
         .then((data) => {
+          const guestSnapshotRaw = localStorage.getItem("cypress_guest_snapshot");
+          const guestSnapshot = guestSnapshotRaw ? JSON.parse(guestSnapshotRaw) : null;
+
           if (Array.isArray(data) && data.length > 0) {
-            setSchedules(data);
-            setActiveScheduleId(data[0].id);
-            setLastSavedStateString(JSON.stringify({ schedules: data, activeId: data[0].id }));
+            let merged = data;
+            let nextActiveId = data[0].id;
+
+            if (guestSnapshot?.schedules?.length > 0) {
+              const imported = guestSnapshot.schedules.map((sched: any, index: number) => ({
+                ...sched,
+                id: `${sched.id}-guest-${Date.now()}-${index}`,
+                name: `${sched.name} (Imported)`,
+              }));
+              merged = [...data, ...imported];
+              nextActiveId = imported[0].id;
+              setLastSavedStateString(JSON.stringify({ schedules: [], activeId: "" }));
+              localStorage.removeItem("cypress_guest_snapshot");
+            } else {
+              setLastSavedStateString(JSON.stringify({ schedules: data, activeId: data[0].id }));
+            }
+
+            setSchedules(merged);
+            setActiveScheduleId(nextActiveId);
+          } else if (guestSnapshot?.schedules?.length > 0) {
+            setSchedules(guestSnapshot.schedules);
+            setActiveScheduleId(guestSnapshot.activeId || guestSnapshot.schedules[0]?.id || "");
+            setLastSavedStateString(JSON.stringify({ schedules: [], activeId: "" }));
+            localStorage.removeItem("cypress_guest_snapshot");
           }
         })
         .catch((err) => console.error("Failed to load cloud schedules", err));
@@ -347,6 +549,16 @@ export default function Home() {
     localStorage.setItem("cypress_sidebar_width", sidebarWidth.toString());
   }, [sidebarWidth, isLoaded]);
 
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem("cypress_notification_watches", JSON.stringify(notificationWatches));
+  }, [notificationWatches, isLoaded]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem("cypress_course_history", JSON.stringify(courseHistory));
+  }, [courseHistory, isLoaded]);
+
   const currentDataString = JSON.stringify({ schedules, activeId: activeScheduleId });
   const hasUnsavedChanges = isLoaded && currentDataString !== lastSavedStateString;
 
@@ -362,27 +574,26 @@ export default function Home() {
   }, [hasUnsavedChanges]);
 
   const handleGoogleSignIn = () => {
+    localStorage.setItem("cypress_guest_snapshot", JSON.stringify({ schedules, activeId: activeScheduleId }));
     signIn('google');
   };
 
   const handleSignOut = async () => {
-    // 1. Wipe the browser's memory of the schedules
-    localStorage.removeItem("cypress_multi_schedules");
-    
-    // 2. Reset the live screen to a blank slate
+    // Reset the live screen to a blank slate when leaving an authenticated session.
     const defaultId = Date.now().toString();
     const defaultSchedules = [{ id: defaultId, name: "Plan 1", courses: [] }];
     setSchedules(defaultSchedules);
     setActiveScheduleId(defaultId);
     setLastSavedStateString(JSON.stringify({ schedules: defaultSchedules, activeId: defaultId }));
 
-    // 3. Close the menu and terminate the Google session
+    // Close the menu and terminate the Google session.
     setIsSettingsMenuOpen(false);
     await signOut();
   };
 
   const handleSaveSchedule = async () => {
-    if (!session?.user?.email) {
+    const userEmail = session?.user?.email;
+    if (!userEmail) {
       setIsSignInModalOpen(true);
       return;
     }
@@ -393,19 +604,16 @@ export default function Home() {
           fetch('/api/schedules', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: sched.id,
-              userEmail: session.user.email,
-              name: sched.name,
-              courses: sched.courses,
-            }),
+              body: JSON.stringify({
+                id: sched.id,
+                name: sched.name,
+                courses: sched.courses,
+              }),
           })
         )
       );
 
-      const dataToSave = JSON.stringify({ schedules, activeId: activeScheduleId });
-      localStorage.setItem("cypress_multi_schedules", dataToSave);
-      setLastSavedStateString(dataToSave);
+      setLastSavedStateString(JSON.stringify({ schedules, activeId: activeScheduleId }));
 
       setToastMessage("Schedules securely saved to the cloud! ☁️");
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
@@ -416,6 +624,147 @@ export default function Home() {
       alert("Something went wrong saving to the cloud. Please try again.");
     }
   };
+
+  const isCourseNotificationEnabled = useCallback((crn: string) => {
+    const watch = notificationWatches[crn];
+    if (!watch) return false;
+    return Object.values(watch.flags).some(Boolean);
+  }, [notificationWatches]);
+
+  const openNotificationModalForCourse = (course: any) => {
+    const eligibility = getNotificationEligibility(course.term || termQuery);
+    if (!eligibility.allowed) {
+      setToastMessage(eligibility.reason || "Notifications are unavailable for this course term.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+    setNotificationModalCourse(course);
+  };
+
+  const getNotificationFlags = useCallback((crn: string): NotificationFlags => {
+    return notificationWatches[crn]?.flags || {
+      open: false,
+      waitlist: false,
+      full: false,
+      restrictions: false,
+    };
+  }, [notificationWatches]);
+
+  const toggleNotificationFlag = (course: any, key: keyof NotificationFlags) => {
+    const current = getNotificationFlags(course.crn);
+    const nextFlags = { ...current, [key]: !current[key] };
+    handleUpdateNotificationWatch(course, nextFlags);
+  };
+
+  const handleUpdateNotificationWatch = (course: any, flags: NotificationFlags) => {
+    const userEmail = session?.user?.email;
+    if (!userEmail) {
+      setIsSignInModalOpen(true);
+      return;
+    }
+    const watch: NotificationWatch = {
+      crn: course.crn,
+      term: course.term || termQuery,
+      title: `${course.subject || ""} ${course.courseNumber || ""}`.trim() || course.title || course.crn,
+      email: userEmail,
+      flags,
+      lastStatus: getCourseAvailabilityStatus(course),
+      lastRestrictionSignature: getRestrictionSignature(course),
+    };
+    setNotificationWatches((prev) => ({ ...prev, [course.crn]: watch }));
+  };
+
+  const removeNotificationWatch = useCallback((crn: string) => {
+    setNotificationWatches((prev) => {
+      const next = { ...prev };
+      delete next[crn];
+      return next;
+    });
+  }, []);
+
+  const clearAllNotificationWatches = useCallback(() => {
+    setNotificationWatches({});
+  }, []);
+
+  const activeNotificationWatches = useMemo(
+    () => Object.values(notificationWatches).filter((w) => Object.values(w.flags).some(Boolean)),
+    [notificationWatches]
+  );
+  const hasActiveNotificationWatches = activeNotificationWatches.length > 0;
+
+  useEffect(() => {
+    const hasAnyWatch = Object.values(notificationWatches).some((watch) => Object.values(watch.flags).some(Boolean));
+    if (!session?.user?.email || !hasAnyWatch) return;
+
+    const poll = async () => {
+      for (const watch of Object.values(notificationWatches)) {
+        if (!Object.values(watch.flags).some(Boolean)) continue;
+        try {
+          const res = await fetch(`/api/courses?q=${encodeURIComponent(watch.crn)}&term=${encodeURIComponent(watch.term)}`);
+          const data = await res.json();
+          const latest = Array.isArray(data) ? data.find((c: any) => c.crn === watch.crn) : null;
+          if (!latest) continue;
+
+          const latestStatus = getCourseAvailabilityStatus(latest);
+          const latestRestrictionSignature = getRestrictionSignature(latest);
+          const shouldSend =
+            (watch.flags.open && watch.lastStatus !== "OPEN" && latestStatus === "OPEN") ||
+            (watch.flags.waitlist && watch.lastStatus !== "WAITLIST" && latestStatus === "WAITLIST") ||
+            (watch.flags.full && watch.lastStatus !== "FULL" && latestStatus === "FULL") ||
+            (watch.flags.restrictions && watch.lastRestrictionSignature !== latestRestrictionSignature);
+
+          if (shouldSend) {
+            setCourseHistory((prev) => {
+              const next: CourseHistoryEvent[] = [
+                {
+                  crn: watch.crn,
+                  title: watch.title,
+                  term: watch.term,
+                  status: latestStatus,
+                  at: new Date().toISOString(),
+                },
+                ...prev,
+              ];
+              return next.slice(0, COURSE_HISTORY_LIMIT);
+            });
+            await fetch("/api/notifications/email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                crn: watch.crn,
+                title: watch.title,
+                status: latestStatus,
+                term: watch.term,
+                restrictionsChanged: watch.lastRestrictionSignature !== latestRestrictionSignature,
+              }),
+            });
+          }
+
+          setNotificationWatches((prev) => {
+            if (!prev[watch.crn]) {
+              // Watch may have been removed while an async poll request was in flight.
+              return prev;
+            }
+            return {
+              ...prev,
+              [watch.crn]: {
+                ...prev[watch.crn],
+                lastStatus: latestStatus,
+                lastRestrictionSignature: latestRestrictionSignature,
+              },
+            };
+          });
+        } catch {
+          // Silent retry on next poll.
+        }
+      }
+    };
+
+    poll();
+    const interval = setInterval(poll, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [notificationWatches, session?.user?.email]);
 
   const activeSchedule = schedules.find(s => s.id === activeScheduleId) || schedules[0];
   const activeCourses = activeSchedule?.courses || [];
@@ -487,6 +836,44 @@ export default function Home() {
     setActiveScheduleId(newId);
   };
 
+  const handleCopyShareLink = async () => {
+    if (!activeSchedule || !session?.user?.email) {
+      setToastMessage("Sign in to create a secure share link.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: activeSchedule.name,
+          courses: activeSchedule.courses,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || (!data?.token && (!data?.payload || !data?.sig))) {
+        throw new Error(data?.error || "Failed to create share link.");
+      }
+
+      const url = data.token
+        ? `${window.location.origin}/share/s/${encodeURIComponent(data.token)}`
+        : `${window.location.origin}/share?payload=${encodeURIComponent(data.payload)}&sig=${encodeURIComponent(data.sig)}`;
+      await navigator.clipboard.writeText(url);
+      setToastMessage("Short share link copied to clipboard.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+    } catch (error) {
+      console.error("Share link creation failed", error);
+      setToastMessage("Unable to create share link right now.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+    }
+  };
+
   const handleRenameSchedule = (id: string, currentName: string) => {
     const newName = window.prompt("Enter a new name for this schedule:", currentName);
     if (!newName || newName.trim() === "") return;
@@ -522,6 +909,40 @@ export default function Home() {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
       toastTimerRef.current = setTimeout(() => setToastMessage(null), 5000);
     }
+
+    const getWalkWarning = () => {
+      for (const event of myScheduleEvents) {
+        if (!event.meetingInfo?.building) continue;
+        for (const newEvent of newEvents) {
+          if (!newEvent.meetingInfo?.building) continue;
+          const sameDay = event.start.getDay() === newEvent.start.getDay();
+          if (!sameDay) continue;
+
+          const gapAfter = (newEvent.start.getTime() - event.end.getTime()) / 60000;
+          const gapBefore = (event.start.getTime() - newEvent.end.getTime()) / 60000;
+          const transitionGap = gapAfter >= 0 ? gapAfter : gapBefore >= 0 ? gapBefore : -1;
+          if (transitionGap < 0 || transitionGap > 15) continue;
+
+          const from = getBuildingCoordinates(event.meetingInfo.building);
+          const to = getBuildingCoordinates(newEvent.meetingInfo.building);
+          if (!from || !to) continue;
+
+          const walkMinutes = estimateWalkingMinutes(from, to);
+          if (walkMinutes > transitionGap) {
+            return `Travel warning: ~${walkMinutes} min walk between ${event.meetingInfo.building} and ${newEvent.meetingInfo.building} with only ${Math.round(transitionGap)} min gap.`;
+          }
+        }
+      }
+      return null;
+    };
+
+    const walkWarning = getWalkWarning();
+    if (walkWarning) {
+      setToastMessage(walkWarning);
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 6000);
+    }
+
     saveStateToHistory();
     setSchedules(prev => prev.map(s => s.id === activeScheduleId ? { ...s, courses: [...s.courses, course] } : s));
   };
@@ -545,6 +966,9 @@ export default function Home() {
     try {
       const res = await fetch(`/api/courses?q=${encodeURIComponent(query)}&term=${term}`);
       const data = await res.json();
+      const sourceHeader = res.headers.get("x-course-source");
+      setLastSearchSource(sourceHeader === "fallback" ? "fallback" : "db");
+      setLastSearchAt(new Date().toISOString());
       if (Array.isArray(data)) {
         setSearchResults(data);
         if (data.length > 0) {
@@ -704,105 +1128,22 @@ export default function Home() {
     setCustomEventDays(prev => prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day]);
   };
 
-  if (!isLoaded) return null; 
-
-  const CourseCard = ({ course, isAdded }: { course: any, isAdded: boolean }) => {
-    const courseColor = getCourseColor(course.crn);
-
-    let allTags: string[] = course.meetings?.map((m: any) => {
-      if (m.days && m.days.length > 0) {
-        const start = formatTimeDisplay(m.startTime, is24Hour);
-        const end = formatTimeDisplay(m.endTime, is24Hour);
-        return end ? `${m.days.join("")} ${start} - ${end}` : `${m.days.join("")} ${start}`;
-      }
-      return "ONLINE";
-    }) || [];
-    
-    if (allTags.length === 0) allTags = ["ONLINE"];
-    const uniqueTags: string[] = Array.from(new Set(allTags));
-
-    const profName = course.professors?.[0];
-    const rmpUrl = getRmpUrl(profName);
-
-    return (
-      <div 
-        className={`p-4 border rounded-xl shadow-sm transition-all ${isAdded ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700' : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-500 cursor-default'}`}
-        style={isAdded ? { borderLeft: `6px solid ${courseColor}` } : {}}
-      >
-        <div className="flex justify-between items-start gap-4">
-          <div className="flex-1 min-w-0 pr-4">
-            <div className="flex items-center gap-2 mb-0.5">
-              <h2 className="font-extrabold text-blue-900 dark:text-blue-400 text-sm sm:text-base break-words">
-                {course.subject ? `${course.subject} ${course.courseNumber}` : course.courseNumber}
-              </h2>
-              <button onClick={(e) => { e.stopPropagation(); setInfoModalCourse(course); }} className="p-1 rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer" title="Course Information">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
-              </button>
-            </div>
-            
-            {(!isAdded || visibleColumns.title) && (
-              <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 break-words">{course.title || "Title TBA"}</p>
-            )}
-
-            {(!isAdded || visibleColumns.times || visibleColumns.instructors) && (
-              <div className="flex flex-wrap gap-1 mb-2">
-                {(!isAdded || visibleColumns.times) && uniqueTags.map((tag: string, i: number) => (
-                  <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-900/30 dark:border-orange-800 dark:text-orange-300' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
-                ))}
-                
-                {(!isAdded || visibleColumns.instructors) && (
-                  rmpUrl && course.subject ? (
-                    <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
-                      {profName}
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
-                    </a>
-                  ) : profName && profName.toUpperCase() === "STAFF" ? (
-                    <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
-                  ) : null
-                )}
-              </div>
-            )}
-
-            {course.subject && (!isAdded || visibleColumns.status || visibleColumns.crn) && (
-              <div className="flex flex-wrap items-center gap-2 mt-3">
-                {(!isAdded || visibleColumns.status) && <CourseStatusBadge course={course} />}
-                
-                {(!isAdded || visibleColumns.crn) && (
-                  <p className="text-[10px] text-gray-500 font-mono font-medium">
-                    CRN: {course.crn} • {(course.maxEnrollment || 0) - (course.seatsAvailable || 0)}/{course.maxEnrollment || 0} Enrolled
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-
-          <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
-            {isAdded ? (
-              <>
-                <div className="relative group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" title="Change Color">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
-                  <input 
-                    type="color" 
-                    value={getCourseColor(course.crn)}
-                    className="absolute inset-0 opacity-0 cursor-pointer w-[200%] h-[200%] -top-1/2 -left-1/2" 
-                    onChange={(e) => handleColorChange(course.crn, e.target.value)} 
-                  />
-                </div>
-
-                <button onClick={() => removeCourseFromSchedule(course)} className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-lg cursor-pointer transition-colors hover:bg-red-100 dark:hover:bg-red-900/50 flex items-center justify-center w-9 h-9">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                </button>
-              </>
-            ) : (
-              <button onClick={() => addCourseToSchedule(course)} className="bg-orange-600 hover:bg-orange-700 text-white p-2 rounded-lg cursor-pointer transition-colors shadow-sm flex items-center justify-center w-9 h-9">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+  const tutorialCardPosition = (() => {
+    if (!tutorialRect || typeof window === "undefined") return { top: 120, left: 40 };
+    const cardWidth = Math.min(480, window.innerWidth - 24);
+    const spaceBelow = window.innerHeight - tutorialRect.bottom;
+    const placeBelow = spaceBelow > 210;
+    const top = placeBelow
+      ? Math.min(window.innerHeight - 220, tutorialRect.bottom + 12)
+      : Math.max(12, tutorialRect.top - 190);
+    const left = Math.min(
+      Math.max(12, tutorialRect.left + tutorialRect.width / 2 - cardWidth / 2),
+      window.innerWidth - cardWidth - 12
     );
-  };
+    return { top, left, width: cardWidth };
+  })();
+
+  if (!isLoaded) return null; 
 
   return (
     <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-950 font-sans relative overflow-hidden transition-colors duration-300">
@@ -836,26 +1177,31 @@ export default function Home() {
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">Cypress Scheduler</h1>
         <div className="flex items-center gap-2 sm:gap-4 relative">
           
-          <button onClick={handleSaveSchedule} disabled={!hasUnsavedChanges} className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}>
+          <button
+            onClick={handleSaveSchedule}
+            disabled={!session || !hasUnsavedChanges}
+            title={!session ? "Sign in to save schedules to your account" : "Save schedules"}
+            className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${session && hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
-            <span className="hidden sm:inline">SAVE</span>
+            <span className="hidden sm:inline">{session ? "SAVE" : "SIGN IN TO SAVE"}</span>
           </button>
 
           {/* UNIFIED SETTINGS / USER MENU CONTAINER */}
           <div className="relative flex items-center justify-center gap-2" ref={settingsMenuRef}>
             
             {!session ? (
-              <button onClick={() => setIsSignInModalOpen(true)} className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded transition-colors hover:bg-white/20 cursor-pointer">
+              <button onClick={() => setIsSignInModalOpen(true)} title="Sign in with Google" aria-label="Sign in with Google" className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded transition-colors hover:bg-white/20 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" /></svg>
                 <span className="hidden sm:inline tracking-wider">SIGN IN</span>
               </button>
             ) : (
-              <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-sm transition-colors hover:bg-white/30 cursor-pointer shadow-sm" title="Profile Settings">
+              <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} aria-label="Open profile settings" className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-sm transition-colors hover:bg-white/30 cursor-pointer shadow-sm" title="Profile Settings">
                 {session.user?.name?.charAt(0).toUpperCase() || "U"}
               </button>
             )}
 
-            <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
+            <button data-tour="settings-button" onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} title="Open settings menu" aria-label="Open settings menu" className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
 
@@ -894,6 +1240,19 @@ export default function Home() {
                   <button onClick={() => setIs24Hour(true)} className={`flex-1 py-2 text-sm font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
                 </div>
 
+                <button
+                  onClick={() => {
+                    setTutorialStep(0);
+                    setIsTutorialOpen(true);
+                    setIsSettingsMenuOpen(false);
+                  }}
+                  className="w-full mb-2 flex items-center gap-3 px-3 py-2 rounded-md border border-blue-500/40 text-blue-200 hover:bg-blue-500/10 transition-colors cursor-pointer text-sm font-bold"
+                  title="Start guided tutorial"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m5-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  Start quick tutorial
+                </button>
+
                 {session && (
                   <>
                     <div className="border-t border-gray-600 my-4"></div>
@@ -911,7 +1270,7 @@ export default function Home() {
       </nav>
 
       <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <button onClick={() => setIsMobileCalendarOpen(!isMobileCalendarOpen)} className="bg-gray-900 dark:bg-orange-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold flex items-center gap-2 active:scale-95 transition-transform border border-gray-700 dark:border-orange-500 cursor-pointer">
+        <button onClick={() => setIsMobileCalendarOpen(!isMobileCalendarOpen)} title={isMobileCalendarOpen ? "Switch to search panel" : "Switch to calendar panel"} className="bg-gray-900 dark:bg-orange-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold flex items-center gap-2 active:scale-95 transition-transform border border-gray-700 dark:border-orange-500 cursor-pointer">
           {isMobileCalendarOpen ? (
             <><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>Back to Search</>
           ) : (
@@ -926,7 +1285,7 @@ export default function Home() {
         <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${isMobileCalendarOpen ? 'flex' : 'hidden lg:flex'}`}>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
             <div className="relative group">
-              <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="peer flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm font-bold py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+              <button data-tour="schedule-dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)} title="Switch active schedule plan" className="peer flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm font-bold py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
                 <span className="truncate max-w-[150px]">{activeSchedule?.name || "Loading..."}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
               </button>
@@ -937,13 +1296,13 @@ export default function Home() {
                       <div key={schedule.id} className={`flex items-center justify-between p-3 border-b border-gray-100 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-gray-700 cursor-pointer ${activeScheduleId === schedule.id ? 'bg-orange-50 dark:bg-gray-700 border-l-4 border-l-orange-600' : 'border-l-4 border-l-transparent'}`} onClick={() => { setActiveScheduleId(schedule.id); setIsDropdownOpen(false); }}>
                         <span className="font-bold text-gray-800 dark:text-gray-200 text-sm flex-1 truncate pr-2">{schedule.name}</span>
                         <div className="flex gap-2 shrink-0">
-                          <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} className="text-gray-400 hover:text-orange-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
-                          <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} className="text-gray-400 hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                          <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} title="Rename schedule" className="text-gray-400 hover:text-orange-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
+                          <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} title="Delete schedule" className="text-gray-400 hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <button onClick={handleCreateNewSchedule} className="w-full p-4 text-sm font-bold text-orange-600 dark:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2 cursor-pointer">
+                  <button onClick={handleCreateNewSchedule} title="Create a new schedule plan" className="w-full p-4 text-sm font-bold text-orange-600 dark:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>Add New Schedule
                   </button>
                 </div>
@@ -1026,23 +1385,26 @@ export default function Home() {
           
           <div className="p-4 sm:p-6 pb-0 relative">
             <div className="flex w-full mb-6 overflow-x-auto border-b border-gray-200 dark:border-gray-800">
-              <button 
+              <button data-tour="search-tab"
                 onClick={() => setActiveTab("search")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "search" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open search panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                 Search
               </button>
-              <button 
+              <button data-tour="added-tab"
                 onClick={() => setActiveTab("added")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "added" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open added classes panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
                 Added
               </button>
-              <button 
+              <button data-tour="map-tab"
                 onClick={() => setActiveTab("map")} 
                 className={`flex-1 flex justify-center items-center gap-1.5 pb-3 text-sm font-bold border-b-2 transition-colors whitespace-nowrap cursor-pointer ${activeTab === "map" ? "border-orange-600 text-orange-600 dark:border-orange-500 dark:text-orange-500" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"}`}
+                title="Open map panel"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
                 Map
@@ -1056,12 +1418,76 @@ export default function Home() {
                 <div className="mb-6 flex flex-col gap-3">
                   <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-[-8px]">Term</p>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <select value={termQuery} onChange={(e) => setTermQuery(e.target.value)} className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0">
+                    <select data-tour="term-select" value={termQuery} onChange={(e) => setTermQuery(e.target.value)} title="Choose academic term" className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0">
                       <option value="2026-Fall">Fall 2026</option>
                       <option value="2026-Summer">Summer 2026</option>
                       <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
-                    <input type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                  </div>
+                  {(lastSearchSource || lastSearchAt) && (
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                      Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
+                      {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-end">
+                    <div className="relative">
+                    <button
+                      onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)}
+                      className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}
+                      title="Notification menu"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                    </button>
+                    {isNotificationMenuOpen && (
+                      <div className="absolute top-[120%] right-0 mt-2 w-72 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4 z-50">
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                          {hasActiveNotificationWatches && (
+                            <button
+                              onClick={clearAllNotificationWatches}
+                              className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                            >
+                              Remove all
+                            </button>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                        <div className="space-y-1 max-h-48 overflow-auto">
+                          {!hasActiveNotificationWatches && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                          )}
+                          {activeNotificationWatches.map((watch) => (
+                            <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                              <span className="min-w-0 truncate">
+                                <span className="font-bold">{watch.title}</span> ({watch.crn})
+                              </span>
+                              <button
+                                onClick={() => removeNotificationWatch(watch.crn)}
+                                className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                          <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                          <div className="space-y-1 max-h-24 overflow-auto">
+                            {courseHistory.length === 0 && (
+                              <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                            )}
+                            {courseHistory.slice(0, 5).map((event, index) => (
+                              <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                <span className="font-bold">{event.title}</span> → {event.status}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -1124,7 +1550,14 @@ export default function Home() {
                                       <p className="text-[10px] text-gray-500 font-mono font-medium">CRN: {section.crn} • {(section.maxEnrollment || 0) - (section.seatsAvailable || 0)}/{section.maxEnrollment || 0} Enrolled</p>
                                     </div>
                                   </div>
-                                  <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0">
+                                  <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
+                                    <button
+                                      onClick={() => openNotificationModalForCourse(section)}
+                                      className={`w-full sm:w-auto p-2 rounded-md border transition-colors cursor-pointer flex items-center justify-center ${isCourseNotificationEnabled(section.crn) ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700'}`}
+                                      title="Notification settings"
+                                    >
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill={isCourseNotificationEnabled(section.crn) ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                                    </button>
                                     {isAdded ? (
                                       <button onClick={() => removeCourseFromSchedule(section)} className="w-full sm:w-auto bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 p-2 rounded-md transition-colors text-center cursor-pointer flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 pointer-events-none"><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
@@ -1155,15 +1588,23 @@ export default function Home() {
                     
                     {/* Copy Button */}
                     <div className="relative group">
-                      <button onClick={handleCopySchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                      <button onClick={handleCopySchedule} title="Duplicate current schedule" aria-label="Duplicate current schedule" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" /></svg>
                       </button>
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                     </div>
 
+                    {/* Share Link Button */}
+                    <div className="relative group">
+                      <button data-tour="share-button" onClick={handleCopyShareLink} title="Copy short share link" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95" aria-label="Copy share link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-4.5-4.5h6m0 0v6m0-6L10.5 15" /></svg>
+                      </button>
+                      <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Share Link<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
+
                     {/* Clear/Trash Button */}
                     <div className="relative group">
-                      <button onClick={clearActiveSchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
+                      <button onClick={clearActiveSchedule} title="Clear all classes in this schedule" aria-label="Clear schedule" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
                       </button>
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Clear Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
@@ -1171,7 +1612,7 @@ export default function Home() {
 
                     {/* Column Visibility Toggle */}
                     <div className="relative group">
-                      <button onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)} className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isColumnDropdownOpen ? 'bg-orange-100 text-orange-600 border-orange-300 dark:bg-orange-900/30 dark:border-orange-700 dark:text-orange-400' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                      <button onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)} title="Show or hide course details columns" aria-label="Toggle visible columns" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isColumnDropdownOpen ? 'bg-orange-100 text-orange-600 border-orange-300 dark:bg-orange-900/30 dark:border-orange-700 dark:text-orange-400' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
                       </button>
                       
@@ -1197,6 +1638,66 @@ export default function Home() {
                         </div>
                       )}
                     </div>
+
+                    {/* Notification Menu Toggle */}
+                    <div className="relative group">
+                      <button data-tour="notification-button" onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} title="Open notification watches" aria-label="Open notification watches" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+                      </button>
+                      {!isNotificationMenuOpen && (
+                        <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Notifications<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                      )}
+                      {isNotificationMenuOpen && (
+                        <div className="fixed inset-0 z-[70]" onClick={() => setIsNotificationMenuOpen(false)}>
+                          <div className="absolute inset-0 bg-black/20" />
+                          <div className="absolute top-28 left-1/2 -translate-x-1/2 w-80 max-w-[calc(100vw-2rem)] bg-white dark:bg-[#2d2d2d] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                            <div className="flex items-center justify-between gap-3">
+                              <h3 className="text-sm font-black text-gray-700 dark:text-gray-100">Notification Watches</h3>
+                              {hasActiveNotificationWatches && (
+                                <button
+                                  onClick={clearAllNotificationWatches}
+                                  className="text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline cursor-pointer"
+                                >
+                                  Remove all
+                                </button>
+                              )}
+                            </div>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-3">Bell icons on classes let you choose conditions.</p>
+                            <div className="space-y-1 max-h-48 overflow-auto">
+                              {!hasActiveNotificationWatches && (
+                                <p className="text-xs text-gray-500 dark:text-gray-400">No watches enabled yet.</p>
+                              )}
+                              {activeNotificationWatches.map((watch) => (
+                                <div key={watch.crn} className="text-xs border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1.5 text-gray-700 dark:text-gray-200 flex items-center justify-between gap-2">
+                                  <span className="min-w-0 truncate">
+                                    <span className="font-bold">{watch.title}</span> ({watch.crn})
+                                  </span>
+                                  <button
+                                    onClick={() => removeNotificationWatch(watch.crn)}
+                                    className="text-red-600 dark:text-red-400 hover:underline font-bold shrink-0 cursor-pointer"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                              <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                              <div className="space-y-1 max-h-24 overflow-auto">
+                                {courseHistory.length === 0 && (
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                                )}
+                                {courseHistory.slice(0, 5).map((event, index) => (
+                                  <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                    <span className="font-bold">{event.title}</span> → {event.status}
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   
                   {/* Plan Name & Units */}
@@ -1210,7 +1711,30 @@ export default function Home() {
                 {activeCourses.length === 0 ? (
                   <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">This schedule is empty.</p>
                 ) : (
-                  activeCourses.map((course) => <CourseCard key={course.crn} course={course} isAdded={true} />)
+                  activeCourses.map((course) => {
+                    const notificationEligibility = getNotificationEligibility(course.term || termQuery);
+                    return (
+                      <CourseCard
+                        key={course.crn}
+                        course={course}
+                        isAdded={true}
+                        is24Hour={is24Hour}
+                        visibleColumns={visibleColumns}
+                        getCourseColor={getCourseColor}
+                        formatTimeDisplay={formatTimeDisplay}
+                        getRmpUrl={getRmpUrl}
+                        onOpenInfo={setInfoModalCourse}
+                        onColorChange={handleColorChange}
+                        onRemoveCourse={removeCourseFromSchedule}
+                        onAddCourse={addCourseToSchedule}
+                        renderStatusBadge={(targetCourse) => <CourseStatusBadge course={targetCourse} />}
+                        onToggleNotification={openNotificationModalForCourse}
+                        isNotificationEnabled={isCourseNotificationEnabled(course.crn)}
+                        isNotificationDisabled={!notificationEligibility.allowed}
+                        notificationDisabledReason={notificationEligibility.reason}
+                      />
+                    );
+                  })
                 )}
               </div>
             )}
@@ -1229,8 +1753,120 @@ export default function Home() {
       </div>
 
       {/* MODALS */}
+      {isTutorialOpen && (
+        <div className="fixed inset-0 z-[95]" role="dialog" aria-modal="true" aria-label="Scheduler tutorial">
+          <div className="absolute inset-0 bg-black/70" onClick={() => setIsTutorialOpen(false)} />
+          {tutorialRect && (
+            <div
+              className="absolute rounded-xl ring-4 ring-blue-500/80 pointer-events-none transition-all duration-300"
+              style={{
+                top: tutorialRect.top - 6,
+                left: tutorialRect.left - 6,
+                width: tutorialRect.width + 12,
+                height: tutorialRect.height + 12,
+                boxShadow: "0 0 0 9999px rgba(0,0,0,0.55)",
+              }}
+            />
+          )}
+          <div
+            className="absolute bg-[#f0f0f0] text-gray-900 rounded-xl shadow-2xl border border-gray-300 p-6"
+            style={tutorialCardPosition}
+          >
+            <button
+              onClick={() => setIsTutorialOpen(false)}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black cursor-pointer"
+              aria-label="Close tutorial"
+              title="Close tutorial"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <p className="text-[11px] uppercase tracking-wider font-black text-blue-700 mb-1">Site tour</p>
+            <h3 className="text-3xl font-black mb-3">{tutorialSteps[tutorialStep]?.title}</h3>
+            <p className="text-lg leading-relaxed mb-6">{tutorialSteps[tutorialStep]?.body}</p>
+
+            <div className="flex items-center justify-between gap-4">
+              <button
+                onClick={() => setTutorialStep((step) => Math.max(0, step - 1))}
+                disabled={tutorialStep === 0}
+                className="text-4xl font-black text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:text-gray-900"
+                aria-label="Previous tutorial step"
+              >
+                ←
+              </button>
+
+              <div className="flex items-center gap-3">
+                {tutorialSteps.map((_, index) => (
+                  <button
+                    key={`dot-${index}`}
+                    onClick={() => setTutorialStep(index)}
+                    className={`w-4 h-4 rounded-full border transition-colors ${index === tutorialStep ? "bg-blue-600 border-blue-600" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
+                    title={`Go to step ${index + 1}`}
+                    aria-label={`Go to tutorial step ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {tutorialStep < tutorialSteps.length - 1 ? (
+                <button
+                  onClick={() => setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1))}
+                  className="text-4xl font-black text-gray-600 hover:text-gray-900 cursor-pointer"
+                  aria-label="Next tutorial step"
+                >
+                  →
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsTutorialOpen(false)}
+                  className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold cursor-pointer"
+                >
+                  Done
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {notificationModalCourse && (
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Notification settings" onClick={() => setNotificationModalCourse(null)}>
+          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-2xl font-bold">Notify When</h3>
+              <div className="group relative">
+                <button className="w-8 h-8 rounded-full border border-gray-300/70 text-gray-200 flex items-center justify-center font-bold cursor-help">?</button>
+                <div className="absolute right-0 top-[120%] w-64 bg-black text-white text-xs rounded-lg p-3 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  Email notifications will be sent to: <span className="font-bold">{session?.user?.email || "Sign in required"}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { key: "open", label: "Section becomes OPEN" },
+                { key: "waitlist", label: "Section becomes WAITLIST" },
+                { key: "full", label: "Section becomes FULL" },
+                { key: "restrictions", label: "Restriction Codes have Changed" },
+              ].map((item) => {
+                const key = item.key as keyof NotificationFlags;
+                const checked = getNotificationFlags(notificationModalCourse.crn)[key];
+                return (
+                  <button key={item.key} onClick={() => toggleNotificationFlag(notificationModalCourse, key)} className={`w-full text-left px-4 py-3 rounded-lg border font-semibold transition-colors cursor-pointer ${checked ? "bg-amber-100 text-amber-900 border-amber-300" : "bg-[#3a3a3a] text-gray-100 border-gray-500 hover:bg-[#444]"}`}>
+                    <span className="mr-3">{checked ? "☑" : "☐"}</span>
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="mt-6 flex justify-end">
+              <button onClick={() => setNotificationModalCourse(null)} className="px-5 py-2 rounded-md bg-gray-600 hover:bg-gray-500 font-bold cursor-pointer">Done</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {infoModalCourse && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" onClick={() => setInfoModalCourse(null)}>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-xl w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-start mb-6">
               <div>
@@ -1271,7 +1907,7 @@ export default function Home() {
         const instructors = selectedEvent.courseInfo?.professors?.length > 0 ? selectedEvent.courseInfo.professors.join(', ') : "STAFF";
 
         return (
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={() => setSelectedEvent(null)}>
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-label="Event details" onClick={() => setSelectedEvent(null)}>
             {isCustomEvent ? (
               <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-6 max-w-xs w-full mx-4 border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-start mb-6">
@@ -1379,7 +2015,7 @@ export default function Home() {
 
       {/* SIGN IN MODAL */}
       {isSignInModalOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setIsSignInModalOpen(false)}>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" role="dialog" aria-modal="true" aria-label="Sign in modal" onClick={() => setIsSignInModalOpen(false)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-700 flex flex-col" onClick={e => e.stopPropagation()}>
             <h3 className="text-xl font-black text-white mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
             
@@ -1405,7 +2041,7 @@ export default function Home() {
       )}
 
       {isCustomEventModalOpen && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Custom event editor">
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white">
             <h3 className="text-xl font-bold mb-6">{editingCustomEventCrn ? "Edit Custom Event" : "Add a Custom Event"}</h3>
             
@@ -1422,8 +2058,8 @@ export default function Home() {
                   className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 appearance-none cursor-pointer"
                 >
                   <option value="">No Location (TBA)</option>
-                  {Object.entries(BUILDING_DATA).map(([code, name]) => (
-                    <option key={code} value={code}>{name} ({code})</option>
+                  {Object.entries(BUILDINGS).map(([code, building]) => (
+                    <option key={code} value={code}>{building.name} ({code})</option>
                   ))}
                 </select>
                 <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-gray-400 pointer-events-none">Location (Map Pin)</label>
