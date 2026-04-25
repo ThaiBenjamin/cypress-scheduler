@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { checkRateLimit, getClientAddress } from "@/lib/security/rate-limit";
-import { createSignedSharePayload } from "@/lib/share";
+import { createSignedSharePayload, createSignedShareToken } from "@/lib/share";
 import { z } from "zod";
 
 const shareSchema = z.object({
@@ -31,11 +31,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid share payload" }, { status: 400 });
   }
 
-  const signed = createSignedSharePayload({
+  const payload = {
     name: parsed.data.name,
     courses: parsed.data.courses,
     generatedAt: new Date().toISOString(),
-  });
+  };
+  const signed = createSignedSharePayload(payload);
+  const token = createSignedShareToken(payload);
 
-  return NextResponse.json({ ok: true, ...signed });
+  return NextResponse.json({ ok: true, ...signed, token });
 }

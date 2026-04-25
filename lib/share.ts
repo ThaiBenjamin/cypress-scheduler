@@ -1,4 +1,5 @@
 import { createHmac } from "node:crypto";
+import { brotliCompressSync, brotliDecompressSync } from "node:zlib";
 
 type SharedSchedulePayload = {
   name: string;
@@ -7,11 +8,13 @@ type SharedSchedulePayload = {
 };
 
 function base64UrlEncode(value: string): string {
-  return Buffer.from(value, "utf-8").toString("base64url");
+  const compressed = brotliCompressSync(Buffer.from(value, "utf-8"));
+  return compressed.toString("base64url");
 }
 
 function base64UrlDecode(value: string): string {
-  return Buffer.from(value, "base64url").toString("utf-8");
+  const compressed = Buffer.from(value, "base64url");
+  return brotliDecompressSync(compressed).toString("utf-8");
 }
 
 function getShareSecret() {
@@ -27,6 +30,11 @@ export function createSignedSharePayload(payload: SharedSchedulePayload): { payl
   return { payload: payloadB64, sig: signPayload(payloadB64) };
 }
 
+export function createSignedShareToken(payload: SharedSchedulePayload): string {
+  const signed = createSignedSharePayload(payload);
+  return `${signed.payload}.${signed.sig}`;
+}
+
 export function verifySignedSharePayload(payloadB64: string, sig: string): SharedSchedulePayload | null {
   if (!payloadB64 || !sig) return null;
   const expected = signPayload(payloadB64);
@@ -39,4 +47,10 @@ export function verifySignedSharePayload(payloadB64: string, sig: string): Share
   } catch {
     return null;
   }
+}
+
+export function verifySignedShareToken(token: string): SharedSchedulePayload | null {
+  const [payload, sig] = String(token || "").split(".");
+  if (!payload || !sig) return null;
+  return verifySignedSharePayload(payload, sig);
 }

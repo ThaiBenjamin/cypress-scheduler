@@ -277,6 +277,8 @@ export default function Home() {
   
   // MENU STATE
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+  const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+  const [tutorialStep, setTutorialStep] = useState(0);
   const settingsMenuRef = useRef<HTMLDivElement>(null);
   
   // REAL NEXT-AUTH STATE
@@ -303,6 +305,13 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+  const tutorialSteps = [
+    { title: "1) Search", body: "Use the Search tab to choose a term and find classes by CRN, subject, or title." },
+    { title: "2) Add classes", body: "Add sections from search results, and check for conflict/travel warnings before finalizing." },
+    { title: "3) Added tab", body: "Manage your list, customize colors, copy/share schedules, and enable notification watches." },
+    { title: "4) Map + Calendar", body: "Use the map to understand building locations and the calendar to verify your weekly flow." },
+    { title: "5) Save + Share", body: "Sign in to save schedules to cloud and create secure share links for advising or friends." },
+  ];
 
   // Close Settings Menu on Outside Click
   useEffect(() => {
@@ -784,13 +793,15 @@ export default function Home() {
       });
 
       const data = await res.json();
-      if (!res.ok || !data?.payload || !data?.sig) {
+      if (!res.ok || (!data?.token && (!data?.payload || !data?.sig))) {
         throw new Error(data?.error || "Failed to create share link.");
       }
 
-      const url = `${window.location.origin}/share?payload=${encodeURIComponent(data.payload)}&sig=${encodeURIComponent(data.sig)}`;
+      const url = data.token
+        ? `${window.location.origin}/share/s/${encodeURIComponent(data.token)}`
+        : `${window.location.origin}/share?payload=${encodeURIComponent(data.payload)}&sig=${encodeURIComponent(data.sig)}`;
       await navigator.clipboard.writeText(url);
-      setToastMessage("Share link copied to clipboard.");
+      setToastMessage("Short share link copied to clipboard.");
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
       toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
     } catch (error) {
@@ -1103,17 +1114,17 @@ export default function Home() {
           <div className="relative flex items-center justify-center gap-2" ref={settingsMenuRef}>
             
             {!session ? (
-              <button onClick={() => setIsSignInModalOpen(true)} className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded transition-colors hover:bg-white/20 cursor-pointer">
+              <button onClick={() => setIsSignInModalOpen(true)} title="Sign in with Google" aria-label="Sign in with Google" className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded transition-colors hover:bg-white/20 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" /></svg>
                 <span className="hidden sm:inline tracking-wider">SIGN IN</span>
               </button>
             ) : (
-              <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-sm transition-colors hover:bg-white/30 cursor-pointer shadow-sm" title="Profile Settings">
+              <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} aria-label="Open profile settings" className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-sm transition-colors hover:bg-white/30 cursor-pointer shadow-sm" title="Profile Settings">
                 {session.user?.name?.charAt(0).toUpperCase() || "U"}
               </button>
             )}
 
-            <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
+            <button onClick={() => setIsSettingsMenuOpen(!isSettingsMenuOpen)} title="Open settings menu" aria-label="Open settings menu" className="peer p-1.5 hover:bg-white/20 rounded transition-colors cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
 
@@ -1151,6 +1162,19 @@ export default function Home() {
                   <button onClick={() => setIs24Hour(false)} className={`flex-1 py-2 text-sm font-bold transition-colors cursor-pointer ${!is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>12 Hour</button>
                   <button onClick={() => setIs24Hour(true)} className={`flex-1 py-2 text-sm font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
                 </div>
+
+                <button
+                  onClick={() => {
+                    setTutorialStep(0);
+                    setIsTutorialOpen(true);
+                    setIsSettingsMenuOpen(false);
+                  }}
+                  className="w-full mb-2 flex items-center gap-3 px-3 py-2 rounded-md border border-blue-500/40 text-blue-200 hover:bg-blue-500/10 transition-colors cursor-pointer text-sm font-bold"
+                  title="Start guided tutorial"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m5-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  Start quick tutorial
+                </button>
 
                 {session && (
                   <>
@@ -1484,7 +1508,7 @@ export default function Home() {
                     
                     {/* Copy Button */}
                     <div className="relative group">
-                      <button onClick={handleCopySchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                      <button onClick={handleCopySchedule} title="Duplicate current schedule" aria-label="Duplicate current schedule" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" /></svg>
                       </button>
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
@@ -1500,7 +1524,7 @@ export default function Home() {
 
                     {/* Clear/Trash Button */}
                     <div className="relative group">
-                      <button onClick={clearActiveSchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
+                      <button onClick={clearActiveSchedule} title="Clear all classes in this schedule" aria-label="Clear schedule" className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
                       </button>
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Clear Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
@@ -1508,7 +1532,7 @@ export default function Home() {
 
                     {/* Column Visibility Toggle */}
                     <div className="relative group">
-                      <button onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)} className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isColumnDropdownOpen ? 'bg-orange-100 text-orange-600 border-orange-300 dark:bg-orange-900/30 dark:border-orange-700 dark:text-orange-400' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                      <button onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)} title="Show or hide course details columns" aria-label="Toggle visible columns" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isColumnDropdownOpen ? 'bg-orange-100 text-orange-600 border-orange-300 dark:bg-orange-900/30 dark:border-orange-700 dark:text-orange-400' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
                       </button>
                       
@@ -1537,7 +1561,7 @@ export default function Home() {
 
                     {/* Notification Menu Toggle */}
                     <div className="relative group">
-                      <button onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
+                      <button onClick={() => setIsNotificationMenuOpen(!isNotificationMenuOpen)} title="Open notification watches" aria-label="Open notification watches" className={`w-10 h-10 rounded-full shadow-sm flex items-center justify-center border cursor-pointer transition-all hover:scale-105 active:scale-95 ${isNotificationMenuOpen ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-300' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill={hasActiveNotificationWatches ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                       </button>
                       {!isNotificationMenuOpen && (
@@ -1649,8 +1673,52 @@ export default function Home() {
       </div>
 
       {/* MODALS */}
+      {isTutorialOpen && (
+        <div
+          className="absolute inset-0 bg-black/65 backdrop-blur-sm flex items-center justify-center z-[90] p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Scheduler tutorial"
+          onClick={() => setIsTutorialOpen(false)}
+        >
+          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-lg w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
+            <p className="text-[11px] uppercase tracking-wider font-black text-orange-300 mb-1">Guided Tour</p>
+            <h3 className="text-2xl font-bold mb-3">{tutorialSteps[tutorialStep]?.title}</h3>
+            <p className="text-sm text-gray-200 leading-relaxed mb-6">{tutorialSteps[tutorialStep]?.body}</p>
+            <div className="flex items-center justify-between gap-2">
+              <button
+                onClick={() => setTutorialStep((step) => Math.max(0, step - 1))}
+                disabled={tutorialStep === 0}
+                className="px-3 py-2 rounded-md border border-gray-500 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-gray-700 transition-colors"
+                title="Previous tutorial step"
+              >
+                Back
+              </button>
+              <div className="text-xs text-gray-400">{tutorialStep + 1} / {tutorialSteps.length}</div>
+              {tutorialStep < tutorialSteps.length - 1 ? (
+                <button
+                  onClick={() => setTutorialStep((step) => Math.min(tutorialSteps.length - 1, step + 1))}
+                  className="px-3 py-2 rounded-md bg-orange-600 hover:bg-orange-700 text-sm font-bold cursor-pointer transition-colors"
+                  title="Next tutorial step"
+                >
+                  Next
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsTutorialOpen(false)}
+                  className="px-3 py-2 rounded-md bg-green-600 hover:bg-green-700 text-sm font-bold cursor-pointer transition-colors"
+                  title="Finish tutorial"
+                >
+                  Finish
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {notificationModalCourse && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" onClick={() => setNotificationModalCourse(null)}>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Notification settings" onClick={() => setNotificationModalCourse(null)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
               <h3 className="text-2xl font-bold">Notify When</h3>
@@ -1687,7 +1755,7 @@ export default function Home() {
       )}
 
       {infoModalCourse && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" onClick={() => setInfoModalCourse(null)}>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-xl w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-start mb-6">
               <div>
@@ -1728,7 +1796,7 @@ export default function Home() {
         const instructors = selectedEvent.courseInfo?.professors?.length > 0 ? selectedEvent.courseInfo.professors.join(', ') : "STAFF";
 
         return (
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={() => setSelectedEvent(null)}>
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-label="Event details" onClick={() => setSelectedEvent(null)}>
             {isCustomEvent ? (
               <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-6 max-w-xs w-full mx-4 border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-start mb-6">
@@ -1836,7 +1904,7 @@ export default function Home() {
 
       {/* SIGN IN MODAL */}
       {isSignInModalOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setIsSignInModalOpen(false)}>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" role="dialog" aria-modal="true" aria-label="Sign in modal" onClick={() => setIsSignInModalOpen(false)}>
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-700 flex flex-col" onClick={e => e.stopPropagation()}>
             <h3 className="text-xl font-black text-white mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
             
@@ -1862,7 +1930,7 @@ export default function Home() {
       )}
 
       {isCustomEventModalOpen && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Custom event editor">
           <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white">
             <h3 className="text-xl font-bold mb-6">{editingCustomEventCrn ? "Edit Custom Event" : "Add a Custom Event"}</h3>
             

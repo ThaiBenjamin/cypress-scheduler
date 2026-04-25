@@ -11,6 +11,7 @@ A course-planning web app inspired by UCI's AntAlmanac, tailored for Cypress Col
 - Export/share schedule screenshots.
 - Save user preferences such as colors, visible columns, and theme.
 - Create signed, read-only share links for schedules.
+- Generate shorter signed share links (`/share/s/{token}`) for easier pasting.
 - View privacy policy, terms, and service status endpoint.
 
 ## Project structure (organized)
@@ -114,6 +115,7 @@ You are already using the right platform for a free tier deploy.
 - Define backup/restore and incident response runbooks.
 - Perform an accessibility pass (keyboard nav, focus states, color contrast, screen reader labels).
 - Add periodic health checks against `/api/health` in your deployment platform.
+- Include first-run tutorials/tooltips so new users can onboard quickly.
 
 ## Product questions to confirm next
 

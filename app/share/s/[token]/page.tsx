@@ -1,15 +1,13 @@
 import Link from "next/link";
-import { verifySignedSharePayload } from "@/lib/share";
+import { verifySignedShareToken } from "@/lib/share";
 
-type SharePageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+type ShareTokenPageProps = {
+  params: Promise<{ token: string }>;
 };
 
-export default async function SharePage({ searchParams }: SharePageProps) {
-  const params = await searchParams;
-  const payload = typeof params.payload === "string" ? params.payload : "";
-  const sig = typeof params.sig === "string" ? params.sig : "";
-  const shared = verifySignedSharePayload(payload, sig);
+export default async function ShareTokenPage({ params }: ShareTokenPageProps) {
+  const { token } = await params;
+  const shared = verifySignedShareToken(token);
 
   if (!shared) {
     return (
@@ -41,7 +39,7 @@ export default async function SharePage({ searchParams }: SharePageProps) {
           {items.length === 0 ? (
             <p className="text-gray-500 dark:text-gray-400">No courses in this shared schedule.</p>
           ) : (
-            items.map((course: any, index) => (
+            items.map((course, index) => (
               <article key={`${course?.crn || "item"}-${index}`} className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 shadow-sm">
                 <h2 className="font-extrabold text-lg text-gray-900 dark:text-gray-100">
                   {course?.subject ? `${course.subject} ${course.courseNumber}` : course?.title || "Course"}
