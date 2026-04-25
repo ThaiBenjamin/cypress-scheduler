@@ -10,6 +10,8 @@ A course-planning web app inspired by UCI's AntAlmanac, tailored for Cypress Col
 - Visualize class locations on a campus map.
 - Export/share schedule screenshots.
 - Save user preferences such as colors, visible columns, and theme.
+- Create signed, read-only share links for schedules.
+- View privacy policy, terms, and service status endpoint.
 
 ## Project structure (organized)
 
@@ -111,6 +113,7 @@ You are already using the right platform for a free tier deploy.
 - Add error monitoring (Sentry or equivalent) and alerting.
 - Define backup/restore and incident response runbooks.
 - Perform an accessibility pass (keyboard nav, focus states, color contrast, screen reader labels).
+- Add periodic health checks against `/api/health` in your deployment platform.
 
 ## Product questions to confirm next
 

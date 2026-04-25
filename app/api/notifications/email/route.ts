@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { checkRateLimit, getClientAddress } from "@/lib/security/rate-limit";
+import { writeAuditLog } from "@/lib/security/audit-log";
 import { notificationPayloadSchema } from "@/lib/validation";
 
 function escapeHtml(input?: string): string {
@@ -24,6 +25,12 @@ export async function POST(request: Request) {
     const ip = getClientAddress(request);
     const rate = checkRateLimit(`notifications:post:${sessionEmail}:${ip}`, 30, 60_000);
     if (!rate.allowed) {
+      writeAuditLog({
+        event: "notifications.rate_limited",
+        level: "warn",
+        userEmail: sessionEmail,
+        ip,
+      });
       return NextResponse.json(
         { error: "Too many notification requests. Please try again shortly." },
         { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } }
@@ -33,12 +40,25 @@ export async function POST(request: Request) {
     const rawPayload = await request.json();
     const parsed = notificationPayloadSchema.safeParse(rawPayload);
     if (!parsed.success) {
+      writeAuditLog({
+        event: "notifications.invalid_payload",
+        level: "warn",
+        userEmail: sessionEmail,
+        ip,
+      });
       return NextResponse.json({ error: "Invalid notification payload" }, { status: 400 });
     }
 
     const { to, crn, title, status, term, restrictionsChanged } = parsed.data;
 
     if (to && to.toLowerCase() !== sessionEmail.toLowerCase()) {
+      writeAuditLog({
+        event: "notifications.forbidden_recipient",
+        level: "warn",
+        userEmail: sessionEmail,
+        ip,
+        details: { attemptedRecipient: to },
+      });
       return NextResponse.json({ error: "Recipient must match signed-in user" }, { status: 403 });
     }
 
@@ -84,9 +104,21 @@ export async function POST(request: Request) {
 
     if (!resendResponse.ok) {
       const text = await resendResponse.text();
+      writeAuditLog({
+        event: "notifications.resend_error",
+        level: "error",
+        userEmail: sessionEmail,
+        ip,
+      });
       return NextResponse.json({ error: "Resend failed", details: text }, { status: 502 });
     }
 
+    writeAuditLog({
+      event: "notifications.sent",
+      userEmail: sessionEmail,
+      ip,
+      details: { crn, term: term || null },
+    });
     return NextResponse.json({ ok: true });
   } catch (error) {
     return NextResponse.json({ error: "Failed to send notification email", details: String(error) }, { status: 500 });

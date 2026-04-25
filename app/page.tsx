@@ -22,6 +22,29 @@ const dayMap: Record<string, number> = { "Su": 1, "M": 2, "Tu": 3, "W": 4, "Th":
 
 const COURSE_COLORS = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#06b6d4", "#f97316", "#6366f1", "#14b8a6"];
 const TERM_ORDER = { "Winter/Spring": 0, "Summer": 1, "Fall": 2 } as const;
+const COURSE_HISTORY_LIMIT = 25;
+
+function getBuildingCoordinates(code?: string): { lat: number; lng: number } | null {
+  if (!code) return null;
+  const found = BUILDINGS[code as keyof typeof BUILDINGS];
+  if (!found) return null;
+  return { lat: found.coords[0], lng: found.coords[1] };
+}
+
+function estimateWalkingMinutes(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const earthRadiusMeters = 6_371_000;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const haversine =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  const distanceMeters = 2 * earthRadiusMeters * Math.asin(Math.sqrt(haversine));
+  const averageWalkingSpeedMps = 1.35;
+  return Math.ceil(distanceMeters / averageWalkingSpeedMps / 60);
+}
 
 function parseTermLabel(term: string): { year: number; season: keyof typeof TERM_ORDER } | null {
   const [yearRaw, seasonRaw] = String(term || "").split("-");
@@ -195,6 +218,13 @@ type NotificationWatch = {
   lastStatus: "OPEN" | "WAITLIST" | "FULL";
   lastRestrictionSignature: string;
 };
+type CourseHistoryEvent = {
+  crn: string;
+  title: string;
+  term: string;
+  status: "OPEN" | "WAITLIST" | "FULL";
+  at: string;
+};
 
 export default function Home() {
   const [initialScheduleState] = useState(() => {
@@ -229,6 +259,9 @@ export default function Home() {
   const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
   const [notificationWatches, setNotificationWatches] = useState<Record<string, NotificationWatch>>({});
   const [notificationModalCourse, setNotificationModalCourse] = useState<any>(null);
+  const [courseHistory, setCourseHistory] = useState<CourseHistoryEvent[]>([]);
+  const [lastSearchSource, setLastSearchSource] = useState<"db" | "fallback" | null>(null);
+  const [lastSearchAt, setLastSearchAt] = useState<string | null>(null);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = useRef<any>(null);
@@ -373,6 +406,10 @@ export default function Home() {
     if (savedNotificationWatches) {
       try { setNotificationWatches(JSON.parse(savedNotificationWatches)); } catch {}
     }
+    const savedCourseHistory = localStorage.getItem("cypress_course_history");
+    if (savedCourseHistory) {
+      try { setCourseHistory(JSON.parse(savedCourseHistory)); } catch {}
+    }
 
     setIsLoaded(true);
   }, []);
@@ -445,6 +482,11 @@ export default function Home() {
     if (!isLoaded) return;
     localStorage.setItem("cypress_notification_watches", JSON.stringify(notificationWatches));
   }, [notificationWatches, isLoaded]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem("cypress_course_history", JSON.stringify(courseHistory));
+  }, [courseHistory, isLoaded]);
 
   const currentDataString = JSON.stringify({ schedules, activeId: activeScheduleId });
   const hasUnsavedChanges = isLoaded && currentDataString !== lastSavedStateString;
@@ -602,6 +644,19 @@ export default function Home() {
             (watch.flags.restrictions && watch.lastRestrictionSignature !== latestRestrictionSignature);
 
           if (shouldSend) {
+            setCourseHistory((prev) => {
+              const next: CourseHistoryEvent[] = [
+                {
+                  crn: watch.crn,
+                  title: watch.title,
+                  term: watch.term,
+                  status: latestStatus,
+                  at: new Date().toISOString(),
+                },
+                ...prev,
+              ];
+              return next.slice(0, COURSE_HISTORY_LIMIT);
+            });
             await fetch("/api/notifications/email", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -710,6 +765,42 @@ export default function Home() {
     setActiveScheduleId(newId);
   };
 
+  const handleCopyShareLink = async () => {
+    if (!activeSchedule || !session?.user?.email) {
+      setToastMessage("Sign in to create a secure share link.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: activeSchedule.name,
+          courses: activeSchedule.courses,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data?.payload || !data?.sig) {
+        throw new Error(data?.error || "Failed to create share link.");
+      }
+
+      const url = `${window.location.origin}/share?payload=${encodeURIComponent(data.payload)}&sig=${encodeURIComponent(data.sig)}`;
+      await navigator.clipboard.writeText(url);
+      setToastMessage("Share link copied to clipboard.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+    } catch (error) {
+      console.error("Share link creation failed", error);
+      setToastMessage("Unable to create share link right now.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+    }
+  };
+
   const handleRenameSchedule = (id: string, currentName: string) => {
     const newName = window.prompt("Enter a new name for this schedule:", currentName);
     if (!newName || newName.trim() === "") return;
@@ -745,6 +836,40 @@ export default function Home() {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
       toastTimerRef.current = setTimeout(() => setToastMessage(null), 5000);
     }
+
+    const getWalkWarning = () => {
+      for (const event of myScheduleEvents) {
+        if (!event.meetingInfo?.building) continue;
+        for (const newEvent of newEvents) {
+          if (!newEvent.meetingInfo?.building) continue;
+          const sameDay = event.start.getDay() === newEvent.start.getDay();
+          if (!sameDay) continue;
+
+          const gapAfter = (newEvent.start.getTime() - event.end.getTime()) / 60000;
+          const gapBefore = (event.start.getTime() - newEvent.end.getTime()) / 60000;
+          const transitionGap = gapAfter >= 0 ? gapAfter : gapBefore >= 0 ? gapBefore : -1;
+          if (transitionGap < 0 || transitionGap > 15) continue;
+
+          const from = getBuildingCoordinates(event.meetingInfo.building);
+          const to = getBuildingCoordinates(newEvent.meetingInfo.building);
+          if (!from || !to) continue;
+
+          const walkMinutes = estimateWalkingMinutes(from, to);
+          if (walkMinutes > transitionGap) {
+            return `Travel warning: ~${walkMinutes} min walk between ${event.meetingInfo.building} and ${newEvent.meetingInfo.building} with only ${Math.round(transitionGap)} min gap.`;
+          }
+        }
+      }
+      return null;
+    };
+
+    const walkWarning = getWalkWarning();
+    if (walkWarning) {
+      setToastMessage(walkWarning);
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 6000);
+    }
+
     saveStateToHistory();
     setSchedules(prev => prev.map(s => s.id === activeScheduleId ? { ...s, courses: [...s.courses, course] } : s));
   };
@@ -768,6 +893,9 @@ export default function Home() {
     try {
       const res = await fetch(`/api/courses?q=${encodeURIComponent(query)}&term=${term}`);
       const data = await res.json();
+      const sourceHeader = res.headers.get("x-course-source");
+      setLastSearchSource(sourceHeader === "fallback" ? "fallback" : "db");
+      setLastSearchAt(new Date().toISOString());
       if (Array.isArray(data)) {
         setSearchResults(data);
         if (data.length > 0) {
@@ -1193,6 +1321,12 @@ export default function Home() {
                     </select>
                     <input type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
                   </div>
+                  {(lastSearchSource || lastSearchAt) && (
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400">
+                      Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
+                      {lastSearchAt ? ` • Last refreshed ${new Date(lastSearchAt).toLocaleTimeString()}` : ""}
+                    </p>
+                  )}
                   <div className="flex items-center justify-end">
                     <div className="relative">
                     <button
@@ -1233,6 +1367,19 @@ export default function Home() {
                               </button>
                             </div>
                           ))}
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                          <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                          <div className="space-y-1 max-h-24 overflow-auto">
+                            {courseHistory.length === 0 && (
+                              <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                            )}
+                            {courseHistory.slice(0, 5).map((event, index) => (
+                              <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                <span className="font-bold">{event.title}</span> → {event.status}
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     )}
@@ -1343,6 +1490,14 @@ export default function Home() {
                       <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Schedule<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
                     </div>
 
+                    {/* Share Link Button */}
+                    <div className="relative group">
+                      <button onClick={handleCopyShareLink} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 border border-gray-200 dark:border-gray-700 cursor-pointer transition-transform hover:scale-105 active:scale-95" aria-label="Copy share link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-4.5-4.5h6m0 0v6m0-6L10.5 15" /></svg>
+                      </button>
+                      <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Copy Share Link<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+                    </div>
+
                     {/* Clear/Trash Button */}
                     <div className="relative group">
                       <button onClick={clearActiveSchedule} className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all hover:scale-105 active:scale-95">
@@ -1421,6 +1576,19 @@ export default function Home() {
                                   </button>
                                 </div>
                               ))}
+                            </div>
+                            <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                              <h4 className="text-[11px] font-black uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1.5">Recent status history</h4>
+                              <div className="space-y-1 max-h-24 overflow-auto">
+                                {courseHistory.length === 0 && (
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">No changes recorded yet.</p>
+                                )}
+                                {courseHistory.slice(0, 5).map((event, index) => (
+                                  <p key={`${event.crn}-${event.at}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                    <span className="font-bold">{event.title}</span> → {event.status}
+                                  </p>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>

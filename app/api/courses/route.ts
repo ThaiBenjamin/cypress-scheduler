@@ -5,6 +5,8 @@ import path from 'node:path';
 import { checkRateLimit, getClientAddress } from '@/lib/security/rate-limit';
 
 type CourseResult = Awaited<ReturnType<typeof db.course.findMany>>[number];
+const withSource = (data: unknown, source: "db" | "fallback", status = 200) =>
+  NextResponse.json(data, { status, headers: { "X-Course-Source": source } });
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -21,7 +23,7 @@ export async function GET(request: Request) {
 
   try {
     if (!q || q.length > 120) {
-      return NextResponse.json([]);
+      return withSource([], "db");
     }
 
     const searchWords = q.split(/\s+/).filter(Boolean);
@@ -88,18 +90,18 @@ export async function GET(request: Request) {
     });
 
     if (courses.length > 0) {
-      return NextResponse.json(courses);
+      return withSource(courses, "db");
     }
 
-    return NextResponse.json(await getFallbackCourses(q, term));
+    return withSource(await getFallbackCourses(q, term), "fallback");
   } catch (error) {
     console.error("Database Error, using local fallback:", error);
 
     try {
-      return NextResponse.json(await getFallbackCourses(q, term));
+      return withSource(await getFallbackCourses(q, term), "fallback");
     } catch (fallbackError) {
       console.error('Fallback data load failed:', fallbackError);
-      return NextResponse.json({ error: 'Failed to fetch courses' }, { status: 500 });
+      return NextResponse.json({ error: 'Failed to fetch courses' }, { status: 500, headers: { "X-Course-Source": "fallback" } });
     }
   }
 }
