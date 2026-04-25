@@ -1,11 +1,49 @@
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { checkRateLimit, getClientAddress } from "@/lib/security/rate-limit";
+import { notificationPayloadSchema } from "@/lib/validation";
+
+function escapeHtml(input?: string): string {
+  return String(input || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 export async function POST(request: Request) {
   try {
-    const { to, crn, title, status, term, restrictionsChanged } = await request.json();
+    const session = await getServerSession(authOptions);
+    const sessionEmail = session?.user?.email;
+    if (!sessionEmail) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-    if (!to || !crn) {
-      return NextResponse.json({ error: "Missing recipient or course" }, { status: 400 });
+    const ip = getClientAddress(request);
+    const rate = checkRateLimit(`notifications:post:${sessionEmail}:${ip}`, 30, 60_000);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { error: "Too many notification requests. Please try again shortly." },
+        { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } }
+      );
+    }
+
+    const rawPayload = await request.json();
+    const parsed = notificationPayloadSchema.safeParse(rawPayload);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Invalid notification payload" }, { status: 400 });
+    }
+
+    const { to, crn, title, status, term, restrictionsChanged } = parsed.data;
+
+    if (to && to.toLowerCase() !== sessionEmail.toLowerCase()) {
+      return NextResponse.json({ error: "Recipient must match signed-in user" }, { status: 403 });
+    }
+
+    if (!crn) {
+      return NextResponse.json({ error: "Missing course CRN" }, { status: 400 });
     }
 
     const apiKey = process.env.RESEND_API_KEY;
@@ -15,12 +53,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, skipped: true, reason: "Missing RESEND_API_KEY" });
     }
 
-    const subject = `Course Alert: ${title || crn} is now ${status}`;
+    const safeTitle = escapeHtml(title || crn);
+    const safeCrn = escapeHtml(crn);
+    const safeTerm = escapeHtml(term || "your selected term");
+    const safeStatus = escapeHtml(status || "updated");
+    const subject = `Course Alert: ${title || crn} is now ${status || "UPDATED"}`;
     const html = `
       <h2>Cypress Scheduler Notification</h2>
-      <p><strong>${title || crn}</strong> (${crn}) in <strong>${term || "your selected term"}</strong> changed status.</p>
+      <p><strong>${safeTitle}</strong> (${safeCrn}) in <strong>${safeTerm}</strong> changed status.</p>
       <ul>
-        <li>Current Status: <strong>${status}</strong></li>
+        <li>Current Status: <strong>${safeStatus}</strong></li>
         <li>Restrictions Changed: <strong>${restrictionsChanged ? "Yes" : "No"}</strong></li>
       </ul>
       <p>Open your scheduler to review and update your plan.</p>
@@ -34,7 +76,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [to],
+        to: [sessionEmail],
         subject,
         html,
       }),

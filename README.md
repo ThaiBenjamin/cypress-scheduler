@@ -39,6 +39,17 @@ npm install
 
 2. Set up environment variables in `.env` (database + auth values).
 
+   Recommended minimum variables:
+   - `DATABASE_URL`
+   - `GOOGLE_CLIENT_ID`
+   - `GOOGLE_CLIENT_SECRET`
+   - `NEXTAUTH_URL`
+   - `NEXTAUTH_SECRET`
+   - `RESEND_API_KEY` (for email notifications)
+   - `NOTIFICATION_FROM_EMAIL`
+   - `ALLOWED_EMAIL_DOMAIN` (optional, e.g. `student.fullcoll.edu`)
+   - `DB_SSL_REJECT_UNAUTHORIZED` (production default is strict; set `false` only if your DB provider requires it)
+
 3. Run the app:
 
 ```bash
@@ -90,6 +101,16 @@ You are already using the right platform for a free tier deploy.
 - Split `app/page.tsx` into feature components (`SearchPanel`, `ScheduleList`, `CalendarPanel`, `SettingsMenu`).
 - Add unit tests for helper functions (conflicts, time formatting, event generation).
 - Add E2E smoke tests for search → add class → map flow.
+
+## Production launch checklist (students)
+
+- Enforce server-side auth checks on all schedule and notification APIs.
+- Validate API payloads and query params with schemas.
+- Add API rate limiting for search, schedule writes, and notifications.
+- Publish Privacy Policy + Terms of Use and a support contact.
+- Add error monitoring (Sentry or equivalent) and alerting.
+- Define backup/restore and incident response runbooks.
+- Perform an accessibility pass (keyboard nav, focus states, color contrast, screen reader labels).
 
 ## Product questions to confirm next
 

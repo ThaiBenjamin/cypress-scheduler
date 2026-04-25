@@ -380,7 +380,7 @@ export default function Home() {
   // CLOUD STORAGE OVERRIDE LOAD
   useEffect(() => {
     if (session?.user?.email) {
-      fetch(`/api/schedules?email=${session.user.email}`)
+      fetch('/api/schedules')
         .then((res) => res.json())
         .then((data) => {
           const guestSnapshotRaw = localStorage.getItem("cypress_guest_snapshot");
@@ -491,12 +491,11 @@ export default function Home() {
           fetch('/api/schedules', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: sched.id,
-              userEmail,
-              name: sched.name,
-              courses: sched.courses,
-            }),
+              body: JSON.stringify({
+                id: sched.id,
+                name: sched.name,
+                courses: sched.courses,
+              }),
           })
         )
       );
@@ -607,7 +606,6 @@ export default function Home() {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                to: watch.email,
                 crn: watch.crn,
                 title: watch.title,
                 status: latestStatus,

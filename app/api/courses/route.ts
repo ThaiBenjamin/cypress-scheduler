@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { checkRateLimit, getClientAddress } from '@/lib/security/rate-limit';
 
 type CourseResult = Awaited<ReturnType<typeof db.course.findMany>>[number];
 
@@ -9,9 +10,17 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const q = (searchParams.get('q') || '').trim();
   const term = searchParams.get('term');
+  const ip = getClientAddress(request);
+  const rate = checkRateLimit(`courses:get:${ip}`, 240, 60_000);
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { error: "Too many searches. Please try again in a moment." },
+      { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } }
+    );
+  }
 
   try {
-    if (!q) {
+    if (!q || q.length > 120) {
       return NextResponse.json([]);
     }
 
