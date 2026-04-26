@@ -11,7 +11,7 @@ export default function PrivacyPage() {
         <li>Email alerts are sent only to the signed-in account email.</li>
       </ul>
       <p>
-        For questions, updates, or account data requests, contact the project administrator.
+        For questions, updates, or account data requests, contact cypressschedulersupport@gmail.com.
       </p>
     </main>
   );

@@ -20,7 +20,7 @@ export default function RootLayout({
           <div className="flex-1">{children}</div>
           <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
             <div className="max-w-6xl mx-auto px-4 py-3 text-xs text-gray-600 dark:text-gray-400 flex flex-wrap items-center justify-between gap-2">
-              <span>Need help? Contact support@cypressscheduler.app</span>
+              <span>Need help? Contact cypressschedulersupport@gmail.com</span>
               <div className="flex items-center gap-3">
                 <Link href="/privacy" className="hover:underline">Privacy</Link>
                 <Link href="/terms" className="hover:underline">Terms</Link>
