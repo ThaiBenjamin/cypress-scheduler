@@ -1,14 +1,30 @@
-import { PrismaClient } from '@prisma/client';
+import * as PrismaClientPkg from '@prisma/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
+import { getDatabaseHost, resolveDatabaseUrl } from './db-url';
+
+const PrismaClientCtor = (PrismaClientPkg as any).PrismaClient;
+
+const { url: resolvedDatabaseUrl } = resolveDatabaseUrl();
+const databaseHost = getDatabaseHost(resolvedDatabaseUrl);
+const isSupabaseHost = (databaseHost || '').endsWith('.supabase.co');
+const isSupabasePoolerHost = (databaseHost || '').endsWith('.pooler.supabase.com');
 
 // Create the connection pool once
+const rejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true'
+  ? true
+  : process.env.DB_SSL_REJECT_UNAUTHORIZED === 'false'
+    ? false
+    : isSupabasePoolerHost
+      ? false
+      : process.env.NODE_ENV === 'production' || isSupabaseHost;
+
 const pool = new Pool({ 
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false } 
+  connectionString: resolvedDatabaseUrl || undefined,
+  ssl: { rejectUnauthorized } 
 });
 
 const adapter = new PrismaPg(pool);
 
 // Export a single, reusable Prisma instance
-export const db = new PrismaClient({ adapter });
+export const db = new PrismaClientCtor({ adapter });
