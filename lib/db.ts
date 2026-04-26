@@ -8,13 +8,16 @@ const PrismaClientCtor = (PrismaClientPkg as any).PrismaClient;
 const { url: resolvedDatabaseUrl } = resolveDatabaseUrl();
 const databaseHost = getDatabaseHost(resolvedDatabaseUrl);
 const isSupabaseHost = (databaseHost || '').endsWith('.supabase.co');
-
-const PrismaClient = (PrismaClientPkg as any).PrismaClient;
+const isSupabasePoolerHost = (databaseHost || '').endsWith('.pooler.supabase.com');
 
 // Create the connection pool once
-const rejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === 'false'
-  ? false
-  : process.env.NODE_ENV === 'production' || isSupabaseHost;
+const rejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true'
+  ? true
+  : process.env.DB_SSL_REJECT_UNAUTHORIZED === 'false'
+    ? false
+    : isSupabasePoolerHost
+      ? false
+      : process.env.NODE_ENV === 'production' || isSupabaseHost;
 
 const pool = new Pool({ 
   connectionString: resolvedDatabaseUrl || undefined,

@@ -7,6 +7,12 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   const { url: resolvedDatabaseUrl, source: databaseUrlSource } = resolveDatabaseUrl();
   const databaseHost = getDatabaseHost(resolvedDatabaseUrl);
+  const isSupabasePoolerHost = (databaseHost || "").endsWith(".pooler.supabase.com");
+  const tlsRejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === "true"
+    ? true
+    : process.env.DB_SSL_REJECT_UNAUTHORIZED === "false"
+      ? false
+      : !isSupabasePoolerHost;
 
   const startedAt = Date.now();
 
@@ -49,6 +55,7 @@ export async function GET() {
     databaseUrlSet: Boolean(resolvedDatabaseUrl),
     databaseUrlSource,
     databaseHost,
+    tlsRejectUnauthorized,
     database: dbStatus,
   }, { status: statusCode, headers: { "Cache-Control": "no-store" } });
 }

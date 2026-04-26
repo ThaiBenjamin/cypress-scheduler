@@ -51,7 +51,7 @@ npm install
    - `RESEND_API_KEY` (for email notifications)
    - `NOTIFICATION_FROM_EMAIL`
    - `ALLOWED_EMAIL_DOMAIN` (optional, e.g. `student.fullcoll.edu`)
-   - `DB_SSL_REJECT_UNAUTHORIZED` (production default is strict; set `false` only if your DB provider requires it)
+   - `DB_SSL_REJECT_UNAUTHORIZED` (set `false` if your DB chain fails validation; set `true` to force strict TLS)
 
    Supabase split vars (alternative to `DATABASE_URL`):
    - `SUPABASE_DB_HOST` (example: `qysbndckfwpnjlbhzwnx.supabase.co`)
@@ -60,6 +60,8 @@ npm install
    - `SUPABASE_DB_USER`
    - `SUPABASE_DB_PASSWORD`
    - `SUPABASE_DB_SSLMODE` (defaults to `require`)
+
+   Note: for `*.pooler.supabase.com`, runtime defaults to `rejectUnauthorized=false` unless you explicitly set `DB_SSL_REJECT_UNAUTHORIZED=true`.
 
 3. Run the app:
 
