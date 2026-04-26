@@ -150,7 +150,10 @@ Open `http://localhost:3000`.
 ```bash
 npm run lint
 npm run build
+npm run test:ai-model
 ```
+
+`test:ai-model` prints the active AI provider/model returned by `/api/ai-chat` (for example `openai`, `openrouter`, or `local-fallback`).
 
 ---
 

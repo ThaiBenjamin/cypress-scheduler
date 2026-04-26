@@ -93,7 +93,11 @@ export async function POST(request: Request) {
     const openRouterApiKey = process.env.OPENROUTER_API_KEY;
 
     if (!openAiApiKey && !openRouterApiKey) {
-      return NextResponse.json({ reply: localFallbackReply(lastUserMessage), source: "local-fallback" });
+      return NextResponse.json({
+        reply: localFallbackReply(lastUserMessage),
+        source: "local-fallback",
+        model: "local-fallback",
+      });
     }
 
     const payload = {
@@ -127,6 +131,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           reply: reply || localFallbackReply(lastUserMessage),
           source: "openai",
+          model: process.env.OPENAI_MODEL || "gpt-4o-mini",
         });
       }
     }
@@ -157,6 +162,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           reply: reply || localFallbackReply(lastUserMessage),
           source: "openrouter",
+          model: process.env.OPENROUTER_MODEL || "openrouter/free",
         });
       }
     }
@@ -164,10 +170,15 @@ export async function POST(request: Request) {
     return NextResponse.json({
       reply: localFallbackReply(lastUserMessage),
       source: "local-fallback",
+      model: "local-fallback",
     });
   } catch {
     return NextResponse.json(
-      { reply: "I'm temporarily unavailable. Please try again in a moment." },
+      {
+        reply: "I'm temporarily unavailable. Please try again in a moment.",
+        source: "local-fallback",
+        model: "local-fallback",
+      },
       { status: 200 },
     );
   }
