@@ -41,6 +41,13 @@ Core responsibilities:
 
 If asked for actions you cannot perform, be transparent and provide next best steps.
 If uncertain, say so clearly and guide the user to the relevant app feature.
+
+Response format requirements:
+- Keep responses short and easy to absorb.
+- Maximum 120 words.
+- Use at most 4 bullet points OR 2 short paragraphs.
+- Ask at most 1 follow-up question when needed.
+- Avoid long tables, long examples, or lengthy multi-section templates unless user explicitly asks for depth.
 `;
 
 function localFallbackReply(lastUserMessage: string): string {
@@ -63,6 +70,21 @@ function localFallbackReply(lastUserMessage: string): string {
   }
 
   return "I can help with finding classes, building schedules, map usage, sharing, and notifications. Ask me what you're trying to do and I’ll walk you through it.";
+}
+
+function compactReply(text: string): string {
+  const cleaned = text.replace(/\r/g, "").trim();
+  if (!cleaned) return cleaned;
+
+  const sections = cleaned
+    .split(/\n+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const shortened = sections.slice(0, 6).join("\n");
+  const words = shortened.split(/\s+/);
+  if (words.length <= 120) return shortened;
+  return `${words.slice(0, 120).join(" ")}...`;
 }
 
 export async function GET() {
@@ -127,6 +149,7 @@ export async function POST(request: Request) {
 
     const payload = {
       temperature: 0.3,
+      max_tokens: 220,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...trimmedMessages.map((m) => ({ role: m.role, content: m.content })),
@@ -154,7 +177,7 @@ export async function POST(request: Request) {
         const reply = data.choices?.[0]?.message?.content?.trim();
 
         return NextResponse.json({
-          reply: reply || localFallbackReply(lastUserMessage),
+          reply: compactReply(reply || localFallbackReply(lastUserMessage)),
           source: "openai",
           model: process.env.OPENAI_MODEL || "gpt-4o-mini",
         });
@@ -185,7 +208,7 @@ export async function POST(request: Request) {
         const reply = data.choices?.[0]?.message?.content?.trim();
 
         return NextResponse.json({
-          reply: reply || localFallbackReply(lastUserMessage),
+          reply: compactReply(reply || localFallbackReply(lastUserMessage)),
           source: "openrouter",
           model: process.env.OPENROUTER_MODEL || "openrouter/free",
         });
@@ -193,7 +216,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      reply: localFallbackReply(lastUserMessage),
+      reply: compactReply(localFallbackReply(lastUserMessage)),
       source: "local-fallback",
       model: "local-fallback",
     });
