@@ -22,9 +22,15 @@ export default function RootLayout({
             <div className="max-w-6xl mx-auto px-4 py-3 text-xs text-gray-600 dark:text-gray-400 flex flex-wrap items-center justify-between gap-2">
               <span>Need help? Contact cypressschedulersupport@gmail.com</span>
               <div className="flex items-center gap-3">
-                <Link href="/privacy" className="hover:underline">Privacy</Link>
-                <Link href="/terms" className="hover:underline">Terms</Link>
-                <Link href="/api/health" className="hover:underline">Status</Link>
+                <Link href="/privacy" className="hover:underline">
+                  Privacy
+                </Link>
+                <Link href="/terms" className="hover:underline">
+                  Terms
+                </Link>
+                <Link href="/api/health" className="hover:underline">
+                  Status
+                </Link>
               </div>
             </div>
           </footer>

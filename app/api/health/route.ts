@@ -5,14 +5,18 @@ import { getDatabaseHost, resolveDatabaseUrl } from "@/lib/db-url";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const { url: resolvedDatabaseUrl, source: databaseUrlSource } = resolveDatabaseUrl();
+  const { url: resolvedDatabaseUrl, source: databaseUrlSource } =
+    resolveDatabaseUrl();
   const databaseHost = getDatabaseHost(resolvedDatabaseUrl);
-  const isSupabasePoolerHost = (databaseHost || "").endsWith(".pooler.supabase.com");
-  const tlsRejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED === "true"
-    ? true
-    : process.env.DB_SSL_REJECT_UNAUTHORIZED === "false"
-      ? false
-      : !isSupabasePoolerHost;
+  const isSupabasePoolerHost = (databaseHost || "").endsWith(
+    ".pooler.supabase.com",
+  );
+  const tlsRejectUnauthorized =
+    process.env.DB_SSL_REJECT_UNAUTHORIZED === "true"
+      ? true
+      : process.env.DB_SSL_REJECT_UNAUTHORIZED === "false"
+        ? false
+        : !isSupabasePoolerHost;
 
   const startedAt = Date.now();
 
@@ -33,13 +37,18 @@ export async function GET() {
       latencyMs: Date.now() - startedAt,
     };
   } catch (error: unknown) {
-    const normalizedError = error as { name?: string; message?: string; code?: string };
+    const normalizedError = error as {
+      name?: string;
+      message?: string;
+      code?: string;
+    };
     dbStatus = {
       ok: false,
       latencyMs: Date.now() - startedAt,
       error: {
         name: normalizedError?.name || "DatabaseError",
-        message: normalizedError?.message || "Unknown database connection error.",
+        message:
+          normalizedError?.message || "Unknown database connection error.",
         code: normalizedError?.code,
       },
     };
@@ -47,15 +56,18 @@ export async function GET() {
 
   const statusCode = dbStatus.ok ? 200 : 503;
 
-  return NextResponse.json({
-    ok: dbStatus.ok,
-    service: "cypress-scheduler",
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || "development",
-    databaseUrlSet: Boolean(resolvedDatabaseUrl),
-    databaseUrlSource,
-    databaseHost,
-    tlsRejectUnauthorized,
-    database: dbStatus,
-  }, { status: statusCode, headers: { "Cache-Control": "no-store" } });
+  return NextResponse.json(
+    {
+      ok: dbStatus.ok,
+      service: "cypress-scheduler",
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "development",
+      databaseUrlSet: Boolean(resolvedDatabaseUrl),
+      databaseUrlSource,
+      databaseHost,
+      tlsRejectUnauthorized,
+      database: dbStatus,
+    },
+    { status: statusCode, headers: { "Cache-Control": "no-store" } },
+  );
 }

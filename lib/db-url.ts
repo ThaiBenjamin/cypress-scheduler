@@ -1,10 +1,6 @@
 type DbUrlResolution = {
   url: string | null;
-  source:
-    | "database_url"
-    | "supabase_db_url"
-    | "supabase_parts"
-    | "none";
+  source: "database_url" | "supabase_db_url" | "supabase_parts" | "none";
 };
 
 function encodePart(value: string): string {

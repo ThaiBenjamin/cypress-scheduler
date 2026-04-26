@@ -1,142 +1,176 @@
 # Cypress College Scheduler
 
-A course-planning web app inspired by UCI's AntAlmanac, tailored for Cypress College.
+Cypress College Scheduler is a course-planning web app inspired by AntAlmanac and tailored for Cypress College students.
 
-## What this app currently does
+It helps students:
 
-- Search courses by term and keyword.
-- Add courses to one or more schedules.
-- Detect calendar time conflicts.
-- Visualize class locations on a campus map.
-- Export/share schedule screenshots.
-- Save user preferences such as colors, visible columns, and theme.
-- Create signed, read-only share links for schedules.
-- Generate shorter signed share links (`/share/s/{token}`) for easier pasting.
-- View privacy policy, terms, and service status endpoint.
+- search class sections,
+- build multiple schedule plans,
+- preview classes on the map,
+- save schedules to the cloud,
+- share read-only schedule links,
+- and create optional class-status notifications.
 
-## Project structure (organized)
+---
+
+## How the app works
+
+### 1) Search + ranking
+
+- The UI calls `GET /api/courses` with query + term.
+- The API tries PostgreSQL first, applies tokenized keyword matching and relevance ranking, and returns the top results.
+- If the database is unavailable (or no matches are found), it can fall back to the local `cypress_data.json` catalog.
+
+### 2) Schedule building
+
+- Users can create multiple plans and add/remove course sections.
+- The scheduler converts meeting times to calendar events and checks for overlap conflicts.
+- Signed-in users can persist schedules via `GET/POST/DELETE /api/schedules`.
+
+### 3) Auth + identity
+
+- Google sign-in is handled with NextAuth.
+- Server routes enforce session checks before saving data tied to a user account.
+
+### 4) Mapping + routing
+
+- Building metadata is centralized in `lib/scheduler/buildings.ts`.
+- `CourseMap` renders class markers and route lines for selected classes.
+
+### 5) Sharing + notifications
+
+- Signed schedule links are generated through `POST /api/share` and viewed at `/share` or `/share/s/[token]`.
+- Email notifications are sent through `POST /api/notifications/email` when configured.
+
+---
+
+## Tech stack
+
+- **Framework:** Next.js App Router (React + TypeScript)
+- **Database:** PostgreSQL (Supabase/Neon/local)
+- **ORM:** Prisma + `@prisma/adapter-pg`
+- **Auth:** NextAuth (Google provider)
+- **Map UI:** Leaflet / React-Leaflet
+
+---
+
+## Project structure
 
 ```txt
 app/
   api/
-    auth/[...nextauth]/route.ts   # NextAuth API route
-    courses/route.ts              # Course search API
-    schedules/route.ts            # Saved schedule API
-  CourseMap.tsx                   # Map + building search + route lines
-  page.tsx                        # Main scheduler UI (search, added classes, calendar)
+    auth/[...nextauth]/route.ts    # NextAuth route
+    courses/route.ts               # Course search API
+    health/route.ts                # Health + DB diagnostics
+    notifications/email/route.ts   # Notification email sender
+    schedules/route.ts             # User schedule CRUD
+    share/route.ts                 # Signed share payload API
+  components/CourseCard.tsx        # Reusable class card UI
+  CourseMap.tsx                    # Campus map + route drawing
+  page.tsx                         # Main scheduler experience
+  privacy/page.tsx                 # Privacy policy page
+  terms/page.tsx                   # Terms of use page
 lib/
-  db.ts                           # Prisma DB client
-  scheduler/
-    buildings.ts                  # Shared building code/name/coords source of truth
+  auth.ts                          # Shared auth options
+  db-url.ts                        # Resolves DATABASE_URL / Supabase parts
+  db.ts                            # Prisma + pg pool client
+  scheduler/buildings.ts           # Building metadata source of truth
+  security/                        # Rate limit + audit helpers
+  share.ts                         # Signed share token helpers
+  validation.ts                    # Zod schemas
 prisma/
-  schema.prisma                   # Database schema
+  schema.prisma                    # DB schema
 ```
 
-## Local development
+---
 
-1. Install dependencies:
+## Local setup
+
+### Prerequisites
+
+- Node.js 20+
+- npm 10+
+- PostgreSQL connection (local or hosted)
+
+### 1) Install
 
 ```bash
 npm install
 ```
 
-2. Set up environment variables in `.env` (database + auth values).
+### 2) Configure environment variables
 
-   Recommended minimum variables:
-   - `DATABASE_URL` (or Supabase split vars below)
-   - `GOOGLE_CLIENT_ID`
-   - `GOOGLE_CLIENT_SECRET`
-   - `NEXTAUTH_URL`
-   - `NEXTAUTH_SECRET`
-   - `RESEND_API_KEY` (for email notifications)
-   - `NOTIFICATION_FROM_EMAIL`
-   - `ALLOWED_EMAIL_DOMAIN` (optional, e.g. `student.fullcoll.edu`)
-   - `DB_SSL_REJECT_UNAUTHORIZED` (set `false` if your DB chain fails validation; set `true` to force strict TLS)
+Create `.env` and set:
 
-   Supabase split vars (alternative to `DATABASE_URL`):
-   - `SUPABASE_DB_HOST` (example: `qysbndckfwpnjlbhzwnx.supabase.co`)
-   - `SUPABASE_DB_PORT` (defaults to `5432`)
-   - `SUPABASE_DB_NAME` (defaults to `postgres`)
-   - `SUPABASE_DB_USER`
-   - `SUPABASE_DB_PASSWORD`
-   - `SUPABASE_DB_SSLMODE` (defaults to `require`)
+```bash
+# Database
+DATABASE_URL=postgresql://...
+# or use SUPABASE_DB_* split vars (host/user/password/etc.)
+DB_SSL_REJECT_UNAUTHORIZED=false
 
-   Note: for `*.pooler.supabase.com`, runtime defaults to `rejectUnauthorized=false` unless you explicitly set `DB_SSL_REJECT_UNAUTHORIZED=true`.
+# Auth
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=...
 
-3. Run the app:
+# Optional notifications
+RESEND_API_KEY=...
+NOTIFICATION_FROM_EMAIL=...
+
+# Optional account restriction
+ALLOWED_EMAIL_DOMAIN=student.fullcoll.edu
+```
+
+### 3) Run development server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open `http://localhost:3000`.
 
-## Contributor setup requirements
-
-If you add another developer, this is the baseline setup they should have:
-
-- **Node.js 20+** (recommended: latest LTS)
-- **npm 10+**
-- **PostgreSQL database access** (local or hosted)
-- **Git + GitHub account**
-
-### Should they use a virtual environment?
-
-- For the **Next.js app**, use Node tooling (`npm`), not a Python virtualenv.
-- For the optional `scraper.py`, using a Python virtual environment is recommended to isolate scraper dependencies:
+### 4) Useful checks
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt  # if/when requirements file is added
+npm run lint
+npm run build
 ```
 
-If you want, I can add a `requirements.txt` and a one-command bootstrap script for new contributors.
+---
 
-## Deploying for free on Vercel
+## Deployment (Vercel)
 
-You are already using the right platform for a free tier deploy.
+1. Push repository to GitHub.
+2. Import project into Vercel.
+3. Add all required env vars in Vercel project settings.
+4. Deploy.
+5. Validate health endpoint:
+   - `https://<your-domain>/api/health`
 
-1. Push this repo to GitHub.
-2. Import the repository into Vercel.
-3. In Vercel project settings, configure required environment variables.
-4. If using Prisma + Postgres, point `DATABASE_URL` to your hosted DB.
-5. Deploy.
+---
 
-### Recommended free database options
+## Core API endpoints
 
-- Neon (Postgres)
-- Supabase (Postgres)
+- `GET /api/courses` - search courses
+- `GET /api/health` - service/db diagnostics
+- `GET/POST/DELETE /api/schedules` - schedule persistence
+- `POST /api/share` - create signed share payloads
+- `POST /api/notifications/email` - send watch notifications
 
-## Next cleanup roadmap
+---
 
-- Extract scheduler domain types from `any` into typed interfaces.
-- Split `app/page.tsx` into feature components (`SearchPanel`, `ScheduleList`, `CalendarPanel`, `SettingsMenu`).
-- Add unit tests for helper functions (conflicts, time formatting, event generation).
-- Add E2E smoke tests for search → add class → map flow.
+## Current product decisions
 
-## Production launch checklist (students)
+- Saving schedules requires sign-in.
+- Travel-time warnings are currently disabled by product choice.
+- Support contact: `cypressschedulersupport@gmail.com`.
 
-- Enforce server-side auth checks on all schedule and notification APIs.
-- Validate API payloads and query params with schemas.
-- Add API rate limiting for search, schedule writes, and notifications.
-- Publish Privacy Policy + Terms of Use and a support contact.
-- Add error monitoring (Sentry or equivalent) and alerting.
-- Define backup/restore and incident response runbooks.
-- Perform an accessibility pass (keyboard nav, focus states, color contrast, screen reader labels).
-- Add periodic health checks against `/api/health` in your deployment platform.
-- Include first-run tutorials/tooltips so new users can onboard quickly.
+---
 
-## Product questions to confirm next
+## Suggested next improvements
 
-To implement your vision cleanly, these decisions are helpful:
-
-1. Should conflict detection allow overlaps between lecture/lab in same course section?
-2. Do you want drag-and-drop schedule rearranging?
-3. Should custom events support recurring ranges by date (not just weekday/time)?
-4. Do you want public share links for schedules?
-
-### Confirmed product decisions
-
-- Saving schedules requires sign-in and cloud save.
-- No travel-time warnings between back-to-back classes.
+- Split `app/page.tsx` into smaller feature modules.
+- Add unit tests for ranking/conflict helpers.
+- Add E2E tests for search -> add -> save -> share flow.
+- Add monitoring/alerting for production APIs.

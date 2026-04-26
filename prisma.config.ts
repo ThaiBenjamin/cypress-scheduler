@@ -7,6 +7,8 @@ const { url: resolvedDatabaseUrl } = resolveDatabaseUrl();
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    url: resolvedDatabaseUrl || "postgresql://user:pass@localhost:5432/cypress_scheduler",
+    url:
+      resolvedDatabaseUrl ||
+      "postgresql://user:pass@localhost:5432/cypress_scheduler",
   },
 });
