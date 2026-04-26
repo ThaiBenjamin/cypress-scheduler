@@ -47,7 +47,9 @@ It helps students:
 
 - The in-app assistant helps students with finding classes, schedule building, and app usage questions.
 - The UI posts to `POST /api/ai-chat`.
-- If `OPENAI_API_KEY` is configured, responses come from OpenAI; otherwise, the app uses a built-in local guidance fallback.
+- If `OPENAI_API_KEY` is configured, responses come from OpenAI.
+- If OpenAI is unavailable but `OPENROUTER_API_KEY` is configured, responses come from OpenRouter (including free router/model options).
+- If neither provider is configured, the app uses a built-in local guidance fallback.
 
 ---
 
@@ -128,6 +130,8 @@ NOTIFICATION_FROM_EMAIL=...
 # Optional AI chat (recommended)
 OPENAI_API_KEY=...
 OPENAI_MODEL=gpt-4o-mini
+OPENROUTER_API_KEY=...
+OPENROUTER_MODEL=openrouter/free
 
 # Optional account restriction
 ALLOWED_EMAIL_DOMAIN=student.fullcoll.edu

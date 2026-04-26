@@ -89,40 +89,81 @@ export async function POST(request: Request) {
       return NextResponse.json({ reply: "Ask me anything about schedules, classes, maps, or app features." });
     }
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
+    const openAiApiKey = process.env.OPENAI_API_KEY;
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
+
+    if (!openAiApiKey && !openRouterApiKey) {
       return NextResponse.json({ reply: localFallbackReply(lastUserMessage), source: "local-fallback" });
     }
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-        temperature: 0.3,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...trimmedMessages.map((m) => ({ role: m.role, content: m.content })),
-        ],
-      }),
-    });
+    const payload = {
+      temperature: 0.3,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...trimmedMessages.map((m) => ({ role: m.role, content: m.content })),
+      ],
+    };
 
-    if (!response.ok) {
-      const fallback = localFallbackReply(lastUserMessage);
-      return NextResponse.json({ reply: fallback, source: "local-fallback" });
+    // 1) Prefer OpenAI when key is configured.
+    if (openAiApiKey) {
+      const openAiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openAiApiKey}`,
+        },
+        body: JSON.stringify({
+          ...payload,
+          model: process.env.OPENAI_MODEL || "gpt-4o-mini",
+        }),
+      });
+
+      if (openAiResponse.ok) {
+        const data = (await openAiResponse.json()) as {
+          choices?: Array<{ message?: { content?: string } }>;
+        };
+        const reply = data.choices?.[0]?.message?.content?.trim();
+
+        return NextResponse.json({
+          reply: reply || localFallbackReply(lastUserMessage),
+          source: "openai",
+        });
+      }
     }
 
-    const data = (await response.json()) as {
-      choices?: Array<{ message?: { content?: string } }>;
-    };
-    const reply = data.choices?.[0]?.message?.content?.trim();
+    // 2) Fall back to OpenRouter if configured (can use free routers/models).
+    if (openRouterApiKey) {
+      const referer = process.env.NEXTAUTH_URL || "https://cypress-scheduler-theta.vercel.app";
+      const openRouterResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openRouterApiKey}`,
+          "HTTP-Referer": referer,
+          "X-Title": "Cypress Scheduler",
+        },
+        body: JSON.stringify({
+          ...payload,
+          model: process.env.OPENROUTER_MODEL || "openrouter/free",
+        }),
+      });
+
+      if (openRouterResponse.ok) {
+        const data = (await openRouterResponse.json()) as {
+          choices?: Array<{ message?: { content?: string } }>;
+        };
+        const reply = data.choices?.[0]?.message?.content?.trim();
+
+        return NextResponse.json({
+          reply: reply || localFallbackReply(lastUserMessage),
+          source: "openrouter",
+        });
+      }
+    }
 
     return NextResponse.json({
-      reply: reply || localFallbackReply(lastUserMessage),
-      source: "openai",
+      reply: localFallbackReply(lastUserMessage),
+      source: "local-fallback",
     });
   } catch {
     return NextResponse.json(
