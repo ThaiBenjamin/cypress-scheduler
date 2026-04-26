@@ -65,6 +65,31 @@ function localFallbackReply(lastUserMessage: string): string {
   return "I can help with finding classes, building schedules, map usage, sharing, and notifications. Ask me what you're trying to do and I’ll walk you through it.";
 }
 
+export async function GET() {
+  const hasOpenAI = Boolean(process.env.OPENAI_API_KEY);
+  const hasOpenRouter = Boolean(process.env.OPENROUTER_API_KEY);
+  const activeSource = hasOpenAI
+    ? "openai"
+    : hasOpenRouter
+      ? "openrouter"
+      : "local-fallback";
+  const activeModel = hasOpenAI
+    ? process.env.OPENAI_MODEL || "gpt-4o-mini"
+    : hasOpenRouter
+      ? process.env.OPENROUTER_MODEL || "openrouter/free"
+      : "local-fallback";
+
+  return NextResponse.json({
+    ok: true,
+    endpoint: "/api/ai-chat",
+    message:
+      "Use POST with a JSON body: { messages: [{ role: 'user', content: '...' }] }",
+    activeSource,
+    activeModel,
+    supports: ["GET", "POST"],
+  });
+}
+
 export async function POST(request: Request) {
   const ip = getClientAddress(request);
   const rate = checkRateLimit(`ai-chat:${ip}`, 30, 60_000);

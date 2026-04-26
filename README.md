@@ -173,6 +173,7 @@ npm run test:ai-model
 - `GET /api/courses` - search courses
 - `GET /api/health` - service/db diagnostics
 - `POST /api/ai-chat` - student help assistant replies
+  - `GET /api/ai-chat` returns active provider/model and usage instructions
 - `GET/POST/DELETE /api/schedules` - schedule persistence
 - `POST /api/share` - create signed share payloads
 - `POST /api/notifications/email` - send watch notifications
