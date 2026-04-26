@@ -225,6 +225,10 @@ type CourseHistoryEvent = {
   status: "OPEN" | "WAITLIST" | "FULL";
   at: string;
 };
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
 
 export default function Home() {
   const [initialScheduleState] = useState(() => {
@@ -307,6 +311,16 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatInput, setChatInput] = useState("");
+  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content:
+        "Hi! I'm your Cypress Scheduler assistant. Ask me about finding classes, building conflict-free schedules, notifications, sharing, or how this app works.",
+    },
+  ]);
   const tutorialSteps = useMemo(
     () => [
       { title: "Welcome to Cypress Scheduler", body: "Use ← and → keys to navigate this tour. Press Esc to close anytime.", selector: "[data-tour='schedule-dropdown']", placement: "bottom" as const, tab: "search" as const },
@@ -989,6 +1003,41 @@ export default function Home() {
     }
     setIsSearching(false);
   }, []);
+
+  const sendChatMessage = useCallback(async () => {
+    const text = chatInput.trim();
+    if (!text || isChatLoading) return;
+
+    const nextMessages: ChatMessage[] = [...chatMessages, { role: "user", content: text }];
+    setChatMessages(nextMessages);
+    setChatInput("");
+    setIsChatLoading(true);
+
+    try {
+      const res = await fetch("/api/ai-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: nextMessages }),
+      });
+      const data = await res.json();
+      const reply =
+        typeof data?.reply === "string" && data.reply.trim().length > 0
+          ? data.reply
+          : "I couldn't generate a response just now. Please try again.";
+      setChatMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+    } catch {
+      setChatMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content:
+            "I'm having trouble connecting right now. You can still search classes and build schedules while I reconnect.",
+        },
+      ]);
+    } finally {
+      setIsChatLoading(false);
+    }
+  }, [chatInput, chatMessages, isChatLoading]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => performSearch(searchQuery, termQuery), 300);
@@ -2129,6 +2178,80 @@ export default function Home() {
           <button onClick={() => setToastMessage(null)} className="text-yellow-600 hover:text-yellow-800 dark:text-yellow-300 dark:hover:text-yellow-100 shrink-0 pointer-events-auto cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
         </div>
       )}
+
+      <div className="fixed bottom-6 left-4 lg:left-6 z-50">
+        {isChatOpen && (
+          <div className="mb-3 w-[92vw] max-w-sm rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl overflow-hidden">
+            <div className="px-4 py-3 bg-orange-600 text-white flex items-center justify-between">
+              <div>
+                <p className="text-sm font-black">Scheduler AI Assistant</p>
+                <p className="text-[11px] opacity-90">Questions about classes, schedules, and app features</p>
+              </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                className="p-1.5 rounded hover:bg-white/20 cursor-pointer"
+                title="Close AI assistant"
+                aria-label="Close AI assistant"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            <div className="h-72 overflow-y-auto px-3 py-3 space-y-2 bg-gray-50 dark:bg-gray-950">
+              {chatMessages.map((message, idx) => (
+                <div
+                  key={`${message.role}-${idx}`}
+                  className={`rounded-xl px-3 py-2 text-sm whitespace-pre-wrap ${
+                    message.role === "user"
+                      ? "bg-orange-100 dark:bg-orange-900/40 text-gray-900 dark:text-orange-100 ml-6"
+                      : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 mr-6 border border-gray-200 dark:border-gray-700"
+                  }`}
+                >
+                  {message.content}
+                </div>
+              ))}
+              {isChatLoading && (
+                <div className="rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 mr-6 border border-gray-200 dark:border-gray-700">
+                  Thinking...
+                </div>
+              )}
+            </div>
+            <div className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+              <div className="flex items-end gap-2">
+                <textarea
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      void sendChatMessage();
+                    }
+                  }}
+                  placeholder="Ask about finding classes, scheduling, or app features..."
+                  className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  rows={2}
+                />
+                <button
+                  onClick={() => void sendChatMessage()}
+                  disabled={isChatLoading || !chatInput.trim()}
+                  className="h-10 px-3 rounded-lg bg-orange-600 text-white text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-orange-700 cursor-pointer"
+                  title="Send message"
+                  aria-label="Send message"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        <button
+          onClick={() => setIsChatOpen((prev) => !prev)}
+          className="w-14 h-14 rounded-full bg-orange-600 hover:bg-orange-700 text-white shadow-2xl flex items-center justify-center border-2 border-white dark:border-gray-900 cursor-pointer"
+          title={isChatOpen ? "Hide AI assistant" : "Open AI assistant"}
+          aria-label={isChatOpen ? "Hide AI assistant" : "Open AI assistant"}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m3.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H19.5m-1.5 7.5a3 3 0 01-3 3H9a3 3 0 01-3-3m12 0V12a3 3 0 00-3-3H9a3 3 0 00-3 3v5.25m12 0H6.75" /></svg>
+        </button>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@ It helps students:
 - save schedules to the cloud,
 - share read-only schedule links,
 - and create optional class-status notifications.
+- chat with an in-app AI assistant for help using the scheduler.
 
 ---
 
@@ -41,6 +42,12 @@ It helps students:
 
 - Signed schedule links are generated through `POST /api/share` and viewed at `/share` or `/share/s/[token]`.
 - Email notifications are sent through `POST /api/notifications/email` when configured.
+
+### 6) AI chat assistant
+
+- The in-app assistant helps students with finding classes, schedule building, and app usage questions.
+- The UI posts to `POST /api/ai-chat`.
+- If `OPENAI_API_KEY` is configured, responses come from OpenAI; otherwise, the app uses a built-in local guidance fallback.
 
 ---
 
@@ -118,6 +125,10 @@ NEXTAUTH_SECRET=...
 RESEND_API_KEY=...
 NOTIFICATION_FROM_EMAIL=...
 
+# Optional AI chat (recommended)
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-4o-mini
+
 # Optional account restriction
 ALLOWED_EMAIL_DOMAIN=student.fullcoll.edu
 ```
@@ -154,6 +165,7 @@ npm run build
 
 - `GET /api/courses` - search courses
 - `GET /api/health` - service/db diagnostics
+- `POST /api/ai-chat` - student help assistant replies
 - `GET/POST/DELETE /api/schedules` - schedule persistence
 - `POST /api/share` - create signed share payloads
 - `POST /api/notifications/email` - send watch notifications
