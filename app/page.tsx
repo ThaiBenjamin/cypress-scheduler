@@ -1186,7 +1186,7 @@ export default function Home() {
     
     const existingTerms = Array.from(new Set(activeCourses.map(c => c.term)));
     if (existingTerms.some(term => term !== course.term)) {
-      setToastMessage(`Warning: You just added a ${course.term} class, but your schedule contains classes from other terms.`);
+      setToastMessage("Save to cloud");
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
       toastTimerRef.current = setTimeout(() => setToastMessage(null), 5000);
     }
