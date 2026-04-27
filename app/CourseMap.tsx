@@ -3,44 +3,8 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, ZoomControl, Polyline } from 'react-leaflet';
 import L from 'leaflet';
+import { BUILDINGS } from '@/lib/scheduler/buildings';
 import 'leaflet/dist/leaflet.css';
-
-const BUILDING_DATA: Record<string, { name: string, coords: [number, number] }> = {
-  'BBF': { name: 'Baseball Field', coords: [33.828350865002704, -118.02147325915115] },
-  'BK': { name: 'Book Store', coords: [33.82782899995476, -118.0256343519516] },
-  'BUS': { name: 'Business', coords: [33.82764291754249, -118.0261296107725] },
-  'CCCPLX': { name: 'Cypress College Complex', coords: [33.828293535988884, -118.02536342312762] },
-  '1VPA': { name: 'Fine Arts', coords: [33.82908674904778, -118.02565754198164] },
-  'FASS': { name: 'Fine Arts Swing Space', coords: [33.82917971324042, -118.02440299254006] },
-  'G1': { name: 'Gym 1', coords: [33.82768633899941, -118.02395356454173] },
-  'G2': { name: 'Gym 2', coords: [33.82721511092138, -118.0237862842233] },
-  'HUM': { name: 'Humanities', coords: [33.82967948582821, -118.024962491319] },
-  'H/HUM': { name: 'Humanities Lecture Hall', coords: [33.829451459956246, -118.0249256405959] },
-  'L/LRC': { name: 'Library/Learning Resource Center', coords: [33.82832918616391, -118.02344296146632] },
-  'M&O': { name: 'Maintenance & Operations', coords: [33.829522087373014, -118.02246364926803] },
-  'POOL': { name: 'Pool', coords: [33.82726389489849, -118.02461708360693] },
-  'SBF': { name: 'Softball Field', coords: [33.827470151893166, -118.02117746689576] },
-  'SLL': { name: 'Student Life & Leadership', coords: [33.82762283109881, -118.02462661611317] },
-  'SC': { name: 'Student Center', coords: [33.82776747253072, -118.02515590947029] },
-  'SEM': { name: 'Science Engineering Math', coords: [33.829171069830466, -118.02343240575921] },
-  'SOCCER': { name: 'Soccer Field', coords: [33.827048368931024, -118.02028619699738] },
-  'TA': { name: 'Theater Arts', coords: [33.82859367670119, -118.02637857202797] },
-  'TC': { name: 'Tennis Courts', coords: [33.82512279191629, -118.02178829093837] },
-  'TE1': { name: 'Tech Ed 1', coords: [33.82734880071696, -118.02545998266356] },
-  'TE2': { name: 'Tech Ed 2', coords: [33.826992294130825, -118.02464459111573] },
-  'TE3': { name: 'Tech Ed 3', coords: [33.82670708779164, -118.02519176175967] },
-  'TRACK': { name: 'Track & Field', coords: [33.82573114547679, -118.02066786365502] },
-  'VRC': { name: 'Veterans Resource Center', coords: [33.827857963876035, -118.02452054448868] },
-  'NOCE': { name: 'NOCE/ESL Classes', coords: [33.82634940282063, -118.02434729307518] },
-  'LOT1': { name: 'Parking Lot 1', coords: [33.82738481008401, -118.02689536777606] },
-  'LOT2': { name: 'Parking Lot 2', coords: [33.826486612497945, -118.02572211276656] },
-  'LOT3': { name: 'Parking Lot 3', coords: [33.82616303595734, -118.02538501865827] },
-  'LOT4': { name: 'Parking Lot 4', coords: [33.825258006809676, -118.0234983202711] },
-  'LOT5': { name: 'Parking Lot 5', coords: [33.82679243692882, -118.02253763919792] },
-  'LOT6': { name: 'Parking Lot 6', coords: [33.829613282480025, -118.02095236932291] },
-  'LOT7': { name: 'Parking Lot 7', coords: [33.82876971657518, -118.02238359248902] },
-  'LOT8': { name: 'Parking Lot 8', coords: [33.8295000526514, -118.02588668153949] },
-};
 
 const DAY_CODES: Record<string, string> = {
   'MON': 'M', 'TUE': 'Tu', 'WED': 'W', 'THU': 'Th', 'FRI': 'F', 'SAT': 'Sa', 'SUN': 'Su'
@@ -81,6 +45,7 @@ function MapController({ targetCoords }: { targetCoords: [number, number] | null
   return null;
 }
 
+/** Small solid dot used when showing a single class meeting at a building. */
 const createColoredMarker = (color: string) => {
   return new L.DivIcon({
     className: 'custom-icon',
@@ -89,6 +54,7 @@ const createColoredMarker = (color: string) => {
   });
 };
 
+/** Numbered marker used on day-filtered routes to show class order. */
 const createNumberedMarker = (color: string, number: number) => {
   return new L.DivIcon({
     className: 'custom-icon-numbered',
@@ -97,6 +63,7 @@ const createNumberedMarker = (color: string, number: number) => {
   });
 };
 
+/** Marker style used when a user searches for a building manually. */
 const createRedSearchMarker = () => {
   return new L.DivIcon({
     className: 'search-icon',
@@ -113,6 +80,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchedBuilding, setSearchedBuilding] = useState<{code: string, coords: [number, number]} | null>(null);
+  const [routeSegments, setRouteSegments] = useState<{ path: [number, number][], color: string }[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMapReady(true), 150);
@@ -135,6 +103,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
   }, [activeCourses]);
 
   const mapData = useMemo(() => {
+    // Build a raw list of class meetings with building coordinates first.
     let rawList: any[] = [];
     
     activeCourses.forEach(course => {
@@ -145,10 +114,10 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
           const targetDayCode = DAY_CODES[activeDay];
           if (!meeting.days || !meeting.days.includes(targetDayCode)) return;
         }
-        if (bldg && BUILDING_DATA[bldg]) {
+        if (bldg && BUILDINGS[bldg]) {
           const timeVal = parseInt((meeting.startTime || "00:00").replace(':', ''), 10);
           rawList.push({
-            course, meeting, buildingCode: bldg, baseCoords: BUILDING_DATA[bldg].coords,
+            course, meeting, buildingCode: bldg, baseCoords: BUILDINGS[bldg].coords,
             color: getCourseColor(course.crn), timeVal: timeVal
           });
         }
@@ -160,6 +129,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
       rawList.forEach((item, index) => { item.orderNumber = index + 1; });
     }
 
+    // Group multiple classes in the same building so we can fan markers out radially.
     const groupedMarkers: Record<string, any[]> = {};
     rawList.forEach(item => {
       if (!groupedMarkers[item.buildingCode]) groupedMarkers[item.buildingCode] = [];
@@ -193,28 +163,67 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
     return { markers };
   }, [activeCourses, activeDay, getCourseColor]);
 
-  // Clean, simple dashed lines between classes
-  const routeSegments = useMemo(() => {
-    const segments: {path: [number, number][], color: string}[] = [];
-    
-    if (activeDay === "ALL" || mapData.markers.length < 2) return segments;
-
-    for (let i = 0; i < mapData.markers.length - 1; i++) {
-      const start = mapData.markers[i].coords;
-      const end = mapData.markers[i + 1].coords;
-      const color = mapData.markers[i].color;
-      
-      segments.push({ path: [start, end], color });
+  useEffect(() => {
+    if (activeDay === "ALL" || mapData.markers.length < 2) {
+      setRouteSegments([]);
+      return;
     }
-    return segments;
-  }, [mapData.markers, activeDay]);
+
+    const baseSegments = mapData.markers.slice(0, -1).map((marker, idx) => ({
+      path: [marker.baseCoords, mapData.markers[idx + 1].baseCoords] as [number, number][],
+      color: marker.color,
+    }));
+    setRouteSegments(baseSegments);
+
+    let isCancelled = false;
+    const controller = new AbortController();
+
+    const fetchWalkingSegments = async () => {
+      const routedSegments = await Promise.all(
+        mapData.markers.slice(0, -1).map(async (marker, idx) => {
+          const next = mapData.markers[idx + 1];
+          const start = marker.baseCoords as [number, number];
+          const end = next.baseCoords as [number, number];
+          const fallback = { path: [start, end] as [number, number][], color: marker.color };
+          const samePoint = Math.abs(start[0] - end[0]) < 0.000001 && Math.abs(start[1] - end[1]) < 0.000001;
+          if (samePoint) return fallback;
+
+          try {
+            const response = await fetch(
+              `https://router.project-osrm.org/route/v1/foot/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson&steps=false`,
+              { signal: controller.signal }
+            );
+            if (!response.ok) return fallback;
+            const data = await response.json();
+            const coordinates = data?.routes?.[0]?.geometry?.coordinates;
+            if (!Array.isArray(coordinates) || coordinates.length < 2) return fallback;
+            const path = coordinates.map((coord: [number, number]) => [coord[1], coord[0]] as [number, number]);
+            return { path, color: marker.color };
+          } catch {
+            return fallback;
+          }
+        })
+      );
+
+      if (!isCancelled) {
+        setRouteSegments(routedSegments);
+      }
+    };
+
+    void fetchWalkingSegments();
+
+    return () => {
+      isCancelled = true;
+      controller.abort();
+    };
+  }, [activeDay, mapData.markers]);
 
   const filteredSearchList = useMemo(() => {
-    const isExactMatch = searchedBuilding && searchQuery === `${BUILDING_DATA[searchedBuilding.code].name} (${searchedBuilding.code})`;
-    if (!searchQuery.trim() || isExactMatch) return Object.entries(BUILDING_DATA);
+    const isExactMatch = searchedBuilding && searchQuery === `${BUILDINGS[searchedBuilding.code].name} (${searchedBuilding.code})`;
+    if (!searchQuery.trim() || isExactMatch) return Object.entries(BUILDINGS);
     
     const query = searchQuery.toLowerCase();
-    return Object.entries(BUILDING_DATA).filter(([code, data]) => 
+    return Object.entries(BUILDINGS).filter(([code, data]) => 
       code.toLowerCase().includes(query) || 
       data.name.toLowerCase().includes(query)
     );
@@ -222,7 +231,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
 
   const handleSearchSelect = (code: string, coords: [number, number]) => {
     setSearchedBuilding({ code, coords });
-    setSearchQuery(`${BUILDING_DATA[code].name} (${code})`);
+    setSearchQuery(`${BUILDINGS[code].name} (${code})`);
     setIsDropdownOpen(false);
   };
 
@@ -283,12 +292,11 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
           <Polyline 
             key={`route-${idx}`} 
             positions={segment.path} 
-            pathOptions={{ color: segment.color, weight: 4, opacity: 0.9, dashArray: "8, 8", lineCap: "round" }} 
+            pathOptions={{ color: segment.color, weight: 5, opacity: 0.85, lineCap: "round", lineJoin: "round" }} 
           />
         ))}
 
         {mapData.markers.map((marker, idx) => {
-          const isCustom = marker.course.crn?.startsWith("CUS-");
           const markerIcon = activeDay !== "ALL" && marker.orderNumber 
             ? createNumberedMarker(marker.color, marker.orderNumber) 
             : createColoredMarker(marker.color);
@@ -298,7 +306,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
               <Popup className="rounded-xl custom-popup">
                 <div className="font-sans min-w-[200px] p-1">
                   <h3 className="font-black text-lg text-gray-900 m-0 mb-3 leading-tight">
-                    {BUILDING_DATA[marker.buildingCode]?.name || "Unknown Building"} ({marker.buildingCode})
+                    {BUILDINGS[marker.buildingCode]?.name || "Unknown Building"} ({marker.buildingCode})
                   </h3>
                   <div className="text-sm text-gray-700 mb-1"><span className="font-bold">Class: </span>{marker.course.subject ? `${marker.course.subject} ` : ''}{marker.course.courseNumber}</div>
                   <div className="text-sm text-gray-700 mb-4"><span className="font-bold">Room: </span>{marker.meeting.building} {marker.meeting.room || ''}</div>
@@ -328,7 +336,7 @@ export default function CourseMap({ activeCourses, getCourseColor, onColorChange
           <Marker position={searchedBuilding.coords} icon={createRedSearchMarker()}>
             <Popup className="rounded-xl custom-popup">
               <div className="font-sans min-w-[200px] p-1 text-center">
-                <h3 className="font-black text-lg text-gray-900 m-0 mb-3 leading-tight">{BUILDING_DATA[searchedBuilding.code].name}</h3>
+                <h3 className="font-black text-lg text-gray-900 m-0 mb-3 leading-tight">{BUILDINGS[searchedBuilding.code].name}</h3>
                 <div className="text-sm text-gray-700 mb-4 font-mono font-bold">Code: {searchedBuilding.code}</div>
                 <a href={`https://www.google.com/maps/dir/?api=1&destination=${searchedBuilding.coords[0]},${searchedBuilding.coords[1]}`} target="_blank" rel="noopener noreferrer" className="w-full bg-orange-600 hover:bg-orange-700 text-white !text-white hover:!text-white font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm no-underline mt-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg> DIRECTIONS
