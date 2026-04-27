@@ -234,6 +234,22 @@ type ChatMessage = {
   role: "user" | "assistant";
   content: string;
 };
+type OptimizerConstraints = {
+  avoidFridays: boolean;
+  earliestStartHour: number;
+  maxClassesPerDay: number;
+};
+type OptimizedScheduleOption = {
+  id: string;
+  courses: any[];
+  score: number;
+  metrics: {
+    fridayClasses: number;
+    earliestStartHour: number;
+    busiestDayLoad: number;
+    campusDays: number;
+  };
+};
 
 function mapImportedTermToApiTerm(rawTerm: string): string | null {
   const normalized = rawTerm.trim();
@@ -275,6 +291,26 @@ function parseMyGatewayRegistrations(rawText: string): ImportedRegistration[] {
   }
 
   return parsed;
+}
+
+function getCourseGroupKey(course: any): string {
+  return `${course.subject || ""} ${course.courseNumber || ""}`.trim();
+}
+
+function getMeetingDays(course: any): string[] {
+  if (!Array.isArray(course.meetings)) return [];
+  return course.meetings.flatMap((meeting: any) => (Array.isArray(meeting.days) ? meeting.days : []));
+}
+
+function getEarliestCourseStartHour(course: any): number | null {
+  if (!Array.isArray(course.meetings)) return null;
+  const starts = course.meetings
+    .map((meeting: any) => meeting.startTime)
+    .filter(Boolean)
+    .map((start: string) => Number(start.split(":")[0]))
+    .filter((hour: number) => Number.isFinite(hour));
+  if (starts.length === 0) return null;
+  return Math.min(...starts);
 }
 
 export default function Home() {
@@ -364,6 +400,13 @@ export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [isChatLoading, setIsChatLoading] = useState(false);
+  const [optimizerConstraints, setOptimizerConstraints] = useState<OptimizerConstraints>({
+    avoidFridays: true,
+    earliestStartHour: 10,
+    maxClassesPerDay: 3,
+  });
+  const [optimizerLimit, setOptimizerLimit] = useState(5);
+  const [optimizerNotice, setOptimizerNotice] = useState<string | null>(null);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -864,6 +907,77 @@ export default function Home() {
     return Array.from(groups.values());
   }, [searchResults]);
 
+  const groupedAlternatives = useMemo(() => {
+    const activeKeys = new Set(activeCourses.map((course) => getCourseGroupKey(course)));
+    return groupedSearchResults.filter((group) => activeKeys.has(`${group.subject} ${group.courseNumber}`.trim()));
+  }, [activeCourses, groupedSearchResults]);
+
+  const optimizedScheduleOptions = useMemo<OptimizedScheduleOption[]>(() => {
+    if (activeCourses.length === 0) return [];
+    const pools = activeCourses.map((course) => {
+      const groupKey = getCourseGroupKey(course);
+      const alternatives = searchResults.filter((candidate) => getCourseGroupKey(candidate) === groupKey);
+      const uniqueByCrn = new Map<string, any>();
+      [course, ...alternatives].forEach((candidate) => uniqueByCrn.set(String(candidate.crn), candidate));
+      return Array.from(uniqueByCrn.values());
+    });
+
+    const options: OptimizedScheduleOption[] = [];
+    const maxCombinations = 1500;
+    let combinationsVisited = 0;
+    const build = (index: number, chosen: any[], chosenEvents: any[]) => {
+      if (combinationsVisited > maxCombinations) return;
+      if (index >= pools.length) {
+        const dayLoad: Record<string, number> = {};
+        let fridayClasses = 0;
+        let earliestStartHour = 24;
+        chosen.forEach((course) => {
+          const days = getMeetingDays(course);
+          const uniqueDays = new Set(days);
+          uniqueDays.forEach((day) => {
+            dayLoad[day] = (dayLoad[day] || 0) + 1;
+            if (day === "F") fridayClasses += 1;
+          });
+          const startHour = getEarliestCourseStartHour(course);
+          if (startHour !== null) {
+            earliestStartHour = Math.min(earliestStartHour, startHour);
+          }
+        });
+
+        const busiestDayLoad = Object.values(dayLoad).length > 0 ? Math.max(...Object.values(dayLoad)) : 0;
+        const campusDays = Object.keys(dayLoad).filter((day) => day !== "Sa" && day !== "Su").length;
+        const earliest = earliestStartHour === 24 ? 24 : earliestStartHour;
+        const beforePreferred = Math.max(0, optimizerConstraints.earliestStartHour - earliest);
+        const overDailyLimit = Math.max(0, busiestDayLoad - optimizerConstraints.maxClassesPerDay);
+        const fridayPenalty = optimizerConstraints.avoidFridays ? fridayClasses * 15 : 0;
+        const score = overDailyLimit * 12 + beforePreferred * 5 + fridayPenalty + campusDays;
+
+        options.push({
+          id: `option-${options.length + 1}`,
+          courses: chosen,
+          score,
+          metrics: {
+            fridayClasses,
+            earliestStartHour: earliest,
+            busiestDayLoad,
+            campusDays,
+          },
+        });
+        combinationsVisited += 1;
+        return;
+      }
+
+      for (const candidate of pools[index]) {
+        const candidateEvents = generateEventsFromMeetings(candidate);
+        if (checkConflict(candidateEvents, chosenEvents)) continue;
+        build(index + 1, [...chosen, candidate], [...chosenEvents, ...candidateEvents]);
+      }
+    };
+
+    build(0, [], []);
+    return options.sort((a, b) => a.score - b.score).slice(0, optimizerLimit);
+  }, [activeCourses, optimizerConstraints, optimizerLimit, searchResults]);
+
   const toggleGroup = (groupId: string) => {
     setExpandedGroups(prev => ({ ...prev, [groupId]: !prev[groupId] }));
   };
@@ -1023,6 +1137,17 @@ export default function Home() {
       saveStateToHistory();
       setSchedules(prev => prev.map(s => s.id === activeScheduleId ? { ...s, courses: [] } : s));
     }
+  };
+
+  const applyOptimizedOption = (option: OptimizedScheduleOption) => {
+    if (!activeScheduleId) return;
+    saveStateToHistory();
+    setSchedules((prev) =>
+      prev.map((schedule) =>
+        schedule.id === activeScheduleId ? { ...schedule, courses: option.courses } : schedule
+      )
+    );
+    setOptimizerNotice(`Applied ${option.id.replace("option-", "Option ")} to ${activeSchedule?.name || "current plan"}.`);
   };
 
   const performSearch = useCallback(async (query: string, term: string) => {
@@ -1892,6 +2017,88 @@ export default function Home() {
                     <h2 className="text-lg sm:text-xl font-black text-gray-800 dark:text-gray-200 tracking-tight">
                       {activeSchedule?.name || "My Plan"} <span className="text-gray-500 dark:text-gray-400 font-bold text-base">({totalUnits} Units)</span>
                     </h2>
+                  </div>
+                </div>
+
+                <div className="mb-5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/80 dark:bg-blue-950/20 p-3 sm:p-4">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <h3 className="text-sm font-black text-blue-900 dark:text-blue-200">Schedule Optimizer (Beta)</h3>
+                    <span className="text-[11px] text-blue-800 dark:text-blue-300 font-semibold">
+                      {groupedAlternatives.length} course{groupedAlternatives.length === 1 ? "" : "s"} with alternatives in current search
+                    </span>
+                  </div>
+                  <p className="text-xs text-blue-800/90 dark:text-blue-200/90 mt-1">
+                    Search for each course first, then generate conflict-free options ranked by your preferences.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
+                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={optimizerConstraints.avoidFridays}
+                        onChange={(e) => setOptimizerConstraints((prev) => ({ ...prev, avoidFridays: e.target.checked }))}
+                        className="w-4 h-4"
+                      />
+                      Avoid Friday classes
+                    </label>
+                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                      Earliest start
+                      <select
+                        value={optimizerConstraints.earliestStartHour}
+                        onChange={(e) => setOptimizerConstraints((prev) => ({ ...prev, earliestStartHour: Number(e.target.value) }))}
+                        className="rounded border border-blue-200 dark:border-blue-800 bg-white dark:bg-gray-900 px-2 py-1 text-xs"
+                      >
+                        {[8, 9, 10, 11, 12].map((hour) => (
+                          <option key={`start-${hour}`} value={hour}>{hour}:00</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                      Max classes/day
+                      <select
+                        value={optimizerConstraints.maxClassesPerDay}
+                        onChange={(e) => setOptimizerConstraints((prev) => ({ ...prev, maxClassesPerDay: Number(e.target.value) }))}
+                        className="rounded border border-blue-200 dark:border-blue-800 bg-white dark:bg-gray-900 px-2 py-1 text-xs"
+                      >
+                        {[2, 3, 4, 5].map((limit) => (
+                          <option key={`daily-limit-${limit}`} value={limit}>{limit}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                      Number of options
+                      <select
+                        value={optimizerLimit}
+                        onChange={(e) => setOptimizerLimit(Number(e.target.value))}
+                        className="rounded border border-blue-200 dark:border-blue-800 bg-white dark:bg-gray-900 px-2 py-1 text-xs"
+                      >
+                        {[3, 5, 8].map((limit) => (
+                          <option key={`option-limit-${limit}`} value={limit}>Top {limit}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  {optimizerNotice && <p className="text-xs text-green-700 dark:text-green-400 mt-2">{optimizerNotice}</p>}
+                  <div className="mt-3 space-y-2">
+                    {optimizedScheduleOptions.length === 0 ? (
+                      <p className="text-xs text-blue-900/80 dark:text-blue-200/80">
+                        No valid options found. Try searching more sections or loosening constraints.
+                      </p>
+                    ) : (
+                      optimizedScheduleOptions.map((option) => (
+                        <div key={option.id} className="flex items-center justify-between gap-2 rounded-lg border border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-900/50 px-2.5 py-2">
+                          <p className="text-xs text-blue-900 dark:text-blue-100">
+                            <span className="font-black mr-1">{option.id.replace("option-", "Option ")}</span>
+                            {option.metrics.fridayClasses} Fri · {option.metrics.busiestDayLoad} max/day · {option.metrics.earliestStartHour === 24 ? "TBA" : `${option.metrics.earliestStartHour}:00`} earliest
+                          </p>
+                          <button
+                            onClick={() => applyOptimizedOption(option)}
+                            className="text-xs font-bold px-2 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                          >
+                            Apply
+                          </button>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
 
