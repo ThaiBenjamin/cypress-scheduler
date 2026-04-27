@@ -1198,7 +1198,7 @@ export default function Home() {
   if (!isLoaded) return null; 
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-950 font-sans relative overflow-hidden transition-colors duration-300">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-orange-50/40 dark:from-gray-950 dark:via-gray-950 dark:to-gray-900 font-sans relative overflow-hidden transition-colors duration-300">
       
       <style dangerouslySetInnerHTML={{__html: `
         .rbc-allday-cell { display: none !important; }
@@ -1225,8 +1225,8 @@ export default function Home() {
         .dark .watermark-text { color: #374151 !important; }
       `}} />
 
-      <nav className="h-16 bg-[#d9531e] text-white flex items-center justify-between px-4 sm:px-6 shadow-md z-30 shrink-0">
-        <h1 className="text-xl sm:text-2xl font-bold tracking-wide">Cypress Scheduler</h1>
+      <nav className="h-16 bg-gradient-to-r from-[#d9531e] to-orange-500 text-white flex items-center justify-between px-4 sm:px-6 shadow-lg border-b border-white/20 z-30 shrink-0 backdrop-blur-sm">
+        <h1 className="text-xl sm:text-2xl font-black tracking-tight">Cypress Scheduler</h1>
         <div className="flex items-center gap-2 sm:gap-4 relative">
           
           <button
@@ -1363,19 +1363,19 @@ export default function Home() {
 
             <div className="flex items-center gap-1 sm:gap-2 text-gray-500 dark:text-gray-400 w-full sm:w-auto">
               <div className="relative flex items-center justify-center">
-                <button onClick={exportCalendarAsImage} title="Save calendar as PNG image" aria-label="Save calendar as PNG image" className="peer p-2 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></button>
+                <button onClick={exportCalendarAsImage} title="Save calendar as PNG image" aria-label="Save calendar as PNG image" className="peer p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></button>
                 <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Save as PNG<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
               </div>
               <div className="relative flex items-center justify-center">
-                <button onClick={exportCalendarAsIcs} title="Download calendar as .ics file" aria-label="Download calendar as .ics file" className="peer p-2 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4M12 14v-8m0 8l-4-4m4 4l4-4" /></svg></button>
+                <button onClick={exportCalendarAsIcs} title="Download calendar as .ics file" aria-label="Download calendar as .ics file" className="peer p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4M12 14v-8m0 8l-4-4m4 4l4-4" /></svg></button>
                 <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Download as .ics file<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
               </div>
               <div className="relative flex items-center justify-center">
-                <button onClick={undo} disabled={past.length === 0} title="Undo last schedule change" aria-label="Undo last schedule change" className="peer p-2 hover:text-gray-900 dark:hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg></button>
+                <button onClick={undo} disabled={past.length === 0} title="Undo last schedule change" aria-label="Undo last schedule change" className="peer p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg></button>
                 <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Undo<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
               </div>
               <div className="relative flex items-center justify-center">
-                <button onClick={redo} disabled={future.length === 0} title="Redo last undone change" aria-label="Redo last undone change" className="peer p-2 hover:text-gray-900 dark:hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg></button>
+                <button onClick={redo} disabled={future.length === 0} title="Redo last undone change" aria-label="Redo last undone change" className="peer p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg></button>
                 <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Redo<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
               </div>
               <div className="relative flex items-center justify-center">
@@ -1392,7 +1392,7 @@ export default function Home() {
                   }}
                   title="Add a custom calendar event"
                   aria-label="Add a custom calendar event"
-                  className="peer p-2 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="peer p-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                 </button>
@@ -1472,12 +1472,12 @@ export default function Home() {
                 <div className="mb-6 flex flex-col gap-3">
                   <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-[-8px]">Term</p>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <select data-tour="term-select" value={termQuery} onChange={(e) => setTermQuery(e.target.value)} title="Choose academic term" className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0">
+                    <select data-tour="term-select" value={termQuery} onChange={(e) => setTermQuery(e.target.value)} title="Choose academic term" className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0 shadow-sm">
                       <option value="2026-Fall">Fall 2026</option>
                       <option value="2026-Summer">Summer 2026</option>
                       <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
-                    <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+                    <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm" />
                   </div>
                   {(lastSearchSource || lastSearchAt) && (
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
@@ -1547,14 +1547,25 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  {isSearching && <p className="text-orange-500 dark:text-orange-400 text-sm font-bold text-center mt-6 animate-pulse">Searching...</p>}
+                  {isSearching && (
+                    <div className="space-y-3 mt-2">
+                      <p className="text-orange-500 dark:text-orange-400 text-sm font-bold text-center animate-pulse">Searching...</p>
+                      {[0, 1, 2].map((i) => (
+                        <div key={`skeleton-${i}`} className="border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-4 animate-pulse">
+                          <div className="h-4 w-36 bg-gray-200 dark:bg-gray-700 rounded mb-3" />
+                          <div className="h-3 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-2" />
+                          <div className="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {groupedSearchResults.length === 0 && !isSearching && searchQuery.length > 0 && <p className="text-gray-500 dark:text-gray-400 text-sm text-center mt-10">No classes found for "{searchQuery}".</p>}
                   {groupedSearchResults.length === 0 && !isSearching && searchQuery.length === 0 && <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">Start typing to search for classes.</p>}
                   {groupedSearchResults.map((group) => {
                     const isExpanded = expandedGroups[group.id];
                     return (
-                      <div key={group.id} className="border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 overflow-hidden transition-all">
-                        <div className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 flex justify-between items-start sm:items-center" onClick={() => toggleGroup(group.id)}>
+                      <div key={group.id} className="border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5">
+                        <div className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/70 flex justify-between items-start sm:items-center transition-colors" onClick={() => toggleGroup(group.id)}>
                           <div className="flex-1 min-w-0 pr-4">
                             <div className="flex items-center gap-2 mb-0.5">
                               <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
