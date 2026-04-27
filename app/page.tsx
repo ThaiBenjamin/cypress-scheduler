@@ -250,6 +250,17 @@ type OptimizedScheduleOption = {
     campusDays: number;
   };
 };
+type SearchMode = "quick" | "manual";
+type ManualSearchFilters = {
+  subject: string;
+  courseNumber: string;
+  crn: string;
+  instructor: string;
+  meetingDay: "any" | "M" | "Tu" | "W" | "Th" | "F";
+  instructionMode: "any" | "in-person" | "online" | "hybrid";
+  availability: "any" | "open" | "waitlist" | "full";
+  startAfterHour: "any" | "8" | "9" | "10" | "11" | "12" | "13";
+};
 
 function mapImportedTermToApiTerm(rawTerm: string): string | null {
   const normalized = rawTerm.trim();
@@ -321,6 +332,18 @@ export default function Home() {
   });
   const [searchQuery, setSearchQuery] = useState(""); 
   const [termQuery, setTermQuery] = useState("2026-Winter/Spring"); 
+  const [searchMode, setSearchMode] = useState<SearchMode>("quick");
+  const [manualSearchHasRun, setManualSearchHasRun] = useState(false);
+  const [manualFilters, setManualFilters] = useState<ManualSearchFilters>({
+    subject: "",
+    courseNumber: "",
+    crn: "",
+    instructor: "",
+    meetingDay: "any",
+    instructionMode: "any",
+    availability: "any",
+    startAfterHour: "any",
+  });
   
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -895,9 +918,45 @@ export default function Home() {
   }, [showWeekends]);
 
   const groupedSearchResults = useMemo(() => {
-    if (!Array.isArray(searchResults)) return [];
+    const filteredResults = searchResults.filter((course) => {
+      if (searchMode !== "manual") return true;
+      if (manualFilters.subject && String(course.subject || "").toLowerCase() !== manualFilters.subject.toLowerCase()) return false;
+      if (manualFilters.courseNumber && !String(course.courseNumber || "").toLowerCase().includes(manualFilters.courseNumber.toLowerCase())) return false;
+      if (manualFilters.crn && !String(course.crn || "").includes(manualFilters.crn.trim())) return false;
+      if (manualFilters.instructor) {
+        const professors = Array.isArray(course.professors) ? course.professors.join(" ").toLowerCase() : "";
+        if (!professors.includes(manualFilters.instructor.toLowerCase())) return false;
+      }
+      if (manualFilters.meetingDay !== "any") {
+        const hasDay = Array.isArray(course.meetings) && course.meetings.some((meeting: any) => Array.isArray(meeting.days) && meeting.days.includes(manualFilters.meetingDay));
+        if (!hasDay) return false;
+      }
+      if (manualFilters.instructionMode !== "any") {
+        const mode = String(course.instructionMode || "").toLowerCase();
+        if (manualFilters.instructionMode === "online" && !mode.includes("online")) return false;
+        if (manualFilters.instructionMode === "hybrid" && !mode.includes("hyb")) return false;
+        if (manualFilters.instructionMode === "in-person" && (mode.includes("online") || mode.includes("hyb"))) return false;
+      }
+      if (manualFilters.availability !== "any") {
+        const status = getCourseAvailabilityStatus(course).toLowerCase();
+        if (status !== manualFilters.availability) return false;
+      }
+      if (manualFilters.startAfterHour !== "any") {
+        const requiredHour = Number(manualFilters.startAfterHour);
+        const starts = Array.isArray(course.meetings)
+          ? course.meetings
+              .map((meeting: any) => meeting.startTime)
+              .filter(Boolean)
+              .map((time: string) => Number(time.split(":")[0]))
+          : [];
+        if (starts.length > 0 && starts.some((hour: number) => Number.isFinite(hour) && hour < requiredHour)) return false;
+      }
+      return true;
+    });
+
+    if (!Array.isArray(filteredResults)) return [];
     const groups = new Map<string, any>();
-    searchResults.forEach(course => {
+    filteredResults.forEach(course => {
       const key = `${course.subject} ${course.courseNumber}`;
       if (!groups.has(key)) {
         groups.set(key, { id: key, subject: course.subject, courseNumber: course.courseNumber, title: course.title, description: course.description, sections: [] });
@@ -905,12 +964,20 @@ export default function Home() {
       groups.get(key).sections.push(course);
     });
     return Array.from(groups.values());
-  }, [searchResults]);
+  }, [searchMode, searchResults, manualFilters]);
 
   const groupedAlternatives = useMemo(() => {
     const activeKeys = new Set(activeCourses.map((course) => getCourseGroupKey(course)));
     return groupedSearchResults.filter((group) => activeKeys.has(`${group.subject} ${group.courseNumber}`.trim()));
   }, [activeCourses, groupedSearchResults]);
+
+  const availableSubjects = useMemo(() => {
+    const subjects = new Set<string>();
+    searchResults.forEach((course) => {
+      if (course.subject) subjects.add(String(course.subject));
+    });
+    return Array.from(subjects).sort();
+  }, [searchResults]);
 
   const optimizedScheduleOptions = useMemo<OptimizedScheduleOption[]>(() => {
     if (activeCourses.length === 0) return [];
@@ -980,6 +1047,41 @@ export default function Home() {
 
   const toggleGroup = (groupId: string) => {
     setExpandedGroups(prev => ({ ...prev, [groupId]: !prev[groupId] }));
+  };
+
+  const runManualSearch = () => {
+    const queryTokens = [
+      manualFilters.subject,
+      manualFilters.courseNumber,
+      manualFilters.crn,
+      manualFilters.instructor,
+    ]
+      .map((value) => value.trim())
+      .filter(Boolean);
+    const combinedQuery = queryTokens.join(" ");
+    if (!combinedQuery) {
+      setToastMessage("Add at least one field (subject, course number, CRN, or instructor) to run manual search.");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+    setManualSearchHasRun(true);
+    performSearch(combinedQuery, termQuery);
+  };
+
+  const resetManualSearch = () => {
+    setManualFilters({
+      subject: "",
+      courseNumber: "",
+      crn: "",
+      instructor: "",
+      meetingDay: "any",
+      instructionMode: "any",
+      availability: "any",
+      startAfterHour: "any",
+    });
+    setManualSearchHasRun(false);
+    setSearchResults([]);
   };
 
   const handleCreateNewSchedule = () => {
@@ -1266,9 +1368,16 @@ export default function Home() {
   }, [chatInput, chatMessages, isChatLoading]);
 
   useEffect(() => {
+    if (searchMode !== "quick") return;
     const delayDebounceFn = setTimeout(() => performSearch(searchQuery, termQuery), 300);
     return () => clearTimeout(delayDebounceFn);
-  }, [searchQuery, termQuery, performSearch]);
+  }, [searchMode, searchQuery, termQuery, performSearch]);
+
+  useEffect(() => {
+    if (searchMode === "quick") {
+      setManualSearchHasRun(false);
+    }
+  }, [searchMode]);
 
   const exportCalendarAsImage = async () => {
     if (!calendarRef.current) return;
@@ -1704,15 +1813,126 @@ export default function Home() {
             {activeTab === "search" && (
               <div>
                 <div className="mb-6 flex flex-col gap-3">
-                  <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-[-8px]">Term</p>
+                  <div className="grid grid-cols-2 border border-gray-300 dark:border-gray-700 rounded-xl overflow-hidden">
+                    <button
+                      onClick={() => setSearchMode("quick")}
+                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "quick" ? "bg-blue-600 text-white" : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                    >
+                      Quick Search
+                    </button>
+                    <button
+                      onClick={() => setSearchMode("manual")}
+                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "manual" ? "bg-blue-600 text-white" : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                    >
+                      Manual Search
+                    </button>
+                  </div>
+
                   <div className="flex flex-col sm:flex-row gap-2">
                     <select data-tour="term-select" value={termQuery} onChange={(e) => setTermQuery(e.target.value)} title="Choose academic term" className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-gray-50 dark:bg-gray-800 dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer w-full sm:w-auto shrink-0 shadow-sm">
                       <option value="2026-Fall">Fall 2026</option>
                       <option value="2026-Summer">Summer 2026</option>
                       <option value="2026-Winter/Spring">Winter/Spring 2026</option>
                     </select>
-                    <input data-tour="search-input" type="text" placeholder="Search by Title, Subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm" />
+                    {searchMode === "quick" ? (
+                      <input data-tour="search-input" type="text" placeholder="Search by title, subject, or CRN..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} title="Search courses by title, subject, or CRN" className="flex-1 border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm" />
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 flex-1">
+                        <select
+                          value={manualFilters.subject}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, subject: e.target.value }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="">Department (Any)</option>
+                          {availableSubjects.map((subject) => (
+                            <option key={`subject-${subject}`} value={subject}>{subject}</option>
+                          ))}
+                        </select>
+                        <input
+                          type="text"
+                          placeholder="Course Number (e.g. 101)"
+                          value={manualFilters.courseNumber}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, courseNumber: e.target.value }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                        <input
+                          type="text"
+                          placeholder="CRN / Section Code"
+                          value={manualFilters.crn}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, crn: e.target.value }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Instructor name"
+                          value={manualFilters.instructor}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, instructor: e.target.value }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                        <select
+                          value={manualFilters.meetingDay}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, meetingDay: e.target.value as ManualSearchFilters["meetingDay"] }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="any">Any day</option>
+                          <option value="M">Monday</option>
+                          <option value="Tu">Tuesday</option>
+                          <option value="W">Wednesday</option>
+                          <option value="Th">Thursday</option>
+                          <option value="F">Friday</option>
+                        </select>
+                        <select
+                          value={manualFilters.instructionMode}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, instructionMode: e.target.value as ManualSearchFilters["instructionMode"] }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="any">Any format</option>
+                          <option value="in-person">In-person</option>
+                          <option value="online">Online</option>
+                          <option value="hybrid">Hybrid</option>
+                        </select>
+                        <select
+                          value={manualFilters.availability}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, availability: e.target.value as ManualSearchFilters["availability"] }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="any">Any availability</option>
+                          <option value="open">Open seats</option>
+                          <option value="waitlist">Waitlist available</option>
+                          <option value="full">Full</option>
+                        </select>
+                        <select
+                          value={manualFilters.startAfterHour}
+                          onChange={(e) => setManualFilters((prev) => ({ ...prev, startAfterHour: e.target.value as ManualSearchFilters["startAfterHour"] }))}
+                          className="border border-gray-300 dark:border-gray-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value="any">Any start time</option>
+                          <option value="8">Start at/after 8:00</option>
+                          <option value="9">Start at/after 9:00</option>
+                          <option value="10">Start at/after 10:00</option>
+                          <option value="11">Start at/after 11:00</option>
+                          <option value="12">Start at/after 12:00</option>
+                          <option value="13">Start at/after 1:00 PM</option>
+                        </select>
+                      </div>
+                    )}
                   </div>
+                  {searchMode === "manual" && (
+                    <div className="flex gap-2 justify-end">
+                      <button
+                        onClick={resetManualSearch}
+                        className="px-3 py-2 text-xs font-bold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                      >
+                        Reset
+                      </button>
+                      <button
+                        onClick={runManualSearch}
+                        className="px-3 py-2 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                      >
+                        Search
+                      </button>
+                    </div>
+                  )}
                   {(lastSearchSource || lastSearchAt) && (
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
                       Data source: <span className="font-bold">{lastSearchSource === "fallback" ? "Local fallback catalog" : "Database"}</span>
@@ -1793,8 +2013,10 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                  {groupedSearchResults.length === 0 && !isSearching && searchQuery.length > 0 && <p className="text-gray-500 dark:text-gray-400 text-sm text-center mt-10">No classes found for "{searchQuery}".</p>}
-                  {groupedSearchResults.length === 0 && !isSearching && searchQuery.length === 0 && <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">Start typing to search for classes.</p>}
+                  {groupedSearchResults.length === 0 && !isSearching && searchMode === "quick" && searchQuery.length > 0 && <p className="text-gray-500 dark:text-gray-400 text-sm text-center mt-10">No classes found for "{searchQuery}".</p>}
+                  {groupedSearchResults.length === 0 && !isSearching && searchMode === "quick" && searchQuery.length === 0 && <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">Start typing to search for classes.</p>}
+                  {groupedSearchResults.length === 0 && !isSearching && searchMode === "manual" && !manualSearchHasRun && <p className="text-gray-400 dark:text-gray-500 text-sm text-center mt-10">Set manual filters, then click Search.</p>}
+                  {groupedSearchResults.length === 0 && !isSearching && searchMode === "manual" && manualSearchHasRun && <p className="text-gray-500 dark:text-gray-400 text-sm text-center mt-10">No manual matches. Try removing one or more filters.</p>}
                   {groupedSearchResults.map((group) => {
                     const isExpanded = expandedGroups[group.id];
                     return (
