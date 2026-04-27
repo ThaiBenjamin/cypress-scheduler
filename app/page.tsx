@@ -225,10 +225,57 @@ type CourseHistoryEvent = {
   status: "OPEN" | "WAITLIST" | "FULL";
   at: string;
 };
+type ImportedRegistration = {
+  crn: string;
+  term: string | null;
+  title: string;
+};
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
 };
+
+function mapImportedTermToApiTerm(rawTerm: string): string | null {
+  const normalized = rawTerm.trim();
+  const parts = normalized.match(/(Fall|Summer|Winter\/Spring|Spring|Winter)\s+(\d{4})/i);
+  if (!parts) return null;
+  const seasonRaw = parts[1].toLowerCase();
+  const year = parts[2];
+  const season =
+    seasonRaw === "fall"
+      ? "Fall"
+      : seasonRaw === "summer"
+        ? "Summer"
+        : "Winter/Spring";
+  return `${year}-${season}`;
+}
+
+function parseMyGatewayRegistrations(rawText: string): ImportedRegistration[] {
+  const blocks = rawText
+    .split(/\n\s*\n+/)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const parsed: ImportedRegistration[] = [];
+  for (const block of blocks) {
+    const lines = block.split("\n").map((line) => line.trim());
+    const firstLine = lines[0] || "";
+    const crnLine = lines.find((line) => /^CRN:\s*\d+/i.test(line));
+    if (!crnLine) continue;
+    const termLine = lines.find((line) => /^Term:\s*/i.test(line));
+    const crn = crnLine.replace(/^CRN:\s*/i, "").trim();
+    const title = firstLine.split(",")[0]?.trim() || `CRN ${crn}`;
+    const rawTerm = termLine ? termLine.replace(/^Term:\s*/i, "").trim() : "";
+
+    parsed.push({
+      crn,
+      title,
+      term: rawTerm ? mapImportedTermToApiTerm(rawTerm) : null,
+    });
+  }
+
+  return parsed;
+}
 
 export default function Home() {
   const [initialScheduleState] = useState(() => {
@@ -311,6 +358,9 @@ export default function Home() {
   const [customEventScheduleId, setCustomEventScheduleId] = useState<string>("");
   const [editingCustomEventCrn, setEditingCustomEventCrn] = useState<string | null>(null);
   const [calendarView, setCalendarView] = useState<any>("work_week");
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [importText, setImportText] = useState("");
+  const [isImporting, setIsImporting] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [isChatLoading, setIsChatLoading] = useState(false);
@@ -1004,6 +1054,57 @@ export default function Home() {
     setIsSearching(false);
   }, []);
 
+  const handleImportFromMyGateway = async () => {
+    const parsed = parseMyGatewayRegistrations(importText);
+    if (parsed.length === 0) {
+      alert("No valid registration rows found. Please paste from the first class title through each CRN block.");
+      return;
+    }
+
+    setIsImporting(true);
+    try {
+      const uniqueCrns = Array.from(new Set(parsed.map((item) => item.crn)));
+      const foundCourses: any[] = [];
+      const missingCrns: string[] = [];
+
+      for (const crn of uniqueCrns) {
+        const registration = parsed.find((p) => p.crn === crn);
+        const preferredTerm = registration?.term || termQuery;
+        const res = await fetch(`/api/courses?q=${encodeURIComponent(crn)}&term=${encodeURIComponent(preferredTerm)}`);
+        const data = await res.json();
+        const match = Array.isArray(data) ? data.find((course: any) => String(course.crn) === crn) : null;
+        if (match) foundCourses.push(match);
+        else missingCrns.push(crn);
+      }
+
+      if (foundCourses.length > 0) {
+        saveStateToHistory();
+        setSchedules((prev) =>
+          prev.map((schedule) => {
+            if (schedule.id !== activeScheduleId) return schedule;
+            const existing = new Set(schedule.courses.map((course: any) => String(course.crn)));
+            const additions = foundCourses.filter((course) => !existing.has(String(course.crn)));
+            return { ...schedule, courses: [...schedule.courses, ...additions] };
+          }),
+        );
+      }
+
+      const importedCount = foundCourses.length;
+      const missingCount = missingCrns.length;
+      setToastMessage(
+        missingCount > 0
+          ? `Imported ${importedCount} class(es). ${missingCount} CRN(s) were not found in this term/data source.`
+          : `Imported ${importedCount} class(es) from pasted registration data.`,
+      );
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => setToastMessage(null), 6000);
+      setIsImportModalOpen(false);
+      setImportText("");
+    } finally {
+      setIsImporting(false);
+    }
+  };
+
   const sendChatMessage = useCallback(async () => {
     const text = chatInput.trim();
     if (!text || isChatLoading) return;
@@ -1237,6 +1338,14 @@ export default function Home() {
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
             <span className="hidden sm:inline">{session ? "SAVE" : "SIGN IN TO SAVE"}</span>
+          </button>
+          <button
+            onClick={() => setIsImportModalOpen(true)}
+            title="Import classes from pasted myGateway registration text"
+            className="flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border border-white/40 bg-white/15 hover:bg-white/25 text-white transition-all cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 16V4m0 12l-3-3m3 3l3-3M4 20h16" /></svg>
+            <span className="hidden sm:inline">IMPORT</span>
           </button>
 
           {/* UNIFIED SETTINGS / USER MENU CONTAINER */}
@@ -2113,6 +2222,59 @@ export default function Home() {
 
             <div className="mt-10 flex justify-end">
               <button onClick={() => setIsSignInModalOpen(false)} className="text-sm font-bold text-gray-400 hover:text-white transition-colors cursor-pointer">CANCEL</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isImportModalOpen && (
+        <div className="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4">
+          <div className="w-full max-w-2xl bg-[#1f1f1f] border border-gray-700 rounded-xl shadow-2xl p-6 text-white">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-black">Import from myGateway</h2>
+                <p className="text-sm text-gray-300 mt-1">
+                  Paste your active registrations text and we’ll auto-add matching CRNs to the current schedule.
+                </p>
+              </div>
+              <button
+                onClick={() => setIsImportModalOpen(false)}
+                className="text-gray-400 hover:text-white cursor-pointer"
+                title="Close import dialog"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="mt-4 text-sm text-gray-300 space-y-1">
+              <p className="font-bold text-gray-100">Where to copy from:</p>
+              <p>1) Go to myGateway</p>
+              <p>2) Registration → View Registration Information</p>
+              <p>3) Active Registrations</p>
+              <p>4) Copy from the first class title through each CRN block and paste below.</p>
+            </div>
+
+            <textarea
+              value={importText}
+              onChange={(e) => setImportText(e.target.value)}
+              placeholder={`Introduction to Philosophy, Philosophy & Religious Studies 100 C, Section OL1\nTerm: Summer 2026\nCRN: 30437\nStatus: Registered--Web 04/11/2026`}
+              className="mt-4 w-full h-56 rounded-lg bg-[#111111] border border-gray-700 text-gray-100 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+            />
+
+            <div className="mt-4 flex justify-end gap-3">
+              <button
+                onClick={() => setIsImportModalOpen(false)}
+                className="px-4 py-2 text-sm font-bold text-gray-300 hover:text-white cursor-pointer"
+              >
+                CANCEL
+              </button>
+              <button
+                onClick={() => void handleImportFromMyGateway()}
+                disabled={isImporting || !importText.trim()}
+                className="px-4 py-2 text-sm font-bold rounded-md bg-orange-600 text-white hover:bg-orange-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {isImporting ? "IMPORTING..." : "IMPORT CLASSES"}
+              </button>
             </div>
           </div>
         </div>
