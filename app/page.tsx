@@ -2243,18 +2243,18 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mb-5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/80 dark:bg-blue-950/20 p-3 sm:p-4">
+                <div className="mb-5 rounded-xl border border-[rgb(184_122_0/0.35)] bg-[rgb(232_163_23/0.08)] p-3 sm:p-4">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <h3 className="text-sm font-black text-blue-900 dark:text-blue-200">Schedule Optimizer (Beta)</h3>
+                    <h3 className="text-sm font-black text-[var(--cy-gold)]">Schedule Optimizer (Beta)</h3>
                     <span className="text-[11px] text-[#B87A00] font-semibold">
                       {groupedAlternatives.length} course{groupedAlternatives.length === 1 ? "" : "s"} with alternatives in current search
                     </span>
                   </div>
-                  <p className="text-xs text-blue-800/90 dark:text-blue-200/90 mt-1">
+                  <p className="text-xs text-[var(--cy-text-2)] mt-1">
                     Search for each course first, then generate conflict-free options ranked by your preferences.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
-                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                    <label className="text-xs font-semibold text-[var(--cy-text-2)] flex items-center gap-2">
                       <input
                         type="checkbox"
                         checked={optimizerConstraints.avoidFridays}
@@ -2263,36 +2263,36 @@ export default function Home() {
                       />
                       Avoid Friday classes
                     </label>
-                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                    <label className="text-xs font-semibold text-[var(--cy-text-2)] flex items-center gap-2">
                       Earliest start
                       <select
                         value={optimizerConstraints.earliestStartHour}
                         onChange={(e) => setOptimizerConstraints((prev) => ({ ...prev, earliestStartHour: Number(e.target.value) }))}
-                        className="rounded border border-blue-200 dark:border-blue-800 bg-[var(--cy-surface)] px-2 py-1 text-xs"
+                        className="rounded border border-[var(--cy-border)] bg-[var(--cy-surface)] px-2 py-1 text-xs"
                       >
                         {[8, 9, 10, 11, 12].map((hour) => (
                           <option key={`start-${hour}`} value={hour}>{hour}:00</option>
                         ))}
                       </select>
                     </label>
-                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                    <label className="text-xs font-semibold text-[var(--cy-text-2)] flex items-center gap-2">
                       Max classes/day
                       <select
                         value={optimizerConstraints.maxClassesPerDay}
                         onChange={(e) => setOptimizerConstraints((prev) => ({ ...prev, maxClassesPerDay: Number(e.target.value) }))}
-                        className="rounded border border-blue-200 dark:border-blue-800 bg-[var(--cy-surface)] px-2 py-1 text-xs"
+                        className="rounded border border-[var(--cy-border)] bg-[var(--cy-surface)] px-2 py-1 text-xs"
                       >
                         {[2, 3, 4, 5].map((limit) => (
                           <option key={`daily-limit-${limit}`} value={limit}>{limit}</option>
                         ))}
                       </select>
                     </label>
-                    <label className="text-xs font-semibold text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                    <label className="text-xs font-semibold text-[var(--cy-text-2)] flex items-center gap-2">
                       Number of options
                       <select
                         value={optimizerLimit}
                         onChange={(e) => setOptimizerLimit(Number(e.target.value))}
-                        className="rounded border border-blue-200 dark:border-blue-800 bg-[var(--cy-surface)] px-2 py-1 text-xs"
+                        className="rounded border border-[var(--cy-border)] bg-[var(--cy-surface)] px-2 py-1 text-xs"
                       >
                         {[3, 5, 8].map((limit) => (
                           <option key={`option-limit-${limit}`} value={limit}>Top {limit}</option>
@@ -2303,13 +2303,13 @@ export default function Home() {
                   {optimizerNotice && <p className="text-xs text-green-700 dark:text-green-400 mt-2">{optimizerNotice}</p>}
                   <div className="mt-3 space-y-2">
                     {optimizedScheduleOptions.length === 0 ? (
-                      <p className="text-xs text-blue-900/80 dark:text-blue-200/80">
+                      <p className="text-xs text-[var(--cy-text-2)]">
                         No valid options found. Try searching more sections or loosening constraints.
                       </p>
                     ) : (
                       optimizedScheduleOptions.map((option) => (
-                        <div key={option.id} className="flex items-center justify-between gap-2 rounded-lg border border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-900/50 px-2.5 py-2">
-                          <p className="text-xs text-blue-900 dark:text-blue-100">
+                        <div key={option.id} className="flex items-center justify-between gap-2 rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface)] px-2.5 py-2">
+                          <p className="text-xs text-[var(--cy-text)]">
                             <span className="font-black mr-1">{option.id.replace("option-", "Option ")}</span>
                             {option.metrics.fridayClasses} Fri · {option.metrics.busiestDayLoad} max/day · {option.metrics.earliestStartHour === 24 ? "TBA" : `${option.metrics.earliestStartHour}:00`} earliest
                           </p>
