@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-10 text-gray-800 dark:text-gray-100">
+    <main className="max-w-3xl mx-auto px-6 py-10 text-[var(--cy-text)]">
       <h1 className="text-3xl font-black mb-4">Privacy Policy</h1>
       <p className="mb-4">
         Cypress Scheduler stores schedule planning data and app preferences to

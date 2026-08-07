@@ -1,6 +1,6 @@
 export default function TermsPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-10 text-gray-800 dark:text-gray-100">
+    <main className="max-w-3xl mx-auto px-6 py-10 text-[var(--cy-text)]">
       <h1 className="text-3xl font-black mb-4">Terms of Use</h1>
       <p className="mb-4">
         Cypress Scheduler is a planning aid for students and does not replace
