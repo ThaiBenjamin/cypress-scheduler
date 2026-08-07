@@ -16,9 +16,13 @@ jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
 
-    # Make the DB URL available to every step (prisma db push, seed, health checks)
+    # Make the DB URLs available to every step.
+    # DATABASE_URL = runtime/transaction pooler (6543). DIRECT_URL = session pooler (5432),
+    # used by `prisma db push` and the seed script for DDL. If DIRECT_URL isn't set as a
+    # secret, the code falls back to DATABASE_URL.
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
 
     steps:
       - name: Checkout Repository

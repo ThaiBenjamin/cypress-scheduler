@@ -6,7 +6,9 @@ import fs from "fs/promises";
 const PrismaClientCtor = (PrismaClientPkg as any).PrismaClient;
 import path from "path";
 
-const connectionString = process.env.DATABASE_URL;
+// Seeding runs many writes; use the DIRECT/session-mode connection when available
+// (the transaction pooler / pgbouncer is meant for short-lived app queries, not bulk DDL/DML).
+const connectionString = process.env.DIRECT_URL || process.env.DATABASE_URL;
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClientCtor({ adapter });
