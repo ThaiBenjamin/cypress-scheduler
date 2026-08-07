@@ -2,24 +2,40 @@ name: Daily Cypress Scraper
 
 on:
   schedule:
-    # Automatically runs every day at 10:00 AM UTC (2:00 AM or 3:00 AM Pacific)
-    - cron: '0 10 * * *' 
-  
-  # This keeps the manual button just in case you ever need to force an update!
-  workflow_dispatch: 
+    # Runs every day at 10:00 AM UTC (~2-3 AM Pacific)
+    - cron: '0 10 * * *'
+
+  # Manual trigger for on-demand refreshes
+  workflow_dispatch:
+
+# Allow the job to commit the refreshed cypress_data.json back to the repo
+permissions:
+  contents: write
 
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
 
+    # Make the DB URL available to every step (prisma db push, seed, health checks)
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Fail fast if DATABASE_URL secret is missing
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::DATABASE_URL secret is not set. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -27,21 +43,44 @@ jobs:
           python-version: '3.10'
 
       - name: Install Node Modules
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: npm install
+        run: npm ci
 
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests 
+          pip install requests
 
       - name: Run Python Scraper
         run: python scraper.py
 
-      - name: Update Supabase Database
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }} 
+      - name: Verify scrape produced data
+        # Guard: never proceed to seed (which wipes the table) with an empty/failed scrape.
         run: |
-          npx prisma generate
-          npx tsx seed.ts
+          COUNT=$(node -e "const d=require('./cypress_data.json'); console.log(Array.isArray(d)?d.length:0)")
+          echo "Scraped $COUNT sections."
+          if [ "$COUNT" -lt 1 ]; then
+            echo "::error::Scraper produced 0 sections. Aborting before the seed wipes the database."
+            exit 1
+          fi
+
+      - name: Sync database schema (Prisma db push)
+        # Ensures the production schema matches prisma/schema.prisma before seeding.
+        # This is the step that was missing and caused seeds to fail into local fallback.
+        run: npx prisma db push --skip-generate
+
+      - name: Seed the database
+        run: npx tsx seed.ts
+
+      - name: Commit refreshed fallback data
+        # Keeps the committed cypress_data.json (the app's local fallback catalog) fresh,
+        # so even when the DB is briefly unreachable the fallback isn't months stale.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- cypress_data.json; then
+            echo "No changes to cypress_data.json."
+          else
+            git add cypress_data.json
+            git commit -m "chore(data): refresh cypress_data.json [skip ci]"
+            git push
+          fi

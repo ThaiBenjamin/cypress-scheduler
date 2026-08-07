@@ -128,39 +128,7 @@ async function getFallbackCourses(q: string, term: string | null) {
 
   const normalizedCourses = catalog
     .filter((row) => isCypressCampusCode(row?.sectCampCode))
-    .map((row) => {
-      const mappedTerm = mapTermCodeToLabel(
-        row.sectTermCode,
-        row.sectMeetings?.[0]?.startDate,
-      );
-      const meetings = (row.sectMeetings || []).map((meeting: any) => ({
-        type: meeting.mtypDesc || meeting.mtypCode || "Meeting",
-        days: extractMeetingDays(meeting),
-        startTime: toClock(meeting.beginTime),
-        endTime: toClock(meeting.endTime),
-        building: meeting.bldgCode || undefined,
-        room: meeting.roomCode || undefined,
-      }));
-
-      return {
-        id: String(row.sectKey),
-        term: mappedTerm,
-        crn: String(row.sectCrn),
-        subject: String(row.sectSubjCode || ""),
-        courseNumber: String(row.sectCrseNumb || ""),
-        title: String(row.sectLongText || "").slice(0, 90) || "Course",
-        units: 0,
-        instructionMode: row.sectInsmCode || null,
-        description: row.sectLongText || null,
-        seatsAvailable: Number(row.sectSeatsAvail || 0),
-        maxEnrollment: Number(row.sectMaxEnrl || 0),
-        waitCount: Number(row.sectWaitCount || 0),
-        waitCapacity: Number(row.sectWaitCapacity || 0),
-        professors: row.sectInstrName ? [String(row.sectInstrName)] : [],
-        meetings,
-        campusCode: String(row.sectCampCode || ""),
-      };
-    });
+    .map((row) => normalizeFallbackRow(row));
 
   const searchFilter = (course: any) => {
     const haystack =
@@ -225,6 +193,58 @@ function expandQueryWord(word: string): string[] {
 function isCypressCampusCode(code: unknown): boolean {
   const normalized = String(code || "").toUpperCase();
   return normalized.startsWith("1");
+}
+
+// Normalizes a single fallback row into the shape the UI expects. Supports BOTH
+// cypress_data.json formats:
+//   - raw NOCCCD sections dump (sectLongText, sectTermCode, no title/units)
+//   - scraper-processed output (my_custom_term/title/units/description/wait_*)
+// The scraper's format is richer (real catalog titles + units), so prefer it when present.
+function normalizeFallbackRow(row: any) {
+  const isProcessed =
+    row?.my_custom_term != null || row?.my_custom_title != null;
+
+  const meetings = (row.sectMeetings || []).map((meeting: any) => ({
+    type: meeting.mtypDesc || meeting.schdDesc || meeting.mtypCode || "Meeting",
+    days: extractMeetingDays(meeting),
+    startTime: toClock(meeting.beginTime),
+    endTime: toClock(meeting.endTime),
+    building: meeting.bldgCode || undefined,
+    room: meeting.roomCode || undefined,
+  }));
+
+  const term = isProcessed
+    ? String(row.my_custom_term)
+    : mapTermCodeToLabel(row.sectTermCode, row.sectMeetings?.[0]?.startDate);
+
+  const title = isProcessed
+    ? String(row.my_custom_title || "Course")
+    : String(row.sectLongText || "").slice(0, 90) || "Course";
+
+  return {
+    id: String(row.sectKey ?? row.sectCrn),
+    term,
+    crn: String(row.sectCrn),
+    subject: String(row.sectSubjCode || ""),
+    courseNumber: String(row.sectCrseNumb || ""),
+    title,
+    units: isProcessed ? Number(row.my_custom_units || 0) : 0,
+    instructionMode: row.sectInsmCode || null,
+    description: isProcessed
+      ? row.my_custom_description || null
+      : row.sectLongText || null,
+    seatsAvailable: Number(row.sectSeatsAvail || 0),
+    maxEnrollment: Number(row.sectMaxEnrl || 0),
+    waitCount: Number(
+      (isProcessed ? row.my_custom_wait_count : row.sectWaitCount) || 0,
+    ),
+    waitCapacity: Number(
+      (isProcessed ? row.my_custom_wait_capacity : row.sectWaitCapacity) || 0,
+    ),
+    professors: row.sectInstrName ? [String(row.sectInstrName)] : [],
+    meetings,
+    campusCode: String(row.sectCampCode || ""),
+  };
 }
 
 function rankCompare(
@@ -296,18 +316,37 @@ function relevanceScore(
 }
 
 function mapTermCodeToLabel(termCode: string, startDate?: string): string {
+  // NOCCCD term codes are YYYYSS. The base year YYYY is the FALL year of the
+  // academic year, so Spring/Summer belong to YYYY+1:
+  //   10 -> Fall (year = YYYY), 20 -> Winter/Spring (YYYY+1), 30 -> Summer (YYYY+1)
   const code = String(termCode || "");
-  const fallbackYear = code.slice(0, 4);
+  const baseYear = Number(code.slice(0, 4)) || 0;
+  const suffix = code.slice(4);
+
+  let season: string;
+  let academicYear: number;
+  if (suffix === "10") {
+    season = "Fall";
+    academicYear = baseYear;
+  } else if (suffix === "20") {
+    season = "Winter/Spring";
+    academicYear = baseYear + 1;
+  } else if (suffix === "30") {
+    season = "Summer";
+    academicYear = baseYear + 1;
+  } else {
+    season = "Unknown";
+    academicYear = baseYear;
+  }
+
+  // The section's actual start date is the most reliable source of the year when present.
   const dateYear =
     typeof startDate === "string" && startDate.split("/").length === 3
-      ? startDate.split("/")[2]
-      : "";
-  const year = dateYear || fallbackYear;
-  const suffix = code.slice(4);
-  if (suffix === "30") return `${year}-Summer`;
-  if (suffix === "10") return `${year}-Winter/Spring`;
-  if (suffix === "70") return `${year}-Fall`;
-  return `${year}-Unknown`;
+      ? Number(startDate.split("/")[2])
+      : 0;
+  const year = dateYear || academicYear || baseYear;
+
+  return `${year}-${season}`;
 }
 
 function toClock(rawTime?: string): string | undefined {
