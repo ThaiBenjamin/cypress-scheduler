@@ -1607,15 +1607,15 @@ export default function Home() {
 
                 <h3 className="text-lg font-bold mb-3">Theme</h3>
                 <div className="flex rounded-md overflow-hidden border border-gray-600 mb-6 bg-[#2d2d2d]">
-                  <button onClick={() => setTheme('light')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'light' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>☀️ Light</button>
-                  <button onClick={() => setTheme('system')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 border-l border-r border-gray-600 cursor-pointer ${theme === 'system' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>⚙️ System</button>
-                  <button onClick={() => setTheme('dark')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'dark' ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>🌙 Dark</button>
+                  <button onClick={() => setTheme('light')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'light' ? 'bg-[#0b2c5e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>☀️ Light</button>
+                  <button onClick={() => setTheme('system')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 border-l border-r border-gray-600 cursor-pointer ${theme === 'system' ? 'bg-[#0b2c5e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>⚙️ System</button>
+                  <button onClick={() => setTheme('dark')} className={`flex-1 py-2 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer ${theme === 'dark' ? 'bg-[#0b2c5e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>🌙 Dark</button>
                 </div>
 
                 <h3 className="text-lg font-bold mb-3">Time</h3>
                 <div className="flex rounded-md overflow-hidden border border-gray-600 mb-4 bg-[#2d2d2d]">
-                  <button onClick={() => setIs24Hour(false)} className={`flex-1 py-2 text-sm font-bold transition-colors cursor-pointer ${!is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>12 Hour</button>
-                  <button onClick={() => setIs24Hour(true)} className={`flex-1 py-2 text-sm font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#3b82f6] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
+                  <button onClick={() => setIs24Hour(false)} className={`flex-1 py-2 text-sm font-bold transition-colors cursor-pointer ${!is24Hour ? 'bg-[#0b2c5e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>12 Hour</button>
+                  <button onClick={() => setIs24Hour(true)} className={`flex-1 py-2 text-sm font-bold border-l border-gray-600 transition-colors cursor-pointer ${is24Hour ? 'bg-[#0b2c5e] text-white' : 'hover:bg-gray-700 text-gray-300'}`}>24 Hour</button>
                 </div>
 
                 <button
@@ -1817,13 +1817,13 @@ export default function Home() {
                   <div className="grid grid-cols-2 border border-gray-300 dark:border-gray-700 rounded-xl overflow-hidden">
                     <button
                       onClick={() => setSearchMode("quick")}
-                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "quick" ? "bg-blue-600 text-white" : "bg-[var(--cy-surface)] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "quick" ? "bg-charger-blue text-white" : "bg-[var(--cy-surface)] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
                     >
                       Quick Search
                     </button>
                     <button
                       onClick={() => setSearchMode("manual")}
-                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "manual" ? "bg-blue-600 text-white" : "bg-[var(--cy-surface)] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                      className={`py-2.5 text-sm font-black tracking-wide cursor-pointer ${searchMode === "manual" ? "bg-charger-blue text-white" : "bg-[var(--cy-surface)] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
                     >
                       Manual Search
                     </button>
@@ -1928,7 +1928,7 @@ export default function Home() {
                       </button>
                       <button
                         onClick={runManualSearch}
-                        className="px-3 py-2 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                        className="px-3 py-2 text-xs font-bold rounded-lg bg-charger-blue hover:bg-charger-blue-hover text-white cursor-pointer"
                       >
                         Search
                       </button>
@@ -2022,16 +2022,16 @@ export default function Home() {
                     const isExpanded = expandedGroups[group.id];
                     return (
                       <div key={group.id} className="border border-[var(--cy-border)] rounded-xl shadow-sm bg-[var(--cy-surface)] overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5">
-                        <div className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/70 flex justify-between items-start sm:items-center transition-colors" onClick={() => toggleGroup(group.id)}>
+                        <div className="p-4 cursor-pointer hover:bg-[var(--cy-surface-2)] flex justify-between items-start sm:items-center transition-colors" onClick={() => toggleGroup(group.id)}>
                           <div className="flex-1 min-w-0 pr-4">
                             <div className="flex items-center gap-2 mb-0.5">
-                              <h2 className="font-extrabold text-blue-900 dark:text-orange-400 text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
+                              <h2 className="font-extrabold text-[var(--cy-accent)] text-base sm:text-lg break-words">{group.subject} {group.courseNumber}</h2>
                               <button onClick={(e) => { e.stopPropagation(); setInfoModalCourse(group); }} className="p-1 rounded-full text-[var(--cy-text-3)] hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer" title="Course Information"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 pointer-events-none"><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg></button>
                             </div>
                           </div>
                           <div className="flex items-center gap-3 shrink-0 mt-1 sm:mt-0">
-                            <span className="hidden sm:inline-block text-xs font-bold text-[var(--cy-gold)] bg-orange-50 dark:bg-orange-900/30 px-2.5 py-1 rounded-md border border-orange-100 dark:border-orange-800 pointer-events-none whitespace-nowrap">{group.sections.length} {group.sections.length === 1 ? 'Section' : 'Sections'}</span>
-                            <span className="sm:hidden text-xs font-bold text-[var(--cy-gold)] bg-orange-50 dark:bg-orange-900/30 px-2 py-1 rounded-md border border-orange-100 dark:border-orange-800 pointer-events-none whitespace-nowrap">{group.sections.length}</span>
+                            <span className="hidden sm:inline-block text-xs font-bold text-[var(--cy-gold)] bg-[rgb(184_122_0/0.12)] px-2.5 py-1 rounded-md border border-[rgb(184_122_0/0.30)] pointer-events-none whitespace-nowrap">{group.sections.length} {group.sections.length === 1 ? 'Section' : 'Sections'}</span>
+                            <span className="sm:hidden text-xs font-bold text-[var(--cy-gold)] bg-[rgb(184_122_0/0.12)] px-2 py-1 rounded-md border border-[rgb(184_122_0/0.30)] pointer-events-none whitespace-nowrap">{group.sections.length}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 text-[var(--cy-text-3)] dark:text-gray-500 transition-transform duration-200 pointer-events-none ${isExpanded ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                           </div>
                         </div>
@@ -2069,26 +2069,26 @@ export default function Home() {
                                   <div className="w-full sm:w-auto flex-1 min-w-0 pr-4">
                                     <div className="flex flex-wrap gap-1 mb-1.5 w-full">
                                       {uniqueTags.map((tag: string, i: number) => (
-                                        <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-[var(--cy-chip)] border-[var(--cy-border)] text-[var(--cy-text-2)]' : 'bg-slate-50 border-slate-200 text-slate-700 dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-300'}`}>{tag}</span>
+                                        <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-bold border ${tag === 'ONLINE' ? 'bg-[var(--cy-chip)] border-[var(--cy-border)] text-[var(--cy-text-2)]' : 'bg-[var(--cy-chip)] border-[var(--cy-border)] text-[var(--cy-text-2)]'}`}>{tag}</span>
                                       ))}
                                       {rmpUrl ? (
-                                        <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-800 transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
+                                        <a href={rmpUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded font-bold border border-[rgb(184_122_0/0.30)] bg-[rgb(184_122_0/0.12)] text-[var(--cy-gold)] hover:bg-[rgb(184_122_0/0.20)] transition-colors cursor-pointer" onClick={(e) => e.stopPropagation()}>
                                           {profName}
                                           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-75 pointer-events-none" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" /><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" /></svg>
                                         </a>
                                       ) : profName && profName.toUpperCase() === "STAFF" ? (
-                                        <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-default">STAFF</span>
+                                        <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-[var(--cy-chip)] text-[var(--cy-text-3)] cursor-default">STAFF</span>
                                       ) : null}
                                     </div>
                                     <div className="flex flex-wrap items-center gap-2 mt-2">
                                       <CourseStatusBadge course={section} />
-                                      <p className="text-[10px] text-gray-500 font-mono font-medium">CRN: {section.crn} • {(section.maxEnrollment || 0) - (section.seatsAvailable || 0)}/{section.maxEnrollment || 0} Enrolled</p>
+                                      <p className="text-[10px] text-[var(--cy-text-3)] font-mono font-medium">CRN: {section.crn} • {(section.maxEnrollment || 0) - (section.seatsAvailable || 0)}/{section.maxEnrollment || 0} Enrolled</p>
                                     </div>
                                   </div>
                                   <div className="shrink-0 flex items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 gap-2">
                                     <button
                                       onClick={() => openNotificationModalForCourse(section)}
-                                      className={`w-full sm:w-auto p-2 rounded-md border transition-colors cursor-pointer flex items-center justify-center ${isCourseNotificationEnabled(section.crn) ? 'bg-amber-100 text-amber-700 border-amber-300 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-700' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700'}`}
+                                      className={`w-full sm:w-auto p-2 rounded-md border transition-colors cursor-pointer flex items-center justify-center ${isCourseNotificationEnabled(section.crn) ? 'bg-[rgb(232_163_23/0.14)] text-[var(--cy-gold)] border-[rgb(184_122_0/0.35)]' : 'bg-[var(--cy-surface)] text-[var(--cy-text-3)] border-[var(--cy-border)] hover:bg-[var(--cy-surface-2)]'}`}
                                       title="Notification settings"
                                     >
                                       <svg xmlns="http://www.w3.org/2000/svg" fill={isCourseNotificationEnabled(section.crn) ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1 5.454 1.31A8.967 8.967 0 0 1 18 9.75V9a6 6 0 1 0-12 0v.75a8.967 8.967 0 0 1-2.312 6.642A23.848 23.848 0 0 1 9.143 17.082m5.714 0a24.255 24.255 0 0 0-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
@@ -2315,7 +2315,7 @@ export default function Home() {
                           </p>
                           <button
                             onClick={() => applyOptimizedOption(option)}
-                            className="text-xs font-bold px-2 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                            className="text-xs font-bold px-2 py-1 rounded bg-charger-blue hover:bg-charger-blue-hover text-white cursor-pointer"
                           >
                             Apply
                           </button>
@@ -2417,7 +2417,7 @@ export default function Home() {
                   <button
                     key={`dot-${index}`}
                     onClick={() => setTutorialStep(index)}
-                    className={`w-3 h-3 rounded-full border transition-colors ${index === tutorialStep ? "bg-blue-600 border-blue-600" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
+                    className={`w-3 h-3 rounded-full border transition-colors ${index === tutorialStep ? "bg-charger-blue border-charger-blue" : "bg-transparent border-gray-400 hover:border-gray-600"}`}
                     title={`Go to step ${index + 1}`}
                     aria-label={`Go to tutorial step ${index + 1}`}
                   />
@@ -2435,7 +2435,7 @@ export default function Home() {
               ) : (
                 <button
                   onClick={() => setIsTutorialOpen(false)}
-                  className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold cursor-pointer"
+                  className="px-4 py-2 rounded-md bg-charger-blue hover:bg-charger-blue-hover text-white font-bold cursor-pointer"
                 >
                   Done
                 </button>
