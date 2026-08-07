@@ -1,6 +1,11 @@
 type DbUrlResolution = {
   url: string | null;
-  source: "database_url" | "supabase_db_url" | "supabase_parts" | "none";
+  source:
+    | "database_url"
+    | "supabase_db_url"
+    | "supabase_parts"
+    | "direct_url"
+    | "none";
 };
 
 function encodePart(value: string): string {
@@ -32,6 +37,18 @@ export function resolveDatabaseUrl(): DbUrlResolution {
   }
 
   return { url: null, source: "none" };
+}
+
+// Resolves the URL used for schema changes / migrations / seeding (Prisma CLI + seed script).
+// Supabase (and most poolers) require a DIRECT/session-mode connection for DDL — the
+// transaction pooler (pgbouncer, port 6543) breaks prepared statements and migrations.
+// Prefer DIRECT_URL, falling back to the normal runtime URL when it isn't set.
+export function resolveDirectDatabaseUrl(): DbUrlResolution {
+  const directUrl = process.env.DIRECT_URL?.trim();
+  if (directUrl) {
+    return { url: directUrl, source: "direct_url" };
+  }
+  return resolveDatabaseUrl();
 }
 
 export function getDatabaseHost(url: string | null): string | null {

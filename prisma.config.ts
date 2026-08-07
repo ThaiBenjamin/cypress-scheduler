@@ -1,8 +1,10 @@
 import "dotenv/config";
 import { defineConfig } from "@prisma/config";
-import { resolveDatabaseUrl } from "./lib/db-url";
+import { resolveDirectDatabaseUrl } from "./lib/db-url";
 
-const { url: resolvedDatabaseUrl } = resolveDatabaseUrl();
+// Prisma CLI commands (db push / migrate) run DDL, so use the DIRECT/session-mode
+// connection (DIRECT_URL) rather than the transaction pooler.
+const { url: resolvedDatabaseUrl } = resolveDirectDatabaseUrl();
 
 export default defineConfig({
   schema: "prisma/schema.prisma",

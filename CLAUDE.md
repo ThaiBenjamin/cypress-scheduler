@@ -89,7 +89,8 @@ If you ever change a term label, you must update `scraper.py` `TERMS`, the fallb
 
 | Var | Required | Purpose |
 |---|---|---|
-| `DATABASE_URL` | **Yes** | Postgres connection string. Also accepts `SUPABASE_DB_URL` or `SUPABASE_DB_{HOST,USER,PASSWORD,PORT,NAME,SSLMODE}`. |
+| `DATABASE_URL` | **Yes** | Runtime Postgres connection — Supabase **transaction** pooler (port `6543`, `?pgbouncer=true`). Also accepts `SUPABASE_DB_URL` or `SUPABASE_DB_{HOST,USER,PASSWORD,PORT,NAME,SSLMODE}`. |
+| `DIRECT_URL` | Recommended | **Session**-mode pooler (port `5432`) for `prisma db push`/`migrate` and `seed.ts`. DDL must not run over the transaction pooler. Falls back to `DATABASE_URL` if unset. |
 | `DB_SSL_REJECT_UNAUTHORIZED` | No | Override TLS cert check (`true`/`false`). Auto: `false` for Supabase pooler, else on in prod. |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Yes (auth) | Google OAuth. |
 | `NEXTAUTH_URL` / `NEXTAUTH_SECRET` | Yes (auth) | NextAuth. |
@@ -136,6 +137,18 @@ looks stale/wrong" almost always means **the DB path is broken and you're seeing
 3. Look at the response header `X-Course-Source-Reason` (`db_error`, `db_empty_after_search`,
    `exact_term_match`, …) to see *why* fallback engaged.
 4. Confirm term labels match across scraper/DB/UI (see §2 table).
+
+**Known Supabase failure — `Tenant or user not found` (P2010 / XX000):** the pooler rejected the
+connection at the tenant level. `/api/health` shows `databaseUrlSet: true` but `database.ok: false`
+with `(ENOTFOUND) tenant/user postgres.<ref> not found`. Causes, in likelihood order:
+1. **Project paused** — Supabase free tier auto-pauses after ~7 days idle. Restore it in the
+   dashboard. (A site that stops updating → idle → pause → fallback is the classic loop.)
+2. **Stale password** in the `DATABASE_URL`/`DIRECT_URL` secret — reset it and update Vercel + the
+   GitHub Actions secret (they must match).
+3. **Wrong pooler host/region or project ref** — copy the exact strings from Supabase → Connect.
+
+After fixing: update the value in **both** Vercel env vars **and** the GitHub Actions secret,
+redeploy, then re-run the scraper workflow.
 
 ---
 
