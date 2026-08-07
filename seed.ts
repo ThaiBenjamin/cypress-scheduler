@@ -38,6 +38,15 @@ async function main() {
     const fileData = await fs.readFile(filePath, "utf-8");
     const courses = JSON.parse(fileData);
 
+    // Safety guard: never wipe the live table if the scrape came back empty or malformed.
+    // A bad scrape should leave the previous (good) data in place, not blank the site.
+    if (!Array.isArray(courses) || courses.length === 0) {
+      console.error(
+        "❌ cypress_data.json is empty or not an array. Aborting seed to protect existing data.",
+      );
+      process.exit(1);
+    }
+
     console.log("🧹 Wiping old database records to prevent ghost classes...");
     await prisma.course.deleteMany({});
 
@@ -45,10 +54,18 @@ async function main() {
       `🚀 Starting database injection for ${courses.length} courses...`,
     );
 
-    for (const course of courses) {
-      if (!course.sectCrn) continue;
+    let inserted = 0;
+    let skipped = 0;
+    let failed = 0;
 
-      await prisma.course.upsert({
+    for (const course of courses) {
+      if (!course.sectCrn) {
+        skipped++;
+        continue;
+      }
+
+      try {
+        await prisma.course.upsert({
         where: {
           crn_term: {
             term: course.my_custom_term,
@@ -98,12 +115,26 @@ async function main() {
               .filter((m: any) => m.startTime !== ""),
           },
         },
-      });
+        });
+        inserted++;
+      } catch (rowError) {
+        failed++;
+        console.warn(
+          `⚠️ Skipped CRN ${course.sectCrn} (${course.my_custom_term}): ${
+            (rowError as Error).message
+          }`,
+        );
+      }
     }
 
     console.log(
-      "✅ Database successfully seeded with full meeting and waitlist data!",
+      `✅ Seed complete — ${inserted} inserted, ${skipped} skipped (no CRN), ${failed} failed.`,
     );
+
+    if (inserted === 0) {
+      console.error("❌ No courses were inserted. Failing the job.");
+      process.exit(1);
+    }
   } catch (error) {
     console.error("❌ Error during seeding:", error);
     process.exit(1);
