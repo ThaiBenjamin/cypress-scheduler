@@ -2745,26 +2745,26 @@ export default function Home() {
 
       {/* SIGN IN MODAL */}
       {isSignInModalOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4" role="dialog" aria-modal="true" aria-label="Sign in modal" onClick={() => setIsSignInModalOpen(false)}>
-          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-700 flex flex-col" onClick={e => e.stopPropagation()}>
-            <h3 className="text-xl font-black text-white mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
-            
-            <button onClick={handleGoogleSignIn} className="w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center gap-3 transition-colors shadow-lg cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#fff" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/></svg>
-              SIGN IN WITH GOOGLE
+        <div className="fixed inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[100] p-4" role="dialog" aria-modal="true" aria-label="Sign in modal" onClick={() => setIsSignInModalOpen(false)}>
+          <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] p-8 w-full max-w-md border border-[var(--cy-border)] flex flex-col" onClick={e => e.stopPropagation()}>
+            <h3 className="text-xl font-bold text-[var(--cy-text)] mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
+
+            <button onClick={handleGoogleSignIn} className="w-full bg-white hover:bg-white/90 text-[#0b1b33] font-bold py-3.5 px-4 rounded-[11px] flex items-center justify-center gap-3 transition-colors border border-[var(--cy-border)] cursor-pointer">
+              <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 2-1.6 5-4.6 7l7 5.4c4.2-3.9 6.6-9.6 6.6-15.7z" /><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.2 5.6C7.9 41 15.4 46 24 46z" /><path fill="#FBBC05" d="M11.5 28.3c-.5-1.4-.7-2.8-.7-4.3s.3-2.9.7-4.3l-7.2-5.6C2.8 17 2 20.4 2 24s.8 7 2.3 9.9l7.2-5.6z" /><path fill="#EA4335" d="M24 10.6c3.3 0 5.5 1.4 6.8 2.6l6.2-6C33.9 3.8 30 2 24 2 15.4 2 7.9 7 4.3 14.1l7.2 5.6C13.3 14.4 18.2 10.6 24 10.6z" /></svg>
+              Continue with Google
             </button>
 
             <div className="mt-8 flex items-center text-[var(--cy-text-3)] text-xs w-full">
-              <div className="flex-1 border-t border-gray-600"></div>
-              <span className="px-3 cursor-pointer hover:text-white transition-colors flex items-center gap-1 font-medium">
-                Have schedules saved to an old user ID? 
+              <div className="flex-1 border-t border-[var(--cy-border)]"></div>
+              <span className="px-3 flex items-center gap-1 font-medium">
+                Have schedules saved to an old user ID?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3"><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
               </span>
-              <div className="flex-1 border-t border-gray-600"></div>
+              <div className="flex-1 border-t border-[var(--cy-border)]"></div>
             </div>
 
             <div className="mt-10 flex justify-end">
-              <button onClick={() => setIsSignInModalOpen(false)} className="text-sm font-bold text-[var(--cy-text-3)] hover:text-white transition-colors cursor-pointer">CANCEL</button>
+              <button onClick={() => setIsSignInModalOpen(false)} className="text-sm font-bold text-[var(--cy-text-3)] hover:text-[var(--cy-text)] transition-colors cursor-pointer">CANCEL</button>
             </div>
           </div>
         </div>
@@ -2824,28 +2824,28 @@ export default function Home() {
       )}
 
       {isCustomEventModalOpen && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Custom event editor">
-          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-md w-full border border-gray-600 text-white">
+        <div className="absolute inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Custom event editor">
+          <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] p-6 max-w-md w-full border border-[var(--cy-border)] text-[var(--cy-text)]">
             <h3 className="text-xl font-bold mb-6">{editingCustomEventCrn ? "Edit Custom Event" : "Add a Custom Event"}</h3>
             
             <div className="space-y-5">
               <div className="relative">
-                <input type="text" value={customEventName} onChange={(e) => setCustomEventName(e.target.value)} className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 peer cursor-text" placeholder=" " />
-                <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-[var(--cy-text-3)] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-300 pointer-events-none">Event Name</label>
+                <input type="text" value={customEventName} onChange={(e) => setCustomEventName(e.target.value)} className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-[#B87A00] peer cursor-text" placeholder=" " />
+                <label className="absolute left-3 -top-2.5 bg-[var(--cy-surface)] px-1 text-xs text-[var(--cy-text-3)] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--cy-text-3)] peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[var(--cy-text-2)] pointer-events-none">Event Name</label>
               </div>
 
               <div className="relative">
                 <select 
                   value={customEventBuilding}
                   onChange={(e) => setCustomEventBuilding(e.target.value)}
-                  className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 appearance-none cursor-pointer"
+                  className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-[#B87A00] appearance-none cursor-pointer"
                 >
                   <option value="">No Location (TBA)</option>
                   {Object.entries(BUILDINGS).map(([code, building]) => (
                     <option key={code} value={code}>{building.name} ({code})</option>
                   ))}
                 </select>
-                <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Location (Map Pin)</label>
+                <label className="absolute left-3 -top-2.5 bg-[var(--cy-surface)] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Location (Map Pin)</label>
                 <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 text-[var(--cy-text-3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
@@ -2853,35 +2853,35 @@ export default function Home() {
 
               <div className="flex gap-4">
                 <div className="relative flex-1">
-                  <input type="time" value={customEventStartTime} onChange={(e) => setCustomEventStartTime(e.target.value)} className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 css-time-input cursor-pointer" />
-                  <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Start Time</label>
+                  <input type="time" value={customEventStartTime} onChange={(e) => setCustomEventStartTime(e.target.value)} className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-[#B87A00] css-time-input cursor-pointer" />
+                  <label className="absolute left-3 -top-2.5 bg-[var(--cy-surface)] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Start Time</label>
                 </div>
                 <div className="relative flex-1">
-                  <input type="time" value={customEventEndTime} onChange={(e) => setCustomEventEndTime(e.target.value)} className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 css-time-input cursor-pointer" />
-                  <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">End Time</label>
+                  <input type="time" value={customEventEndTime} onChange={(e) => setCustomEventEndTime(e.target.value)} className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-[#B87A00] css-time-input cursor-pointer" />
+                  <label className="absolute left-3 -top-2.5 bg-[var(--cy-surface)] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">End Time</label>
                 </div>
               </div>
 
-              <style dangerouslySetInnerHTML={{__html: `.css-time-input::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }`}} />
+              <style dangerouslySetInnerHTML={{__html: `.css-time-input::-webkit-calendar-picker-indicator { cursor: pointer; } .dark .css-time-input::-webkit-calendar-picker-indicator { filter: invert(1); }`}} />
 
-              <div className="flex rounded-md overflow-hidden border border-gray-600 bg-[#1e1e1e]">
+              <div className="flex rounded-md overflow-hidden border border-[var(--cy-border)] bg-[var(--cy-surface-2)]">
                 {["Su", "M", "Tu", "W", "Th", "F", "Sa"].map((day, i) => (
-                  <button key={day} onClick={() => toggleCustomDay(day)} className={`flex-1 py-2.5 text-xs font-bold border-r border-gray-600 last:border-r-0 transition-colors cursor-pointer ${customEventDays.includes(day) ? 'bg-gray-600 text-white' : 'text-[var(--cy-text-3)] hover:bg-gray-700'}`}>{day.charAt(0)}</button>
+                  <button key={day} onClick={() => toggleCustomDay(day)} className={`flex-1 py-2.5 text-xs font-bold border-r border-[var(--cy-border)] last:border-r-0 transition-colors cursor-pointer ${customEventDays.includes(day) ? 'bg-charger-blue text-white' : 'text-[var(--cy-text-3)] hover:bg-[var(--cy-surface)]'}`}>{day.charAt(0)}</button>
                 ))}
               </div>
 
               <div className="relative">
-                <select value={customEventScheduleId || activeScheduleId} onChange={(e) => setCustomEventScheduleId(e.target.value)} className="w-full bg-[#1e1e1e] border border-gray-600 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-gray-400 appearance-none cursor-pointer">
+                <select value={customEventScheduleId || activeScheduleId} onChange={(e) => setCustomEventScheduleId(e.target.value)} className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-[#B87A00] appearance-none cursor-pointer">
                   {schedules.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                 </select>
-                <label className="absolute left-3 -top-2.5 bg-[#2d2d2d] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Select schedule</label>
+                <label className="absolute left-3 -top-2.5 bg-[var(--cy-surface)] px-1 text-xs text-[var(--cy-text-3)] pointer-events-none">Select schedule</label>
                 <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none"><svg className="w-4 h-4 text-[var(--cy-text-3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg></div>
               </div>
             </div>
 
             <div className="mt-8 flex justify-end gap-3">
-              <button onClick={() => setIsCustomEventModalOpen(false)} className="px-5 py-2.5 text-sm font-bold text-gray-300 hover:text-white transition-colors cursor-pointer">CANCEL</button>
-              <button onClick={handleAddCustomEvent} disabled={!customEventName.trim() || customEventDays.length === 0} className={`px-5 py-2.5 text-sm font-bold rounded-md transition-colors cursor-pointer ${!customEventName.trim() || customEventDays.length === 0 ? 'bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-[#4a4a4a] text-gray-200 hover:bg-gray-500 hover:text-white'}`}>{editingCustomEventCrn ? "UPDATE EVENT" : "SAVE EVENT"}</button>
+              <button onClick={() => setIsCustomEventModalOpen(false)} className="px-5 py-2.5 text-sm font-bold text-[var(--cy-text-2)] hover:text-[var(--cy-text)] transition-colors cursor-pointer">CANCEL</button>
+              <button onClick={handleAddCustomEvent} disabled={!customEventName.trim() || customEventDays.length === 0} className={`px-5 py-2.5 text-sm font-bold rounded-md transition-colors cursor-pointer ${!customEventName.trim() || customEventDays.length === 0 ? 'bg-[var(--cy-surface-2)] text-[var(--cy-text-3)] cursor-not-allowed' : 'bg-charger-blue text-white hover:bg-charger-blue-hover'}`}>{editingCustomEventCrn ? "UPDATE EVENT" : "SAVE EVENT"}</button>
             </div>
           </div>
         </div>
