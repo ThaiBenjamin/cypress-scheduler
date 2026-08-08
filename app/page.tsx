@@ -1544,14 +1544,45 @@ export default function Home() {
       `}} />
 
       <nav className="h-16 bg-charger-blue text-white flex items-center justify-between px-4 sm:px-6 shadow-lg border-b border-white/10 z-30 shrink-0">
-        <h1 className="font-serif text-[21px] font-normal tracking-tight">Cypress Scheduler</h1>
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="inline-flex items-center justify-center w-[30px] h-[30px] rounded-lg bg-charger-gold shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0b2c5e" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" /></svg>
+          </span>
+          <h1 className="font-serif text-[21px] font-normal tracking-tight whitespace-nowrap">Cypress Scheduler</h1>
+          <div className="hidden sm:block w-px h-[22px] bg-white/20 shrink-0"></div>
+          <div className="relative hidden sm:block">
+            <button data-tour="schedule-dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)} title="Switch active schedule plan" className="flex items-center gap-2 bg-white/10 hover:bg-white/[0.18] border border-white/[0.16] text-white text-[12.5px] font-semibold py-1.5 px-[11px] rounded-[9px] transition-colors cursor-pointer">
+              <span className="w-[7px] h-[7px] rounded-full bg-charger-gold shrink-0"></span>
+              <span className="truncate max-w-[150px]">{activeSchedule?.name || "Loading..."}</span>
+              <svg className="h-3 w-3 shrink-0 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-64 bg-[var(--cy-surface)] rounded-xl shadow-2xl border border-[var(--cy-border)] overflow-hidden z-[60]">
+                <div className="max-h-60 overflow-y-auto">
+                  {schedules.map((schedule) => (
+                    <div key={schedule.id} className={`flex items-center justify-between p-3 border-b border-[var(--cy-border)] hover:bg-[var(--cy-surface-2)] cursor-pointer ${activeScheduleId === schedule.id ? 'bg-[var(--cy-surface-2)] border-l-4 border-l-[var(--cy-gold)]' : 'border-l-4 border-l-transparent'}`} onClick={() => { setActiveScheduleId(schedule.id); setIsDropdownOpen(false); }}>
+                      <span className="font-bold text-[var(--cy-text)] text-sm flex-1 truncate pr-2">{schedule.name}</span>
+                      <div className="flex gap-2 shrink-0">
+                        <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} title="Rename schedule" className="text-[var(--cy-text-3)] hover:text-[var(--cy-gold)] p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
+                        <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} title="Delete schedule" className="text-[var(--cy-text-3)] hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button onClick={handleCreateNewSchedule} title="Create a new schedule plan" className="w-full p-4 text-sm font-bold text-[var(--cy-gold)] hover:bg-[var(--cy-surface-2)] flex items-center justify-center gap-2 cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>Add New Schedule
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
         <div className="flex items-center gap-2 sm:gap-4 relative">
           
           <button
             onClick={handleSaveSchedule}
             disabled={!session || !hasUnsavedChanges}
             title={!session ? "Sign in to save schedules to your account" : "Save schedules"}
-            className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${session && hasUnsavedChanges ? "border-white bg-white/20 hover:bg-white/30 text-white shadow-sm" : "border-transparent bg-transparent text-white/50"}`}
+            className={`flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border transition-all cursor-pointer disabled:cursor-not-allowed ${session && hasUnsavedChanges ? "border-transparent bg-charger-gold hover:bg-charger-gold-hover text-charger-gold-ink shadow-sm" : "border-transparent bg-transparent text-white/50"}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
             <span className="hidden sm:inline">{session ? "SAVE" : "SIGN IN TO SAVE"}</span>
@@ -1563,6 +1594,22 @@ export default function Home() {
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 16V4m0 12l-3-3m3 3l3-3M4 20h16" /></svg>
             <span className="hidden sm:inline">IMPORT</span>
+          </button>
+          <button
+            onClick={handleCopyShareLink}
+            title="Copy a read-only share link"
+            className="hidden sm:flex items-center gap-2 text-sm font-bold py-1.5 px-3 rounded border border-white/40 bg-white/15 hover:bg-white/25 text-white transition-all cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+            <span>SHARE</span>
+          </button>
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            title="Toggle light / dark theme"
+            aria-label="Toggle theme"
+            className="w-8 h-8 flex items-center justify-center rounded bg-white/10 border border-white/[0.16] hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
           </button>
 
           {/* UNIFIED SETTINGS / USER MENU CONTAINER */}
@@ -1672,29 +1719,9 @@ export default function Home() {
         {/* CALENDAR AREA */}
         <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${activeTab === "calendar" ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
-            <div className="relative group">
-              <button data-tour="schedule-dropdown" onClick={() => setIsDropdownOpen(!isDropdownOpen)} title="Switch active schedule plan" className="peer flex items-center gap-2 bg-[var(--cy-surface)] border border-[var(--cy-border)] text-gray-800 dark:text-gray-200 text-sm font-bold py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
-                <span className="truncate max-w-[150px]">{activeSchedule?.name || "Loading..."}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-64 bg-[var(--cy-surface)] rounded-xl shadow-2xl border border-[var(--cy-border)] overflow-hidden z-[60]">
-                  <div className="max-h-60 overflow-y-auto">
-                    {schedules.map(schedule => (
-                      <div key={schedule.id} className={`flex items-center justify-between p-3 border-b border-gray-100 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-gray-700 cursor-pointer ${activeScheduleId === schedule.id ? 'bg-orange-50 dark:bg-gray-700 border-l-4 border-l-orange-600' : 'border-l-4 border-l-transparent'}`} onClick={() => { setActiveScheduleId(schedule.id); setIsDropdownOpen(false); }}>
-                        <span className="font-bold text-gray-800 dark:text-gray-200 text-sm flex-1 truncate pr-2">{schedule.name}</span>
-                        <div className="flex gap-2 shrink-0">
-                          <button onClick={(e) => { e.stopPropagation(); handleRenameSchedule(schedule.id, schedule.name); }} title="Rename schedule" className="text-[var(--cy-text-3)] hover:text-orange-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
-                          <button onClick={(e) => { e.stopPropagation(); handleDeleteSchedule(schedule.id); }} title="Delete schedule" className="text-[var(--cy-text-3)] hover:text-red-600 p-1 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <button onClick={handleCreateNewSchedule} title="Create a new schedule plan" className="w-full p-4 text-sm font-bold text-[var(--cy-gold)] hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>Add New Schedule
-                  </button>
-                </div>
-              )}
+            <div className="flex items-center gap-2.5 min-w-0">
+              <h2 className="text-[19px] font-bold tracking-[-0.01em] text-[var(--cy-text)] truncate max-w-[220px]">{activeSchedule?.name || "My Plan"}</h2>
+              <span className="text-[12px] font-semibold text-[var(--cy-text-2)] bg-[var(--cy-chip)] border border-[var(--cy-border)] px-[9px] py-1 rounded-[7px] whitespace-nowrap shrink-0">{activeCourses.length} {activeCourses.length === 1 ? 'class' : 'classes'} · {totalUnits} units</span>
             </div>
 
             <div className="flex items-center gap-1 sm:gap-2 text-[var(--cy-text-3)] w-full sm:w-auto">
@@ -2482,29 +2509,74 @@ export default function Home() {
         </div>
       )}
 
-      {infoModalCourse && (
-        <div className="absolute inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[70] p-4 sm:p-10" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
-          <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] w-full max-w-[620px] border border-[var(--cy-border)] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="bg-charger-blue px-[22px] py-[18px] flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-charger-gold">{infoModalCourse.subject} {infoModalCourse.courseNumber}</div>
-                <h3 className="font-serif text-[26px] font-normal text-white mt-1.5 break-words">{infoModalCourse.title || "Course Information"}</h3>
-              </div>
-              <button onClick={() => setInfoModalCourse(null)} title="Close" className="w-[30px] h-[30px] rounded-lg bg-white/[0.12] text-white text-xl leading-none flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer shrink-0">×</button>
-            </div>
-            <div className="px-[22px] py-5 text-[13.5px] leading-[1.6] text-[var(--cy-text-2)]">
-              {infoModalCourse.description ? infoModalCourse.description : (
-                <div className="bg-[rgb(184_122_0/0.10)] border border-[rgb(184_122_0/0.30)] text-[var(--cy-text-2)] p-4 rounded-lg">
-                  No description is available for this course yet.
+      {infoModalCourse && (() => {
+        const sections: any[] = Array.isArray(infoModalCourse.sections) ? infoModalCourse.sections : [];
+        const sectionCount = sections.length;
+        const openSections = sections.filter((s) => (s.seatsAvailable || 0) > 0).length;
+        const totalOpen = sections.reduce((a, s) => a + Math.max(0, s.seatsAvailable || 0), 0);
+        const totalMax = sections.reduce((a, s) => a + (s.maxEnrollment || 0), 0);
+        const meetingLine = (s: any) => {
+          const m = (s.meetings || []).find(
+            (mm: any) => mm.startTime || (Array.isArray(mm.days) && mm.days.length),
+          );
+          if (!m) return String(s.instructionMode || "").toUpperCase().includes("HYB") ? "Hybrid" : "Online";
+          const days = Array.isArray(m.days) && m.days.length ? m.days.join("") : "TBA";
+          const time = m.startTime
+            ? `${formatTimeDisplay(m.startTime, is24Hour)}${m.endTime ? " – " + formatTimeDisplay(m.endTime, is24Hour) : ""}`
+            : "";
+          const loc = [m.building, m.room].filter(Boolean).join(" ");
+          return [days, time, loc].filter(Boolean).join(" · ");
+        };
+        const stats: [string, string][] = [
+          ["Sections", String(sectionCount)],
+          ["Open", `${openSections}/${sectionCount}`],
+          ["Seats", `${totalOpen}/${totalMax}`],
+        ];
+        return (
+          <div className="absolute inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[70] p-4 sm:p-10" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
+            <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] w-full max-w-[620px] border border-[var(--cy-border)] overflow-hidden flex flex-col max-h-[85vh]" onClick={(e) => e.stopPropagation()}>
+              <div className="bg-charger-blue px-[22px] py-[18px] flex items-start justify-between gap-4 shrink-0">
+                <div className="min-w-0">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-charger-gold">{infoModalCourse.subject} {infoModalCourse.courseNumber}</div>
+                  <h3 className="font-serif text-[26px] font-normal text-white mt-1.5 break-words">{infoModalCourse.title || "Course Information"}</h3>
                 </div>
-              )}
-            </div>
-            <div className="px-[22px] pb-5 flex justify-end">
-              <button onClick={() => setInfoModalCourse(null)} className="px-5 py-2.5 text-[13px] font-bold bg-[var(--cy-surface-2)] border border-[var(--cy-border)] text-[var(--cy-text-2)] hover:border-[#B87A00] hover:text-[#B87A00] rounded-[10px] transition-colors cursor-pointer">Close</button>
+                <button onClick={() => setInfoModalCourse(null)} title="Close" className="w-[30px] h-[30px] rounded-lg bg-white/[0.12] text-white text-xl leading-none flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer shrink-0">×</button>
+              </div>
+              <div className="px-[22px] py-5 flex flex-col gap-4 overflow-y-auto">
+                <p className="text-[13.5px] leading-[1.6] text-[var(--cy-text-2)]">
+                  {infoModalCourse.description || "No description is available for this course yet."}
+                </p>
+                {sectionCount > 0 && (
+                  <>
+                    <div className="grid grid-cols-3 gap-2.5">
+                      {stats.map(([label, value]) => (
+                        <div key={label} className="bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-[11px] p-[11px]">
+                          <div className="text-[10.5px] font-bold uppercase tracking-[0.1em] text-[var(--cy-text-3)]">{label}</div>
+                          <div className="text-[17px] font-bold text-[var(--cy-text)] mt-0.5 font-mono">{value}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {sections.map((s) => (
+                        <div key={s.crn} className="flex items-center justify-between gap-3 bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-[11px] px-3 py-2.5">
+                          <div className="min-w-0">
+                            <div className="text-[12.5px] font-bold text-[var(--cy-text)] font-mono">CRN {s.crn}</div>
+                            <div className="font-mono text-[11px] text-[var(--cy-text-2)] truncate">{meetingLine(s)}</div>
+                          </div>
+                          <div className="shrink-0"><CourseStatusBadge course={s} /></div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              <div className="px-[22px] py-4 flex justify-end border-t border-[var(--cy-border)] shrink-0">
+                <button onClick={() => setInfoModalCourse(null)} className="px-5 py-2.5 text-[13px] font-bold bg-[var(--cy-surface-2)] border border-[var(--cy-border)] text-[var(--cy-text-2)] hover:border-[#B87A00] hover:text-[#B87A00] rounded-[10px] transition-colors cursor-pointer">Close</button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {selectedEvent && (() => {
         const isCustomEvent = selectedEvent.courseInfo?.crn?.startsWith("CUS-");
@@ -2780,7 +2852,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="fixed bottom-6 left-4 lg:left-6 z-50">
+      <div className="fixed bottom-[80px] right-4 lg:bottom-6 lg:right-6 z-50 flex flex-col items-end">
         {isChatOpen && (
           <div className="mb-3 w-[92vw] max-w-sm rounded-2xl border border-[var(--cy-border)] bg-[var(--cy-surface)] shadow-2xl overflow-hidden">
             <div className="px-4 py-3 bg-charger-blue text-white flex items-center justify-between">
@@ -2849,11 +2921,12 @@ export default function Home() {
         )}
         <button
           onClick={() => setIsChatOpen((prev) => !prev)}
-          className="w-14 h-14 rounded-full bg-charger-gold hover:bg-charger-gold-hover text-charger-gold-ink shadow-2xl flex items-center justify-center border-2 border-white dark:border-gray-900 cursor-pointer"
+          className="flex items-center gap-2 rounded-full bg-charger-blue hover:bg-charger-blue-hover text-white text-[13px] font-bold px-[18px] py-[11px] shadow-[0_10px_24px_-8px_rgba(11,44,94,0.6)] cursor-pointer"
           title={isChatOpen ? "Hide AI assistant" : "Open AI assistant"}
           aria-label={isChatOpen ? "Hide AI assistant" : "Open AI assistant"}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m3.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H19.5m-1.5 7.5a3 3 0 01-3 3H9a3 3 0 01-3-3m12 0V12a3 3 0 00-3-3H9a3 3 0 00-3 3v5.25m12 0H6.75" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-[15px] h-[15px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z" /></svg>
+          Ask the assistant
         </button>
       </div>
     </div>
