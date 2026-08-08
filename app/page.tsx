@@ -2483,26 +2483,24 @@ export default function Home() {
       )}
 
       {infoModalCourse && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
-          <div className="bg-[#2d2d2d] rounded-xl shadow-2xl p-6 max-w-xl w-full border border-gray-600 text-white" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-xl sm:text-2xl font-black text-white pr-4">{infoModalCourse.title || "Course Information"}</h3>
-                <p className="text-[var(--cy-text-3)] font-bold mt-1 text-sm">{infoModalCourse.subject} {infoModalCourse.courseNumber}</p>
+        <div className="absolute inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[70] p-4 sm:p-10" role="dialog" aria-modal="true" aria-label="Course information" onClick={() => setInfoModalCourse(null)}>
+          <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] w-full max-w-[620px] border border-[var(--cy-border)] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-charger-blue px-[22px] py-[18px] flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-charger-gold">{infoModalCourse.subject} {infoModalCourse.courseNumber}</div>
+                <h3 className="font-serif text-[26px] font-normal text-white mt-1.5 break-words">{infoModalCourse.title || "Course Information"}</h3>
               </div>
-              <button onClick={() => setInfoModalCourse(null)} className="text-[var(--cy-text-3)] hover:text-white transition-colors cursor-pointer shrink-0"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+              <button onClick={() => setInfoModalCourse(null)} title="Close" className="w-[30px] h-[30px] rounded-lg bg-white/[0.12] text-white text-xl leading-none flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer shrink-0">×</button>
             </div>
-            <div className="text-gray-200 text-sm leading-relaxed mb-6">
+            <div className="px-[22px] py-5 text-[13.5px] leading-[1.6] text-[var(--cy-text-2)]">
               {infoModalCourse.description ? infoModalCourse.description : (
-                <div className="bg-orange-900/30 border border-orange-800 text-orange-200 p-4 rounded-lg">
-                  <span className="font-bold block mb-2">Description missing!</span>
-                  Your API route is not sending the <code>description</code> field to the frontend. <br/><br/>
-                  Open your <code>app/api/courses/route.ts</code> (or similar file) and ensure <code>description: true</code> is included in your Prisma <code>select</code> statement so it reaches this page!
+                <div className="bg-[rgb(184_122_0/0.10)] border border-[rgb(184_122_0/0.30)] text-[var(--cy-text-2)] p-4 rounded-lg">
+                  No description is available for this course yet.
                 </div>
               )}
             </div>
-            <div className="flex justify-end">
-              <button onClick={() => setInfoModalCourse(null)} className="px-6 py-2.5 text-sm font-bold bg-[#4a4a4a] text-gray-200 hover:bg-gray-500 hover:text-white rounded-md transition-colors cursor-pointer shadow-sm">CLOSE</button>
+            <div className="px-[22px] pb-5 flex justify-end">
+              <button onClick={() => setInfoModalCourse(null)} className="px-5 py-2.5 text-[13px] font-bold bg-[var(--cy-surface-2)] border border-[var(--cy-border)] text-[var(--cy-text-2)] hover:border-[#B87A00] hover:text-[#B87A00] rounded-[10px] transition-colors cursor-pointer">Close</button>
             </div>
           </div>
         </div>
