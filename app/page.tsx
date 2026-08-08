@@ -2530,7 +2530,7 @@ export default function Home() {
                   
                   <div className="relative group flex items-center justify-center shrink-0 pt-1">
                     <div 
-                      className="peer relative flex items-center justify-center w-7 h-7 rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface-2)] text-[var(--cy-text-3)] hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" 
+                      className="peer relative flex items-center justify-center w-7 h-7 rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface-2)] text-[var(--cy-text-3)] hover:text-[#B87A00] hover:border-[#B87A00] transition-colors cursor-pointer overflow-hidden shrink-0" 
                       title="Change color"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
@@ -2569,7 +2569,7 @@ export default function Home() {
               <div className="bg-white dark:bg-[#1e1e1e] rounded-xl shadow-2xl p-5 max-w-sm w-full mx-4 border border-[var(--cy-border)]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-start justify-between mb-4 pb-4 border-b border-[var(--cy-border)]">
                   <div className="relative group">
-                    <button onClick={() => { setSearchQuery(selectedEvent.title); setTermQuery(selectedEvent.courseInfo.term); setActiveTab("search"); setSelectedEvent(null); }} className="peer flex items-center gap-2 text-[var(--cy-accent)] hover:text-blue-800 dark:hover:text-blue-300 font-bold text-lg sm:text-xl text-left transition-colors cursor-pointer">
+                    <button onClick={() => { setSearchQuery(selectedEvent.title); setTermQuery(selectedEvent.courseInfo.term); setActiveTab("search"); setSelectedEvent(null); }} className="peer flex items-center gap-2 text-[var(--cy-accent)] hover:text-[#B87A00] font-bold text-lg sm:text-xl text-left transition-colors cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                       {selectedEvent.title} {selectedEvent.meetingInfo?.type ? selectedEvent.meetingInfo.type.toUpperCase().substring(0, 3) : "LEC"}
                     </button>
@@ -2580,7 +2580,7 @@ export default function Home() {
                     
                     <div className="relative group flex items-center justify-center">
                       <div 
-                        className="peer relative flex items-center justify-center w-8 h-8 rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface-2)] text-[var(--cy-text-3)] hover:text-orange-500 hover:border-orange-300 dark:hover:border-orange-500 transition-colors cursor-pointer overflow-hidden shrink-0" 
+                        className="peer relative flex items-center justify-center w-8 h-8 rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface-2)] text-[var(--cy-text-3)] hover:text-[#B87A00] hover:border-[#B87A00] transition-colors cursor-pointer overflow-hidden shrink-0" 
                         title="Change color"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
@@ -2657,25 +2657,25 @@ export default function Home() {
 
       {isImportModalOpen && (
         <div className="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl bg-[#1f1f1f] border border-gray-700 rounded-xl shadow-2xl p-6 text-white">
+          <div className="w-full max-w-2xl bg-[var(--cy-surface)] border border-[var(--cy-border)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] p-6 text-[var(--cy-text)]">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-xl font-black">Import from myGateway</h2>
-                <p className="text-sm text-gray-300 mt-1">
+                <p className="text-sm text-[var(--cy-text-2)] mt-1">
                   Paste your active registrations text and we’ll auto-add matching CRNs to the current schedule.
                 </p>
               </div>
               <button
                 onClick={() => setIsImportModalOpen(false)}
-                className="text-[var(--cy-text-3)] hover:text-white cursor-pointer"
+                className="text-[var(--cy-text-3)] hover:text-[var(--cy-text)] cursor-pointer"
                 title="Close import dialog"
               >
                 ✕
               </button>
             </div>
 
-            <div className="mt-4 text-sm text-gray-300 space-y-1">
-              <p className="font-bold text-gray-100">Where to copy from:</p>
+            <div className="mt-4 text-sm text-[var(--cy-text-2)] space-y-1">
+              <p className="font-bold text-[var(--cy-text)]">Where to copy from:</p>
               <p>1) Go to myGateway</p>
               <p>2) Registration → View Registration Information</p>
               <p>3) Active Registrations</p>
@@ -2686,20 +2686,20 @@ export default function Home() {
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               placeholder={`Introduction to Philosophy, Philosophy & Religious Studies 100 C, Section OL1\nTerm: Summer 2026\nCRN: 30437\nStatus: Registered--Web 04/11/2026`}
-              className="mt-4 w-full h-56 rounded-lg bg-[#111111] border border-gray-700 text-gray-100 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#B87A00]"
+              className="mt-4 w-full h-56 rounded-lg bg-[var(--cy-surface-2)] border border-[var(--cy-border)] text-[var(--cy-text-2)] p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#B87A00]"
             />
 
             <div className="mt-4 flex justify-end gap-3">
               <button
                 onClick={() => setIsImportModalOpen(false)}
-                className="px-4 py-2 text-sm font-bold text-gray-300 hover:text-white cursor-pointer"
+                className="px-4 py-2 text-sm font-bold text-[var(--cy-text-2)] hover:text-[var(--cy-text)] cursor-pointer"
               >
                 CANCEL
               </button>
               <button
                 onClick={() => void handleImportFromMyGateway()}
                 disabled={isImporting || !importText.trim()}
-                className="px-4 py-2 text-sm font-bold rounded-md bg-orange-600 text-white hover:bg-orange-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="px-4 py-2 text-sm font-bold rounded-md bg-charger-blue text-white hover:bg-charger-blue-hover disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isImporting ? "IMPORTING..." : "IMPORT CLASSES"}
               </button>
@@ -2783,10 +2783,13 @@ export default function Home() {
       <div className="fixed bottom-6 left-4 lg:left-6 z-50">
         {isChatOpen && (
           <div className="mb-3 w-[92vw] max-w-sm rounded-2xl border border-[var(--cy-border)] bg-[var(--cy-surface)] shadow-2xl overflow-hidden">
-            <div className="px-4 py-3 bg-orange-600 text-white flex items-center justify-between">
-              <div>
-                <p className="text-sm font-black">Scheduler AI Assistant</p>
-                <p className="text-[11px] opacity-90">Questions about classes, schedules, and app features</p>
+            <div className="px-4 py-3 bg-charger-blue text-white flex items-center justify-between">
+              <div className="flex items-start gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-charger-gold mt-1.5 shrink-0"></span>
+                <div>
+                  <p className="text-sm font-bold">Scheduler Assistant</p>
+                  <p className="text-[11px] opacity-90">Questions about classes, schedules, and app features</p>
+                </div>
               </div>
               <button
                 onClick={() => setIsChatOpen(false)}
@@ -2797,21 +2800,21 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
-            <div className="h-72 overflow-y-auto px-3 py-3 space-y-2 bg-gray-50 dark:bg-gray-950">
+            <div className="h-72 overflow-y-auto px-3 py-3 space-y-2 bg-[var(--cy-bg)]">
               {chatMessages.map((message, idx) => (
                 <div
                   key={`${message.role}-${idx}`}
                   className={`rounded-xl px-3 py-2 text-sm whitespace-pre-wrap ${
                     message.role === "user"
-                      ? "bg-orange-100 dark:bg-orange-900/40 text-gray-900 dark:text-orange-100 ml-6"
-                      : "bg-[var(--cy-surface)] text-gray-800 dark:text-gray-100 mr-6 border border-[var(--cy-border)]"
+                      ? "bg-charger-blue text-white ml-6"
+                      : "bg-[var(--cy-chip)] text-[var(--cy-text-2)] mr-6 border border-[var(--cy-border)]"
                   }`}
                 >
                   {message.content}
                 </div>
               ))}
               {isChatLoading && (
-                <div className="rounded-xl px-3 py-2 text-sm bg-[var(--cy-surface)] text-gray-600 dark:text-gray-200 mr-6 border border-[var(--cy-border)]">
+                <div className="rounded-xl px-3 py-2 text-sm bg-[var(--cy-chip)] text-[var(--cy-text-3)] mr-6 border border-[var(--cy-border)]">
                   Thinking...
                 </div>
               )}
@@ -2828,13 +2831,13 @@ export default function Home() {
                     }
                   }}
                   placeholder="Ask about finding classes, scheduling, or app features..."
-                  className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-700 bg-[var(--cy-surface)] px-3 py-2 text-sm text-[var(--cy-text)] focus:outline-none focus:ring-2 focus:ring-[#B87A00]"
+                  className="flex-1 resize-none rounded-lg border border-[var(--cy-border)] bg-[var(--cy-surface-2)] px-3 py-2 text-sm text-[var(--cy-text)] focus:outline-none focus:ring-2 focus:ring-[#B87A00]"
                   rows={2}
                 />
                 <button
                   onClick={() => void sendChatMessage()}
                   disabled={isChatLoading || !chatInput.trim()}
-                  className="h-10 px-3 rounded-lg bg-orange-600 text-white text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-orange-700 cursor-pointer"
+                  className="h-10 px-3 rounded-lg bg-charger-gold text-charger-gold-ink text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-charger-gold-hover cursor-pointer"
                   title="Send message"
                   aria-label="Send message"
                 >
