@@ -7,6 +7,7 @@ import { enUS } from "date-fns/locale";
 import { toPng } from "html-to-image";
 import dynamic from 'next/dynamic';
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { BUILDINGS } from "@/lib/scheduler/buildings";
 import CourseCard from "./components/CourseCard";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -396,7 +397,20 @@ export default function Home() {
   
   // REAL NEXT-AUTH STATE
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // Signed-out visitors land on /welcome first, unless they chose "Try it without
+  // signing in" (which sets the cyp_guest flag).
+  useEffect(() => {
+    if (
+      status === "unauthenticated" &&
+      typeof window !== "undefined" &&
+      localStorage.getItem("cyp_guest") !== "1"
+    ) {
+      router.replace("/welcome");
+    }
+  }, [status, router]);
 
   const [is24Hour, setIs24Hour] = useState(false);
 
@@ -917,6 +931,21 @@ export default function Home() {
   useEffect(() => {
     setCalendarView(showWeekends ? "week" : "work_week");
   }, [showWeekends]);
+
+  // Whether any two scheduled events overlap on the same weekday (drives the toolbar pill).
+  const hasScheduleConflict = useMemo(() => {
+    const evs = myScheduleEvents;
+    for (let i = 0; i < evs.length; i++) {
+      for (let j = i + 1; j < evs.length; j++) {
+        const a = evs[i];
+        const b = evs[j];
+        if (a.start.getDay() === b.start.getDay() && a.start < b.end && b.start < a.end) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }, [myScheduleEvents]);
 
   const groupedSearchResults = useMemo(() => {
     const filteredResults = searchResults.filter((course) => {
@@ -1456,16 +1485,16 @@ export default function Home() {
     const isCustom = crn?.startsWith("CUS-");
 
     return (
-      <div className="flex flex-col w-full h-full overflow-hidden text-[#111827] cursor-pointer">
-        <div className="text-[10px] leading-none whitespace-nowrap opacity-90 pointer-events-none font-medium mb-[2px]">
-          {startTime} - {endTime}
-        </div>
-        <div className="font-black text-[12px] leading-none whitespace-nowrap truncate pointer-events-none mb-[2px]">
+      <div className="flex flex-col w-full h-full overflow-hidden text-white cursor-pointer">
+        <div className="font-bold text-[12px] leading-[1.15] whitespace-nowrap truncate pointer-events-none">
           {event.title}
         </div>
+        <div className="text-[10.5px] leading-[1.2] whitespace-nowrap opacity-[0.85] pointer-events-none mt-[2px]">
+          {startTime} – {endTime}
+        </div>
         {!isCustom && (
-          <div className="flex justify-between text-[10px] leading-none opacity-90 pointer-events-none">
-            <span className="truncate pr-1">{location}</span>
+          <div className="flex justify-between gap-1 text-[10.5px] leading-[1.2] opacity-[0.85] pointer-events-none">
+            <span className="truncate">{location}</span>
             <span className="shrink-0">{crn}</span>
           </div>
         )}
@@ -1531,7 +1560,18 @@ export default function Home() {
     return { top, left, width: cardWidth };
   })();
 
-  if (!isLoaded) return null; 
+  if (!isLoaded) return null;
+
+  // Redirecting an un-authenticated, non-guest visitor to /welcome — render nothing
+  // meanwhile so the scheduler never flashes. (Only runs client-side, after isLoaded.)
+  if (
+    status === "unauthenticated" &&
+    typeof window !== "undefined" &&
+    localStorage.getItem("cyp_guest") !== "1"
+  ) {
+    return null;
+  }
+
 
   return (
     <div className="flex flex-col h-screen bg-[var(--cy-bg)] font-sans relative overflow-hidden transition-colors duration-300">
@@ -1720,51 +1760,54 @@ export default function Home() {
         <div className={`w-full lg:w-[calc(100%-var(--sidebar-width))] p-4 lg:p-8 flex-col z-10 transition-colors duration-300 overflow-y-auto ${activeTab === "calendar" ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 sm:gap-0">
             <div className="flex items-center gap-2.5 min-w-0">
-              <h2 className="text-[19px] font-bold tracking-[-0.01em] text-[var(--cy-text)] truncate max-w-[220px]">{activeSchedule?.name || "My Plan"}</h2>
+              <h2 className="text-[19px] font-bold tracking-[-0.01em] text-[var(--cy-text)] truncate max-w-[200px]">{activeSchedule?.name || "My Plan"}</h2>
               <span className="text-[12px] font-semibold text-[var(--cy-text-2)] bg-[var(--cy-chip)] border border-[var(--cy-border)] px-[9px] py-1 rounded-[7px] whitespace-nowrap shrink-0">{activeCourses.length} {activeCourses.length === 1 ? 'class' : 'classes'} · {totalUnits} units</span>
+              {activeCourses.length > 0 && (
+                hasScheduleConflict ? (
+                  <span className="hidden sm:flex items-center gap-1.5 text-[12px] font-bold text-[#B0413E] bg-[rgb(176_65_62/0.10)] border border-[rgb(176_65_62/0.25)] px-[9px] py-1 rounded-[7px] whitespace-nowrap shrink-0">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><path d="M12 9v4M12 17h.01" /></svg>
+                    Conflict
+                  </span>
+                ) : (
+                  <span className="hidden sm:flex items-center gap-1.5 text-[12px] font-bold text-[#1F7A4D] bg-[rgb(31_122_77/0.10)] border border-[rgb(31_122_77/0.25)] px-[9px] py-1 rounded-[7px] whitespace-nowrap shrink-0">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                    No conflicts
+                  </span>
+                )
+              )}
             </div>
 
-            <div className="flex items-center gap-1 sm:gap-2 text-[var(--cy-text-3)] w-full sm:w-auto">
-              <div className="relative flex items-center justify-center">
-                <button onClick={exportCalendarAsImage} title="Save calendar as PNG image" aria-label="Save calendar as PNG image" className="peer p-2 rounded-xl bg-[var(--cy-surface)] border border-[var(--cy-border)] hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></button>
-                <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Save as PNG<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end flex-wrap sm:flex-nowrap">
+              <button onClick={undo} disabled={past.length === 0} title="Undo last schedule change" aria-label="Undo" className="p-2 rounded-[9px] bg-[var(--cy-surface)] border border-[var(--cy-border)] text-[var(--cy-text-2)] hover:border-[#B87A00] hover:text-[#B87A00] transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg></button>
+              <button onClick={redo} disabled={future.length === 0} title="Redo last undone change" aria-label="Redo" className="p-2 rounded-[9px] bg-[var(--cy-surface)] border border-[var(--cy-border)] text-[var(--cy-text-2)] hover:border-[#B87A00] hover:text-[#B87A00] transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg></button>
+
+              <div className="flex items-center bg-[var(--cy-chip)] border border-[var(--cy-border)] rounded-[9px] p-[2px]">
+                <button onClick={() => setCalendarView("work_week")} className={`text-[12px] font-semibold px-[11px] py-[5px] rounded-[7px] whitespace-nowrap cursor-pointer transition-colors ${calendarView === "work_week" ? "bg-[var(--cy-surface)] text-[var(--cy-text)] shadow-[0_1px_2px_rgba(11,27,51,0.10)]" : "text-[var(--cy-text-3)] hover:text-[var(--cy-text-2)]"}`}>Mon–Fri</button>
+                <button onClick={() => setCalendarView("week")} className={`text-[12px] font-semibold px-[11px] py-[5px] rounded-[7px] whitespace-nowrap cursor-pointer transition-colors ${calendarView === "week" ? "bg-[var(--cy-surface)] text-[var(--cy-text)] shadow-[0_1px_2px_rgba(11,27,51,0.10)]" : "text-[var(--cy-text-3)] hover:text-[var(--cy-text-2)]"}`}>7 days</button>
               </div>
-              <div className="relative flex items-center justify-center">
-                <button onClick={exportCalendarAsIcs} title="Download calendar as .ics file" aria-label="Download calendar as .ics file" className="peer p-2 rounded-xl bg-[var(--cy-surface)] border border-[var(--cy-border)] hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4M12 14v-8m0 8l-4-4m4 4l4-4" /></svg></button>
-                <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Download as .ics file<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
-              </div>
-              <div className="relative flex items-center justify-center">
-                <button onClick={undo} disabled={past.length === 0} title="Undo last schedule change" aria-label="Undo last schedule change" className="peer p-2 rounded-xl bg-[var(--cy-surface)] border border-[var(--cy-border)] hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg></button>
-                <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Undo<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
-              </div>
-              <div className="relative flex items-center justify-center">
-                <button onClick={redo} disabled={future.length === 0} title="Redo last undone change" aria-label="Redo last undone change" className="peer p-2 rounded-xl bg-[var(--cy-surface)] border border-[var(--cy-border)] hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg></button>
-                <div className="absolute top-[110%] left-1/2 transform -translate-x-1/2 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Redo<div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
-              </div>
-              <div className="relative flex items-center justify-center">
-                <button 
-                  onClick={() => {
-                    setCustomEventName("");
-                    setCustomEventStartTime("10:30");
-                    setCustomEventEndTime("15:30");
-                    setCustomEventDays([]);
-                    setCustomEventBuilding(""); 
-                    setCustomEventScheduleId(activeScheduleId);
-                    setEditingCustomEventCrn(null);
-                    setIsCustomEventModalOpen(true);
-                  }}
-                  title="Add a custom calendar event"
-                  aria-label="Add a custom calendar event"
-                  className="peer p-2 rounded-xl bg-[var(--cy-surface)] border border-[var(--cy-border)] hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm cursor-pointer"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
-                </button>
-                <div className="absolute top-[110%] right-0 transform opacity-0 peer-hover:opacity-100 transition-opacity duration-200 w-max bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs font-bold py-1.5 px-3 rounded shadow-lg z-50 pointer-events-none">Add Custom Event<div className="absolute bottom-full right-3 border-[5px] border-transparent border-b-gray-900 dark:border-b-gray-100"></div></div>
-              </div>
+
+              <button onClick={exportCalendarAsImage} title="Save calendar as PNG image" className="bg-[var(--cy-surface)] border border-[var(--cy-border)] text-[var(--cy-text-2)] rounded-[9px] px-[11px] py-[6px] text-[12px] font-semibold hover:border-[#B87A00] hover:text-[#B87A00] transition-colors cursor-pointer whitespace-nowrap">PNG</button>
+              <button onClick={exportCalendarAsIcs} title="Download calendar as .ics file" className="bg-[var(--cy-surface)] border border-[var(--cy-border)] text-[var(--cy-text-2)] rounded-[9px] px-[11px] py-[6px] text-[12px] font-semibold hover:border-[#B87A00] hover:text-[#B87A00] transition-colors cursor-pointer whitespace-nowrap">.ics</button>
+              <button
+                onClick={() => {
+                  setCustomEventName("");
+                  setCustomEventStartTime("10:30");
+                  setCustomEventEndTime("15:30");
+                  setCustomEventDays([]);
+                  setCustomEventBuilding("");
+                  setCustomEventScheduleId(activeScheduleId);
+                  setEditingCustomEventCrn(null);
+                  setIsCustomEventModalOpen(true);
+                }}
+                title="Add a custom calendar event"
+                className="bg-[var(--cy-surface)] border border-[var(--cy-border)] text-[var(--cy-text)] rounded-[9px] px-3 py-[6px] text-[12px] font-bold hover:border-[#B87A00] hover:text-[#B87A00] transition-colors cursor-pointer whitespace-nowrap"
+              >
+                + Event
+              </button>
             </div>
           </div>
 
-          <div ref={calendarRef} className="flex-1 min-h-[660px] bg-[var(--cy-surface)] rounded-[14px] shadow-[0_8px_24px_-12px_rgb(11_27_51/0.16)] p-4 lg:p-6 border border-[var(--cy-border)] overflow-hidden relative mb-20 lg:mb-0">
+          <div ref={calendarRef} className="flex-1 min-h-[660px] bg-[var(--cy-surface)] rounded-[14px] shadow-[0_8px_24px_-12px_rgb(11_27_51/0.16)] pt-[14px] px-[14px] pb-[6px] border border-[var(--cy-border)] overflow-hidden relative mb-20 lg:mb-0">
             <h2 className="watermark-text absolute top-6 left-6 text-xl lg:text-2xl font-black text-gray-200 opacity-50 select-none z-0 pointer-events-none">{activeSchedule?.name}</h2>
             <Calendar
               localizer={localizer}

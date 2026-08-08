@@ -99,11 +99,20 @@ body {
   padding-right: 9px;
 }
 .rbc-header {
-  border-bottom: none;
-  border-left: none;
+  border-bottom: none !important;
+  border-left: none !important;
   padding-bottom: 9px;
-  font-weight: 600;
-  color: var(--cy-text);
+}
+/* The day label lives in a <button.rbc-button-link>, which carries its own font —
+   style the button so the "MON TUE …" labels match the design. */
+.rbc-header .rbc-button-link {
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cy-text-3);
+  cursor: default;
 }
 .rbc-today { background-color: transparent; }
 .rbc-event {
@@ -113,5 +122,5 @@ body {
   padding: 6px 8px;
   box-shadow: 0 2px 6px rgb(11 27 51 / 0.18);
 }
-.rbc-event-label { display: none; }
+.rbc-event-label { display: none !important; }
 .rbc-event.rbc-selected { outline: 2px solid var(--color-charger-gold); }

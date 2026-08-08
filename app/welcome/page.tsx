@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 // Signed-out landing page (README §Screens 3). Cypress College blue-and-gold.
 // Reachable at /welcome; "Try it without signing in" drops into the scheduler at /.
@@ -63,6 +65,19 @@ const HERO_EVENTS = [
 ];
 
 export default function WelcomePage() {
+  const router = useRouter();
+  const { status } = useSession();
+
+  // Already signed in? Go straight to the scheduler.
+  useEffect(() => {
+    if (status === "authenticated") router.replace("/");
+  }, [status, router]);
+
+  const startGuest = () => {
+    if (typeof window !== "undefined") localStorage.setItem("cyp_guest", "1");
+    router.push("/");
+  };
+
   return (
     <div className="min-h-screen bg-[var(--cy-bg)] font-sans text-[var(--cy-text)]">
       {/* HERO */}
@@ -79,7 +94,7 @@ export default function WelcomePage() {
               <a href="#how" className="hidden sm:inline hover:text-white transition-colors">How it works</a>
               <Link href="/api/health" className="hidden sm:inline hover:text-white transition-colors">Status</Link>
               <button
-                onClick={() => signIn("google")}
+                onClick={() => signIn("google", { callbackUrl: "/" })}
                 className="text-charger-gold hover:text-charger-gold-hover transition-colors cursor-pointer"
               >
                 Sign in
@@ -107,18 +122,18 @@ export default function WelcomePage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => signIn("google")}
+                  onClick={() => signIn("google", { callbackUrl: "/" })}
                   className="inline-flex items-center justify-center gap-2.5 rounded-[11px] bg-white text-[#0b1b33] text-[13px] font-bold px-5 py-3 border border-transparent hover:bg-white/90 transition-colors cursor-pointer"
                 >
                   {GoogleG}
                   Continue with Google
                 </button>
-                <Link
-                  href="/"
-                  className="inline-flex items-center justify-center rounded-[11px] text-[13px] font-bold px-5 py-3 border border-white/30 text-white hover:bg-white/10 transition-colors"
+                <button
+                  onClick={startGuest}
+                  className="inline-flex items-center justify-center rounded-[11px] text-[13px] font-bold px-5 py-3 border border-white/30 text-white hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   Try it without signing in
-                </Link>
+                </button>
               </div>
 
               <div className="mt-10 pt-6 border-t border-white/15 grid grid-cols-3 gap-4">
