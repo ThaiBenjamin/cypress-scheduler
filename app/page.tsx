@@ -2961,15 +2961,17 @@ export default function Home() {
         </div>
       )}
 
-      {toastMessage && (
-        <div className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 bg-yellow-50 dark:bg-yellow-900/90 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-100 p-4 rounded-lg shadow-2xl z-50 flex items-start gap-3 max-w-sm transition-all duration-300 transform translate-y-0 opacity-100 pointer-events-none">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-500 dark:text-yellow-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-          <div className="flex-1"><p className="font-bold text-sm">{toastMessage.title}</p><p className="text-xs mt-1 font-medium">{toastMessage.body}</p></div>
-          <button onClick={() => setToastMessage(null)} className="text-yellow-600 hover:text-yellow-800 dark:text-yellow-300 dark:hover:text-yellow-100 shrink-0 pointer-events-auto cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-        </div>
-      )}
-
+      {/* Toast lives inside the assistant column so the flex stack keeps it clear of the
+          "Ask the assistant" button — and of the chat panel when that is open. It used to
+          be anchored to the same corner at the same z-index, so the button covered it. */}
       <div className="fixed bottom-[80px] right-4 lg:bottom-6 lg:right-6 z-50 flex flex-col items-end">
+        {toastMessage && (
+          <div className="mb-3 bg-yellow-50 dark:bg-yellow-900/90 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-100 p-4 rounded-lg shadow-2xl flex items-start gap-3 max-w-[min(24rem,calc(100vw-2rem))] transition-all duration-300 transform translate-y-0 opacity-100 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-500 dark:text-yellow-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+            <div className="flex-1"><p className="font-bold text-sm">{toastMessage.title}</p><p className="text-xs mt-1 font-medium">{toastMessage.body}</p></div>
+            <button onClick={() => setToastMessage(null)} className="text-yellow-600 hover:text-yellow-800 dark:text-yellow-300 dark:hover:text-yellow-100 shrink-0 pointer-events-auto cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+          </div>
+        )}
         {isChatOpen && (
           <div className="mb-3 w-[92vw] max-w-sm rounded-2xl border border-[var(--cy-border)] bg-[var(--cy-surface)] shadow-2xl overflow-hidden">
             <div className="px-4 py-3 bg-charger-blue text-white flex items-center justify-between">
