@@ -32,6 +32,15 @@ function formatTime(timeStr?: string): string {
   return `${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}`;
 }
 
+/** NOCCCD ships meeting dates as "MM/DD/YYYY"; store them as sortable "YYYY-MM-DD". */
+function formatDate(dateStr?: string): string | null {
+  if (!dateStr) return null;
+  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateStr.trim());
+  if (!match) return null;
+  const [, month, day, year] = match;
+  return `${year}-${month}-${day}`;
+}
+
 async function main() {
   console.log("⏳ Reading cypress_data.json...");
 
@@ -108,6 +117,8 @@ async function main() {
                 days: parseNocccdDays(m),
                 startTime: formatTime(m.beginTime),
                 endTime: formatTime(m.endTime),
+                startDate: formatDate(m.startDate),
+                endDate: formatDate(m.endDate),
 
                 // We grab it from NOCCCD, or default to "Class" if it's missing.
                 type: m.mtypDesc || m.schdDesc || "Class",

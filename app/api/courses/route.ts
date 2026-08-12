@@ -209,6 +209,8 @@ function normalizeFallbackRow(row: any) {
     days: extractMeetingDays(meeting),
     startTime: toClock(meeting.beginTime),
     endTime: toClock(meeting.endTime),
+    startDate: toIsoDate(meeting.startDate),
+    endDate: toIsoDate(meeting.endDate),
     building: meeting.bldgCode || undefined,
     room: meeting.roomCode || undefined,
   }));
@@ -353,6 +355,15 @@ function toClock(rawTime?: string): string | undefined {
   if (!rawTime || rawTime.length < 4) return undefined;
   const padded = rawTime.padStart(4, "0");
   return `${padded.slice(0, 2)}:${padded.slice(2, 4)}`;
+}
+
+/** NOCCCD ships meeting dates as "MM/DD/YYYY"; the DB stores "YYYY-MM-DD", so match it. */
+function toIsoDate(rawDate?: string): string | undefined {
+  if (!rawDate) return undefined;
+  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(rawDate.trim());
+  if (!match) return undefined;
+  const [, month, day, year] = match;
+  return `${year}-${month}-${day}`;
 }
 
 function extractMeetingDays(meeting: Record<string, string>): string[] {
