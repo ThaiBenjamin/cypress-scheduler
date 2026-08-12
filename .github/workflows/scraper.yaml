@@ -70,7 +70,9 @@ jobs:
       - name: Sync database schema (Prisma db push)
         # Ensures the production schema matches prisma/schema.prisma before seeding.
         # This is the step that was missing and caused seeds to fail into local fallback.
-        run: npx prisma db push --skip-generate
+        # No --skip-generate: Prisma 7 dropped that flag, and passing it exits 1 before
+        # the push runs. The client is generated anyway by the postinstall hook.
+        run: npx prisma db push
 
       - name: Seed the database
         run: npx tsx seed.ts
