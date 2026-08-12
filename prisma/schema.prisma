@@ -34,6 +34,10 @@ model Meeting {
   days        String[]
   startTime   String?
   endTime     String?
+  // First/last calendar date this meeting pattern runs, as "YYYY-MM-DD".
+  // Stored as strings for the same reason times are: no timezone to get wrong.
+  startDate   String?
+  endDate     String?
   building    String?
   room        String?
   courseId    String

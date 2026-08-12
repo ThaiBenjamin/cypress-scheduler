@@ -4,11 +4,11 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
-import { toPng } from "html-to-image";
 import dynamic from 'next/dynamic';
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { BUILDINGS } from "@/lib/scheduler/buildings";
+import { buildIcsCalendar } from "@/lib/ics";
 import CourseCard from "./components/CourseCard";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -110,6 +110,41 @@ function getRmpUrl(profName: string) {
   let query = cleanName;
   if (parts.length === 2) query = `${parts[1].trim()} ${parts[0].trim()}`;
   return `https://www.ratemyprofessors.com/search/professors?q=${encodeURIComponent(query)}`;
+}
+
+/**
+ * Copies text, falling back to a hidden textarea + execCommand when the async
+ * Clipboard API is unavailable or refuses. Safari/iOS rejects writeText when the
+ * originating user gesture has already been spent on an await, and the API is
+ * absent entirely outside secure contexts. Returns false if nothing worked, so
+ * the caller can surface the value for manual copying instead of claiming failure.
+ */
+async function copyTextToClipboard(text: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // Fall through to the legacy path below.
+  }
+
+  try {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.top = "-1000px";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, text.length);
+    const ok = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return ok;
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -377,8 +412,19 @@ export default function Home() {
   const [lastSearchSourceReason, setLastSearchSourceReason] = useState<string | null>(null);
   const [lastSearchAt, setLastSearchAt] = useState<string | null>(null);
 
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  // The toast carries its own heading — it started life as a term-mismatch-only
+  // banner, and every later caller inherited that stale title until it was fixed.
+  const [toastMessage, setToastMessage] = useState<{ title: string; body: string } | null>(null);
   const toastTimerRef = useRef<any>(null);
+
+  // Holds the share URL when the clipboard refused it, so the user can copy by hand.
+  const [shareFallbackUrl, setShareFallbackUrl] = useState<string | null>(null);
+
+  const showToast = useCallback((title: string, body: string, durationMs = 4000) => {
+    setToastMessage({ title, body });
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = setTimeout(() => setToastMessage(null), durationMs);
+  }, []);
 
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
   const [infoModalCourse, setInfoModalCourse] = useState<any>(null);
@@ -719,9 +765,14 @@ export default function Home() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [hasUnsavedChanges]);
 
+  // signIn() makes a couple of round trips before Google's screen even opens, and
+  // the redirect back is slower still — without this the button looks frozen.
+  const [isSigningIn, setIsSigningIn] = useState(false);
+
   const handleGoogleSignIn = () => {
     localStorage.setItem("cypress_guest_snapshot", JSON.stringify({ schedules, activeId: activeScheduleId }));
-    signIn('google');
+    setIsSigningIn(true);
+    signIn('google', { callbackUrl: '/' }).catch(() => setIsSigningIn(false));
   };
 
   const handleSignOut = async () => {
@@ -761,9 +812,7 @@ export default function Home() {
 
       setLastSavedStateString(JSON.stringify({ schedules, activeId: activeScheduleId }));
 
-      setToastMessage("Schedules securely saved to the cloud! ☁️");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      showToast("Saved", "Schedules securely saved to the cloud! ☁️");
 
     } catch (error) {
       console.error("Failed to save to cloud:", error);
@@ -780,9 +829,7 @@ export default function Home() {
   const openNotificationModalForCourse = (course: any) => {
     const eligibility = getNotificationEligibility(course.term || termQuery);
     if (!eligibility.allowed) {
-      setToastMessage(eligibility.reason || "Notifications are unavailable for this course term.");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      showToast("Notifications unavailable", eligibility.reason || "Notifications are unavailable for this course term.");
       return;
     }
     setNotificationModalCourse(course);
@@ -1090,9 +1137,7 @@ export default function Home() {
       .filter(Boolean);
     const combinedQuery = queryTokens.join(" ");
     if (!combinedQuery) {
-      setToastMessage("Add at least one field (subject, course number, CRN, or instructor) to run manual search.");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      showToast("Nothing to search", "Add at least one field (subject, course number, CRN, or instructor) to run manual search.");
       return;
     }
     setManualSearchHasRun(true);
@@ -1149,12 +1194,11 @@ export default function Home() {
 
   const handleCopyShareLink = async () => {
     if (!activeSchedule || !session?.user?.email) {
-      setToastMessage("Sign in to create a secure share link.");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      showToast("Sign in required", "Sign in to create a secure share link.");
       return;
     }
 
+    let url: string;
     try {
       const res = await fetch("/api/share", {
         method: "POST",
@@ -1170,18 +1214,23 @@ export default function Home() {
         throw new Error(data?.error || "Failed to create share link.");
       }
 
-      const url = data.token
+      url = data.token
         ? `${window.location.origin}/share/s/${encodeURIComponent(data.token)}`
         : `${window.location.origin}/share?payload=${encodeURIComponent(data.payload)}&sig=${encodeURIComponent(data.sig)}`;
-      await navigator.clipboard.writeText(url);
-      setToastMessage("Short share link copied to clipboard.");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
     } catch (error) {
       console.error("Share link creation failed", error);
-      setToastMessage("Unable to create share link right now.");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 4000);
+      showToast("Share failed", "Unable to create share link right now.");
+      return;
+    }
+
+    // The link exists at this point — a clipboard failure must not read as
+    // "couldn't create the link". Safari in particular rejects writeText once
+    // the user gesture has been spent on an await, so always keep a fallback.
+    const copied = await copyTextToClipboard(url);
+    if (copied) {
+      showToast("Link copied", "Short share link copied to clipboard.");
+    } else {
+      setShareFallbackUrl(url);
     }
   };
 
@@ -1216,9 +1265,11 @@ export default function Home() {
     
     const existingTerms = Array.from(new Set(activeCourses.map(c => c.term)));
     if (existingTerms.some(term => term !== course.term)) {
-      setToastMessage("Save to cloud");
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 5000);
+      showToast(
+        "Term mismatch",
+        `This plan already has ${existingTerms.filter(Boolean).join(", ")} classes and ${course.subject} ${course.courseNumber} is ${course.term}. Save to cloud to keep both.`,
+        5000,
+      );
     }
 
     const getWalkWarning = () => {
@@ -1249,9 +1300,7 @@ export default function Home() {
 
     const walkWarning = getWalkWarning();
     if (walkWarning) {
-      setToastMessage(walkWarning);
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 6000);
+      showToast("Tight walk between classes", walkWarning, 6000);
     }
 
     saveStateToHistory();
@@ -1348,13 +1397,13 @@ export default function Home() {
 
       const importedCount = foundCourses.length;
       const missingCount = missingCrns.length;
-      setToastMessage(
+      showToast(
+        missingCount > 0 ? "Imported with gaps" : "Import complete",
         missingCount > 0
           ? `Imported ${importedCount} class(es). ${missingCount} CRN(s) were not found in this term/data source.`
           : `Imported ${importedCount} class(es) from pasted registration data.`,
+        6000,
       );
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-      toastTimerRef.current = setTimeout(() => setToastMessage(null), 6000);
       setIsImportModalOpen(false);
       setImportText("");
     } finally {
@@ -1415,6 +1464,9 @@ export default function Home() {
       const root = window.document.documentElement;
       const wasDark = root.classList.contains('dark');
       if (wasDark) root.classList.remove('dark');
+      // Pulled in on demand — html-to-image is only ever needed by this button,
+      // and eagerly importing it taxed every page load, sign-in redirect included.
+      const { toPng } = await import("html-to-image");
       const dataUrl = await toPng(calendarRef.current, { pixelRatio: 2, backgroundColor: "#ffffff" });
       const link = document.createElement("a");
       link.href = dataUrl;
@@ -1428,27 +1480,9 @@ export default function Home() {
 
   const exportCalendarAsIcs = () => {
     if (myScheduleEvents.length === 0) return;
-    let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Cypress Scheduler//EN\n";
-    const formatIcsDate = (date: Date) => {
-      const pad = (n: number) => n < 10 ? '0' + n : n;
-      return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}`;
-    };
-    myScheduleEvents.forEach((event, i) => {
-      const startDate = formatIcsDate(event.start);
-      const endDate = formatIcsDate(event.end);
-      const profs = event.courseInfo.professors?.join(', ') || 'TBA';
-      icsContent += "BEGIN:VEVENT\n";
-      icsContent += `UID:event-${i}-${Date.now()}@cypress-scheduler\n`;
-      icsContent += `DTSTAMP:${formatIcsDate(new Date())}Z\n`;
-      icsContent += `DTSTART:${startDate}\n`;
-      icsContent += `DTEND:${endDate}\n`;
-      icsContent += `SUMMARY:${event.title}\n`;
-      icsContent += `DESCRIPTION:${event.courseInfo.title}\\nCRN: ${event.courseInfo.crn}\\nInstructor: ${profs}\n`;
-      icsContent += `RRULE:FREQ=WEEKLY;COUNT=16\n`;
-      icsContent += "END:VEVENT\n";
-    });
-    icsContent += "END:VCALENDAR";
-    const blob = new Blob([icsContent], { type: 'text/calendar' });
+
+    const icsContent = buildIcsCalendar(myScheduleEvents);
+    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -1456,6 +1490,7 @@ export default function Home() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const calendarFormats = useMemo(() => ({
@@ -2749,9 +2784,13 @@ export default function Home() {
           <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] p-8 w-full max-w-md border border-[var(--cy-border)] flex flex-col" onClick={e => e.stopPropagation()}>
             <h3 className="text-xl font-bold text-[var(--cy-text)] mb-6 text-center tracking-wide">Sign in to save your schedules</h3>
 
-            <button onClick={handleGoogleSignIn} className="w-full bg-white hover:bg-white/90 text-[#0b1b33] font-bold py-3.5 px-4 rounded-[11px] flex items-center justify-center gap-3 transition-colors border border-[var(--cy-border)] cursor-pointer">
-              <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 2-1.6 5-4.6 7l7 5.4c4.2-3.9 6.6-9.6 6.6-15.7z" /><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.2 5.6C7.9 41 15.4 46 24 46z" /><path fill="#FBBC05" d="M11.5 28.3c-.5-1.4-.7-2.8-.7-4.3s.3-2.9.7-4.3l-7.2-5.6C2.8 17 2 20.4 2 24s.8 7 2.3 9.9l7.2-5.6z" /><path fill="#EA4335" d="M24 10.6c3.3 0 5.5 1.4 6.8 2.6l6.2-6C33.9 3.8 30 2 24 2 15.4 2 7.9 7 4.3 14.1l7.2 5.6C13.3 14.4 18.2 10.6 24 10.6z" /></svg>
-              Continue with Google
+            <button onClick={handleGoogleSignIn} disabled={isSigningIn} aria-busy={isSigningIn} className="w-full bg-white hover:bg-white/90 text-[#0b1b33] font-bold py-3.5 px-4 rounded-[11px] flex items-center justify-center gap-3 transition-colors border border-[var(--cy-border)] cursor-pointer disabled:opacity-70 disabled:cursor-wait">
+              {isSigningIn ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" className="animate-spin" aria-hidden><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.25" /><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" /></svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 2-1.6 5-4.6 7l7 5.4c4.2-3.9 6.6-9.6 6.6-15.7z" /><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.2 5.6C7.9 41 15.4 46 24 46z" /><path fill="#FBBC05" d="M11.5 28.3c-.5-1.4-.7-2.8-.7-4.3s.3-2.9.7-4.3l-7.2-5.6C2.8 17 2 20.4 2 24s.8 7 2.3 9.9l7.2-5.6z" /><path fill="#EA4335" d="M24 10.6c3.3 0 5.5 1.4 6.8 2.6l6.2-6C33.9 3.8 30 2 24 2 15.4 2 7.9 7 4.3 14.1l7.2 5.6C13.3 14.4 18.2 10.6 24 10.6z" /></svg>
+              )}
+              {isSigningIn ? "Opening Google…" : "Continue with Google"}
             </button>
 
             <div className="mt-8 flex items-center text-[var(--cy-text-3)] text-xs w-full">
@@ -2887,10 +2926,45 @@ export default function Home() {
         </div>
       )}
 
+      {shareFallbackUrl && (
+        <div className="absolute inset-0 bg-[rgb(7_13_24/0.55)] backdrop-blur-sm flex items-center justify-center z-[70] p-4" role="dialog" aria-modal="true" aria-label="Copy share link">
+          <div className="bg-[var(--cy-surface)] rounded-2xl shadow-[0_40px_90px_-20px_rgba(7,13,24,0.6)] p-6 max-w-md w-full border border-[var(--cy-border)] text-[var(--cy-text)]">
+            <h3 className="text-xl font-bold mb-2">Your share link is ready</h3>
+            <p className="text-sm text-[var(--cy-text-2)] mb-4">Your browser blocked the automatic copy, so here it is — select and copy.</p>
+            <input
+              readOnly
+              value={shareFallbackUrl}
+              onFocus={(e) => e.currentTarget.select()}
+              autoFocus
+              className="w-full bg-[var(--cy-surface-2)] border border-[var(--cy-border)] rounded-md px-3 py-2.5 text-xs font-mono focus:outline-none focus:border-[#B87A00] cursor-text"
+            />
+            <div className="flex justify-end gap-2 mt-5">
+              <button
+                onClick={async () => {
+                  if (await copyTextToClipboard(shareFallbackUrl)) {
+                    setShareFallbackUrl(null);
+                    showToast("Link copied", "Short share link copied to clipboard.");
+                  }
+                }}
+                className="h-10 px-3 rounded-lg bg-charger-gold text-charger-gold-ink text-sm font-bold hover:bg-charger-gold-hover cursor-pointer"
+              >
+                Copy
+              </button>
+              <button
+                onClick={() => setShareFallbackUrl(null)}
+                className="h-10 px-3 rounded-lg border border-[var(--cy-border)] text-sm font-bold text-[var(--cy-text-2)] hover:bg-[var(--cy-surface-2)] cursor-pointer"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {toastMessage && (
         <div className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 bg-yellow-50 dark:bg-yellow-900/90 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-100 p-4 rounded-lg shadow-2xl z-50 flex items-start gap-3 max-w-sm transition-all duration-300 transform translate-y-0 opacity-100 pointer-events-none">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-500 dark:text-yellow-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-          <div className="flex-1"><p className="font-bold text-sm">Term Mismatch</p><p className="text-xs mt-1 font-medium">{toastMessage}</p></div>
+          <div className="flex-1"><p className="font-bold text-sm">{toastMessage.title}</p><p className="text-xs mt-1 font-medium">{toastMessage.body}</p></div>
           <button onClick={() => setToastMessage(null)} className="text-yellow-600 hover:text-yellow-800 dark:text-yellow-300 dark:hover:text-yellow-100 shrink-0 pointer-events-auto cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
         </div>
       )}

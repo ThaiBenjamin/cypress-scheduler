@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
@@ -64,9 +64,24 @@ const HERO_EVENTS = [
   { col: 3, top: 108, h: 34, color: "#5A6779", code: "HIST 170" },
 ];
 
+const Spinner = (
+  <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] animate-spin" aria-hidden>
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.25" />
+    <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
+  </svg>
+);
+
 export default function WelcomePage() {
   const router = useRouter();
   const { status } = useSession();
+
+  // signIn() round-trips to /api/auth before Google's screen opens, and the
+  // redirect back is slower still — without feedback the button looks dead.
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const startSignIn = () => {
+    setIsSigningIn(true);
+    signIn("google", { callbackUrl: "/" }).catch(() => setIsSigningIn(false));
+  };
 
   // Already signed in? Go straight to the scheduler.
   useEffect(() => {
@@ -94,10 +109,12 @@ export default function WelcomePage() {
               <a href="#how" className="hidden sm:inline hover:text-white transition-colors">How it works</a>
               <Link href="/api/health" className="hidden sm:inline hover:text-white transition-colors">Status</Link>
               <button
-                onClick={() => signIn("google", { callbackUrl: "/" })}
-                className="text-charger-gold hover:text-charger-gold-hover transition-colors cursor-pointer"
+                onClick={startSignIn}
+                disabled={isSigningIn}
+                aria-busy={isSigningIn}
+                className="text-charger-gold hover:text-charger-gold-hover transition-colors cursor-pointer disabled:opacity-70 disabled:cursor-wait"
               >
-                Sign in
+                {isSigningIn ? "Signing in…" : "Sign in"}
               </button>
             </div>
           </nav>
@@ -122,11 +139,13 @@ export default function WelcomePage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => signIn("google", { callbackUrl: "/" })}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-[11px] bg-white text-[#0b1b33] text-[13px] font-bold px-5 py-3 border border-transparent hover:bg-white/90 transition-colors cursor-pointer"
+                  onClick={startSignIn}
+                  disabled={isSigningIn}
+                  aria-busy={isSigningIn}
+                  className="inline-flex items-center justify-center gap-2.5 rounded-[11px] bg-white text-[#0b1b33] text-[13px] font-bold px-5 py-3 border border-transparent hover:bg-white/90 transition-colors cursor-pointer disabled:opacity-70 disabled:cursor-wait"
                 >
-                  {GoogleG}
-                  Continue with Google
+                  {isSigningIn ? Spinner : GoogleG}
+                  {isSigningIn ? "Opening Google…" : "Continue with Google"}
                 </button>
                 <button
                   onClick={startGuest}
