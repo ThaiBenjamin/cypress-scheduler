@@ -1,58 +1,79 @@
-# 🎓 Cypress College Scheduler
+# Cypress College Scheduler
 
-A course-planning web app tailored for Cypress College students — search class sections, build conflict-free schedules, preview campus locations on a map, and get help from an AI assistant.
+A course planner for Cypress College students. Search the catalog, build schedules
+that don't conflict, see where the buildings actually are, and share a plan by link.
 
-![Next.js](https://img.shields.io/badge/Next.js-App_Router-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)
-![NextAuth](https://img.shields.io/badge/NextAuth-Google_OAuth-black?logo=google&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
-![Leaflet](https://img.shields.io/badge/Leaflet-Map-199900?logo=leaflet&logoColor=white)
+**Live:** https://cypress-scheduler-theta.vercel.app
 
----
+## Why I built it
 
-## ✨ Features
+Cypress College has no visual course scheduler. Planning a term means cross-referencing
+the published section list against the myGateway portal by hand — copying meeting times
+into a spreadsheet, then checking every pair of classes for an overlap before your
+registration window opens.
 
-- **Course Search** — Tokenized keyword search with relevance ranking across Cypress College's course catalog
-- **Multi-Plan Scheduling** — Create and compare multiple schedule plans side-by-side
-- **Conflict Detection** — Automatically flags time-overlap conflicts when building your schedule
-- **Campus Map** — Visualize class building locations and walking routes with Leaflet
-- **Schedule Optimizer** — AI-ranked schedule options based on your preferences
-- **myGateway Import** — Paste your myGateway schedule to import existing classes
-- **Manual Search Mode** — Class-focused filters for targeted section lookup
-- **Cloud Save** — Signed-in users can persist and reload their schedules
-- **Shareable Links** — Generate read-only links to share your schedule with others
-- **AI Chat Assistant** — In-app assistant helps find classes and answer scheduling questions
-- **Email Notifications** — Optional alerts when class status changes
-- **Google Sign-In** — Secure authentication via NextAuth and Google OAuth
+The work is mechanical, but the stakes aren't. One missed overlap and you register into
+a week you can't attend, or give up a section you needed while re-planning around it.
+UCI students have AntAlmanac for this. We didn't have anything.
 
----
+## What it does
 
-## 🛠️ Tech Stack
+Add the courses you want and the app generates conflict-free schedules out of every
+section combination available, ranked against your own constraints — no Fridays, nothing
+before 10am, a cap on how loaded any single day gets. Options render as a week you can
+step through, save to your account, and share.
 
-| Layer | Technology |
+A few things beyond the basics:
+
+- Meeting locations plot on a Leaflet map with walking-time estimates between
+  back-to-back classes, because a building code means nothing to a new student.
+- Shared schedules are compressed and signed into the URL itself, so a link opens
+  read-only for anyone with no account and no database row.
+- You can paste your existing myGateway schedule in rather than re-entering it.
+- Optional email alerts when a section's seat status changes.
+
+## How the data stays current
+
+A Python scraper pulls the district's public course and section JSON for three terms,
+joins titles and units onto meeting times and seat counts, and seeds Postgres through
+Prisma. GitHub Actions runs it on a schedule.
+
+This is a deliberate trade: seat and waitlist counts are only as fresh as the last
+scraper run, so the tool plans a term rather than tracking one minute to minute. In
+exchange it never depends on holding a portal session.
+
+## How schedules get generated
+
+Each course you add expands into a pool of its sections. A depth-first walk takes one
+section per course and abandons a branch the moment two meeting blocks overlap, so dead
+schedules get pruned instead of scored. Times and dates are stored as plain strings, which
+means no timezone can ever be applied to a class time by accident.
+
+Surviving combinations are scored on Friday classes, how far the day starts before your
+preferred hour, the busiest day's load, and how many days you're on campus. Lowest score
+wins.
+
+The enumeration runs in the browser, so work grows with the cross-product of sections and
+a visit cap stands in for real pruning. That's ample for one student's term and would need
+rethinking for anything wider.
+
+## Stack
+
+| Layer | What |
 |---|---|
 | Framework | Next.js 16 App Router, React 19, TypeScript |
-| Database | PostgreSQL (Supabase/Neon/local) |
-| ORM | Prisma + `@prisma/adapter-pg` |
-| Auth | NextAuth v4 (Google OAuth) |
+| Database | PostgreSQL, Prisma with `@prisma/adapter-pg` |
+| Auth | NextAuth v4, Google OAuth |
 | Map | Leaflet + React-Leaflet |
 | Calendar | React Big Calendar |
-| AI | OpenAI API / OpenRouter (with local fallback) |
+| AI chat | OpenAI / OpenRouter, with a local fallback if no key is set |
 | Styling | Tailwind CSS 4 |
-| Security | Rate limiting, audit logging, Zod validation |
+| Hardening | Rate limiting, audit logging, Zod validation |
 
----
+## Running it locally
 
-## 🚀 Setup & Running
-
-### Prerequisites
-- Node.js 20+, npm 10+
-- PostgreSQL database (local or hosted via Supabase/Neon)
-- Google OAuth credentials
-
-### 1. Install
+You'll need Node 20+, a PostgreSQL database (local, Supabase, or Neon), and Google OAuth
+credentials.
 
 ```bash
 git clone https://github.com/ThaiBenjamin/cypress-scheduler.git
@@ -60,75 +81,48 @@ cd cypress-scheduler
 npm install
 ```
 
-### 2. Configure environment
-
-Create a `.env` file:
+Create a `.env`:
 
 ```bash
-# Database
 DATABASE_URL=postgresql://user:password@host:5432/dbname
 
-# Auth
 GOOGLE_CLIENT_ID=your_client_id
 GOOGLE_CLIENT_SECRET=your_client_secret
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your_secret
 
-# AI chat (optional — falls back to local guidance if not set)
+# Optional — the chat falls back to local guidance without these
 OPENAI_API_KEY=your_key
 OPENAI_MODEL=gpt-4o-mini
 
-# Optional: notifications
+# Optional — status-change emails
 RESEND_API_KEY=your_key
 NOTIFICATION_FROM_EMAIL=noreply@yourdomain.com
 ```
 
-### 3. Run
+Then `npm run dev` and open http://localhost:3000.
 
-```bash
-npm run dev
-```
+To deploy: push to GitHub, import into Vercel, add the same environment variables, and
+check `/api/health` once it's up.
 
-Open **http://localhost:3000**.
-
-### 4. Deploy to Vercel
-
-1. Push to GitHub and import into Vercel
-2. Add all env vars in Vercel project settings
-3. Deploy — validate at `/api/health`
-
----
-
-## 📁 Project Structure
+## Layout
 
 ```
 app/
-  api/          # Next.js API routes (courses, schedules, share, auth, ai-chat)
-  components/   # CourseCard, CourseMap
-  page.tsx      # Main scheduler UI
+  api/          Route handlers (courses, schedules, share, auth, ai-chat)
+  components/   CourseCard, CourseMap
+  page.tsx      The scheduler itself
 lib/
-  scheduler/    # Buildings metadata, conflict logic
-  security/     # Rate limiting, audit logging
-  db.ts         # Prisma + pg client
-  auth.ts       # NextAuth config
-  share.ts      # Signed share tokens
-  validation.ts # Zod schemas
+  scheduler/    Building metadata, conflict logic
+  security/     Rate limiting, audit logging
+  db.ts         Prisma + pg client
+  auth.ts       NextAuth config
+  share.ts      Signed share tokens
+  validation.ts Zod schemas
 prisma/
-  schema.prisma # Database schema
+  schema.prisma
 ```
 
----
+## Support
 
-## 🧠 What I Built and Why
-
-Cypress College doesn't have a modern visual course scheduler — students manually cross-reference PDFs and the myGateway portal to avoid time conflicts. I wanted to solve that.
-
-I built this app to give Cypress students a tool similar to AntAlmanac (UCI's scheduler) but tailored to our catalog. The biggest technical challenges were scraping and normalizing the course data (handled by a GitHub Actions-automated Python scraper), designing a conflict detection algorithm that handles split-day classes, and integrating an AI assistant that understands scheduling context rather than just answering generic questions.
-
-It pushed me to work with the full production stack: database migrations, OAuth flows, signed share tokens, rate limiting, and automated data pipelines — all real-world concerns I wouldn't have encountered in a tutorial.
-
----
-
-## 📬 Support
-
-Questions or feedback: `cypressschedulersupport@gmail.com`
+Questions or bug reports: cypressschedulersupport@gmail.com
