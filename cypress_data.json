@@ -190504,9 +190504,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectEnrl": 21,
+        "sectSeatsAvail": -1,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -190583,7 +190583,7 @@
         "my_custom_title": "Electricity for Air Conditioning and Refrigeration II",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite(s):  AC/R 105 C with a grade of C or better.    This course is a continuation of Electricity for Air  Conditioning and Refrigeration. Topics include single  phase, three phase electric motors and EC motors, pressure  controls, time clocks and autotransformers with a lecture  and laboratory practice exercises. Transfer info: CSU ",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -191335,8 +191335,8 @@
         "sectInsmCode": "HY",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -192163,8 +192163,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -192348,8 +192348,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -193371,8 +193371,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -195829,16 +195829,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "KV",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 47,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 46,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -195923,8 +195923,8 @@
             {
                 "xlstGrp": "KW",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 34,
-                "xlstSeatsAvail": 11
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": 10
             }
         ],
         "sectPtrmCode": "1",
@@ -196622,8 +196622,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -197560,8 +197560,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 48,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 47,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -197720,7 +197720,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -197795,7 +197795,7 @@
         "my_custom_title": "Introduction to Linguistic Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC),or ENGL C1000E (ENGL 101 C) or ESL 110 C. In this introduction to linguistic anthropology, students will learn how language is a fundamental aspect of our humanity, as well as how linguists study language. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:ANTH 130",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -198359,8 +198359,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -198533,7 +198533,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 30,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -198593,7 +198593,7 @@
         "my_custom_title": "Fundamentals of Art for Non-Art Majors",
         "my_custom_units": 3,
         "my_custom_description": "An introduction to art, how and why it is made, and the ways it creates and communicates meaning. Pass/No Pass/Letter This introductory course investigates the visual elements, Grade Option. Cost of Museum visit and materials will not exceed $25.00. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -199603,7 +199603,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 36,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -199673,7 +199673,7 @@
         "my_custom_title": "Introduction to Art",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Completion of ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C or ESL 110 C. This course introduces the student to the purposes, materials, themes, history and significance of art and artists. Major writing assignments are required. Cost of museum visit will not exceed $25. Pass/No Pass/Letter Grade Option. Transfer info: AA GE, CalGETC, C-ID: ARTH 100.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 10
     },
     {
@@ -200136,8 +200136,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -201367,16 +201367,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 11,
-        "sectWaitCount": 2,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 10,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 27,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -201454,7 +201454,7 @@
         "my_custom_title": "Ceramics Handbuilding",
         "my_custom_units": 3,
         "my_custom_description": "Term hours 36 lecture 72 lab. Students will learn ceramic handbuilding to convey ideas, images, and feelings. Ceramic terminology and visual vocabulary will be covered as well. Material Fees have been waived for this semester. (AA GE, CSU GE) Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -201976,8 +201976,8 @@
             {
                 "xlstGrp": "CAP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 27,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -205344,8 +205344,8 @@
             {
                 "xlstGrp": "CB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 45,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -205413,16 +205413,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 38,
+        "sectEnrl": 8,
+        "sectSeatsAvail": 37,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 45,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -205490,8 +205490,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -205950,8 +205950,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 4,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -206111,8 +206111,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -208415,16 +208415,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "KZ",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "1",
@@ -208495,8 +208495,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -209165,8 +209165,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -209244,8 +209244,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -213566,8 +213566,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -213922,7 +213922,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 42,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 15,
+        "sectWaitCount": 14,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -213985,7 +213985,7 @@
         "my_custom_title": "Environmental Science",
         "my_custom_units": 3,
         "my_custom_description": "A study of the ecological principles which form the basis or understanding human existence in relation to environmental quality. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ENVS 100",
-        "my_custom_wait_count": 15,
+        "my_custom_wait_count": 14,
         "my_custom_wait_capacity": 20
     },
     {
@@ -214000,7 +214000,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 26,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -214104,7 +214104,7 @@
         "my_custom_title": "Marine Biology",
         "my_custom_units": 4,
         "my_custom_description": "This course is a survey of the biology of marine organisms and marine ecology, including an introduction to physical and chemical oceanography. A single optional boat field trip may be scheduled with a charter cost not to exceed $30. Other no-cost field trips will be scheduled. Pass/No Pass Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 20
     },
     {
@@ -215012,9 +215012,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 6,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -215103,7 +215103,7 @@
         "my_custom_title": "Fundamentals of Human Anatomy and Physiology",
         "my_custom_units": 3,
         "my_custom_description": "This course includes a systematic coverage of the fundamental physical/chemical principles, basic biological concepts, and fundamentals of anatomy and physiology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, CSU GE, IGETC, AA GE",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 20
     },
     {
@@ -215473,8 +215473,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 9,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -217322,7 +217322,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 27,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -217419,7 +217419,7 @@
         "my_custom_title": "Medical Microbiology",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: BIOL 231 C or BIOL 210 C with a grade of C or better. This course is a study of etiology, transmission, pathogenesis, diagnosis, treatment and prevention of infectious disease. Special attention is given to the topics of immunology and chemotherapy. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 20
     },
     {
@@ -218220,7 +218220,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 11,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -218314,7 +218314,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 20
     },
     {
@@ -218789,7 +218789,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 27,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 11,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -218885,7 +218885,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 20
     },
     {
@@ -219299,7 +219299,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 28,
         "sectSeatsAvail": -3,
-        "sectWaitCount": 16,
+        "sectWaitCount": 15,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -219408,7 +219408,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 16,
+        "my_custom_wait_count": 15,
         "my_custom_wait_capacity": 20
     },
     {
@@ -219884,7 +219884,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 27,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 9,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -220044,7 +220044,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 20
     },
     {
@@ -220450,7 +220450,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 27,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -220606,7 +220606,7 @@
         "my_custom_title": "General Human Physiology",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: BIOL 210 C or BIOL 231 C with a grade of C or better. Advisory: CHEM 101 C. This course is an in-depth study of human function. Special attention is given to the abnormal as well as the normal functional state. Pass/No Pass/Letter Grade Option. Transfer info: CSU/UC, AA GE, CalGETC, C-ID: BIOL 120B",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 20
     },
     {
@@ -222057,8 +222057,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 60,
-        "sectEnrl": 50,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 52,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -222159,16 +222159,16 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 32,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AA",
                 "xlstMaxEnrl": 40,
-                "xlstEnrl": 38,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 37,
+                "xlstSeatsAvail": 3
             }
         ],
         "sectPtrmCode": "1",
@@ -222596,8 +222596,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -222741,8 +222741,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 15,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -222893,9 +222893,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -222952,7 +222952,7 @@
         "my_custom_title": "Principles of Marketing",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly MKT 222 C)   This course focuses on the marketing  activities required to plan, price, develop, promote, and  distribute goods or services to potential customers.  Transfer info: CSU  ",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -222965,8 +222965,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -223786,8 +223786,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -224430,7 +224430,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -224535,7 +224535,7 @@
         "my_custom_title": "Preparation for General Chemistry",
         "my_custom_units": 5,
         "my_custom_description": "Prerequisite: Successful completion of Intermediate Algebra or MATH 141 C or MATH 141 PC or equivalent. This course provides a general introduction to the basic concepts, principles and laws of modern chemistry. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 20
     },
     {
@@ -224785,8 +224785,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 4,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -225618,7 +225618,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -225720,7 +225720,7 @@
         "my_custom_title": "General Chemistry I",
         "my_custom_units": 5,
         "my_custom_description": "Prerequisite: CHEM 107 C with a grade of C or better or a passing score on the Chemistry Proficiency Test, and successful completion of Intermediate Algebra or MATH 141 C MATH 141PC or equivalent with a grade of C or better. This course is the first semester of a two-semester sequence designed to cover the principles of general chemistry, including laboratory analysis. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: CHEM 110 and C-ID: CHEM 120 S = CHEM 111A C + CHEM 111B C.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 20
     },
     {
@@ -226992,8 +226992,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -227304,9 +227304,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 67,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 2,
+        "sectEnrl": 68,
+        "sectSeatsAvail": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -227372,7 +227372,7 @@
         "my_custom_title": "Computer Information Systems",
         "my_custom_units": 3,
         "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -227653,8 +227653,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 76,
-        "sectSeatsAvail": -6,
+        "sectEnrl": 75,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -227733,7 +227733,7 @@
         "sectMaxEnrl": 70,
         "sectEnrl": 69,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -227796,7 +227796,7 @@
         "my_custom_title": "Computer Information Systems",
         "my_custom_units": 3,
         "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -227957,8 +227957,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 53,
-        "sectEnrl": 54,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 55,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -228105,8 +228105,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 32,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 31,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -228200,8 +228200,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 69,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 67,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -229034,8 +229034,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -230007,9 +230007,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -1,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -230080,7 +230080,7 @@
         "my_custom_title": "Introduction to Public Speaking",
         "my_custom_units": 3,
         "my_custom_description": "(formerly COMM  100 C Human Communication). In this course, students learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. Students discover, develop , and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery to a live audience and evaluation of various types of speeches, including informative and persuasive speeches. Duplicate credit not given for COMM C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, C-ID:COMM 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -231030,7 +231030,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 26,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -231101,7 +231101,7 @@
         "my_custom_title": "Introduction to Public Speaking",
         "my_custom_units": 3,
         "my_custom_description": "(formerly COMM  100 C Human Communication). In this course, students learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. Students discover, develop , and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery to a live audience and evaluation of various types of speeches, including informative and persuasive speeches. Duplicate credit not given for COMM C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, C-ID:COMM 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -232220,9 +232220,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -232292,7 +232292,7 @@
         "my_custom_title": "Introduction to Public Speaking",
         "my_custom_units": 3,
         "my_custom_description": "(formerly COMM  100 C Human Communication). In this course, students learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. Students discover, develop , and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery to a live audience and evaluation of various types of speeches, including informative and persuasive speeches. Duplicate credit not given for COMM C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, C-ID:COMM 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -236780,8 +236780,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
@@ -236993,8 +236993,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -237135,8 +237135,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -237996,8 +237996,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "NF",
@@ -238499,8 +238499,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -239438,7 +239438,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -239492,7 +239492,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -241325,8 +241325,8 @@
             {
                 "xlstGrp": "AN",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 53,
-                "xlstSeatsAvail": -18
+                "xlstEnrl": 54,
+                "xlstSeatsAvail": -19
             }
         ],
         "sectPtrmCode": "1",
@@ -242129,8 +242129,8 @@
             {
                 "xlstGrp": "AP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": -18
+                "xlstEnrl": 44,
+                "xlstSeatsAvail": -19
             }
         ],
         "sectPtrmCode": "1",
@@ -242488,8 +242488,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -242555,16 +242555,16 @@
         "sectInsmCode": "HYS",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 41,
-        "sectSeatsAvail": -6,
+        "sectEnrl": 42,
+        "sectSeatsAvail": -7,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AN",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 53,
-                "xlstSeatsAvail": -18
+                "xlstEnrl": 54,
+                "xlstSeatsAvail": -19
             }
         ],
         "sectPtrmCode": "1",
@@ -242666,8 +242666,8 @@
         "sectInsmCode": "HYS",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -11,
+        "sectEnrl": 47,
+        "sectSeatsAvail": -12,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -243207,16 +243207,16 @@
         "sectInsmCode": "HYS",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": -18
+                "xlstEnrl": 44,
+                "xlstSeatsAvail": -19
             }
         ],
         "sectPtrmCode": "1",
@@ -246137,8 +246137,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -246220,7 +246220,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 30,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -246292,7 +246292,7 @@
         "my_custom_title": "Multicultural Dance in the US",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C Social and theatrical dances of the U.S. today will be examined in terms of cultural influences, historical and social background and the functions they fulfill in society. Dance concert admission will not exceed $40. Transfer Info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -246472,9 +246472,9 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 2,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -246550,7 +246550,7 @@
         "my_custom_title": "Pilates Mat Work",
         "my_custom_units": 1,
         "my_custom_description": "Students will learn Pilates floor mat exercises and a floor barre to increase flexibility, strength, and body alignment with an emphasis on strengthening the core muscle groups. Dance Concert fees may not exceed $30. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -247858,8 +247858,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 4,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -247995,8 +247995,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 12,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 11,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -248076,8 +248076,8 @@
             {
                 "xlstGrp": "CU",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 8,
-                "xlstSeatsAvail": 17
+                "xlstEnrl": 10,
+                "xlstSeatsAvail": 15
             }
         ],
         "sectPtrmCode": "1",
@@ -248242,16 +248242,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 2,
         "sectMaxEnrl": 25,
-        "sectEnrl": 2,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CU",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 8,
-                "xlstSeatsAvail": 17
+                "xlstEnrl": 10,
+                "xlstSeatsAvail": 15
             }
         ],
         "sectPtrmCode": "1",
@@ -248416,16 +248416,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 2,
         "sectMaxEnrl": 25,
-        "sectEnrl": 4,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 5,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CV",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "1",
@@ -248598,8 +248598,8 @@
             {
                 "xlstGrp": "CV",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "1",
@@ -248772,8 +248772,8 @@
             {
                 "xlstGrp": "CW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 12,
+                "xlstSeatsAvail": 13
             }
         ],
         "sectPtrmCode": "1",
@@ -249012,8 +249012,8 @@
             {
                 "xlstGrp": "CW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 12,
+                "xlstSeatsAvail": 13
             }
         ],
         "sectPtrmCode": "1",
@@ -251267,8 +251267,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 37,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -252700,8 +252700,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -254318,8 +254318,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -255027,7 +255027,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -255086,7 +255086,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -255497,7 +255497,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 26,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -255556,7 +255556,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -255723,7 +255723,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 26,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -255786,7 +255786,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259158,8 +259158,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
@@ -261306,16 +261306,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GE",
                 "xlstMaxEnrl": 27,
-                "xlstEnrl": 24,
-                "xlstSeatsAvail": 3
+                "xlstEnrl": 25,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "1",
@@ -262362,8 +262362,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -262596,8 +262596,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -262935,7 +262935,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 26,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 14,
+        "sectWaitCount": 13,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -263003,7 +263003,7 @@
         "my_custom_title": "Introduction to Engineering",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite: Intermediate Algebra or MATH 115C with a grade of C or better. Introduction to engineering as a profession and associated career responsibilities and opportunities. It includes field trips to engineering facilities. Speakers from various engineering fields illustrate opportunities and challenges n the engineering profession. Duplicate credit not granted for ENGT 110 C. Transfer info: UC/CSU, C-ID:ENGR 110.",
-        "my_custom_wait_count": 14,
+        "my_custom_wait_count": 13,
         "my_custom_wait_capacity": 20
     },
     {
@@ -263901,8 +263901,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -264962,8 +264962,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265291,8 +265291,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 47,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -266275,8 +266275,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 47,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -267208,9 +267208,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 40,
-        "sectSeatsAvail": -5,
-        "sectWaitCount": 4,
+        "sectEnrl": 41,
+        "sectSeatsAvail": -6,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -267307,7 +267307,7 @@
         "my_custom_title": "Introduction to Chicana-o-x Studies",
         "my_custom_units": 3,
         "my_custom_description": "Satisfactory completion of ENGL C1000 (ENGL 100 C), ENGL C1000H (ENGL 100HC), ENGL C1000E (ENGL 101 C) , or ESL 110 C. This course is an introduction to the interdisciplinary field of Chicana/o/x Studies and is designed to acquaint students with the most significant social, political, and historical aspects of the transnational Chicana/o/x experience in the United States. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 5
     },
     {
@@ -267432,8 +267432,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 40,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -267902,8 +267902,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -268134,8 +268134,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -268611,9 +268611,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -268704,7 +268704,7 @@
         "my_custom_title": "American Racial Liberation Movements",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Satisfactory completion of ENGL C1001 (ENGL 103 C, ENGL C1001H (ENGL 103HC), ENGL 104 C, or ENGL 104HC and ETHS 101 C or ETHS 101HC. This course is an examination of the Post-World War II movements for racial liberation and self-determination among African Americans, Asian Pacific Americans, Latinas/os/xs, and Native Americans in the United States. Transfer Info: UC/CSU, AA GE, CalGETC.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -268717,8 +268717,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -268874,8 +268874,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -269270,8 +269270,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -269432,8 +269432,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -270190,8 +270190,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -270268,8 +270268,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -270481,8 +270481,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -270701,7 +270701,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 32,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -270768,7 +270768,7 @@
         "my_custom_title": "Physical Geology",
         "my_custom_units": 3,
         "my_custom_description": "Study of the composition, structure, processes and forces that operate underneath and upon Earth's surface. Topics include plate tectonics, rocks/minerals, earthquakes, volcanoes, landslides, resources and environmental concerns. Cost of field trip not to exceed $25. Duplicate credit not granted for GEOL 100HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: GEOL 100",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -272158,8 +272158,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 74,
-        "sectSeatsAvail": -6,
+        "sectEnrl": 72,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -272354,8 +272354,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -272452,8 +272452,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -273302,8 +273302,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -274866,8 +274866,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -275527,7 +275527,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 36,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -275600,7 +275600,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275980,7 +275980,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -276055,7 +276055,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -276465,7 +276465,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -276538,7 +276538,7 @@
         "my_custom_title": "Honors Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This honors-enhanced course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 C. Transfer info: CSU/UC, AA GE, C-ID: NUTR 110.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278837,9 +278837,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
-        "sectWaitCount": 9,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -278910,7 +278910,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278923,8 +278923,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -279183,7 +279183,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 9,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -279254,7 +279254,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279528,9 +279528,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -279601,7 +279601,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279616,7 +279616,7 @@
         "sectMaxEnrl": 90,
         "sectEnrl": 90,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279687,7 +279687,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279702,7 +279702,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -279773,7 +279773,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -280128,8 +280128,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -283433,16 +283433,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GH",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -283531,8 +283531,8 @@
             {
                 "xlstGrp": "GH",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -284752,8 +284752,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -285230,8 +285230,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
@@ -285334,8 +285334,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 9,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
@@ -285440,7 +285440,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -285525,7 +285525,7 @@
         "my_custom_title": "Kick-Boxing (formerly PE 163 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course offers instruction in forms of kick-boxing that stresses cardiovascular endurance, strength development, and improved flexibility. Pass/No Pass/Letter Grade Option. Transfer info: (UC/Credit Limitation/CSU, AA GE).",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -287451,16 +287451,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 31,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HU",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": -13
+                "xlstEnrl": 42,
+                "xlstSeatsAvail": -12
             }
         ],
         "sectPtrmCode": "F8",
@@ -287837,8 +287837,8 @@
             {
                 "xlstGrp": "HU",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": -13
+                "xlstEnrl": 42,
+                "xlstSeatsAvail": -12
             }
         ],
         "sectPtrmCode": "F8",
@@ -288405,16 +288405,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 4,
-        "sectSeatsAvail": 26,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 27,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HX",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 31,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 30,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -288840,8 +288840,8 @@
             {
                 "xlstGrp": "HX",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 31,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 30,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -289384,8 +289384,8 @@
             {
                 "xlstGrp": "HX",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 31,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 30,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -289811,8 +289811,8 @@
             {
                 "xlstGrp": "HX",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 31,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 30,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -291683,8 +291683,8 @@
             {
                 "xlstGrp": "HW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 28,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -291878,16 +291878,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 25,
-        "sectEnrl": 1,
-        "sectSeatsAvail": 24,
+        "sectEnrl": 2,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 28,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -292089,8 +292089,8 @@
             {
                 "xlstGrp": "HW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 28,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -292691,7 +292691,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 16,
         "sectSeatsAvail": 14,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -292775,7 +292775,7 @@
         "my_custom_title": "Basketball - Beginning (formerly PE 181 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course will include instruction in the fundamental skills of basketball with an emphasis on strategy and team play. Pass/No Pass/Letter Grade option. Transfer info: UC/Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -293885,8 +293885,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -295202,8 +295202,8 @@
             {
                 "xlstGrp": "HAL",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 66,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 67,
+                "xlstSeatsAvail": 3
             }
         ],
         "sectPtrmCode": "1",
@@ -295760,8 +295760,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 8,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -296120,7 +296120,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -296195,7 +296195,7 @@
         "my_custom_title": "Sports in Film",
         "my_custom_units": 3,
         "my_custom_description": "This course examines sports related films and their contributions made by members representing various gender, ethnic and socio-economic backgrounds. Transfer info: CSU/UC, AA GE",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -296208,16 +296208,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HG",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 29,
-                "xlstSeatsAvail": 6
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": 4
             }
         ],
         "sectPtrmCode": "NF",
@@ -296294,8 +296294,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -296466,9 +296466,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -296539,7 +296539,7 @@
         "my_custom_title": "Psychology of Sport",
         "my_custom_units": 3,
         "my_custom_description": "This course consists of the psychological study of athletes on all levels of competition. The course includes such areas as competition, understanding coaches, goal setting, motivation, youth sports, anxiety and stress, relaxation and sport imagery, relationships, and drug abuse in sports. Transfer info: UC/CSU, AA GE, CalGETC)",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -296554,7 +296554,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -296624,7 +296624,7 @@
         "my_custom_title": "Psychology of Sport",
         "my_custom_units": 3,
         "my_custom_description": "This course consists of the psychological study of athletes on all levels of competition. The course includes such areas as competition, understanding coaches, goal setting, motivation, youth sports, anxiety and stress, relaxation and sport imagery, relationships, and drug abuse in sports. Transfer info: UC/CSU, AA GE, CalGETC)",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -296991,7 +296991,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -297083,7 +297083,7 @@
         "my_custom_title": "Yoga and the Subtle Body",
         "my_custom_units": 3,
         "my_custom_description": "In this course, students will learn that the subtle body refers to the energy systems of the body. Students will look at what energy (prana) is, and hot it is stored and is moved throughout the body as a form of information. Students will consider principles such as prana, nadis, chakras, we all as the koshas; further, students will approach the energy system as foundational for health, and as such, will look at foundational Ayurvedic principles. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -299055,16 +299055,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CAZ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 23,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -299164,8 +299164,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 9,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 8,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -299273,8 +299273,8 @@
             {
                 "xlstGrp": "CAZ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 23,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -299374,8 +299374,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -299848,8 +299848,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -300139,7 +300139,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -300190,7 +300190,7 @@
         "my_custom_title": "Skills for Finite Math",
         "my_custom_units": 2,
         "my_custom_description": "Prerequisite: Appropriate placement. Corequisite: MATH 115PC This support course covers the skills and concepts needed to be successful in MATH 115PC. Topics include multiplying polynomials, factoring polynomials, solving linear equations, graphing linear equations, functions, and graphing inequalities. Students enrolling in a section of MATH 011 C must also enroll in the specific section of MATH 115PC it is paired with during the same semester. Pass/No Pass.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 20
     },
     {
@@ -300205,7 +300205,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -300260,7 +300260,7 @@
         "my_custom_title": "Skills for Probability and Statistics",
         "my_custom_units": 2,
         "my_custom_description": "Prerequisite: Appropriate placement. Corequisite: MATH 120PC This support course covers the skills and concepts needed to be successful in MATH 120PC which includes solving and graphing linear equations, order of operations of real numbers, basic probability, probability distributions, measures of central tendency and dispersion, sampling techniques, parametric and non- parametric tests of hypotheses. Students enrolling in a section of MATH 012 C must also enroll in the specific MATH 120PC it is paired with during the same semester. Pass/No Pass.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 20
     },
     {
@@ -300275,7 +300275,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -300330,7 +300330,7 @@
         "my_custom_title": "Skills for Probability and Statistics",
         "my_custom_units": 2,
         "my_custom_description": "Prerequisite: Appropriate placement. Corequisite: MATH 120PC This support course covers the skills and concepts needed to be successful in MATH 120PC which includes solving and graphing linear equations, order of operations of real numbers, basic probability, probability distributions, measures of central tendency and dispersion, sampling techniques, parametric and non- parametric tests of hypotheses. Students enrolling in a section of MATH 012 C must also enroll in the specific MATH 120PC it is paired with during the same semester. Pass/No Pass.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 20
     },
     {
@@ -302082,8 +302082,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303268,7 +303268,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -303336,7 +303336,7 @@
         "my_custom_title": "Finite Mathematics",
         "my_custom_units": 4,
         "my_custom_description": " Prerequisite: Concurrent enrollment in MATH 011 C. Prerequisite: Intermediate Algebra, or their equivalents, with grades of C or better, or by the evaluation of the college's multiple measures placement process. Advisory: Through the multiple measures' evaluation process, students may be required to take MATH 115PC with the paired support course MATH 011C. All students may take MATH 115PC with the support course MATH 011 C. This is a general education course in practical mathematics for liberal arts students or non-STEM majors. This course covers linear equations, functions, finance, matrices, linear programming, sets, counting techniques, probability, and applications. TI-83/84 or equivalent graphing calculator required. This course contains the same topics as MATH 115 C, but it must be taken concurrently with a paired section of the corequisite MATH 011 C. Duplicate credit not granted for MATH 115 C. Transfer Info: UC/CSU, AA GE, Cal-GETC, C-ID:MATH 130",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 20
     },
     {
@@ -303446,7 +303446,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -303518,7 +303518,7 @@
         "my_custom_title": "Introduction to Probability and Statistics",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: Pre-Statistics or Intermediate Algebra, or or their equivalents, with grades of C or better, or by the evaluation of the college's multiple measures placement process. Advisory: Through the multiple measures' evaluation process, students may be required to take MATH 120PC with the paired support course MATH 012 C. All students may take MATH 120PC with the support course MATH 012 C. Corequisite: Concurrent enrollment in MATH 012 C. This course is an introduction to the elements of statistical analysis, applications to business, biological sciences, health sciences, and social sciences. This course contains the same topics as STAT C1000, but it must be taken concurrently with a paired section of the corequisite MATH 012 C. Duplicate credit not granted: STAT C1000 or MATH 120HC. Transfer info: UC/CSU, AA GE,Cal-GETC, C-ID: MATH 110 and SOCI 125.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 20
     },
     {
@@ -303533,7 +303533,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -303617,7 +303617,7 @@
         "my_custom_title": "Introduction to Probability and Statistics",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: Pre-Statistics or Intermediate Algebra, or or their equivalents, with grades of C or better, or by the evaluation of the college's multiple measures placement process. Advisory: Through the multiple measures' evaluation process, students may be required to take MATH 120PC with the paired support course MATH 012 C. All students may take MATH 120PC with the support course MATH 012 C. Corequisite: Concurrent enrollment in MATH 012 C. This course is an introduction to the elements of statistical analysis, applications to business, biological sciences, health sciences, and social sciences. This course contains the same topics as STAT C1000, but it must be taken concurrently with a paired section of the corequisite MATH 012 C. Duplicate credit not granted: STAT C1000 or MATH 120HC. Transfer info: UC/CSU, AA GE,Cal-GETC, C-ID: MATH 110 and SOCI 125.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 20
     },
     {
@@ -306303,9 +306303,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 53,
-        "sectEnrl": 50,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectEnrl": 51,
+        "sectSeatsAvail": 2,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -306369,7 +306369,7 @@
         "my_custom_title": "Calculus II",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisites:  MATH 150AC with a grade of C or better or comparable Calculus I and Analytic Geometry and the assessment process. Proof of prerequisites is required. This course is a continuation of MATH 150AC. It includes applications and techniques of integration, improper integrals, infinite series, parametric equations, and polar curves. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:MATH 221, C-ID: MATH 221 and MATH 900S= MATH 150AC + MATH 150BC",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 20
     },
     {
@@ -306461,8 +306461,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -307191,7 +307191,7 @@
         "sectMaxEnrl": 53,
         "sectEnrl": 51,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -307254,7 +307254,7 @@
         "my_custom_title": "Multivariable Calculus",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: MATH 150BC or Calculus II and Analytic Geometry with a grade of C or better and the assessment process. Proof of prerequisites is required. An intermediate course in mathematical analysis which includes elements of three dimensional analytic geometry, calculus of functions of several variables, vector calculus,  (AA GE, IGETC, CSU GE, C-ID:MATH 230) Transfer to: UC/CSU",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 20
     },
     {
@@ -309597,8 +309597,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 47,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -309904,8 +309904,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -310275,8 +310275,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 49,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 50,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310406,8 +310406,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 45,
+        "sectEnrl": 1,
+        "sectSeatsAvail": 44,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310559,8 +310559,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 49,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310634,8 +310634,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 48,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 47,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310783,16 +310783,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAT",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 40,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 37,
+                "xlstSeatsAvail": 8
             }
         ],
         "sectPtrmCode": "1",
@@ -311264,9 +311264,9 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 0,
-        "sectEnrl": 9,
-        "sectSeatsAvail": -9,
-        "sectWaitCount": 2,
+        "sectEnrl": 11,
+        "sectSeatsAvail": -11,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -311316,7 +311316,7 @@
         "my_custom_title": "Jazz Improvization - Instrumental",
         "my_custom_units": 1,
         "my_custom_description": "This class provides intermediate level instrumental students with the tools and techniques for jazz improvisation. (UC/CSU)",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -311696,8 +311696,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 0,
-        "sectEnrl": 3,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 2,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -312374,8 +312374,8 @@
             {
                 "xlstGrp": "CAH",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 7,
-                "xlstSeatsAvail": 18
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "1",
@@ -312798,16 +312798,16 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 4,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CAH",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 7,
-                "xlstSeatsAvail": 18
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "1",
@@ -313026,8 +313026,8 @@
             {
                 "xlstGrp": "CAS",
                 "xlstMaxEnrl": 20,
-                "xlstEnrl": 8,
-                "xlstSeatsAvail": 12
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 11
             }
         ],
         "sectPtrmCode": "1",
@@ -313187,16 +313187,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 2,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "CAS",
                 "xlstMaxEnrl": 20,
-                "xlstEnrl": 8,
-                "xlstSeatsAvail": 12
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 11
             }
         ],
         "sectPtrmCode": "1",
@@ -316267,8 +316267,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -316597,8 +316597,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -317363,8 +317363,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -319180,9 +319180,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -319257,7 +319257,7 @@
         "my_custom_title": "Nutrition and World Food Issue",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly BIOL 107 C) A study of the biological basis of basic nutritional requirements as they relate to human health, disease prevention, the world food supply and ecology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC C-ID: NUTR 110.",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -320037,16 +320037,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 38,
-        "sectSeatsAvail": -8,
-        "sectWaitCount": 4,
+        "sectEnrl": 39,
+        "sectSeatsAvail": -9,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HA",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 45,
-                "xlstSeatsAvail": -10
+                "xlstEnrl": 46,
+                "xlstSeatsAvail": -11
             }
         ],
         "sectPtrmCode": "1",
@@ -320114,7 +320114,7 @@
         "my_custom_title": "Contemporary Personal Health (formerly KIN 284 C)",
         "my_custom_units": 3,
         "my_custom_description": "This course focuses on the exploration of major health issues and behaviors in the various dimensions of health. Emphasis is placed on individual responsibility for personal health and the promotion of informed, positive health behaviors. Transfer info: CSU/UC Credit Limitation, AA GE, C-ID: PHS 100.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -320129,7 +320129,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 9,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -320213,7 +320213,7 @@
         "my_custom_title": "Interpersonal Neurobiology and the Mind-Body Connection",
         "my_custom_units": 3,
         "my_custom_description": "This course will explore research that provides insight into how contemplative practices such as mindfulness and meditation, contemporary psychological approaches, exercise, diet, and sleep alter brain function in positive ways to promote mental health and wellbeing. In addition to xamining diseases related to stress response, the course will focus on how lifestyle choices can alter brain function and lead to enhanced states of mental health wellbeing, resilience and likelihood of decreasing mental health disorders in the future, through underlying neurobiological mechanisms that allow one to lead a life of fulfillment and wellbeing. Stress, the stress response, the relaxation response, and implications of neuroplasticity through the lens of interpersonal neurobiology will be examined. Transfer info: CSU/UC, CalGETC, AA GE, C-ID: PH 107",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -320836,8 +320836,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -322495,7 +322495,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -322599,7 +322599,7 @@
         "my_custom_title": "General Physics II",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: MATH 150BC and PHYS 221 C with minimum grades of C. Advisory: MATH 250AC. This calculus-based physics course is for students majoring in physics, chemistry, geology, engineering, computer science, mathematics, and related fields. Topics covered include electricity, DC and AC circuits, magnetism, electromagnetism, and electromagnetic waves. Requires knowledge of differential and integral calculus. Transfer info: UC Credit Limitation/CSU, AA GE, Cal-GETC, C-ID:PHYS 210.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 20
     },
     {
@@ -323656,8 +323656,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 53,
-        "sectSeatsAvail": -8,
+        "sectEnrl": 52,
+        "sectSeatsAvail": -7,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -324370,8 +324370,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -324458,7 +324458,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -324529,7 +324529,7 @@
         "my_custom_title": "Human Sexuality",
         "my_custom_units": 3,
         "my_custom_description": "Advisory (ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is an overview of the psychological and psychobiological aspects of human sexuality. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 130",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 15
     },
     {
@@ -325006,8 +325006,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 13,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -325090,7 +325090,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 13,
+        "sectWaitCount": 14,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -325157,7 +325157,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 13,
+        "my_custom_wait_count": 14,
         "my_custom_wait_capacity": 15
     },
     {
@@ -325170,8 +325170,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -325250,8 +325250,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 64,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 65,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -325538,16 +325538,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "JF",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 38,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -325640,8 +325640,8 @@
             {
                 "xlstGrp": "JG",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -325734,8 +325734,8 @@
             {
                 "xlstGrp": "JE",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 37,
+                "xlstSeatsAvail": -2
             }
         ],
         "sectPtrmCode": "1",
@@ -326219,8 +326219,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326987,8 +326987,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327723,8 +327723,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 4,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327906,8 +327906,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -328072,7 +328072,7 @@
         "sectMaxEnrl": 68,
         "sectEnrl": 67,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 13,
+        "sectWaitCount": 12,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -328139,7 +328139,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 13,
+        "my_custom_wait_count": 12,
         "my_custom_wait_capacity": 15
     },
     {
@@ -328152,8 +328152,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -328560,8 +328560,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 67,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 65,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -328720,7 +328720,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -328787,7 +328787,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -329869,8 +329869,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 86,
-        "sectSeatsAvail": -16,
+        "sectEnrl": 87,
+        "sectSeatsAvail": -17,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -330069,8 +330069,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 47,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -330195,8 +330195,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -330594,8 +330594,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -330664,8 +330664,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -330734,8 +330734,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -330804,8 +330804,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 58,
-        "sectSeatsAvail": -13,
+        "sectEnrl": 59,
+        "sectSeatsAvail": -14,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -331561,8 +331561,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 45,
-        "sectSeatsAvail": -15,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -16,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -332129,8 +332129,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 32,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -332207,8 +332207,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 71,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 70,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -332477,8 +332477,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 50,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 49,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -332861,8 +332861,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -332963,8 +332963,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 10,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -333051,7 +333051,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 12,
+        "sectWaitCount": 13,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333122,7 +333122,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 12,
+        "my_custom_wait_count": 13,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333307,8 +333307,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -333496,8 +333496,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -333874,8 +333874,8 @@
             {
                 "xlstGrp": "JF",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 38,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -333960,16 +333960,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 6,
-        "sectSeatsAvail": 29,
+        "sectEnrl": 5,
+        "sectSeatsAvail": 30,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "JG",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -334054,16 +334054,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 30,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 29,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "JE",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 37,
+                "xlstSeatsAvail": -2
             }
         ],
         "sectPtrmCode": "1",
@@ -340730,16 +340730,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAQ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 12,
-                "xlstSeatsAvail": 13
+                "xlstEnrl": 13,
+                "xlstSeatsAvail": 12
             }
         ],
         "sectPtrmCode": "1",
@@ -341096,16 +341096,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 3,
         "sectMaxEnrl": 25,
-        "sectEnrl": 2,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 3,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "F8",
@@ -341392,8 +341392,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "F8",
@@ -341994,16 +341994,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 25,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 30,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 51,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 53,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -342181,8 +342181,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 51,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 53,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -342336,8 +342336,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 51,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 53,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -342491,8 +342491,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 51,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 53,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -343164,8 +343164,8 @@
             {
                 "xlstGrp": "CAQ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 12,
-                "xlstSeatsAvail": 13
+                "xlstEnrl": 13,
+                "xlstSeatsAvail": 12
             }
         ],
         "sectPtrmCode": "1",
@@ -343349,8 +343349,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "F8",
@@ -343527,8 +343527,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 5,
-                "xlstSeatsAvail": 20
+                "xlstEnrl": 6,
+                "xlstSeatsAvail": 19
             }
         ],
         "sectPtrmCode": "F8",
