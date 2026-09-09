@@ -190048,7 +190048,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 25,
         "sectSeatsAvail": -5,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -190106,7 +190106,7 @@
         "my_custom_title": "Principles of Thermodynamics and Heat Transfer",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): AC/R 120 C. This course is a basic study of  thermodynamics, heat transfer, the mechanical vapor  compression refrigeration cycle and system components.  Classes include lectures with practical demonstrations and  hands-on experience including laboratory projects. Transfer  info: CSU ",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 10
     },
     {
@@ -190341,7 +190341,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 24,
         "sectSeatsAvail": -4,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -190399,7 +190399,7 @@
         "my_custom_title": "Electricity for Air Conditioning and Refrigeration II",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite(s):  AC/R 105 C with a grade of C or better.    This course is a continuation of Electricity for Air  Conditioning and Refrigeration. Topics include single  phase, three phase electric motors and EC motors, pressure  controls, time clocks and autotransformers with a lecture  and laboratory practice exercises. Transfer info: CSU ",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -190747,7 +190747,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -190807,7 +190807,7 @@
         "my_custom_title": "Air Flow Design & Psychrometrics",
         "my_custom_units": 2,
         "my_custom_description": "Introduction to comfort cooling and air conditioning  applications with a study of the behavior of air vapor  mixtures and the design of sheet metal duct systems as it  relates to indoor air quality. Transfer info: CSU ",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -190969,7 +190969,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 23,
         "sectSeatsAvail": -3,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -191030,7 +191030,7 @@
         "my_custom_title": "Piping Practice, Tools and Safety",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): AC/R 100 C.   This course includes  laboratory projects and demonstrations involving design and  construction of system piping, tools and safety. Material  Fees have been waived for this semester. Transfer info: CSU ",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -191118,7 +191118,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 23,
         "sectSeatsAvail": -3,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -191176,7 +191176,7 @@
         "my_custom_title": "Piping Practice, Tools and Safety",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): AC/R 100 C.   This course includes  laboratory projects and demonstrations involving design and  construction of system piping, tools and safety. Material  Fees have been waived for this semester. Transfer info: CSU ",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -192023,8 +192023,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 48,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 47,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -192163,8 +192163,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -195750,8 +195750,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -195923,8 +195923,8 @@
             {
                 "xlstGrp": "KCC",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 20,
-                "xlstSeatsAvail": 25
+                "xlstEnrl": 23,
+                "xlstSeatsAvail": 22
             }
         ],
         "sectPtrmCode": "S8",
@@ -196895,7 +196895,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 24,
         "sectSeatsAvail": 11,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -196963,7 +196963,7 @@
         "my_custom_title": "Biological Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course introduces the biological and physical aspects of what it means to be human from a scientific and evolutionary perspective. Duplicate credit not granted for ANTH 101HC or ANTH 201 C. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -196978,7 +196978,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 41,
         "sectSeatsAvail": -6,
-        "sectWaitCount": 6,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -197043,7 +197043,7 @@
         "my_custom_title": "Biological Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course introduces the biological and physical aspects of what it means to be human from a scientific and evolutionary perspective. Duplicate credit not granted for ANTH 101HC or ANTH 201 C. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 110.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -197313,19 +197313,32 @@
         "sectSchdCode": "72",
         "sectInsmCode": "72",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
+        "sectMaxEnrl": 35,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
+        "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/23/2026",
-        "sectAcadCutOffDate": "10/27/2026",
-        "sectDropCutOffDate": "11/30/2026",
-        "sectEnrlCutOffDate": "10/27/2026",
-        "sectCensusEnrlDate": "10/28/2026",
+        "sectRefundCutoffDate": "10/24/2026",
+        "sectAcadCutOffDate": "10/28/2026",
+        "sectDropCutOffDate": "11/28/2026",
+        "sectEnrlCutOffDate": "10/28/2026",
+        "sectCensusEnrlDate": "10/29/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "66F7984A30DA215A63AEBDF35286F741",
+                "meetInstrName": "Queneau-Iafrate, Sarah"
+            }
+        ],
         "sectAttr": [
             {
                 "attrCode": "1CB2",
@@ -197356,13 +197369,14 @@
                 "attrDesc": "Class Size - 35"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "66F7984A30DA215A63AEBDF35286F741",
+        "sectInstrName": "Queneau-Iafrate, Sarah",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Biological Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course introduces the biological and physical aspects of what it means to be human from a scientific and evolutionary perspective. Duplicate credit not granted for ANTH 101HC or ANTH 201 C. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 110.",
         "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
+        "my_custom_wait_capacity": 10
     },
     {
         "sectKey": "20261010179",
@@ -197707,9 +197721,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 4,
+        "sectEnrl": 42,
+        "sectSeatsAvail": 3,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -197770,7 +197784,7 @@
         "my_custom_title": "Cultural Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course explores the nature of culture and how it guides human behavior. Topics include language, subsistence, economics, social and political organization, marriage, kinship, religion, the arts, and culture change in societies around the world. Duplicate credit not granted for ANTH 102 HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 120",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -197864,19 +197878,33 @@
         "sectSchdCode": "72",
         "sectInsmCode": "72",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
+        "sectMaxEnrl": 68,
+        "sectEnrl": 5,
+        "sectSeatsAvail": 63,
         "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
+        "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/23/2026",
-        "sectAcadCutOffDate": "10/27/2026",
-        "sectDropCutOffDate": "11/30/2026",
-        "sectEnrlCutOffDate": "10/27/2026",
-        "sectCensusEnrlDate": "10/28/2026",
+        "sectRefundCutoffDate": "10/24/2026",
+        "sectAcadCutOffDate": "10/28/2026",
+        "sectDropCutOffDate": "11/28/2026",
+        "sectEnrlCutOffDate": "10/28/2026",
+        "sectCensusEnrlDate": "10/29/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "A1DEA0794B07B77172FB65B821685938",
+                "meetInstrName": "Floyd, Becky",
+                "meetInstrWebsite": "mailto:bfloyd@cypresscollege.edu"
+            }
+        ],
         "sectAttr": [
             {
                 "attrCode": "1CD1",
@@ -197907,13 +197935,15 @@
                 "attrDesc": "Class Size - 45"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "A1DEA0794B07B77172FB65B821685938",
+        "sectInstrName": "Floyd, Becky",
+        "sectInstrWebsite": "mailto:bfloyd@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Cultural Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course explores the nature of culture and how it guides human behavior. Topics include language, subsistence, economics, social and political organization, marriage, kinship, religion, the arts, and culture change in societies around the world. Duplicate credit not granted for ANTH 102 HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 120",
         "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
+        "my_custom_wait_capacity": 15
     },
     {
         "sectKey": "20261011012",
@@ -198289,9 +198319,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 66,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 15,
+        "sectEnrl": 72,
+        "sectSeatsAvail": -4,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -198374,7 +198404,7 @@
         "my_custom_title": "Magic, Witchcraft and Religion",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100C or ENGL 101 C or ESL 110 C. This anthropology of religion course is a cross-cultural exploration of religious beliefs and practices including myth, symbolism, magic, sorcery, and witchcraft, among other topics. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 15,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 15
     },
     {
@@ -198788,6 +198818,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y35",
@@ -199538,6 +199572,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y35",
                 "attrDesc": "Class Size - 35"
             }
@@ -199808,8 +199846,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -199948,6 +199986,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y35",
@@ -200865,6 +200907,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
             }
@@ -201458,6 +201504,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
             }
@@ -201490,8 +201540,8 @@
             {
                 "xlstGrp": "CAP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 29,
-                "xlstSeatsAvail": -4
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -201556,6 +201606,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y25",
@@ -201759,6 +201813,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
             }
@@ -201857,6 +201915,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y25",
@@ -201959,6 +202021,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
             }
@@ -202059,6 +202125,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
             }
@@ -202091,8 +202161,8 @@
             {
                 "xlstGrp": "CAP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 29,
-                "xlstSeatsAvail": -4
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": -3
             }
         ],
         "sectPtrmCode": "1",
@@ -202157,6 +202227,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y25",
@@ -203648,6 +203722,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
             }
@@ -203930,6 +204008,10 @@
             {
                 "attrCode": "N",
                 "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
                 "attrCode": "Y30",
@@ -205300,8 +205382,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "NF",
@@ -206066,8 +206148,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 3,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -206642,8 +206724,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 24,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -208807,8 +208889,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -208890,8 +208972,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 24,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 26,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -215060,7 +215142,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 7,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -215149,7 +215231,7 @@
         "my_custom_title": "Fundamentals of Human Anatomy and Physiology",
         "my_custom_units": 3,
         "my_custom_description": "This course includes a systematic coverage of the fundamental physical/chemical principles, basic biological concepts, and fundamentals of anatomy and physiology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, CSU GE, IGETC, AA GE",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 20
     },
     {
@@ -215279,8 +215361,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 7,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -217934,8 +218016,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -3,
         "sectWaitCount": 11,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -218373,8 +218455,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 9,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -218835,7 +218917,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 28,
         "sectSeatsAvail": -3,
-        "sectWaitCount": 7,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -218931,7 +219013,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 20
     },
     {
@@ -219343,8 +219425,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 12,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -220665,8 +220747,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -222941,16 +223023,16 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 0,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/23/2026",
-        "sectAcadCutOffDate": "10/01/2026",
-        "sectDropCutOffDate": "11/20/2026",
-        "sectEnrlCutOffDate": "10/01/2026",
-        "sectCensusEnrlDate": "10/02/2026",
+        "sectRefundCutoffDate": "09/22/2026",
+        "sectAcadCutOffDate": "09/30/2026",
+        "sectDropCutOffDate": "11/17/2026",
+        "sectEnrlCutOffDate": "09/30/2026",
+        "sectCensusEnrlDate": "10/01/2026",
         "sectLongText": "ONLINE CLASS: The above late start online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
@@ -222998,7 +223080,7 @@
         "my_custom_title": "Principles of Marketing",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly MKT 222 C)   This course focuses on the marketing  activities required to plan, price, develop, promote, and  distribute goods or services to potential customers.  Transfer info: CSU  ",
-        "my_custom_wait_count": 0,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -223613,8 +223695,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -224237,8 +224319,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -224594,8 +224676,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -225779,8 +225861,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 3,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -227508,9 +227590,9 @@
         "sectSchdCode": "HY",
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 75,
+        "sectMaxEnrl": 70,
         "sectEnrl": 64,
-        "sectSeatsAvail": 11,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -227603,9 +227685,9 @@
         "sectSchdCode": "HY",
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 75,
+        "sectMaxEnrl": 70,
         "sectEnrl": 66,
-        "sectSeatsAvail": 9,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -227784,11 +227866,11 @@
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/24/2026",
-        "sectAcadCutOffDate": "10/28/2026",
-        "sectDropCutOffDate": "11/28/2026",
-        "sectEnrlCutOffDate": "10/28/2026",
-        "sectCensusEnrlDate": "10/29/2026",
+        "sectRefundCutoffDate": "10/23/2026",
+        "sectAcadCutOffDate": "10/27/2026",
+        "sectDropCutOffDate": "11/30/2026",
+        "sectEnrlCutOffDate": "10/27/2026",
+        "sectCensusEnrlDate": "10/28/2026",
         "sectLongText": "ONLINE CLASS: The above second eight-week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
@@ -227855,16 +227937,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 59,
-        "sectEnrl": 59,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 58,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "AZ",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 70,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 69,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "NF",
@@ -227930,6 +228012,84 @@
         "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
         "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014977",
+        "sectTermCode": "202610",
+        "sectSubjCode": "CIS",
+        "sectCrseNumb": "111 C",
+        "sectCrn": "14977",
+        "sectSchdCode": "72",
+        "sectInsmCode": "72",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 35,
+        "sectEnrl": 1,
+        "sectSeatsAvail": 34,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 10,
+        "sectPtrmCode": "S8",
+        "sectAcctCode": "ID",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "10/23/2026",
+        "sectAcadCutOffDate": "10/27/2026",
+        "sectDropCutOffDate": "11/30/2026",
+        "sectEnrlCutOffDate": "10/27/2026",
+        "sectCensusEnrlDate": "10/28/2026",
+        "sectLongText": "ONLINE CLASS: The above second eight-week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "bldgCode": "ONLINE",
+                "bldgDesc": "ONLINE",
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "127B7D1DEE075B47A59A3AC6C48F36B4",
+                "meetInstrName": "Gauthier, Alan",
+                "meetInstrWebsite": "mailto:agauthier@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "1AA2",
+                "attrDesc": "C-GE A2 Analytic Thkg"
+            },
+            {
+                "attrCode": "1AS",
+                "attrDesc": "CC AS Twenty Unit Req"
+            },
+            {
+                "attrCode": "1CE",
+                "attrDesc": "C-CSU E Lifelong Lrng"
+            },
+            {
+                "attrCode": "1G1B",
+                "attrDesc": "C-GE 2025 1B Comm./Critical Th"
+            },
+            {
+                "attrCode": "1RDG",
+                "attrDesc": "C-GE Reading Proficiency"
+            },
+            {
+                "attrCode": "M50",
+                "attrDesc": "Computer Information Systems"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "127B7D1DEE075B47A59A3AC6C48F36B4",
+        "sectInstrName": "Gauthier, Alan",
+        "sectInstrWebsite": "mailto:agauthier@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Computer Information Systems",
+        "my_custom_units": 3,
+        "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 10
     },
     {
         "sectKey": "20261010559",
@@ -228632,8 +228792,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -228795,11 +228955,11 @@
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "08/29/2026",
-        "sectAcadCutOffDate": "09/02/2026",
-        "sectDropCutOffDate": "10/04/2026",
-        "sectEnrlCutOffDate": "09/02/2026",
-        "sectCensusEnrlDate": "09/03/2026",
+        "sectRefundCutoffDate": "08/27/2026",
+        "sectAcadCutOffDate": "08/31/2026",
+        "sectDropCutOffDate": "10/01/2026",
+        "sectEnrlCutOffDate": "08/31/2026",
+        "sectCensusEnrlDate": "09/01/2026",
         "sectLongText": "HYBRID CLASS: The above short-term hybrid course includes on-campus and online instruction. On-Campus meetings will be during the days and times identified in the schedule. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. The above course uses open educational resources and has zero textbook costs.",
         "sectMeetings": [
             {
@@ -228913,11 +229073,11 @@
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/24/2026",
-        "sectAcadCutOffDate": "10/28/2026",
-        "sectDropCutOffDate": "11/28/2026",
-        "sectEnrlCutOffDate": "10/28/2026",
-        "sectCensusEnrlDate": "10/29/2026",
+        "sectRefundCutoffDate": "10/22/2026",
+        "sectAcadCutOffDate": "10/26/2026",
+        "sectDropCutOffDate": "11/24/2026",
+        "sectEnrlCutOffDate": "10/26/2026",
+        "sectCensusEnrlDate": "10/27/2026",
         "sectLongText": "HYBRID CLASS: The above short-term hybrid course includes on-campus and online instruction. On-Campus meetings will be during the days and times identified in the schedule. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. The above course uses open educational resources and has zero textbook costs.",
         "sectMeetings": [
             {
@@ -229080,8 +229240,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -229163,8 +229323,8 @@
             {
                 "xlstGrp": "AE",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 70,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 69,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -229799,8 +229959,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -230311,8 +230471,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -230993,7 +231153,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 25,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -231061,7 +231221,7 @@
         "my_custom_title": "Introduction to Public Speaking",
         "my_custom_units": 3,
         "my_custom_description": "(formerly COMM  100 C Human Communication). In this course, students learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. Students discover, develop , and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery to a live audience and evaluation of various types of speeches, including informative and persuasive speeches. Duplicate credit not given for COMM C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, C-ID:COMM 110.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 5
     },
     {
@@ -231330,8 +231490,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -232266,8 +232426,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -232435,8 +232595,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -233609,8 +233769,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -233862,8 +234022,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -235622,9 +235782,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 3,
         "sectPtrmCode": "NF",
         "sectAcctCode": "D",
@@ -235681,7 +235841,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 3
     },
     {
@@ -236686,8 +236846,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -237466,8 +237626,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -237825,8 +237985,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -237971,8 +238131,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -238989,7 +239149,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 32,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -239045,7 +239205,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239766,7 +239926,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -239822,7 +239982,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 5
     },
     {
@@ -246279,7 +246439,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 4,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -246351,7 +246511,7 @@
         "my_custom_title": "Multicultural Dance in the US",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C Social and theatrical dances of the U.S. today will be examined in terms of cultural influences, historical and social background and the functions they fulfill in society. Dance concert admission will not exceed $40. Transfer Info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 10
     },
     {
@@ -246533,7 +246693,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 23,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -246609,7 +246769,7 @@
         "my_custom_title": "Pilates Mat Work",
         "my_custom_units": 1,
         "my_custom_description": "Students will learn Pilates floor mat exercises and a floor barre to increase flexibility, strength, and body alignment with an emphasis on strengthening the core muscle groups. Dance Concert fees may not exceed $30. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -247386,8 +247546,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 9,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -247460,8 +247620,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 15,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -252427,7 +252587,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -252490,7 +252650,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -252581,7 +252741,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -252657,7 +252817,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -257485,7 +257645,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -257555,7 +257715,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 5,
         "my_custom_description": "Formerly: ENGL 101 C Enhanced College Writing. Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. This course includes embedded support. Transfer info: CSU/UC, AA GE, C-ID: ENGL 100.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -257739,8 +257899,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -258485,9 +258645,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -258558,7 +258718,7 @@
         "my_custom_title": "Introduction to Literature",
         "my_custom_units": 3,
         "my_custom_description": "(formerly ENGL 102 C). Prerequisite: Successful completion of college-level (ENGL C1000,C1000H/ENGL C1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students are introduced to works by diverse authors and major literary genres, developing close reading and analytical writing skills. Students also develop appreciation for and critical understanding of the cultural, historical, and aesthetic qualities of literature. Duplicate credit not granted for ENGL C1002H. Transfer info: UC/CSU, AA GE, CalGETC, RDG, C-ID: ENGL 120.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259269,8 +259429,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -259437,8 +259597,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
@@ -259687,8 +259847,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -260117,7 +260277,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 24,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -260188,7 +260348,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260453,8 +260613,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -260939,16 +261099,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 45,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "S8",
@@ -261333,8 +261493,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -261539,8 +261699,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -261860,8 +262020,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -262433,7 +262593,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 27,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -262501,7 +262661,7 @@
         "my_custom_title": "Introduction to Engineering",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite: Intermediate Algebra or MATH 115C with a grade of C or better. Introduction to engineering as a profession and associated career responsibilities and opportunities. It includes field trips to engineering facilities. Speakers from various engineering fields illustrate opportunities and challenges n the engineering profession. Duplicate credit not granted for ENGT 110 C. Transfer info: UC/CSU, C-ID:ENGR 110.",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 20
     },
     {
@@ -263146,9 +263306,9 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectEnrl": 21,
+        "sectSeatsAvail": -1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "D",
@@ -263203,7 +263363,7 @@
         "my_custom_title": "Intermediate Pronunciation",
         "my_custom_units": 2,
         "my_custom_description": "Advisory(ies): Recommend eligibility for ESL 105 C.   This  course is designed to build knowledge of and provide  practice with American English pronunciation to help  students reduce communication breakdowns and increase  confidence in oral expression. Non-Degree Credit. PASS/NO  PASS/LETTER GRADE OPTION. ",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -263216,16 +263376,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 4,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GC",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "NF",
@@ -263295,7 +263455,7 @@
         "my_custom_title": "Intermediate ESL Grammar 1",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite(s): Appropriate skills demonstrated through  the assessment process.   This course is designed for  intermediate academic ESL students to increase their  knowledge and usage of English grammar with particular  emphasis on verb tense, verb form, verbals and verb phrase  structure in writing. ",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -263316,8 +263476,8 @@
             {
                 "xlstGrp": "GC",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "NF",
@@ -263399,8 +263559,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -263647,8 +263807,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 12,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 11,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -264376,8 +264536,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -264560,8 +264720,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 27,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265287,8 +265447,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 47,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265403,8 +265563,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265535,8 +265695,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265657,8 +265817,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265895,8 +266055,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -266243,8 +266403,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -267156,8 +267316,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 5,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -268302,8 +268462,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 9,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -269172,7 +269332,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -269239,7 +269399,7 @@
         "my_custom_title": "Physical Geography",
         "my_custom_units": 3,
         "my_custom_description": "This course investigates and interprets the sun-earth relationship, science of maps, weather and climate and things that provide insight into the nature of man's physical environment. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:GEOG 110, C-ID: GEOG 115=GEOG 102 C + GEOG 102LC).",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -269254,7 +269414,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -269321,7 +269481,7 @@
         "my_custom_title": "Physical Geography",
         "my_custom_units": 3,
         "my_custom_description": "This course investigates and interprets the sun-earth relationship, science of maps, weather and climate and things that provide insight into the nature of man's physical environment. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:GEOG 110, C-ID: GEOG 115=GEOG 102 C + GEOG 102LC).",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -269334,9 +269494,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 2,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -269418,7 +269578,7 @@
         "my_custom_title": "Physical Geography",
         "my_custom_units": 3,
         "my_custom_description": "This course investigates and interprets the sun-earth relationship, science of maps, weather and climate and things that provide insight into the nature of man's physical environment. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:GEOG 110, C-ID: GEOG 115=GEOG 102 C + GEOG 102LC).",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -269600,7 +269760,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -269667,7 +269827,7 @@
         "my_custom_title": "Physical Geography - Lab",
         "my_custom_units": 1,
         "my_custom_description": "Prerequisite: Completion of, or concurrent enrollment in GEOG 102 C. This course investigates and interprets in a laboratory environment the items covered in GEOG 102 C, GEOG 100 C or GEOG 130 C. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:GEOG 111, C-ID: GEOG 115=GEOG 102 C + GEOG 102LC.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -269836,8 +269996,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -270051,7 +270211,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 30,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -270103,7 +270263,7 @@
         "my_custom_title": "Introduction to GIS",
         "my_custom_units": 3,
         "my_custom_description": "This course provides instruction and training in the use of Geographic Information Systems \"GIS\". Individual student projects, related to their own current field of study, are developed. Material Fees have been waived for this semester. Transfer info: CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -272851,9 +273011,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 90,
+        "sectMaxEnrl": 45,
         "sectEnrl": 53,
-        "sectSeatsAvail": 37,
+        "sectSeatsAvail": -8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -273167,9 +273327,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 90,
+        "sectMaxEnrl": 45,
         "sectEnrl": 42,
-        "sectSeatsAvail": 48,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -275065,8 +275225,8 @@
             {
                 "xlstGrp": "KK",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 35,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 34,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "NF",
@@ -275246,7 +275406,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -275319,7 +275479,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275334,7 +275494,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -275409,7 +275569,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275915,8 +276075,8 @@
             {
                 "xlstGrp": "KDD",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 33,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 34,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "NF",
@@ -276008,7 +276168,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -276081,7 +276241,7 @@
         "my_custom_title": "Honors Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This honors-enhanced course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 C. Transfer info: CSU/UC, AA GE, C-ID: NUTR 110.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -276437,7 +276597,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -276527,7 +276687,7 @@
         "my_custom_title": "Sanitation and Safety",
         "my_custom_units": 2,
         "my_custom_description": "Overview of sanitation and safety principles and prepares  students for the national Servsafe Manager Certification  examination. Transfer info: CSU, C-ID:HOSP 110",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278987,7 +279147,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 9,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279058,7 +279218,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279159,7 +279319,7 @@
         "sectMaxEnrl": 90,
         "sectEnrl": 89,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279230,7 +279390,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279245,7 +279405,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 9,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -279316,7 +279476,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279329,9 +279489,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 8,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279402,7 +279562,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279415,8 +279575,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 90,
-        "sectEnrl": 84,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 79,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -280805,8 +280965,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 4,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -280875,8 +281035,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 17,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -280976,7 +281136,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 11,
+        "sectWaitCount": 12,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -281035,7 +281195,7 @@
         "my_custom_title": "Ethical Issues in Human Services",
         "my_custom_units": 3,
         "my_custom_description": "This course presents the rules and standards governing the  professional conduct of those working in Human Services  agencies. Transfer info: CSU ",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 12,
         "my_custom_wait_capacity": 15
     },
     {
@@ -281126,8 +281286,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 25,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -281234,8 +281394,8 @@
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 45,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "S8",
@@ -282187,8 +282347,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -282636,8 +282796,8 @@
             {
                 "xlstGrp": "GI",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 26,
-                "xlstSeatsAvail": 9
+                "xlstEnrl": 25,
+                "xlstSeatsAvail": 10
             }
         ],
         "sectPtrmCode": "1",
@@ -282717,16 +282877,16 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GI",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 26,
-                "xlstSeatsAvail": 9
+                "xlstEnrl": 25,
+                "xlstSeatsAvail": 10
             }
         ],
         "sectPtrmCode": "1",
@@ -283851,16 +284011,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R55",
                 "attrDesc": "Public Relations"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -283952,16 +284112,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R55",
                 "attrDesc": "Public Relations"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -284053,16 +284213,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R55",
                 "attrDesc": "Public Relations"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -284154,16 +284314,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R55",
                 "attrDesc": "Public Relations"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -284263,16 +284423,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R55",
                 "attrDesc": "Public Relations"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -284442,8 +284602,8 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -284550,8 +284710,8 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "6A62A943A0269796FC59A4C1E8E1894A",
@@ -285800,8 +285960,8 @@
             {
                 "xlstGrp": "HI",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -286003,8 +286163,8 @@
             {
                 "xlstGrp": "HI",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -286202,9 +286362,9 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 7,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -286292,7 +286452,7 @@
         "my_custom_title": "Yoga (formerly PE 102 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course, as defined by Patanjali, means \"citta vrtti nirodha\", the stilling of all states of citta, roughly, the stilling of mind. Students will develop an understanding of the goal of yoga, primarily through the significance of yoga asana. In this respect, yoga is a practice, , and in this course we will focus on developing a yoga practice, represented through asana, that reflects the goals of yoga, and the stilling of mind. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -286306,16 +286466,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 25,
-        "sectEnrl": 15,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 14,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HI",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -286809,8 +286969,8 @@
             {
                 "xlstGrp": "HI",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 29,
+                "xlstSeatsAvail": -4
             }
         ],
         "sectPtrmCode": "1",
@@ -294747,8 +294907,8 @@
             {
                 "xlstGrp": "HAL",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 66,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 65,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -295063,7 +295223,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
@@ -295134,7 +295294,7 @@
         "my_custom_title": "First Aid, CPR and Emergencies (formerly PE 235 C)",
         "my_custom_units": 3,
         "my_custom_description": "This course includes the theory and implementation of the skills necessary in response to an emergency. Material Fees have been waived for this semester. Transfer info: UC/CSU, C-ID: KIN 101",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -295671,8 +295831,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 75,
-        "sectEnrl": 54,
-        "sectSeatsAvail": 21,
+        "sectEnrl": 58,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -296544,7 +296704,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -296636,7 +296796,7 @@
         "my_custom_title": "Yoga and the Subtle Body",
         "my_custom_units": 3,
         "my_custom_description": "In this course, students will learn that the subtle body refers to the energy systems of the body. Students will look at what energy (prana) is, and hot it is stored and is moved throughout the body as a form of information. Students will consider principles such as prana, nadis, chakras, we all as the koshas; further, students will approach the energy system as foundational for health, and as such, will look at foundational Ayurvedic principles. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -296649,8 +296809,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -297038,12 +297198,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "6E73CD008142FF078115C737263C1AF0",
@@ -297130,12 +297290,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "BD9F237CC8B1437B592749049E740247",
@@ -297311,16 +297471,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "40BE47AD3A23B3C867FF299E23A9D903",
@@ -297415,8 +297575,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "BB1EC33F98C9FAC6B0998AF60FB3F642",
@@ -297511,16 +297671,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
             {
                 "attrCode": "Y20",
                 "attrDesc": "Class Size - 20"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "BB1EC33F98C9FAC6B0998AF60FB3F642",
@@ -297615,12 +297775,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -297708,6 +297868,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -297722,10 +297886,6 @@
             {
                 "attrCode": "Y45",
                 "attrDesc": "Class Size - 45"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "0977CBE6A9402B8443840D4E3D616F62",
@@ -297748,8 +297908,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -297974,12 +298134,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "6E73CD008142FF078115C737263C1AF0",
@@ -298074,12 +298234,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -298174,12 +298334,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -298264,6 +298424,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298278,10 +298442,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -298366,6 +298526,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298380,10 +298544,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -298468,6 +298628,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298482,10 +298646,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "63AB22F2D6434954024EC911F5F31521",
@@ -298576,16 +298736,16 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
             {
                 "attrCode": "Q35",
                 "attrDesc": "Media Production"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "5293DF68AD59D499E58AF974BA67BFEE",
@@ -298682,6 +298842,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298692,10 +298856,6 @@
             {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "69308A3FD9F2DDBBF9D35EAD950B34D6",
@@ -298783,6 +298943,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298793,10 +298957,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "69308A3FD9F2DDBBF9D35EAD950B34D6",
@@ -298892,6 +299052,10 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
@@ -298902,10 +299066,6 @@
             {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "69308A3FD9F2DDBBF9D35EAD950B34D6",
@@ -298927,8 +299087,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -299119,8 +299279,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -299187,16 +299347,16 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "P05",
                 "attrDesc": "Graphic Arts"
             },
             {
                 "attrCode": "Q35",
                 "attrDesc": "Media Production"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "0977CBE6A9402B8443840D4E3D616F62",
@@ -299283,12 +299443,12 @@
                 "attrDesc": "Broadcast Technolgy/Film/Video"
             },
             {
-                "attrCode": "P05",
-                "attrDesc": "Graphic Arts"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "P05",
+                "attrDesc": "Graphic Arts"
             }
         ],
         "sectInstrKey": "0977CBE6A9402B8443840D4E3D616F62",
@@ -299889,8 +300049,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 33,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -300208,8 +300368,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 31,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -300457,8 +300617,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -301464,7 +301624,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 31,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -301532,7 +301692,7 @@
         "my_custom_title": "Skills for Calculus I",
         "my_custom_units": 2,
         "my_custom_description": "Prerequisite: Appropriate Placement Corequisite: Concurrent enrollment in MATH 150PC. Advisory: Highly recommended for students who are seeking increased support for success in Calculus I. Also recommended for students who completed Math 141PC. This support course covers the skills and concepts needed to be successful in MATH 150PC. Topics include simplifying, factoring, functions, properties of exponents and logarithms, trigonometric identities, graphs, and angle values, and additional concepts from algebra and geometry. Students enrolling in a section of MATH 050 C must also enroll in the specific MATH 150PC course it is paired with during the same semester. Pass/No Pass only.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 20
     },
     {
@@ -302054,8 +302214,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303192,8 +303352,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 33,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303576,8 +303736,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 31,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303873,8 +304033,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -305061,8 +305221,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 31,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -306523,7 +306683,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 31,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -306587,7 +306747,7 @@
         "my_custom_title": "Calculus I",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: Both MATH 141 C and MATH 142 C, or both MATH 141PC and MATH 142 C all with a grade of C or better and the assessment process. Proof of prerequisites is required. This course is an introduction to mathematical analysis. It includes the study of analytic geometry, functions and limits, continuity, differentiation, and integration. Transfer info: CSU/UC, AA GE",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 20
     },
     {
@@ -308095,8 +308255,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -308536,8 +308696,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "6E598FB0C1AFE2B8E829B6B59D4F025D",
@@ -310276,8 +310436,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310414,12 +310574,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "Y25",
+                "attrDesc": "Class Size - 25"
             }
         ],
         "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
@@ -310571,12 +310731,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "Y45",
-                "attrDesc": "Class Size - 45"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "Y45",
+                "attrDesc": "Class Size - 45"
             }
         ],
         "sectInstrKey": "6E598FB0C1AFE2B8E829B6B59D4F025D",
@@ -310675,18 +310835,18 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 18,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 11,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
+        "sectRefundCutoffDate": "09/28/2026",
+        "sectAcadCutOffDate": "10/06/2026",
+        "sectDropCutOffDate": "11/21/2026",
+        "sectEnrlCutOffDate": "10/06/2026",
+        "sectCensusEnrlDate": "10/07/2026",
         "sectMeetings": [
             {
                 "beginTime": "1900",
@@ -310719,8 +310879,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
@@ -310788,8 +310948,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "4DCD96B7BE483AA350880D42DF2DFF16",
@@ -310858,8 +311018,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
@@ -310947,12 +311107,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "Y25",
+                "attrDesc": "Class Size - 25"
             }
         ],
         "sectInstrKey": "6E598FB0C1AFE2B8E829B6B59D4F025D",
@@ -311036,12 +311196,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "Y25",
+                "attrDesc": "Class Size - 25"
             }
         ],
         "sectInstrName": "STAFF",
@@ -311122,8 +311282,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "D47B7B255D0D183127271416740B78E7",
@@ -311281,8 +311441,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
@@ -311347,8 +311507,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "D47B7B255D0D183127271416740B78E7",
@@ -311413,8 +311573,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "D47B7B255D0D183127271416740B78E7",
@@ -311478,8 +311638,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "3ABAF918119992E75A0E853DD49988D0",
@@ -311525,8 +311685,8 @@
                 "endDate": "12/12/2026",
                 "mtypCode": "LAB",
                 "mtypDesc": "In-person Lab (Not IW/ID)",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
+                "schdCode": "04",
+                "schdDesc": "Lab",
                 "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
                 "meetInstrName": "McMillan, Marcus",
                 "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
@@ -311546,8 +311706,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
@@ -311611,8 +311771,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "3ABAF918119992E75A0E853DD49988D0",
@@ -311655,9 +311815,11 @@
                 "endDate": "12/12/2026",
                 "mtypCode": "ARN",
                 "mtypDesc": "Arranged",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
-                "meetInstrName": "STAFF"
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+                "meetInstrName": "Decker, Dana",
+                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
             }
         ],
         "sectAttr": [
@@ -311674,11 +311836,13 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+        "sectInstrName": "Decker, Dana",
+        "sectInstrWebsite": "maitlo:dadecker@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Applied Music",
         "my_custom_units": 1,
@@ -311737,8 +311901,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
@@ -313315,8 +313479,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 41,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -315191,8 +315355,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -315343,8 +315507,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -315593,7 +315757,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -315660,7 +315824,7 @@
         "my_custom_title": "World Religions",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a comparative examination of the beliefs, world views, rituals, ethics, and social systems of the major religious traditions throughout the world. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 15
     },
     {
@@ -315673,8 +315837,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -316439,8 +316603,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -316663,16 +316827,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "778B0990ED399F908B0E37AFBFC903B2",
@@ -316767,16 +316931,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "E98C481F9FD1017146C9C3EC807BDC9E",
@@ -316799,8 +316963,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -316869,16 +317033,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "BF5969297A7D894C3CCD72E1A6B6E10D",
@@ -316972,16 +317136,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "9098AD4ED1ADCFC13DB1D2DDB3947D57",
@@ -317076,16 +317240,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "9098AD4ED1ADCFC13DB1D2DDB3947D57",
@@ -317178,16 +317342,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "4122EF5C031CD523285DFC1263D40BE2",
@@ -317273,16 +317437,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y35",
                 "attrDesc": "Class Size - 35"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "DBB5D94A16A1174F380D312DBCC22C8D",
@@ -317542,16 +317706,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "FAA95180F2D642B0253AA0180FE6CE77",
@@ -317614,16 +317778,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "DBB5D94A16A1174F380D312DBCC22C8D",
@@ -317687,16 +317851,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "BEBFE3B49556186F36EA85D3E614A6B7",
@@ -317760,16 +317924,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "BEBFE3B49556186F36EA85D3E614A6B7",
@@ -317856,8 +318020,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "E98C481F9FD1017146C9C3EC807BDC9E",
@@ -317944,16 +318108,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "R10",
                 "attrDesc": " Photo Tech/Commercial Photogr"
             },
             {
                 "attrCode": "Y35",
                 "attrDesc": "Class Size - 35"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "9098AD4ED1ADCFC13DB1D2DDB3947D57",
@@ -318155,8 +318319,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -318245,8 +318409,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -318334,16 +318498,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 10,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 7,
+        "sectEnrl": 11,
+        "sectSeatsAvail": -1,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAW",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 34,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "NF",
@@ -318414,7 +318578,7 @@
         "my_custom_title": "Nutrition and World Food Issue",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly BIOL 107 C) A study of the biological basis of basic nutritional requirements as they relate to human health, disease prevention, the world food supply and ecology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC C-ID: NUTR 110.",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318427,9 +318591,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
-        "sectWaitCount": 9,
+        "sectEnrl": 37,
+        "sectSeatsAvail": -2,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -318500,7 +318664,7 @@
         "my_custom_title": "Introduction to Public Health (formerly KIN 280 C)",
         "my_custom_units": 3,
         "my_custom_description": "In  this course, students will discuss contemporary public health challenges focusing on eliminating health disparities in chronic conditions, infectious diseases and behavioral health. Transfer info: CSU/UC, AA GE, CalGTEC, C-ID: PHS 101",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318599,7 +318763,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 19,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -318671,7 +318835,7 @@
         "my_custom_title": "Introduction to Public Health (formerly KIN 280 C)",
         "my_custom_units": 3,
         "my_custom_description": "In  this course, students will discuss contemporary public health challenges focusing on eliminating health disparities in chronic conditions, infectious diseases and behavioral health. Transfer info: CSU/UC, AA GE, CalGTEC, C-ID: PHS 101",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318684,9 +318848,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 21,
-        "sectSeatsAvail": -1,
-        "sectWaitCount": 5,
+        "sectEnrl": 22,
+        "sectSeatsAvail": -2,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -318757,7 +318921,7 @@
         "my_custom_title": "Honors Introduction to Public Health (formerly KIN 280HC)",
         "my_custom_units": 3,
         "my_custom_description": "Formerly: KIN 280HC This Honors-enhanced course will provide students with enhanced comprehensive discussion of contemporary public health challenges, focusing on eliminating health disparities in chronic conditions, infectious diseases and and behavioral health. Duplicate credit not granted for KIN 280 C. Transfer info: CSU/UC, AA GE, CalGETC, C-ID: PHS 101",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -318778,8 +318942,8 @@
             {
                 "xlstGrp": "HAY",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 59,
-                "xlstSeatsAvail": 11
+                "xlstEnrl": 61,
+                "xlstSeatsAvail": 9
             }
         ],
         "sectPtrmCode": "NF",
@@ -318865,8 +319029,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -322124,8 +322288,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -322537,8 +322701,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 71,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 70,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -323983,7 +324147,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 35,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 11,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -324050,7 +324214,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324065,7 +324229,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 13,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -324132,7 +324296,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 13,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324147,7 +324311,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 39,
         "sectSeatsAvail": 6,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -324212,7 +324376,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324225,9 +324389,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 68,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectEnrl": 67,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -324290,7 +324454,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324302,19 +324466,35 @@
         "sectSchdCode": "72",
         "sectInsmCode": "72",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
+        "sectMaxEnrl": 45,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 28,
         "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
+        "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/23/2026",
-        "sectAcadCutOffDate": "10/27/2026",
-        "sectDropCutOffDate": "11/30/2026",
-        "sectEnrlCutOffDate": "10/27/2026",
-        "sectCensusEnrlDate": "10/28/2026",
+        "sectRefundCutoffDate": "10/24/2026",
+        "sectAcadCutOffDate": "10/28/2026",
+        "sectDropCutOffDate": "11/28/2026",
+        "sectEnrlCutOffDate": "10/28/2026",
+        "sectCensusEnrlDate": "10/29/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "bldgCode": "ONLINE",
+                "bldgDesc": "ONLINE",
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "18EA27F8218E80C538F3886D3D15B0AD",
+                "meetInstrName": "Hall, Angel",
+                "meetInstrWebsite": "mailto:ashall@cypresscollege.edu"
+            }
+        ],
         "sectAttr": [
             {
                 "attrCode": "1CD9",
@@ -324345,13 +324525,15 @@
                 "attrDesc": "Class Size - 45"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "18EA27F8218E80C538F3886D3D15B0AD",
+        "sectInstrName": "Hall, Angel",
+        "sectInstrWebsite": "mailto:ashall@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
         "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
+        "my_custom_wait_capacity": 15
     },
     {
         "sectKey": "20261010636",
@@ -325365,8 +325547,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 67,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 66,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326298,7 +326480,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -326381,7 +326563,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -326480,8 +326662,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326760,7 +326942,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -326830,7 +327012,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327105,9 +327287,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 68,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 15,
+        "sectEnrl": 67,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 12,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -327174,7 +327356,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 15,
+        "my_custom_wait_count": 12,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327271,7 +327453,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327338,7 +327520,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327353,7 +327535,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327418,7 +327600,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327597,7 +327779,7 @@
         "sectMaxEnrl": 68,
         "sectEnrl": 63,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 7,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327658,7 +327840,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327673,7 +327855,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 8,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327740,7 +327922,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327755,7 +327937,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 12,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -327822,7 +328004,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 12,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327834,19 +328016,35 @@
         "sectSchdCode": "72",
         "sectInsmCode": "72",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
+        "sectMaxEnrl": 45,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 24,
         "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
+        "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/23/2026",
-        "sectAcadCutOffDate": "10/27/2026",
-        "sectDropCutOffDate": "11/30/2026",
-        "sectEnrlCutOffDate": "10/27/2026",
-        "sectCensusEnrlDate": "10/28/2026",
+        "sectRefundCutoffDate": "10/24/2026",
+        "sectAcadCutOffDate": "10/28/2026",
+        "sectDropCutOffDate": "11/28/2026",
+        "sectEnrlCutOffDate": "10/28/2026",
+        "sectCensusEnrlDate": "10/29/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "bldgCode": "ONLINE",
+                "bldgDesc": "ONLINE",
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "E1FA0839B3527CDD6C91A2F4C74FFFB7",
+                "meetInstrName": "Tapia, James",
+                "meetInstrWebsite": "mailto:jtapia@cypresscollege.edu"
+            }
+        ],
         "sectAttr": [
             {
                 "attrCode": "1AD",
@@ -327881,13 +328079,15 @@
                 "attrDesc": "Class Size - 45"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "E1FA0839B3527CDD6C91A2F4C74FFFB7",
+        "sectInstrName": "Tapia, James",
+        "sectInstrWebsite": "mailto:jtapia@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
         "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
+        "my_custom_wait_capacity": 15
     },
     {
         "sectKey": "20261014969",
@@ -327898,19 +328098,35 @@
         "sectSchdCode": "72",
         "sectInsmCode": "72",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
+        "sectMaxEnrl": 45,
+        "sectEnrl": 7,
+        "sectSeatsAvail": 38,
         "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
+        "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
         "sectCampCode": "1",
-        "sectRefundCutoffDate": "10/23/2026",
-        "sectAcadCutOffDate": "10/27/2026",
-        "sectDropCutOffDate": "11/30/2026",
-        "sectEnrlCutOffDate": "10/27/2026",
-        "sectCensusEnrlDate": "10/28/2026",
+        "sectRefundCutoffDate": "10/24/2026",
+        "sectAcadCutOffDate": "10/28/2026",
+        "sectDropCutOffDate": "11/28/2026",
+        "sectEnrlCutOffDate": "10/28/2026",
+        "sectCensusEnrlDate": "10/29/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "bldgCode": "ONLINE",
+                "bldgDesc": "ONLINE",
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "190D20FADCBB376FBB1B8BE182927C3C",
+                "meetInstrName": "Uberoi, Niharika",
+                "meetInstrWebsite": "mailto:nuberoi@cypresscollege.edu"
+            }
+        ],
         "sectAttr": [
             {
                 "attrCode": "1AD",
@@ -327945,13 +328161,15 @@
                 "attrDesc": "Class Size - 45"
             }
         ],
-        "sectInstrName": "STAFF",
+        "sectInstrKey": "190D20FADCBB376FBB1B8BE182927C3C",
+        "sectInstrName": "Uberoi, Niharika",
+        "sectInstrWebsite": "mailto:nuberoi@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
         "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
+        "my_custom_wait_capacity": 15
     },
     {
         "sectKey": "20261014629",
@@ -328553,7 +328771,7 @@
                 "schdCode": "04E",
                 "schdDesc": "Extensive Lab",
                 "meetInstrKey": "CFEAAFAD7522CA06A5F73EE3BAB2F979",
-                "meetInstrName": "Franco, Owen"
+                "meetInstrName": "Montalbo Franco, Owen"
             },
             {
                 "beginTime": "0630",
@@ -329099,8 +329317,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 40,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -329165,8 +329383,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 86,
-        "sectSeatsAvail": -16,
+        "sectEnrl": 85,
+        "sectSeatsAvail": -15,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -329294,8 +329512,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -329358,8 +329576,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -329827,8 +330045,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -329969,7 +330187,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 60,
         "sectSeatsAvail": -15,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -330027,7 +330245,7 @@
         "my_custom_title": "Medical Imaging Pathology",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite: RADT 145 C or HS 145 C, and BIOL 210 C or BIOL 231 C. Term Hours: 54 lecture. This course is an introduction to the study of disease as it relates to imaging technology. Transfer info: CSU",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 10
     },
     {
@@ -331730,8 +331948,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 42,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -331820,8 +332038,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -332128,7 +332346,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 9,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -332199,7 +332417,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332214,7 +332432,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 15,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -332285,7 +332503,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 15,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332386,7 +332604,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 41,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 7,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -332457,7 +332675,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332659,9 +332877,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -332749,7 +332967,93 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 1,
+        "my_custom_wait_capacity": 15
+    },
+    {
+        "sectKey": "20261014976",
+        "sectTermCode": "202610",
+        "sectSubjCode": "SOC",
+        "sectCrseNumb": "101 C",
+        "sectCrn": "14976",
+        "sectSchdCode": "72",
+        "sectInsmCode": "72",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 45,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 28,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 15,
+        "sectPtrmCode": "S8",
+        "sectAcctCode": "ID",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "10/23/2026",
+        "sectAcadCutOffDate": "10/27/2026",
+        "sectDropCutOffDate": "11/30/2026",
+        "sectEnrlCutOffDate": "10/27/2026",
+        "sectCensusEnrlDate": "10/28/2026",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectMeetings": [
+            {
+                "bldgCode": "ONLINE",
+                "bldgDesc": "ONLINE",
+                "startDate": "10/19/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ONL",
+                "mtypDesc": "Online Lecture",
+                "schdCode": "72",
+                "schdDesc": "Online",
+                "meetInstrKey": "5D054C92081B7D9DEC687068F0EC74DD",
+                "meetInstrName": "Washington, Warren",
+                "meetInstrWebsite": "mailto:wwashington@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "1CD0",
+                "attrDesc": "C-CSU D0 Sociology/Crmlgy"
+            },
+            {
+                "attrCode": "1CD7",
+                "attrDesc": "C-CSU D7 Social/Behrl Sci"
+            },
+            {
+                "attrCode": "1GE4",
+                "attrDesc": "C-GE 2025 4 Soc&Behavioral Sci"
+            },
+            {
+                "attrCode": "1I4G",
+                "attrDesc": "C-IGETC 4G Soc/Behav Sci"
+            },
+            {
+                "attrCode": "1I4J",
+                "attrDesc": "C-IGETC 4J Soci/Crim"
+            },
+            {
+                "attrCode": "C75",
+                "attrDesc": "Sociology"
+            },
+            {
+                "attrCode": "CL4",
+                "attrDesc": "Cal-GETC 4 Social Science"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "Y45",
+                "attrDesc": "Class Size - 45"
+            }
+        ],
+        "sectInstrKey": "5D054C92081B7D9DEC687068F0EC74DD",
+        "sectInstrName": "Washington, Warren",
+        "sectInstrWebsite": "mailto:wwashington@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Introduction to Sociology",
+        "my_custom_units": 3,
+        "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333484,9 +333788,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 7,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333553,7 +333857,7 @@
         "my_custom_title": "Sociology of Contemporary Race and Ethnic Relations",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is a sociological analysis of race, ethnicity and racism. Coursework includes an examination of cultural, political, and economic practices and institutions that support or challenge racism and racial and ethnic inequalities. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 15
     },
     {
@@ -334154,8 +334458,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 13,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -334565,8 +334869,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -334809,7 +335113,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 41,
         "sectSeatsAvail": -6,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -334876,7 +335180,7 @@
         "my_custom_title": "Introduction to Statistics",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: MATH 120 C Introduction to Statistics). Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process or completion of a course taught at or above the level of intermediate algebra. Advisory: Through the multiple measures' evaluation process, students may be required to take MATH 120PC with the paired support course MATH 012 C. All students may take MATH 120PC with the support course MATH 012C. This course is an introduction to statistical thinking and processes, including methods and concepts for discovery and decision-making using data. Topics include descriptive statistics; probability and sampling distributions; statistical inference; correlation and linear regression; analysis of variance, chi-squared, and t-tests; and application of technology for statistical analysis including the interpretation of the relevance of the statistical findings. Students apply methods and processes to applications using data from a broad range of disciplines. Transfer info: UC Credit Limitation/CSU, AA GE, Cal-GETC, C-ID: MATH 110 and SOCI 125.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 20
     },
     {
@@ -336163,8 +336467,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -336425,8 +336729,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -337237,8 +337541,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -338131,8 +338435,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -338365,8 +338669,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -338598,8 +338902,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -338731,6 +339035,10 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "OER",
                 "attrDesc": "Open Educational Resources"
             },
@@ -338741,10 +339049,6 @@
             {
                 "attrCode": "Y45",
                 "attrDesc": "Class Size - 45"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -338767,8 +339071,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -338825,16 +339129,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y45",
                 "attrDesc": "Class Size - 45"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "E8906B15ED04B77CFACFA410E2D9F0D5",
@@ -338915,16 +339219,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y45",
                 "attrDesc": "Class Size - 45"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -339094,8 +339398,8 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -339350,10 +339654,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "F92021D2ABE5596DA2B32D7D3DDFE36C",
@@ -339450,10 +339750,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "57BC882DEE55F07ADB027292ACD7B386",
@@ -339542,10 +339838,6 @@
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "B6B43A2CBE857BC1A34B6384C9EBA4B6",
@@ -339635,16 +339927,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "OER",
                 "attrDesc": "Open Educational Resources"
             },
             {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -339737,10 +340029,6 @@
             {
                 "attrCode": "OER",
                 "attrDesc": "Open Educational Resources"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -339839,16 +340127,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "D47B7B255D0D183127271416740B78E7",
@@ -339939,12 +340227,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "D47B7B255D0D183127271416740B78E7",
@@ -340104,16 +340392,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "A55FA3033C4661C4EF104AB66921365A",
@@ -340200,16 +340488,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y30",
                 "attrDesc": "Class Size - 30"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -340301,16 +340589,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "D34DF2E45BD6C45A6E8AF8CE31A780E9",
@@ -340402,16 +340690,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "A8F0A008AD9F8FC8C9843137120A0BB1",
@@ -340499,16 +340787,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -340592,12 +340880,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "D34DF2E45BD6C45A6E8AF8CE31A780E9",
@@ -340681,12 +340969,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "A8F0A008AD9F8FC8C9843137120A0BB1",
@@ -340758,12 +341046,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "73CFEAE86FB72EE80FBE2C3D14E4ECEC",
@@ -340846,12 +341134,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -340936,16 +341224,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "B7C7174BD6BD9DDF47C58D458C85F99B",
@@ -341029,12 +341317,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "64C31821603AB476A318839606743BD6",
@@ -341121,16 +341409,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "O65",
                 "attrDesc": "Fashion and Related Technology"
             },
             {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "4F945B5C19AABB5A7ABB9D8893384A21",
@@ -341200,12 +341488,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -341389,16 +341677,16 @@
                 "attrDesc": "Banking and Finance"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "81356D685EDD7AFA61F8CC63CC921E9E",
@@ -341561,12 +341849,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "81356D685EDD7AFA61F8CC63CC921E9E",
@@ -341729,12 +342017,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "81356D685EDD7AFA61F8CC63CC921E9E",
@@ -341897,12 +342185,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "81356D685EDD7AFA61F8CC63CC921E9E",
@@ -341971,12 +342259,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -342046,16 +342334,16 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            },
+            {
                 "attrCode": "S50",
                 "attrDesc": "Stagecraft"
             },
             {
                 "attrCode": "Y25",
                 "attrDesc": "Class Size - 25"
-            },
-            {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
             }
         ],
         "sectInstrKey": "7C40B3583F245EED88C1C87980D62EB9",
@@ -342511,12 +342799,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "D34DF2E45BD6C45A6E8AF8CE31A780E9",
@@ -342689,12 +342977,12 @@
                 "attrDesc": "Not a basic skills course"
             },
             {
-                "attrCode": "S50",
-                "attrDesc": "Stagecraft"
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
             },
             {
-                "attrCode": "ZTCP",
-                "attrDesc": "Zero Textbook Cost Program"
+                "attrCode": "S50",
+                "attrDesc": "Stagecraft"
             }
         ],
         "sectInstrKey": "D34DF2E45BD6C45A6E8AF8CE31A780E9",
