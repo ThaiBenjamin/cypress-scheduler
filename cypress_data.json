@@ -190747,7 +190747,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 7,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -190807,7 +190807,7 @@
         "my_custom_title": "Air Flow Design & Psychrometrics",
         "my_custom_units": 2,
         "my_custom_description": "Introduction to comfort cooling and air conditioning  applications with a study of the behavior of air vapor  mixtures and the design of sheet metal duct systems as it  relates to indoor air quality. Transfer info: CSU ",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -192237,16 +192237,16 @@
         "sectInsmCode": "HYO",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AV",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 42,
+                "xlstSeatsAvail": 3
             }
         ],
         "sectPtrmCode": "1",
@@ -192524,8 +192524,8 @@
             {
                 "xlstGrp": "AV",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 43,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 42,
+                "xlstSeatsAvail": 3
             }
         ],
         "sectPtrmCode": "1",
@@ -192882,7 +192882,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 46,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -192929,7 +192929,7 @@
         "my_custom_title": "Managerial Accounting",
         "my_custom_units": 5,
         "my_custom_description": "Prerequisite: ACCT 101 C with a grade of C or better. Advisory: CIS 111 C and CIS 103 C. This is the study of how managers use accounting information in decision making, planning, directing operations and controlling. Transfer info: UC/CSU, C-ID: ACCT 120",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -195915,8 +195915,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
@@ -197314,8 +197314,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -197326,7 +197326,7 @@
         "sectDropCutOffDate": "11/28/2026",
         "sectEnrlCutOffDate": "10/28/2026",
         "sectCensusEnrlDate": "10/29/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "startDate": "10/19/2026",
@@ -197723,7 +197723,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 42,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -197784,7 +197784,7 @@
         "my_custom_title": "Cultural Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course explores the nature of culture and how it guides human behavior. Topics include language, subsistence, economics, social and political organization, marriage, kinship, religion, the arts, and culture change in societies around the world. Duplicate credit not granted for ANTH 102 HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 120",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -197879,8 +197879,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 63,
+        "sectEnrl": 8,
+        "sectSeatsAvail": 60,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -197891,7 +197891,7 @@
         "sectDropCutOffDate": "11/28/2026",
         "sectEnrlCutOffDate": "10/28/2026",
         "sectCensusEnrlDate": "10/29/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "startDate": "10/19/2026",
@@ -198319,9 +198319,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 72,
-        "sectSeatsAvail": -4,
-        "sectWaitCount": 9,
+        "sectEnrl": 73,
+        "sectSeatsAvail": -5,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -198404,7 +198404,7 @@
         "my_custom_title": "Magic, Witchcraft and Religion",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100C or ENGL 101 C or ESL 110 C. This anthropology of religion course is a cross-cultural exploration of religious beliefs and practices including myth, symbolism, magic, sorcery, and witchcraft, among other topics. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 15
     },
     {
@@ -199017,8 +199017,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -199102,8 +199102,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 39,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -199186,8 +199186,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 41,
-        "sectSeatsAvail": -6,
+        "sectEnrl": 40,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -199357,8 +199357,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -200935,8 +200935,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -202257,16 +202257,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAJ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 16
             }
         ],
         "sectPtrmCode": "1",
@@ -202359,8 +202359,8 @@
             {
                 "xlstGrp": "CAJ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 16
             }
         ],
         "sectPtrmCode": "1",
@@ -202453,8 +202453,8 @@
             {
                 "xlstGrp": "CAJ",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 16
             }
         ],
         "sectPtrmCode": "1",
@@ -205534,16 +205534,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 43,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "1",
@@ -205619,8 +205619,8 @@
             {
                 "xlstGrp": "CB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 43,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "1",
@@ -206912,8 +206912,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 24,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -218457,7 +218457,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 23,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 9,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -218550,7 +218550,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 20
     },
     {
@@ -224915,7 +224915,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -225017,7 +225017,7 @@
         "my_custom_title": "Preparation for General Chemistry",
         "my_custom_units": 5,
         "my_custom_description": "Prerequisite: Successful completion of Intermediate Algebra or MATH 141 C or MATH 141 PC or equivalent. This course provides a general introduction to the basic concepts, principles and laws of modern chemistry. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 20
     },
     {
@@ -226796,8 +226796,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 24,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -227781,8 +227781,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 71,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 70,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -227859,9 +227859,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 69,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectEnrl": 70,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -227924,7 +227924,7 @@
         "my_custom_title": "Computer Information Systems",
         "my_custom_units": 3,
         "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -228023,8 +228023,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 1,
-        "sectSeatsAvail": 34,
+        "sectEnrl": 7,
+        "sectSeatsAvail": 28,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -230299,8 +230299,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -232679,8 +232679,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -233629,8 +233629,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -235568,8 +235568,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 3,
         "sectPtrmCode": "F8",
@@ -235713,7 +235713,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -235769,7 +235769,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 5
     },
     {
@@ -236846,9 +236846,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -236902,7 +236902,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -237484,8 +237484,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -237697,8 +237697,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 17,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -240464,8 +240464,8 @@
             {
                 "xlstGrp": "AD",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 20,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 19,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "1",
@@ -240723,89 +240723,6 @@
         "my_custom_title": "Discrete Structures",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite:  CSCI 123 C or CIS 226 C or CIS 247 C, with a grade of C or better. Advisory(ies): CSCI 242 C.  This course is an introduction to discrete structures used  in computer science with an emphasis on their applications.  Topics include functions, relations and sets, basic logic,  proof techniques, graphs and trees, and discrete  probability.Transfer info: CSU, UC",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
-        "sectKey": "20261011427",
-        "sectTermCode": "202610",
-        "sectSubjCode": "CTRP",
-        "sectCrseNumb": "033 C",
-        "sectCrn": "11427",
-        "sectSchdCode": "20",
-        "sectInsmCode": "20",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 35,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 35,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectXlst": [
-            {
-                "xlstGrp": "AJ",
-                "xlstMaxEnrl": 35,
-                "xlstEnrl": 17,
-                "xlstSeatsAvail": 18
-            }
-        ],
-        "sectPtrmCode": "1",
-        "sectAcctCode": "IW",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectLongText": "ZOOM CLASS: The above class meets via Zoom during the days and times identified in the schedule. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. Please refer to CTRP 074 C for days and times of class meetings. The above class is taught in collaboration with CTRP 074 C. Please contact the instructor with any questions regarding days and times of class meetings.",
-        "sectMeetings": [
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "20",
-                "schdDesc": "Work Experience",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "71",
-                "schdDesc": "Synch Online",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "A35",
-                "attrDesc": "Business"
-            },
-            {
-                "attrCode": "M75",
-                "attrDesc": "Court Reporting"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            }
-        ],
-        "sectInstrKey": "C0356641F421B381E475776B602A5DA8",
-        "sectInstrName": "Freer, Carolee",
-        "sectInstrWebsite": "mailto:cfreer@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Internship - Agency Services",
-        "my_custom_units": 2,
-        "my_custom_description": "This course offers practical work experience in a court reporting agency.  There will be 40 hours of internship required, along with 10 hours of observation.",
         "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
@@ -242235,89 +242152,6 @@
         "my_custom_wait_capacity": 10
     },
     {
-        "sectKey": "20261011428",
-        "sectTermCode": "202610",
-        "sectSubjCode": "CTRP",
-        "sectCrseNumb": "063 C",
-        "sectCrn": "11428",
-        "sectSchdCode": "20",
-        "sectInsmCode": "20",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 35,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 35,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectXlst": [
-            {
-                "xlstGrp": "AJ",
-                "xlstMaxEnrl": 35,
-                "xlstEnrl": 17,
-                "xlstSeatsAvail": 18
-            }
-        ],
-        "sectPtrmCode": "1",
-        "sectAcctCode": "IW",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectLongText": "ZOOM CLASS: The above class meets via Zoom during the days and times identified in the schedule. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. Please refer to CTRP 074 C for days and times of class meetings. The above class is taught in collaboration with CTRP 074 C. Please contact the instructor with any questions regarding days and times of class meetings.",
-        "sectMeetings": [
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "20",
-                "schdDesc": "Work Experience",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "71",
-                "schdDesc": "Synch Online",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "M75",
-                "attrDesc": "Court Reporting"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
-            }
-        ],
-        "sectInstrKey": "C0356641F421B381E475776B602A5DA8",
-        "sectInstrName": "Freer, Carolee",
-        "sectInstrWebsite": "mailto:cfreer@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Internship - Legal Videography",
-        "my_custom_units": 1.5,
-        "my_custom_description": "Prerequisite(s): Students must be enrolled in the Legal  Videography Certificate.   This course offers practical  work experience in videography and its applications to the  legal community. ",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
         "sectKey": "20261010729",
         "sectTermCode": "202610",
         "sectSubjCode": "CTRP",
@@ -243116,102 +242950,6 @@
         "my_custom_wait_capacity": 10
     },
     {
-        "sectKey": "20261010763",
-        "sectTermCode": "202610",
-        "sectSubjCode": "CTRP",
-        "sectCrseNumb": "079 C",
-        "sectCrn": "10763",
-        "sectSchdCode": "20",
-        "sectInsmCode": "20",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 35,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 35,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectXlst": [
-            {
-                "xlstGrp": "AJ",
-                "xlstMaxEnrl": 35,
-                "xlstEnrl": 17,
-                "xlstSeatsAvail": 18
-            }
-        ],
-        "sectPtrmCode": "1",
-        "sectAcctCode": "IW",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectLongText": "ZOOM CLASS: The above class meets via Zoom during the days and times identified in the schedule. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. Please refer to CTRP 074 C for days and times of class meetings. The above class is taught in collaboration with CTRP 074 C. Please contact the instructor with any questions regarding days and times of class meetings.",
-        "sectMeetings": [
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "71",
-                "schdDesc": "Synch Online",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "20",
-                "schdDesc": "Work Experience",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ALT",
-                "mtypDesc": "All sections with Labs (IW/ID)",
-                "schdCode": "20L",
-                "schdDesc": "Work Experience Lab",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "1AS",
-                "attrDesc": "CC AS Twenty Unit Req"
-            },
-            {
-                "attrCode": "M75",
-                "attrDesc": "Court Reporting"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            }
-        ],
-        "sectInstrKey": "C0356641F421B381E475776B602A5DA8",
-        "sectInstrName": "Freer, Carolee",
-        "sectInstrWebsite": "mailto:cfreer@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Internship- CART",
-        "my_custom_units": 3,
-        "my_custom_description": "This course provides the CART student with practical work  experience recording and reporting seminars, hearings, and  lectures. There will be 50 hours of internship plus 10  hours of observation.  ",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
         "sectKey": "20261010770",
         "sectTermCode": "202610",
         "sectSubjCode": "CTRP",
@@ -243649,198 +243387,6 @@
         "my_custom_wait_capacity": 10
     },
     {
-        "sectKey": "20261014353",
-        "sectTermCode": "202610",
-        "sectSubjCode": "CTRP",
-        "sectCrseNumb": "087 C",
-        "sectCrn": "14353",
-        "sectSchdCode": "20",
-        "sectInsmCode": "20",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 35,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 35,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectXlst": [
-            {
-                "xlstGrp": "AJ",
-                "xlstMaxEnrl": 35,
-                "xlstEnrl": 17,
-                "xlstSeatsAvail": 18
-            }
-        ],
-        "sectPtrmCode": "1",
-        "sectAcctCode": "IW",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectLongText": "ZOOM CLASS: The above class meets via Zoom during the days and times identified in the schedule. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. Please refer to CTRP 074 C for days and times of class meetings. The above class is taught in collaboration with CTRP 074 C. Please contact the instructor with any questions regarding days and times of class meetings.",
-        "sectMeetings": [
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "71",
-                "schdDesc": "Synch Online",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "20",
-                "schdDesc": "Work Experience",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ALT",
-                "mtypDesc": "All sections with Labs (IW/ID)",
-                "schdCode": "20L",
-                "schdDesc": "Work Experience Lab",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "M75",
-                "attrDesc": "Court Reporting"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
-            }
-        ],
-        "sectInstrKey": "C0356641F421B381E475776B602A5DA8",
-        "sectInstrName": "Freer, Carolee",
-        "sectInstrWebsite": "mailto:cfreer@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Internship - Hearing Reporter",
-        "my_custom_units": 3,
-        "my_custom_description": "This course offers practical work experience in the field  of hearing reporting. There will be 50 hours of internship,  plus 10 hours of observation.  ",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
-        "sectKey": "20261014354",
-        "sectTermCode": "202610",
-        "sectSubjCode": "CTRP",
-        "sectCrseNumb": "088 C",
-        "sectCrn": "14354",
-        "sectSchdCode": "20",
-        "sectInsmCode": "20",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 35,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 35,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectXlst": [
-            {
-                "xlstGrp": "AJ",
-                "xlstMaxEnrl": 35,
-                "xlstEnrl": 17,
-                "xlstSeatsAvail": 18
-            }
-        ],
-        "sectPtrmCode": "1",
-        "sectAcctCode": "IW",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectLongText": "ZOOM CLASS: The above class meets via Zoom during the days and times identified in the schedule. Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone. Please refer to CTRP 074 C for days and times of class meetings. The above class is taught in collaboration with CTRP 074 C. Please contact the instructor with any questions regarding days and times of class meetings.",
-        "sectMeetings": [
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "71",
-                "schdDesc": "Synch Online",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "20",
-                "schdDesc": "Work Experience",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "ZOOM",
-                "bldgDesc": "ZOOM",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ALT",
-                "mtypDesc": "All sections with Labs (IW/ID)",
-                "schdCode": "20L",
-                "schdDesc": "Work Experience Lab",
-                "meetInstrKey": "C0356641F421B381E475776B602A5DA8",
-                "meetInstrName": "Freer, Carolee",
-                "meetInstrWebsite": "mailto:cfreer@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "M75",
-                "attrDesc": "Court Reporting"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "Y25",
-                "attrDesc": "Class Size - 25"
-            }
-        ],
-        "sectInstrKey": "C0356641F421B381E475776B602A5DA8",
-        "sectInstrName": "Freer, Carolee",
-        "sectInstrWebsite": "mailto:cfreer@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Internship - Captioning",
-        "my_custom_units": 3,
-        "my_custom_description": "This course offers practical work experience opportunities in the field of closed captioning. A 15,000 word CAT dictionary is necessary to complete captioning projects. !ARR 50 hours of internship, plus 10 hours of observation",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
         "sectKey": "20261010761",
         "sectTermCode": "202610",
         "sectSubjCode": "CTRP",
@@ -244207,8 +243753,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 60,
-        "sectEnrl": 95,
-        "sectSeatsAvail": -35,
+        "sectEnrl": 96,
+        "sectSeatsAvail": -36,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "OE",
@@ -246189,7 +245735,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -246252,7 +245798,7 @@
         "my_custom_title": "Introduction to Dance Appreciation",
         "my_custom_units": 3,
         "my_custom_description": "Term hours: 45 lecture and 27 laboratory. The course is an overview of dance history, beginning with classical era, folk and ethnic dance. This course will survey the development of ballet, modern, jazz and other dance forms, focusing largely on the 20th century. Dance concert admission may not Dance concert admission may not exceed $30. Transfer info: UC/CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -246437,16 +245983,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAV",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 45,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "S8",
@@ -246511,7 +246057,7 @@
         "my_custom_title": "Multicultural Dance in the US",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C Social and theatrical dances of the U.S. today will be examined in terms of cultural influences, historical and social background and the functions they fulfill in society. Dance concert admission will not exceed $40. Transfer Info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -247546,8 +247092,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -254289,8 +253835,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 30,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -254674,7 +254220,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -254750,7 +254296,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -257308,8 +256854,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -257645,7 +257191,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -257715,7 +257261,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 5,
         "my_custom_description": "Formerly: ENGL 101 C Enhanced College Writing. Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. This course includes embedded support. Transfer info: CSU/UC, AA GE, C-ID: ENGL 100.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -257728,8 +257274,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -258645,9 +258191,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 4,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -258718,7 +258264,7 @@
         "my_custom_title": "Introduction to Literature",
         "my_custom_units": 3,
         "my_custom_description": "(formerly ENGL 102 C). Prerequisite: Successful completion of college-level (ENGL C1000,C1000H/ENGL C1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students are introduced to works by diverse authors and major literary genres, developing close reading and analytical writing skills. Students also develop appreciation for and critical understanding of the cultural, historical, and aesthetic qualities of literature. Duplicate credit not granted for ENGL C1002H. Transfer info: UC/CSU, AA GE, CalGETC, RDG, C-ID: ENGL 120.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 5
     },
     {
@@ -258813,8 +258359,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -259847,9 +259393,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -259920,7 +259466,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260445,7 +259991,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -260516,7 +260062,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260531,7 +260077,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 26,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -260600,7 +260146,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260613,8 +260159,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -260784,8 +260330,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -261099,16 +260645,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 38,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 45,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 44,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "S8",
@@ -261699,8 +261245,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -262020,8 +261566,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -262098,8 +261644,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -262254,8 +261800,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -263376,8 +262922,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 29,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 28,
+        "sectSeatsAvail": -3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
@@ -263559,8 +263105,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -263624,16 +263170,16 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 8,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 24,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 16,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 15,
+                "xlstSeatsAvail": 15
             }
         ],
         "sectPtrmCode": "NF",
@@ -263715,16 +263261,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 8,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 16,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 15,
+                "xlstSeatsAvail": 15
             }
         ],
         "sectPtrmCode": "NF",
@@ -265324,8 +264870,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -269494,9 +269040,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -269578,7 +269124,7 @@
         "my_custom_title": "Physical Geography",
         "my_custom_units": 3,
         "my_custom_description": "This course investigates and interprets the sun-earth relationship, science of maps, weather and climate and things that provide insight into the nature of man's physical environment. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:GEOG 110, C-ID: GEOG 115=GEOG 102 C + GEOG 102LC).",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -269996,8 +269542,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -271491,7 +271037,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 7,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -271554,7 +271100,7 @@
         "my_custom_title": "Introduction to Oceanography",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of the composition and structure of the earth's ocean showing the interrelationship between atmosphere, hydrosphere, lithosphere, and biosphere. Field trips may be required with a fee not to exceed $25.00. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -271958,8 +271504,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -273644,7 +273190,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 46,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -273731,7 +273277,7 @@
         "my_custom_title": "United States History to 1877",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: HIST 170 C, History of the United States I). Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a historical survey of the United States, from Indigenous North America to the end of Reconstruction. The course also introduces students to historical reasoning skills. Duplicate credit not granted for HIST C1001H. Transfer info: C Credit Limitation/CSU, AA GE, CalGETC, C-ID:HIST 130.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -273850,8 +273396,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 38,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -274556,8 +274102,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -275318,7 +274864,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -275391,7 +274937,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278626,8 +278172,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -279145,9 +278691,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279218,7 +278764,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279319,7 +278865,7 @@
         "sectMaxEnrl": 90,
         "sectEnrl": 89,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 9,
+        "sectWaitCount": 10,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279390,7 +278936,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 10,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279403,9 +278949,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -279476,7 +279022,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -280115,7 +279661,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 38,
         "sectSeatsAvail": 7,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -280196,7 +279742,7 @@
         "my_custom_title": "Introduction to Human Services",
         "my_custom_units": 3,
         "my_custom_description": "This course covers the history and philosophy of the human services; function and orientation of human services institutions, careers, and agencies. Transfer info: CSU",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 15
     },
     {
@@ -280563,8 +280109,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -280721,8 +280267,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -281035,8 +280581,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -281136,7 +280682,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 12,
+        "sectWaitCount": 13,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -281195,7 +280741,7 @@
         "my_custom_title": "Ethical Issues in Human Services",
         "my_custom_units": 3,
         "my_custom_description": "This course presents the rules and standards governing the  professional conduct of those working in Human Services  agencies. Transfer info: CSU ",
-        "my_custom_wait_count": 12,
+        "my_custom_wait_count": 13,
         "my_custom_wait_capacity": 15
     },
     {
@@ -281286,8 +280832,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 12,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 22,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -281394,8 +280940,8 @@
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 45,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 44,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "S8",
@@ -287251,16 +286797,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "HL",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -6
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": -5
             }
         ],
         "sectPtrmCode": "1",
@@ -287824,8 +287370,8 @@
             {
                 "xlstGrp": "HL",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 36,
-                "xlstSeatsAvail": -6
+                "xlstEnrl": 35,
+                "xlstSeatsAvail": -5
             }
         ],
         "sectPtrmCode": "1",
@@ -290367,8 +289913,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 32,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 31,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -290460,7 +290006,7 @@
         "sectMaxEnrl": 38,
         "sectEnrl": 37,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -290535,7 +290081,7 @@
         "my_custom_title": "Total Body Fitness (formerly PE 187 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course emphasizes physical fitness that will be achieved through the use of resistance exercises and body building routines. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -294899,16 +294445,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 27,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAL",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 65,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 64,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "1",
@@ -295229,8 +294775,8 @@
             {
                 "xlstGrp": "HAQ",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 44,
-                "xlstSeatsAvail": 16
+                "xlstEnrl": 46,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "S8",
@@ -295473,8 +295019,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -296702,9 +296248,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 4,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 2,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -296796,7 +296342,7 @@
         "my_custom_title": "Yoga and the Subtle Body",
         "my_custom_units": 3,
         "my_custom_description": "In this course, students will learn that the subtle body refers to the energy systems of the body. Students will look at what energy (prana) is, and hot it is stored and is moved throughout the body as a form of information. Students will consider principles such as prana, nadis, chakras, we all as the koshas; further, students will approach the energy system as foundational for health, and as such, will look at foundational Ayurvedic principles. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -299966,8 +299512,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 35,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 34,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -300368,8 +299914,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -302214,8 +301760,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -302412,8 +301958,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303253,8 +302799,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 35,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 34,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303736,8 +303282,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -305299,7 +304845,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -305360,7 +304906,7 @@
         "my_custom_title": "Calculus I",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite: Both MATH 141 C and MATH 142 C, or both MATH 141PC and MATH 142 C all with a grade of C or better and the assessment process. Proof of prerequisites is required. This course is an introduction to mathematical analysis. It includes the study of analytic geometry, functions and limits, continuity, differentiation and integration. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID: MATH 210 and MATH 900S= MATH 150AC + MATH 150BC)",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 20
     },
     {
@@ -305689,8 +305235,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -305768,8 +305314,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -307395,8 +306941,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -309016,8 +308562,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -309096,7 +308642,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "IW",
@@ -309155,7 +308701,7 @@
         "my_custom_title": "Jazz History",
         "my_custom_units": 3,
         "my_custom_description": "This survey course traces the history and development of jazz music from its inception to the present day.  The music, both live and from recordings, is studied from a cultural, musical, historical, and sociological standpoint.  Concert attendance required. Open to all students. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 5
     },
     {
@@ -309325,8 +308871,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 42,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -309402,7 +308948,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 40,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -309462,7 +309008,7 @@
         "my_custom_title": "Music Appreciation",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of music literature from the Middle Ages to the present. Concert attendance is required. Open to all students, but designed for the non-music major. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:MUS 100",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -309549,8 +309095,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 38,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310835,8 +310381,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 18,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -311916,6 +311462,66 @@
         "my_custom_wait_capacity": 0
     },
     {
+        "sectKey": "20261014978",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14978",
+        "sectSchdCode": "04",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 0,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "NF",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "beginTime": "1500",
+                "endTime": "1550",
+                "thuDay": "R",
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-315",
+                "startDate": "09/07/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrName": "STAFF"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrName": "STAFF",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
         "sectKey": "20261010218",
         "sectTermCode": "202610",
         "sectSubjCode": "MUS",
@@ -312866,6 +312472,7 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
+        "sectCredHrs": 1,
         "sectMaxEnrl": 25,
         "sectEnrl": 15,
         "sectSeatsAvail": 10,
@@ -312894,9 +312501,45 @@
                 "mtypDesc": "Class",
                 "schdCode": "02",
                 "schdDesc": "Lecture",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            },
+            {
+                "beginTime": "1700",
+                "endTime": "1750",
+                "monDay": "M",
+                "wedDay": "W",
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-233",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
                 "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
                 "meetInstrName": "Decker, Dana",
                 "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+            },
+            {
+                "beginTime": "1800",
+                "endTime": "1910",
+                "monDay": "M",
+                "wedDay": "W",
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-233",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
             },
             {
                 "beginTime": "1800",
@@ -315837,8 +315480,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 41,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -318409,8 +318052,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -318591,8 +318234,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 37,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 36,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -318942,8 +318585,8 @@
             {
                 "xlstGrp": "HAY",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 61,
-                "xlstSeatsAvail": 9
+                "xlstEnrl": 60,
+                "xlstSeatsAvail": 10
             }
         ],
         "sectPtrmCode": "NF",
@@ -319029,8 +318672,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -319373,8 +319016,8 @@
             {
                 "xlstGrp": "HAN",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 45,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 46,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "NF",
@@ -319440,8 +319083,8 @@
             {
                 "xlstGrp": "HAO",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 35,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "NF",
@@ -321159,8 +320802,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -322889,9 +322532,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 15,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 14,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -322970,7 +322613,7 @@
         "my_custom_title": "American Government and Politics",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: POSC 100 C United States Government) Advisory: Eligibility for college-level writing (C-ID ENGL 100). This course is an introduction to government and politics in the United States and California. Students examine the constitutions, structure, and operation of governing institutions, civil liberties and civil rights, political behaviors, political issues, and public policy using political science theory and methodology. Duplicate credit not granted for POLS C1000. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:POLS 110.",
-        "my_custom_wait_count": 15,
+        "my_custom_wait_count": 14,
         "my_custom_wait_capacity": 15
     },
     {
@@ -323419,8 +323062,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -324389,9 +324032,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 67,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectEnrl": 68,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -324454,7 +324097,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324467,8 +324110,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 28,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -324479,7 +324122,7 @@
         "sectDropCutOffDate": "11/28/2026",
         "sectEnrlCutOffDate": "10/28/2026",
         "sectCensusEnrlDate": "10/29/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "bldgCode": "ONLINE",
@@ -325641,8 +325284,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 61,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 60,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326576,8 +326219,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 51,
-        "sectSeatsAvail": -6,
+        "sectEnrl": 50,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327025,8 +326668,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327371,7 +327014,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 39,
         "sectSeatsAvail": 6,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -327438,7 +327081,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327453,7 +327096,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327520,7 +327163,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327535,7 +327178,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327600,7 +327243,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327615,7 +327258,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -327682,7 +327325,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327937,7 +327580,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -328004,7 +327647,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -328017,8 +327660,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 24,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -328029,7 +327672,7 @@
         "sectDropCutOffDate": "11/28/2026",
         "sectEnrlCutOffDate": "10/28/2026",
         "sectCensusEnrlDate": "10/29/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "bldgCode": "ONLINE",
@@ -328099,8 +327742,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 38,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 33,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -328111,7 +327754,7 @@
         "sectDropCutOffDate": "11/28/2026",
         "sectEnrlCutOffDate": "10/28/2026",
         "sectCensusEnrlDate": "10/29/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "bldgCode": "ONLINE",
@@ -329250,8 +328893,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 84,
-        "sectSeatsAvail": -14,
+        "sectEnrl": 83,
+        "sectSeatsAvail": -13,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -330045,8 +329688,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -332432,7 +332075,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -332503,7 +332146,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332690,7 +332333,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 40,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -332761,7 +332404,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332877,9 +332520,9 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -332967,7 +332610,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332980,8 +332623,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 28,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -332992,7 +332635,7 @@
         "sectDropCutOffDate": "11/30/2026",
         "sectEnrlCutOffDate": "10/27/2026",
         "sectCensusEnrlDate": "10/28/2026",
-        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/\nOnline courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
+        "sectLongText": "ONLINE CLASS: The above second 8 week online course has no scheduled meeting times and is offered fully online. To avoid being dropped, you MUST enter your e-mail address in MyGateway BEFORE enrolling in the class. For more information, go to https://www.cypresscollege.edu/academics/distance-education/ Online courses are taught using Canvas, an Internet-based software to deliver materials and communicate with students, and may require the use of software for proctoring exams or other additional tasks. To take online courses, students must have access to a computer and internet services and may be required to use a web camera and microphone.",
         "sectMeetings": [
             {
                 "bldgCode": "ONLINE",
@@ -333712,7 +333355,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333775,7 +333418,7 @@
         "my_custom_title": "Media, Culture, and Society",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes media and culture from a sociological perspective, including the ways in which media is shaped and influenced by society, culture and individuals. Topics include the role of media in ideology, identity and interaction; race, class and gender; economics and politics; social change, technology and globalization. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333790,7 +333433,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333857,7 +333500,7 @@
         "my_custom_title": "Sociology of Contemporary Race and Ethnic Relations",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is a sociological analysis of race, ethnicity and racism. Coursework includes an examination of cultural, political, and economic practices and institutions that support or challenge racism and racial and ethnic inequalities. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -334458,8 +334101,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -334629,7 +334272,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 29,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -334688,7 +334331,7 @@
         "my_custom_title": "Spanish for Spanish Speakers I",
         "my_custom_units": 5,
         "my_custom_description": "Advisory: A native or near-native speaking knowledge of Spanish for those who have had little or no education in a Spanish-speaking country or recency and other measures of readiness or SPAN 102 C This course is for Spanish-speaking students comfortable with oral communication. It offers vocabulary development, grammar, spelling, accents, and registers, as well as dialectal variations and cultural readings. Included is an introduction to Spanish language literature of South America , Spain and Latinos in the United States. Through writing practice, students will enhance critical thinking while increasing their understanding of and appreciation for diverse Spanish-speaking cultures. Class conducted entirely in Spanish. Duplicate credit not given for SPAN 101 C or SPAN 102 C. Pass/No Pass/Letter Grade Option.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -335731,8 +335374,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -337264,8 +336907,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -338669,8 +338312,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -341517,16 +341160,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 25,
-        "sectEnrl": 37,
-        "sectSeatsAvail": -12,
+        "sectEnrl": 36,
+        "sectSeatsAvail": -11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 72,
-                "xlstSeatsAvail": -22
+                "xlstEnrl": 71,
+                "xlstSeatsAvail": -21
             }
         ],
         "sectPtrmCode": "1",
@@ -341717,8 +341360,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 72,
-                "xlstSeatsAvail": -22
+                "xlstEnrl": 71,
+                "xlstSeatsAvail": -21
             }
         ],
         "sectPtrmCode": "1",
@@ -341885,8 +341528,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 72,
-                "xlstSeatsAvail": -22
+                "xlstEnrl": 71,
+                "xlstSeatsAvail": -21
             }
         ],
         "sectPtrmCode": "1",
@@ -342053,8 +341696,8 @@
             {
                 "xlstGrp": "CZ",
                 "xlstMaxEnrl": 50,
-                "xlstEnrl": 72,
-                "xlstSeatsAvail": -22
+                "xlstEnrl": 71,
+                "xlstSeatsAvail": -21
             }
         ],
         "sectPtrmCode": "1",
