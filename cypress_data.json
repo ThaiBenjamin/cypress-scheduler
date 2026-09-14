@@ -193371,8 +193371,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -197058,7 +197058,7 @@
         "sectMaxEnrl": 53,
         "sectEnrl": 54,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -197125,7 +197125,7 @@
         "my_custom_title": "Biological Anthropology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100 C or ENGL 101 C or ESL 110 C. This course introduces the biological and physical aspects of what it means to be human from a scientific and evolutionary perspective. Duplicate credit not granted for ANTH 101HC or ANTH 201 C. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ANTH 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -199766,8 +199766,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -209829,8 +209829,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 40,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -209983,8 +209983,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 40,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -211265,8 +211265,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -211676,8 +211676,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 37,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 36,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -211751,8 +211751,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -211843,8 +211843,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -213814,8 +213814,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 42,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -214050,7 +214050,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 35,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 14,
+        "sectWaitCount": 13,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -214113,7 +214113,7 @@
         "my_custom_title": "Environmental Science",
         "my_custom_units": 3,
         "my_custom_description": "A study of the ecological principles which form the basis or understanding human existence in relation to environmental quality. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: ENVS 100",
-        "my_custom_wait_count": 14,
+        "my_custom_wait_count": 13,
         "my_custom_wait_capacity": 20
     },
     {
@@ -214930,7 +214930,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 25,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 9,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -215023,7 +215023,7 @@
         "my_custom_title": "Principles of Biology 2: Organismal Biology",
         "my_custom_units": 5,
         "my_custom_description": "Prerequisite: BIOL 174C with a grade of C or better or completion of BIOL 135AC with a grade of C or better or equivalent course with a grade of C or better. This course will include the concepts of evolution, organismal biology (taxonomy, anatomy, and physiology), and ecology for biology majors. Duplicate credit not granted for BIOL 175C or BIOL 276C. Cost of field trips not to exceed $30.00. Transfer info: CSU/UC , AA GE, CalGETC, C-ID: BIOL 140, C-ID: BIOL 135S=BIOL 135AC + BIOL 135BC.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 9
     },
     {
@@ -215785,8 +215785,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 6,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -218127,8 +218127,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 10,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -218563,8 +218563,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 6,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -220010,8 +220010,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 7,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -221092,8 +221092,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 7,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -222295,8 +222295,8 @@
             {
                 "xlstGrp": "AA",
                 "xlstMaxEnrl": 40,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": 3
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": 4
             }
         ],
         "sectPtrmCode": "1",
@@ -222797,7 +222797,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 37,
         "sectSeatsAvail": 8,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -222856,7 +222856,7 @@
         "my_custom_title": "Principles of Advertising",
         "my_custom_units": 3,
         "my_custom_description": "Formerly MKT 103 C.   This course focuses on advertising  and promotion, print media, copy and layout, radio/TV  commercials, the Internet and social media, public  relations, and advertising campaigns. Transfer info: CSU ",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -225981,8 +225981,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -227781,8 +227781,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 70,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 69,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -227937,16 +227937,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 59,
-        "sectEnrl": 58,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 57,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "AZ",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 69,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 68,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "NF",
@@ -228023,8 +228023,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -228103,7 +228103,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 26,
         "sectSeatsAvail": 9,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -228150,7 +228150,7 @@
         "my_custom_title": "MS Outlook/Office Procedures",
         "my_custom_units": 3,
         "my_custom_description": "This course prepares management or office personnel for work in a computerized office environment. MS Outlook is taught in this class and integrated with Word and other MS office applications. Material Fees have been waived for this semester. !TRN CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -229240,8 +229240,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -232340,8 +232340,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -235055,8 +235055,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -235359,7 +235359,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 31,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "D",
@@ -235415,7 +235415,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -235430,7 +235430,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 3,
         "sectPtrmCode": "F8",
         "sectAcctCode": "D",
@@ -235486,7 +235486,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 3
     },
     {
@@ -236141,7 +236141,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -236197,7 +236197,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -238425,7 +238425,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "IW",
@@ -238479,7 +238479,7 @@
         "my_custom_title": "Academic and Life Success",
         "my_custom_units": 3,
         "my_custom_description": "This course will give students practical skills and assistance in achieving personal, academic, and relational success. Optional assessments require a fee. Transfer info: UC/CSU",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239995,8 +239995,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -245735,7 +245735,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -245798,7 +245798,7 @@
         "my_custom_title": "Introduction to Dance Appreciation",
         "my_custom_units": 3,
         "my_custom_description": "Term hours: 45 lecture and 27 laboratory. The course is an overview of dance history, beginning with classical era, folk and ethnic dance. This course will survey the development of ballet, modern, jazz and other dance forms, focusing largely on the 20th century. Dance concert admission may not Dance concert admission may not exceed $30. Transfer info: UC/CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -254538,7 +254538,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -254601,7 +254601,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -255718,8 +255718,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 30,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -258277,9 +258277,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
-        "sectWaitCount": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 9,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -258346,7 +258346,7 @@
         "my_custom_title": "Introduction to Literature",
         "my_custom_units": 3,
         "my_custom_description": "(formerly ENGL 102 C). Prerequisite: Successful completion of college-level (ENGL C1000,C1000H/ENGL C1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students are introduced to works by diverse authors and major literary genres, developing close reading and analytical writing skills. Students also develop appreciation for and critical understanding of the cultural, historical, and aesthetic qualities of literature. Duplicate credit not granted for ENGL C1002H. Transfer info: UC/CSU, AA GE, CalGETC, RDG, C-ID: ENGL 120.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -258531,8 +258531,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 30,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 29,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -259059,7 +259059,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 22,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -259130,7 +259130,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259227,7 +259227,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -259298,7 +259298,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259311,9 +259311,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 4,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -259380,7 +259380,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259393,8 +259393,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -260075,8 +260075,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -260161,7 +260161,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -260231,7 +260231,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -267230,8 +267230,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 42,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -267596,7 +267596,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 33,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 11,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "IW",
@@ -267691,7 +267691,7 @@
         "my_custom_title": "Race, Ethnicity, and Popular Culture",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Satisfactory completion of ENGL C1001 (ENGL 103 C) , ENGL C1001H (ENGL 103HC), ENGL 104 C, or ENGL 104HC and ETHS 101 C or ETHS 101HC. This course examines the contributions and representations of African Americans, Asian Pacific Americans, Latinas/os/xs, Native Americans, and other \"racialized\" populations in film and popular culture and surveys the cultural, economic, social, and political forces that shape their representations in media and their experiences in the United States. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -268008,8 +268008,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -268464,8 +268464,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -270963,7 +270963,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 33,
         "sectSeatsAvail": 12,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -271022,7 +271022,7 @@
         "my_custom_title": "Introduction to Oceanography",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of the composition and structure of the earth's ocean showing the interrelationship between atmosphere, hydrosphere, lithosphere, and biosphere. Field trips may be required with a fee not to exceed $25.00. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -272250,8 +272250,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -274410,7 +274410,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -274483,7 +274483,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -274589,7 +274589,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 37,
         "sectSeatsAvail": -2,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -274662,7 +274662,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -274677,7 +274677,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -274750,7 +274750,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275130,7 +275130,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -275205,7 +275205,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -276047,7 +276047,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 36,
         "sectSeatsAvail": -6,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -276128,7 +276128,7 @@
         "my_custom_title": "Sanitation and Safety",
         "my_custom_units": 2,
         "my_custom_description": "Overview of sanitation and safety principles and prepares  students for the national Servsafe Manager Certification  examination. Transfer info: CSU, C-ID:HOSP 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278344,8 +278344,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -278607,7 +278607,7 @@
         "sectMaxEnrl": 90,
         "sectEnrl": 78,
         "sectSeatsAvail": 12,
-        "sectWaitCount": 4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -278678,7 +278678,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279037,7 +279037,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 7,
+        "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279108,7 +279108,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 6,
         "my_custom_wait_capacity": 10
     },
     {
@@ -280511,9 +280511,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 4,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -280568,7 +280568,7 @@
         "my_custom_title": "Drugs and Physiology",
         "my_custom_units": 3,
         "my_custom_description": "This course explores the effects of alcohol and other drugs on the body. Transfer info: CSU, C-ID: ADS 140 X",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 15
     },
     {
@@ -282512,16 +282512,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GJ",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -282605,8 +282605,8 @@
             {
                 "xlstGrp": "GJ",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -282682,16 +282682,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GH",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -282780,8 +282780,8 @@
             {
                 "xlstGrp": "GH",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -282870,8 +282870,8 @@
             {
                 "xlstGrp": "GJ",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -282960,8 +282960,8 @@
             {
                 "xlstGrp": "GJ",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -283894,7 +283894,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -283988,7 +283988,7 @@
         "my_custom_title": "Global Media",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of global mass communication and the interrelationships of media with society including history, structure and trends in a digital age. Transfer info: UC/CSU, AA GE, C-ID: JOUR 100",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -284001,8 +284001,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 15,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 14,
+        "sectSeatsAvail": 16,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -284689,16 +284689,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HP",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 56,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 55,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -285000,8 +285000,8 @@
             {
                 "xlstGrp": "HP",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 56,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 55,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -286704,7 +286704,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 27,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -286783,7 +286783,7 @@
         "my_custom_title": "Walking for Fitness - Beginning (formerly KIN 134 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course will emphasize walking for health and fitness or those who are interested in instruction and practice of cardiovascular walking. Pass/No Pass/Letter Grade Option. Transfer info: UC/Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -287082,7 +287082,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 11,
         "sectSeatsAvail": 19,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -287161,7 +287161,7 @@
         "my_custom_title": "Walking for Fitness - Intermediate",
         "my_custom_units": 1,
         "my_custom_description": "Advisory: KIN 134 AC. This course will emphasize intermediate walking for health and fitness for those who are interested in instruction and practice of cardiovascular walking. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -296355,8 +296355,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -297908,16 +297908,16 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 3,
-        "sectSeatsAvail": 22,
+        "sectEnrl": 2,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CM",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 4,
-                "xlstSeatsAvail": 21
+                "xlstEnrl": 3,
+                "xlstSeatsAvail": 22
             }
         ],
         "sectPtrmCode": "1",
@@ -298018,8 +298018,8 @@
             {
                 "xlstGrp": "CM",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 4,
-                "xlstSeatsAvail": 21
+                "xlstEnrl": 3,
+                "xlstSeatsAvail": 22
             }
         ],
         "sectPtrmCode": "1",
@@ -298120,8 +298120,8 @@
             {
                 "xlstGrp": "CM",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 4,
-                "xlstSeatsAvail": 21
+                "xlstEnrl": 3,
+                "xlstSeatsAvail": 22
             }
         ],
         "sectPtrmCode": "1",
@@ -298633,8 +298633,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -301479,8 +301479,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 3,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -307957,7 +307957,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -308020,7 +308020,7 @@
         "my_custom_title": "Music Fundamentals",
         "my_custom_units": 3,
         "my_custom_description": "Term hours: 54 lecture. This course introduces the fundamentals of music including notation, rhythm, pitch, melody, harmony, and form. Students will study the historical and cultural development and significance of western and non-western musical styles and practices. It is open to all students. \"Note: No UC credit if taken after MUS 103AC\". Transfer info: UC Credit limitation/CSU, AA GE, C-ID:MUS 110",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -308266,8 +308266,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 18,
-        "sectEnrl": 13,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -308350,8 +308350,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -308798,7 +308798,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -308858,7 +308858,7 @@
         "my_custom_title": "History of Hip Hop - Rap",
         "my_custom_units": 3,
         "my_custom_description": "This survey course traces hip hop rap music from its inception to the present day. The music, both live and from recordings, is studied from a cultural, musical, historical and sociological standpoint. Concert attendance is required. This course is open to all students. Transfer info: UC/CSU, AA GE, CaLGETC",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 10
     },
     {
@@ -310851,9 +310851,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 25,
+        "sectMaxEnrl": 0,
         "sectEnrl": 9,
-        "sectSeatsAvail": 16,
+        "sectSeatsAvail": -9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -310929,9 +310929,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 25,
+        "sectMaxEnrl": 0,
         "sectEnrl": 6,
-        "sectSeatsAvail": 19,
+        "sectSeatsAvail": -6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -311103,6 +311103,20 @@
                 "meetInstrKey": "D47B7B255D0D183127271416740B78E7",
                 "meetInstrName": "Lupin, Carolyn",
                 "meetInstrWebsite": "clupin@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-316",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "D47B7B255D0D183127271416740B78E7",
+                "meetInstrName": "Lupin, Carolyn",
+                "meetInstrWebsite": "clupin@cypresscollege.edu"
             }
         ],
         "sectAttr": [
@@ -311168,6 +311182,45 @@
                 "schdDesc": "Lab",
                 "meetInstrKey": "3ABAF918119992E75A0E853DD49988D0",
                 "meetInstrName": "Van Der Sluys, Jaime"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-316",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "F7E8A1CF9633A2CED75BF0C82FD874CB",
+                "meetInstrName": "Di Noto, Brandon"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-316",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "3ABAF918119992E75A0E853DD49988D0",
+                "meetInstrName": "Van Der Sluys, Jaime"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-316",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "F7E8A1CF9633A2CED75BF0C82FD874CB",
+                "meetInstrName": "Di Noto, Brandon"
             }
         ],
         "sectAttr": [
@@ -311206,9 +311259,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 25,
+        "sectMaxEnrl": 0,
         "sectEnrl": 0,
-        "sectSeatsAvail": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -311233,6 +311286,20 @@
                 "mtypDesc": "In-person Lab (Not IW/ID)",
                 "schdCode": "04",
                 "schdDesc": "Lab",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-311-B",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
                 "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
                 "meetInstrName": "McMillan, Marcus",
                 "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
@@ -311301,6 +311368,19 @@
                 "schdDesc": "Lab",
                 "meetInstrKey": "3ABAF918119992E75A0E853DD49988D0",
                 "meetInstrName": "Van Der Sluys, Jaime"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-315",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "3ABAF918119992E75A0E853DD49988D0",
+                "meetInstrName": "Van Der Sluys, Jaime"
             }
         ],
         "sectAttr": [
@@ -311339,9 +311419,9 @@
         "sectSchdCode": "02",
         "sectInsmCode": "02",
         "sectSstsCode": "A",
-        "sectMaxEnrl": 25,
+        "sectMaxEnrl": 0,
         "sectEnrl": 0,
-        "sectSeatsAvail": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -311363,9 +311443,19 @@
                 "mtypDesc": "Arranged",
                 "schdCode": "04",
                 "schdDesc": "Lab",
-                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
-                "meetInstrName": "Decker, Dana",
-                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+                "meetInstrName": "STAFF"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-315",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrName": "STAFF"
             }
         ],
         "sectAttr": [
@@ -311386,9 +311476,7 @@
                 "attrDesc": "No textbook cost"
             }
         ],
-        "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
-        "sectInstrName": "Decker, Dana",
-        "sectInstrWebsite": "maitlo:dadecker@cypresscollege.edu",
+        "sectInstrName": "STAFF",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Applied Music",
         "my_custom_units": 1,
@@ -311428,6 +311516,19 @@
                 "mtypDesc": "Arranged",
                 "schdCode": "02",
                 "schdDesc": "Lecture",
+                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+                "meetInstrName": "Decker, Dana",
+                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "04",
+                "schdDesc": "Lab",
                 "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
                 "meetInstrName": "Decker, Dana",
                 "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
@@ -311514,6 +311615,772 @@
             }
         ],
         "sectInstrName": "STAFF",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014981",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14981",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "4DCD96B7BE483AA350880D42DF2DFF16",
+                "meetInstrName": "Gopar, Gary",
+                "meetInstrWebsite": "mailto:ggopar@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "4DE96B7CD5A0DE928120726F1E057668",
+                "meetInstrName": "Broberg, Duane",
+                "meetInstrWebsite": "mailto:dbroberg@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "9E1E14BC652576641404F2E4391ED822",
+                "meetInstrName": "Melzer, Alexander"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "4DCD96B7BE483AA350880D42DF2DFF16",
+                "meetInstrName": "Gopar, Gary",
+                "meetInstrWebsite": "mailto:ggopar@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "4DE96B7CD5A0DE928120726F1E057668",
+                "meetInstrName": "Broberg, Duane",
+                "meetInstrWebsite": "mailto:dbroberg@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "9E1E14BC652576641404F2E4391ED822",
+                "meetInstrName": "Melzer, Alexander"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "4DCD96B7BE483AA350880D42DF2DFF16",
+        "sectInstrName": "Gopar, Gary",
+        "sectInstrWebsite": "mailto:ggopar@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014982",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14982",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "4DE96B7CD5A0DE928120726F1E057668",
+                "meetInstrName": "Broberg, Duane",
+                "meetInstrWebsite": "mailto:dbroberg@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "4DE96B7CD5A0DE928120726F1E057668",
+                "meetInstrName": "Broberg, Duane",
+                "meetInstrWebsite": "mailto:dbroberg@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "4DE96B7CD5A0DE928120726F1E057668",
+        "sectInstrName": "Broberg, Duane",
+        "sectInstrWebsite": "mailto:dbroberg@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014983",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14983",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "A02D5E5D75FCAE7EB666DB70265D710D",
+                "meetInstrName": "Buck, Peter",
+                "meetInstrWebsite": "mailto:pbuck@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+                "meetInstrName": "Decker, Dana",
+                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "A02D5E5D75FCAE7EB666DB70265D710D",
+                "meetInstrName": "Buck, Peter",
+                "meetInstrWebsite": "mailto:pbuck@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+        "sectInstrName": "Decker, Dana",
+        "sectInstrWebsite": "maitlo:dadecker@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014984",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14984",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
+                "meetInstrName": "Chung, Seung Jai"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "C9C6602843331FE1766DD2762F050E14",
+                "meetInstrName": "Chen, Huei Ju",
+                "meetInstrWebsite": "mailto:rchen@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
+                "meetInstrName": "Chung, Seung Jai"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "C9C6602843331FE1766DD2762F050E14",
+                "meetInstrName": "Chen, Huei Ju",
+                "meetInstrWebsite": "mailto:rchen@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
+        "sectInstrName": "Chung, Seung Jai",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014985",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14985",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "2D95666E2649FCFC6E3AF75E09F5ADB9",
+                "meetInstrName": "Beyer, Lavaun",
+                "meetInstrWebsite": "mailto:lbeyer@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "2D95666E2649FCFC6E3AF75E09F5ADB9",
+                "meetInstrName": "Beyer, Lavaun",
+                "meetInstrWebsite": "mailto:lbeyer@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "2D95666E2649FCFC6E3AF75E09F5ADB9",
+        "sectInstrName": "Beyer, Lavaun",
+        "sectInstrWebsite": "mailto:lbeyer@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014986",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14986",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            }
+        ],
+        "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+        "sectInstrName": "McMillan, Marcus",
+        "sectInstrWebsite": "mailto:mmcmillan@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014987",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14987",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+                "meetInstrName": "Decker, Dana",
+                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+                "meetInstrName": "Decker, Dana",
+                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            }
+        ],
+        "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
+        "sectInstrName": "Decker, Dana",
+        "sectInstrWebsite": "maitlo:dadecker@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014988",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14988",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            }
+        ],
+        "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+        "sectInstrName": "McMillan, Marcus",
+        "sectInstrWebsite": "mailto:mmcmillan@cypresscollege.edu",
+        "my_custom_term": "2026-Fall",
+        "my_custom_title": "Applied Music",
+        "my_custom_units": 1,
+        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
+        "my_custom_wait_count": 0,
+        "my_custom_wait_capacity": 0
+    },
+    {
+        "sectKey": "20261014989",
+        "sectTermCode": "202610",
+        "sectSubjCode": "MUS",
+        "sectCrseNumb": "225 C",
+        "sectCrn": "14989",
+        "sectSchdCode": "02",
+        "sectInsmCode": "02",
+        "sectSstsCode": "A",
+        "sectMaxEnrl": 25,
+        "sectEnrl": 0,
+        "sectSeatsAvail": 25,
+        "sectWaitCount": 0,
+        "sectWaitCapacity": 0,
+        "sectPtrmCode": "1",
+        "sectAcctCode": "W",
+        "sectCampCode": "1",
+        "sectRefundCutoffDate": "09/07/2026",
+        "sectAcadCutOffDate": "09/07/2026",
+        "sectDropCutOffDate": "11/15/2026",
+        "sectEnrlCutOffDate": "09/07/2026",
+        "sectCensusEnrlDate": "09/08/2026",
+        "sectMeetings": [
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-311-B",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "CLAS",
+                "mtypDesc": "Class",
+                "schdCode": "02",
+                "schdDesc": "Lecture",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "roomCode": "2-311-B",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "ARN",
+                "mtypDesc": "Arranged",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+                "meetInstrName": "McMillan, Marcus",
+                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
+            }
+        ],
+        "sectAttr": [
+            {
+                "attrCode": "C15",
+                "attrDesc": "Music"
+            },
+            {
+                "attrCode": "M45",
+                "attrDesc": "Commercial Music"
+            },
+            {
+                "attrCode": "N",
+                "attrDesc": "Not a basic skills course"
+            },
+            {
+                "attrCode": "NTC",
+                "attrDesc": "No textbook cost"
+            }
+        ],
+        "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
+        "sectInstrName": "McMillan, Marcus",
+        "sectInstrWebsite": "mailto:mmcmillan@cypresscollege.edu",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Applied Music",
         "my_custom_units": 1,
@@ -314774,7 +315641,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 37,
         "sectSeatsAvail": 8,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -314833,7 +315700,7 @@
         "my_custom_title": "Introduction to Philosophy",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This introductory course systematically explores, analyzes, and evaluates the concepts of knowledge, reality and value including topics such as the nature of God, mind, free will, personal identity and the meaning of life. Duplicate credit not granted for PHIL 100HC. Transfer Info: (UC/CSU, AA GE, CalGETC, C-ID:PHIL 100)",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -314848,7 +315715,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -314907,7 +315774,7 @@
         "my_custom_title": "Introduction to Philosophy",
         "my_custom_units": 3,
         "my_custom_description": "Advisory(ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This introductory course systematically explores, analyzes, and evaluates the concepts of knowledge, reality and value including topics such as the nature of God, mind, free will, personal identity and the meaning of life. Duplicate credit not granted for PHIL 100HC. Transfer Info: (UC/CSU, AA GE, CalGETC, C-ID:PHIL 100)",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 15
     },
     {
@@ -315400,7 +316267,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -315467,7 +316334,7 @@
         "my_custom_title": "World Religions",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a comparative examination of the beliefs, world views, rituals, ethics, and social systems of the major religious traditions throughout the world. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -315480,8 +316347,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 40,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -315554,8 +316421,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -315926,8 +316793,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -318577,16 +319444,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 26,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAY",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 63,
-                "xlstSeatsAvail": 7
+                "xlstEnrl": 64,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "NF",
@@ -318659,7 +319526,7 @@
         "my_custom_title": "Health and Social Justice (formerly KIN 281 C)",
         "my_custom_units": 3,
         "my_custom_description": "Course provides an introduction to the health inequities in the United States that stem from unequal living conditions. Students will explore how education, socioeconomic status, racism and gender shape health epidemics and policy development. Theoretical frameworks will be used to assess and analyze public health issues. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PH 102.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318909,8 +319776,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -319075,16 +319942,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
-        "sectWaitCount": 2,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAO",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 40,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 41,
+                "xlstSeatsAvail": 4
             }
         ],
         "sectPtrmCode": "NF",
@@ -319145,7 +320012,7 @@
         "my_custom_title": "Whole Systems Integrative Health",
         "my_custom_units": 3,
         "my_custom_description": "his course examines health, disease, healing, and medicine from an interdisciplinary perspective. Concepts and philosophies from traditional cultural healing systems and contemporary western medicine will be examined from psychological, sociological, biological, historical, and cultural perspectives. Topics covered include the history of western medical practices, principles of indigenous healing systems, the role of gender in healing, the effects of personality and emotions on health and disease, and and integrative medicine. Transfer info: UC/CSU, AA GE, C-ID: PH 106",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319618,8 +320485,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 26,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -322440,7 +323307,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 52,
         "sectSeatsAvail": -7,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -322519,7 +323386,7 @@
         "my_custom_title": "American Government and Politics",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: POSC 100 C United States Government) Advisory: Eligibility for college-level writing (C-ID ENGL 100). This course is an introduction to government and politics in the United States and California. Students examine the constitutions, structure, and operation of governing institutions, civil liberties and civil rights, political behaviors, political issues, and public policy using political science theory and methodology. Duplicate credit not granted for POLS C1000. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:POLS 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -322534,7 +323401,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 13,
+        "sectWaitCount": 12,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -322613,7 +323480,7 @@
         "my_custom_title": "American Government and Politics",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: POSC 100 C United States Government) Advisory: Eligibility for college-level writing (C-ID ENGL 100). This course is an introduction to government and politics in the United States and California. Students examine the constitutions, structure, and operation of governing institutions, civil liberties and civil rights, political behaviors, political issues, and public policy using political science theory and methodology. Duplicate credit not granted for POLS C1000. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:POLS 110.",
-        "my_custom_wait_count": 13,
+        "my_custom_wait_count": 12,
         "my_custom_wait_capacity": 15
     },
     {
@@ -322986,8 +323853,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -323154,7 +324021,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 26,
         "sectSeatsAvail": 19,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -323225,7 +324092,7 @@
         "my_custom_title": "Human Sexuality",
         "my_custom_units": 3,
         "my_custom_description": "Advisory (ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is an overview of the psychological and psychobiological aspects of human sexuality. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 130",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -323240,7 +324107,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -323311,7 +324178,7 @@
         "my_custom_title": "Human Sexuality",
         "my_custom_units": 3,
         "my_custom_description": "Advisory (ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is an overview of the psychological and psychobiological aspects of human sexuality. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 130",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -323790,7 +324657,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 35,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 7,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -323857,7 +324724,7 @@
         "my_custom_title": "Developmental Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of emotional, intellectual, social and physical growth patterns from conception to death. This course explores major theories of development. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 180",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324893,8 +325760,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 32,
-        "sectSeatsAvail": -7,
+        "sectEnrl": 31,
+        "sectSeatsAvail": -6,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -325683,9 +326550,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 11,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -325752,7 +326619,7 @@
         "my_custom_title": "Social Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Completion of PSYC C1000 (formerly PSY 101 C)with a grade of C or better. This course examines the nature, causes and influences of social group situations on the individual (e.g., interpersonal attraction, prejudice/discrimination, conformity/obedience, aggression/group dynamics). Transfer info: UC/CSU, AA GE, CalGETC, C-ID: PSY 170",
-        "my_custom_wait_count": 11,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 15
     },
     {
@@ -325767,7 +326634,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 35,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -325834,7 +326701,7 @@
         "my_custom_title": "Social Psychology",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Completion of PSYC C1000 (formerly PSY 101 C)with a grade of C or better. This course examines the nature, causes and influences of social group situations on the individual (e.g., interpersonal attraction, prejudice/discrimination, conformity/obedience, aggression/group dynamics). Transfer info: UC/CSU, AA GE, CalGETC, C-ID: PSY 170",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -325847,8 +326714,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326585,7 +327452,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 43,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -326655,7 +327522,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -326768,7 +327635,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 26,
         "sectSeatsAvail": 19,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -326835,7 +327702,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -326850,7 +327717,7 @@
         "sectMaxEnrl": 68,
         "sectEnrl": 76,
         "sectSeatsAvail": -8,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -326917,7 +327784,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327014,7 +327881,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 39,
         "sectSeatsAvail": 6,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -327081,7 +327948,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -327420,8 +328287,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 63,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 62,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327742,8 +328609,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 29,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 27,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -329026,8 +329893,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 85,
-        "sectSeatsAvail": -15,
+        "sectEnrl": 84,
+        "sectSeatsAvail": -14,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -329281,8 +330148,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 80,
-        "sectSeatsAvail": -10,
+        "sectEnrl": 79,
+        "sectSeatsAvail": -9,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -329618,8 +330485,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -331885,8 +332752,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 46,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -331989,7 +332856,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -332060,7 +332927,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -332623,8 +333490,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -333277,7 +334144,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 36,
         "sectSeatsAvail": 9,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
         "sectAcctCode": "ID",
@@ -333340,7 +334207,7 @@
         "my_custom_title": "Marriage and Family",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a study of the sociological factors involved in family relationships, courtship, marital adjustments and parenthood. Transfer Info: UC/CSU, AA GE, CALGETC, C-ID: SOCI 130.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333355,7 +334222,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333418,7 +334285,7 @@
         "my_custom_title": "Media, Culture, and Society",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes media and culture from a sociological perspective, including the ways in which media is shaped and influenced by society, culture and individuals. Topics include the role of media in ideology, identity and interaction; race, class and gender; economics and politics; social change, technology and globalization. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333433,7 +334300,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333500,7 +334367,7 @@
         "my_custom_title": "Sociology of Contemporary Race and Ethnic Relations",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is a sociological analysis of race, ethnicity and racism. Coursework includes an examination of cultural, political, and economic practices and institutions that support or challenge racism and racial and ethnic inequalities. Transfer info: CSU/UC, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -334101,8 +334968,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -334175,8 +335042,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -338545,8 +339412,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -338894,8 +339761,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
