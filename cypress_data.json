@@ -190339,8 +190339,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 24,
-        "sectSeatsAvail": -4,
+        "sectEnrl": 25,
+        "sectSeatsAvail": -5,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -192023,8 +192023,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 47,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -193066,16 +193066,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 29,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 30,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AX",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 41,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 40,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -193229,8 +193229,8 @@
             {
                 "xlstGrp": "AX",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 41,
-                "xlstSeatsAvail": 4
+                "xlstEnrl": 40,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -195420,8 +195420,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 18,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -195570,8 +195570,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 2,
         "sectMaxEnrl": 24,
-        "sectEnrl": 16,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 17,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -195923,8 +195923,8 @@
             {
                 "xlstGrp": "KCC",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 22,
-                "xlstSeatsAvail": 23
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 21
             }
         ],
         "sectPtrmCode": "S8",
@@ -196893,8 +196893,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -197314,8 +197314,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -197879,8 +197879,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 13,
-        "sectSeatsAvail": 55,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 52,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -199186,8 +199186,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 40,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 41,
+        "sectSeatsAvail": -6,
         "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -199766,8 +199766,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -205914,8 +205914,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 12,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -208521,8 +208521,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -209147,8 +209147,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -210332,16 +210332,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "KP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "1",
@@ -210945,8 +210945,8 @@
             {
                 "xlstGrp": "KP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "1",
@@ -211676,8 +211676,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -211937,8 +211937,8 @@
             {
                 "xlstGrp": "KP",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 30,
-                "xlstSeatsAvail": -5
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "1",
@@ -213814,8 +213814,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 42,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -215036,8 +215036,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "F8",
@@ -215785,8 +215785,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 6,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -218455,8 +218455,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 8,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -219134,8 +219134,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 9,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -219901,7 +219901,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 25,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 14,
+        "sectWaitCount": 13,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -219997,7 +219997,7 @@
         "my_custom_title": "General Human Anatomy",
         "my_custom_units": 4,
         "my_custom_description": "Prerequisite(s): Intermediate Algebra with a grade of C or better, or eligibility for STAT C1000 (MATH 120 C) or MATH 120PC and eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. Advisory: High School Biology and Chemistry with minimum grades of \"C\" or BIOL 101 C or BIOL 160 C. This course includes a logical analysis of body tissues, organs, and systems. The lecture and three hour laboratory stress the microscopic, developmental, and gross anatomy of mammals, with special emphasis on human anatomy. Pass/No Pass/Letter Grade Option. Transfer Info: UC/CSU, AA GE, CalGETC, C-ID BIOL 110B.",
-        "my_custom_wait_count": 14,
+        "my_custom_wait_count": 13,
         "my_custom_wait_capacity": 20
     },
     {
@@ -223327,8 +223327,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 36,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -227120,8 +227120,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 15,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -227591,8 +227591,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 64,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 62,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -227781,8 +227781,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 69,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 68,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "F8",
@@ -227861,7 +227861,7 @@
         "sectMaxEnrl": 70,
         "sectEnrl": 70,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -227924,7 +227924,7 @@
         "my_custom_title": "Computer Information Systems",
         "my_custom_units": 3,
         "my_custom_description": "This course provides an overview of the fundamental concepts and terminology of computer information systems including lab experience with current computer applications. Material Fees have been waived for this semester. Transfer Info: UC/CSU, AA GE, C-ID: BUS 140 and ITIS 120",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 10
     },
     {
@@ -227945,8 +227945,8 @@
             {
                 "xlstGrp": "AZ",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 68,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 67,
+                "xlstSeatsAvail": 3
             }
         ],
         "sectPtrmCode": "NF",
@@ -228023,8 +228023,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 17,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -228468,16 +228468,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 33,
-        "sectEnrl": 35,
-        "sectSeatsAvail": -2,
+        "sectEnrl": 34,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "AB",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -2
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "1",
@@ -229323,8 +229323,8 @@
             {
                 "xlstGrp": "AE",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 69,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 70,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "1",
@@ -232764,8 +232764,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -234109,8 +234109,8 @@
             {
                 "xlstGrp": "GM",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 13,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "OE",
@@ -234196,16 +234196,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 2,
         "sectMaxEnrl": 15,
-        "sectEnrl": 3,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 4,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GM",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 13,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "OE",
@@ -234291,16 +234291,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 15,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GQ",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 12,
-                "xlstSeatsAvail": 3
+                "xlstEnrl": 13,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "OE",
@@ -234391,8 +234391,8 @@
             {
                 "xlstGrp": "GQ",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 12,
-                "xlstSeatsAvail": 3
+                "xlstEnrl": 13,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "OE",
@@ -235135,8 +235135,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 20,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -236283,7 +236283,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "D",
@@ -236340,7 +236340,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 5
     },
     {
@@ -237343,7 +237343,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -237399,7 +237399,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -237626,8 +237626,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 16,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -239995,8 +239995,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -240456,16 +240456,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 21,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 19,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "AD",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 19,
-                "xlstSeatsAvail": 6
+                "xlstEnrl": 20,
+                "xlstSeatsAvail": 5
             }
         ],
         "sectPtrmCode": "1",
@@ -240530,8 +240530,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 14,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 13,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -240670,8 +240670,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -240819,16 +240819,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AK",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 56,
-                "xlstSeatsAvail": -26
+                "xlstEnrl": 52,
+                "xlstSeatsAvail": -22
             }
         ],
         "sectPtrmCode": "1",
@@ -240925,16 +240925,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "AK",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 56,
-                "xlstSeatsAvail": -26
+                "xlstEnrl": 52,
+                "xlstSeatsAvail": -22
             }
         ],
         "sectPtrmCode": "1",
@@ -242528,8 +242528,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 7,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -242597,7 +242597,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 39,
         "sectSeatsAvail": -4,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -242693,7 +242693,7 @@
         "my_custom_title": "Spelling for Modern Business",
         "my_custom_units": 1,
         "my_custom_description": "This course is an 18-hour intensive review of frequently misspelled words, homonyms, synonyms, and antonyms. Emphasis will be on business, legal, medical, and technical terminology.",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -243753,8 +243753,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 60,
-        "sectEnrl": 96,
-        "sectSeatsAvail": -36,
+        "sectEnrl": 94,
+        "sectSeatsAvail": -34,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "OE",
@@ -246336,8 +246336,8 @@
             {
                 "xlstGrp": "CR",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -246440,8 +246440,8 @@
             {
                 "xlstGrp": "CR",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -246815,16 +246815,16 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 2,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 1,
+        "sectSeatsAvail": 24,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "CR",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "1",
@@ -250858,7 +250858,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 33,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -250925,7 +250925,7 @@
         "my_custom_title": "Principles of Macroeconomics",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: ECON 100 C, Principles of Economics-Macro). Prerequisite: Placement as determined by the college\u2019s course taught at or above the level of elementary algebra. multiple measures assessment process or completion of a An introductory course using models of the domestic and international economy to understand national income, financial system, and monetary, fiscal, and other economic unemployment, inflation, economic growth, inequality, the policies. Duplicate credit not granted for ECON C2002H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:ECON 202",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -252625,8 +252625,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -253207,8 +253207,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 28,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -254070,8 +254070,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -255548,8 +255548,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -255888,8 +255888,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -256117,8 +256117,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -258977,7 +258977,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 24,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -259044,7 +259044,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259393,8 +259393,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 1,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -259735,8 +259735,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -259991,7 +259991,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -260062,7 +260062,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260510,16 +260510,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GE",
                 "xlstMaxEnrl": 27,
-                "xlstEnrl": 24,
-                "xlstSeatsAvail": 3
+                "xlstEnrl": 25,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "1",
@@ -260584,8 +260584,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 3,
-        "sectSeatsAvail": 24,
+        "sectEnrl": 4,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -261644,8 +261644,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -263170,16 +263170,16 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 5,
-        "sectSeatsAvail": 25,
+        "sectEnrl": 4,
+        "sectSeatsAvail": 26,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 15,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 16
             }
         ],
         "sectPtrmCode": "NF",
@@ -263261,16 +263261,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 9,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 15,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 16
             }
         ],
         "sectPtrmCode": "NF",
@@ -263353,8 +263353,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -263431,8 +263431,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -264617,8 +264617,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 45,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -265241,8 +265241,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 2,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -266302,7 +266302,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 41,
         "sectSeatsAvail": -6,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -266399,7 +266399,7 @@
         "my_custom_title": "Introduction to Chicana-o-x Studies",
         "my_custom_units": 3,
         "my_custom_description": "Satisfactory completion of ENGL C1000 (ENGL 100 C), ENGL C1000H (ENGL 100HC), ENGL C1000E (ENGL 101 C) , or ESL 110 C. This course is an introduction to the interdisciplinary field of Chicana/o/x Studies and is designed to acquaint students with the most significant social, political, and historical aspects of the transnational Chicana/o/x experience in the United States. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -267594,8 +267594,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -268544,8 +268544,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -269464,8 +269464,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 46,
+        "sectSeatsAvail": -1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -271406,8 +271406,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -272558,8 +272558,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 53,
-        "sectSeatsAvail": -8,
+        "sectEnrl": 51,
+        "sectSeatsAvail": -6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -272664,8 +272664,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -273190,7 +273190,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 46,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 3,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "W",
@@ -273277,7 +273277,7 @@
         "my_custom_title": "United States History to 1877",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: HIST 170 C, History of the United States I). Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course is a historical survey of the United States, from Indigenous North America to the end of Reconstruction. The course also introduces students to historical reasoning skills. Duplicate credit not granted for HIST C1001H. Transfer info: C Credit Limitation/CSU, AA GE, CalGETC, C-ID:HIST 130.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 15
     },
     {
@@ -274498,7 +274498,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -274574,7 +274574,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275218,9 +275218,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -275293,7 +275293,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275621,8 +275621,8 @@
             {
                 "xlstGrp": "KDD",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 34,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 33,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "NF",
@@ -275714,7 +275714,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 9,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -275787,7 +275787,7 @@
         "my_custom_title": "Honors Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This honors-enhanced course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 C. Transfer info: CSU/UC, AA GE, C-ID: NUTR 110.",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275895,8 +275895,8 @@
             {
                 "xlstGrp": "KI",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 35,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 36,
+                "xlstSeatsAvail": -1
             }
         ],
         "sectPtrmCode": "S8",
@@ -278863,9 +278863,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 90,
-        "sectEnrl": 89,
-        "sectSeatsAvail": 1,
-        "sectWaitCount": 9,
+        "sectEnrl": 90,
+        "sectSeatsAvail": 0,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -278936,7 +278936,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 9,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 10
     },
     {
@@ -279121,8 +279121,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 90,
-        "sectEnrl": 79,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 78,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -279472,8 +279472,8 @@
             {
                 "xlstGrp": "EA",
                 "xlstMaxEnrl": 100,
-                "xlstEnrl": 145,
-                "xlstSeatsAvail": -45
+                "xlstEnrl": 146,
+                "xlstSeatsAvail": -46
             }
         ],
         "sectPtrmCode": "OE",
@@ -279585,16 +279585,16 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 100,
-        "sectEnrl": 64,
-        "sectSeatsAvail": 36,
+        "sectEnrl": 65,
+        "sectSeatsAvail": 35,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "EA",
                 "xlstMaxEnrl": 100,
-                "xlstEnrl": 145,
-                "xlstSeatsAvail": -45
+                "xlstEnrl": 146,
+                "xlstSeatsAvail": -46
             }
         ],
         "sectPtrmCode": "OE",
@@ -279837,16 +279837,16 @@
         "sectInsmCode": "90",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "JC",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 42,
-                "xlstSeatsAvail": -7
+                "xlstEnrl": 41,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "1",
@@ -279946,8 +279946,8 @@
             {
                 "xlstGrp": "JC",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 42,
-                "xlstSeatsAvail": -7
+                "xlstEnrl": 41,
+                "xlstSeatsAvail": -6
             }
         ],
         "sectPtrmCode": "1",
@@ -280193,8 +280193,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -280581,8 +280581,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 21,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -281893,8 +281893,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 16,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -283793,7 +283793,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 30,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "IW",
@@ -283879,7 +283879,7 @@
         "my_custom_title": "Global Media",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of global mass communication and the interrelationships of media with society including history, structure and trends in a digital age. Transfer info: UC/CSU, AA GE, C-ID: JOUR 100",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -283894,14 +283894,14 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 20,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 4,
+        "sectWaitCount": 3,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "CAU",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 24,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 25,
+                "xlstSeatsAvail": 0
             }
         ],
         "sectPtrmCode": "S8",
@@ -283988,7 +283988,7 @@
         "my_custom_title": "Global Media",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of global mass communication and the interrelationships of media with society including history, structure and trends in a digital age. Transfer info: UC/CSU, AA GE, C-ID: JOUR 100",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 3,
         "my_custom_wait_capacity": 10
     },
     {
@@ -284697,8 +284697,8 @@
             {
                 "xlstGrp": "HP",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 55,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 54,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "1",
@@ -285000,8 +285000,8 @@
             {
                 "xlstGrp": "HP",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 55,
-                "xlstSeatsAvail": 5
+                "xlstEnrl": 54,
+                "xlstSeatsAvail": 6
             }
         ],
         "sectPtrmCode": "1",
@@ -289385,8 +289385,8 @@
             {
                 "xlstGrp": "HAA",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -7
+                "xlstEnrl": 39,
+                "xlstSeatsAvail": -9
             }
         ],
         "sectPtrmCode": "1",
@@ -289481,16 +289481,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1,
         "sectMaxEnrl": 30,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAA",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 37,
-                "xlstSeatsAvail": -7
+                "xlstEnrl": 39,
+                "xlstSeatsAvail": -9
             }
         ],
         "sectPtrmCode": "1",
@@ -290006,7 +290006,7 @@
         "sectMaxEnrl": 38,
         "sectEnrl": 38,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -290081,7 +290081,7 @@
         "my_custom_title": "Total Body Fitness (formerly PE 187 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course emphasizes physical fitness that will be achieved through the use of resistance exercises and body building routines. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 2,
         "my_custom_wait_capacity": 10
     },
     {
@@ -293545,8 +293545,8 @@
         "sectSstsCode": "A",
         "sectCredHrs": 1.5,
         "sectMaxEnrl": 25,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -294769,14 +294769,14 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 4,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "HAQ",
                 "xlstMaxEnrl": 60,
-                "xlstEnrl": 46,
-                "xlstSeatsAvail": 14
+                "xlstEnrl": 50,
+                "xlstSeatsAvail": 10
             }
         ],
         "sectPtrmCode": "S8",
@@ -294840,7 +294840,7 @@
         "my_custom_title": "First Aid, CPR and Emergencies (formerly PE 235 C)",
         "my_custom_units": 3,
         "my_custom_description": "This course includes the theory and implementation of the skills necessary in response to an emergency. Material Fees have been waived for this semester. Transfer info: UC/CSU, C-ID: KIN 101",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 4,
         "my_custom_wait_capacity": 5
     },
     {
@@ -295019,8 +295019,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 20,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -295377,8 +295377,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 75,
-        "sectEnrl": 61,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 64,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -295467,16 +295467,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 29,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HG",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 34,
-                "xlstSeatsAvail": 1
+                "xlstEnrl": 33,
+                "xlstSeatsAvail": 2
             }
         ],
         "sectPtrmCode": "NF",
@@ -295553,8 +295553,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -295727,7 +295727,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -295798,7 +295798,7 @@
         "my_custom_title": "Psychology of Sport",
         "my_custom_units": 3,
         "my_custom_description": "This course consists of the psychological study of athletes on all levels of competition. The course includes such areas as competition, understanding coaches, goal setting, motivation, youth sports, anxiety and stress, relaxation and sport imagery, relationships, and drug abuse in sports. Transfer info: UC/CSU, AA GE, CalGETC)",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -295813,7 +295813,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -295883,7 +295883,7 @@
         "my_custom_title": "Psychology of Sport",
         "my_custom_units": 3,
         "my_custom_description": "This course consists of the psychological study of athletes on all levels of competition. The course includes such areas as competition, understanding coaches, goal setting, motivation, youth sports, anxiety and stress, relaxation and sport imagery, relationships, and drug abuse in sports. Transfer info: UC/CSU, AA GE, CalGETC)",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 10
     },
     {
@@ -296084,8 +296084,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 40,
-        "sectSeatsAvail": -5,
+        "sectEnrl": 39,
+        "sectSeatsAvail": -4,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -298925,8 +298925,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 6,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -299914,8 +299914,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -301085,8 +301085,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -301397,8 +301397,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -303282,8 +303282,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -304998,8 +304998,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 3,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -306148,8 +306148,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -308796,8 +308796,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 5,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310148,8 +310148,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310227,8 +310227,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 44,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 2,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310518,8 +310518,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 13,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -310843,165 +310843,6 @@
         "my_custom_wait_capacity": 10
     },
     {
-        "sectKey": "20261011303",
-        "sectTermCode": "202610",
-        "sectSubjCode": "MUS",
-        "sectCrseNumb": "225 C",
-        "sectCrn": "11303",
-        "sectSchdCode": "02",
-        "sectInsmCode": "02",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 9,
-        "sectSeatsAvail": -9,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
-        "sectPtrmCode": "1",
-        "sectAcctCode": "W",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectMeetings": [
-            {
-                "beginTime": "1100",
-                "endTime": "1150",
-                "thuDay": "R",
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
-                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
-                "meetInstrName": "Decker, Dana",
-                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
-            },
-            {
-                "thuDay": "R",
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "04",
-                "schdDesc": "Lab",
-                "meetInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
-                "meetInstrName": "Decker, Dana",
-                "meetInstrWebsite": "maitlo:dadecker@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "C15",
-                "attrDesc": "Music"
-            },
-            {
-                "attrCode": "M45",
-                "attrDesc": "Commercial Music"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            }
-        ],
-        "sectInstrKey": "E70EB065E1740F1DEF80DFF6AB5737C1",
-        "sectInstrName": "Decker, Dana",
-        "sectInstrWebsite": "maitlo:dadecker@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Applied Music",
-        "my_custom_units": 1,
-        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
-    },
-    {
-        "sectKey": "20261014855",
-        "sectTermCode": "202610",
-        "sectSubjCode": "MUS",
-        "sectCrseNumb": "225 C",
-        "sectCrn": "14855",
-        "sectSchdCode": "02",
-        "sectInsmCode": "02",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 6,
-        "sectSeatsAvail": -6,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 10,
-        "sectPtrmCode": "1",
-        "sectAcctCode": "W",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectMeetings": [
-            {
-                "beginTime": "1115",
-                "endTime": "1205",
-                "tueDay": "T",
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
-                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-                "meetInstrName": "McMillan, Marcus",
-                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "04",
-                "schdDesc": "Lab",
-                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-                "meetInstrName": "McMillan, Marcus",
-                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "C15",
-                "attrDesc": "Music"
-            },
-            {
-                "attrCode": "M45",
-                "attrDesc": "Commercial Music"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "NTC",
-                "attrDesc": "No textbook cost"
-            }
-        ],
-        "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-        "sectInstrName": "McMillan, Marcus",
-        "sectInstrWebsite": "mailto:mmcmillan@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Applied Music",
-        "my_custom_units": 1,
-        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 10
-    },
-    {
         "sectKey": "20261014950",
         "sectTermCode": "202610",
         "sectSubjCode": "MUS",
@@ -311251,89 +311092,6 @@
         "my_custom_wait_capacity": 10
     },
     {
-        "sectKey": "20261014971",
-        "sectTermCode": "202610",
-        "sectSubjCode": "MUS",
-        "sectCrseNumb": "225 C",
-        "sectCrn": "14971",
-        "sectSchdCode": "02",
-        "sectInsmCode": "02",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
-        "sectPtrmCode": "1",
-        "sectAcctCode": "W",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectMeetings": [
-            {
-                "beginTime": "1105",
-                "endTime": "1205",
-                "tueDay": "T",
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "roomCode": "2-311-B",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "LAB",
-                "mtypDesc": "In-person Lab (Not IW/ID)",
-                "schdCode": "04",
-                "schdDesc": "Lab",
-                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-                "meetInstrName": "McMillan, Marcus",
-                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "roomCode": "2-311-B",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
-                "meetInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-                "meetInstrName": "McMillan, Marcus",
-                "meetInstrWebsite": "mailto:mmcmillan@cypresscollege.edu"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "C15",
-                "attrDesc": "Music"
-            },
-            {
-                "attrCode": "M45",
-                "attrDesc": "Commercial Music"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "NTC",
-                "attrDesc": "No textbook cost"
-            }
-        ],
-        "sectInstrKey": "9A7E40FA194A57E3E4732BECB63F9EF7",
-        "sectInstrName": "McMillan, Marcus",
-        "sectInstrWebsite": "mailto:mmcmillan@cypresscollege.edu",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Applied Music",
-        "my_custom_units": 1,
-        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
-    },
-    {
         "sectKey": "20261014973",
         "sectTermCode": "202610",
         "sectSubjCode": "MUS",
@@ -311403,80 +311161,6 @@
         ],
         "sectInstrKey": "3ABAF918119992E75A0E853DD49988D0",
         "sectInstrName": "Van Der Sluys, Jaime",
-        "my_custom_term": "2026-Fall",
-        "my_custom_title": "Applied Music",
-        "my_custom_units": 1,
-        "my_custom_description": "For the student seeking private instruction on piano,  voice, guitar, or any standard band or orchestra  instrument. A performance at Faculty Juries is required  each semester. Vocal and instrumental students should  concurrently enroll in a choir or band class, pianists and  guitarists should consult with faculty for an appropriate  concurrent course. This course may be taken for credit",
-        "my_custom_wait_count": 0,
-        "my_custom_wait_capacity": 0
-    },
-    {
-        "sectKey": "20261014974",
-        "sectTermCode": "202610",
-        "sectSubjCode": "MUS",
-        "sectCrseNumb": "225 C",
-        "sectCrn": "14974",
-        "sectSchdCode": "02",
-        "sectInsmCode": "02",
-        "sectSstsCode": "A",
-        "sectMaxEnrl": 0,
-        "sectEnrl": 0,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 0,
-        "sectWaitCapacity": 0,
-        "sectPtrmCode": "1",
-        "sectAcctCode": "W",
-        "sectCampCode": "1",
-        "sectRefundCutoffDate": "09/07/2026",
-        "sectAcadCutOffDate": "09/07/2026",
-        "sectDropCutOffDate": "11/15/2026",
-        "sectEnrlCutOffDate": "09/07/2026",
-        "sectCensusEnrlDate": "09/08/2026",
-        "sectMeetings": [
-            {
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "roomCode": "2-315",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "ARN",
-                "mtypDesc": "Arranged",
-                "schdCode": "04",
-                "schdDesc": "Lab",
-                "meetInstrName": "STAFF"
-            },
-            {
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "roomCode": "2-315",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "CLAS",
-                "mtypDesc": "Class",
-                "schdCode": "02",
-                "schdDesc": "Lecture",
-                "meetInstrName": "STAFF"
-            }
-        ],
-        "sectAttr": [
-            {
-                "attrCode": "C15",
-                "attrDesc": "Music"
-            },
-            {
-                "attrCode": "M45",
-                "attrDesc": "Commercial Music"
-            },
-            {
-                "attrCode": "N",
-                "attrDesc": "Not a basic skills course"
-            },
-            {
-                "attrCode": "NTC",
-                "attrDesc": "No textbook cost"
-            }
-        ],
-        "sectInstrName": "STAFF",
         "my_custom_term": "2026-Fall",
         "my_custom_title": "Applied Music",
         "my_custom_units": 1,
@@ -311939,8 +311623,9 @@
                 "mtypDesc": "Class",
                 "schdCode": "02",
                 "schdDesc": "Lecture",
-                "meetInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
-                "meetInstrName": "Chung, Seung Jai"
+                "meetInstrKey": "2D95666E2649FCFC6E3AF75E09F5ADB9",
+                "meetInstrName": "Beyer, Lavaun",
+                "meetInstrWebsite": "mailto:lbeyer@cypresscollege.edu"
             },
             {
                 "bldgCode": "1VPA",
@@ -311951,19 +311636,6 @@
                 "mtypDesc": "Class",
                 "schdCode": "02",
                 "schdDesc": "Lecture",
-                "meetInstrKey": "C9C6602843331FE1766DD2762F050E14",
-                "meetInstrName": "Chen, Huei Ju",
-                "meetInstrWebsite": "mailto:rchen@cypresscollege.edu"
-            },
-            {
-                "bldgCode": "1VPA",
-                "bldgDesc": "VAPA Bldg #2 2026",
-                "startDate": "08/24/2026",
-                "endDate": "12/12/2026",
-                "mtypCode": "LAB",
-                "mtypDesc": "In-person Lab (Not IW/ID)",
-                "schdCode": "04",
-                "schdDesc": "Lab",
                 "meetInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
                 "meetInstrName": "Chung, Seung Jai"
             },
@@ -311976,9 +311648,21 @@
                 "mtypDesc": "In-person Lab (Not IW/ID)",
                 "schdCode": "04",
                 "schdDesc": "Lab",
-                "meetInstrKey": "C9C6602843331FE1766DD2762F050E14",
-                "meetInstrName": "Chen, Huei Ju",
-                "meetInstrWebsite": "mailto:rchen@cypresscollege.edu"
+                "meetInstrKey": "2D95666E2649FCFC6E3AF75E09F5ADB9",
+                "meetInstrName": "Beyer, Lavaun",
+                "meetInstrWebsite": "mailto:lbeyer@cypresscollege.edu"
+            },
+            {
+                "bldgCode": "1VPA",
+                "bldgDesc": "VAPA Bldg #2 2026",
+                "startDate": "08/24/2026",
+                "endDate": "12/12/2026",
+                "mtypCode": "LAB",
+                "mtypDesc": "In-person Lab (Not IW/ID)",
+                "schdCode": "04",
+                "schdDesc": "Lab",
+                "meetInstrKey": "EBC4B2C67B34E2589CCD56A2A8FDB228",
+                "meetInstrName": "Chung, Seung Jai"
             }
         ],
         "sectAttr": [
@@ -316017,8 +315701,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -316347,8 +316031,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
@@ -318079,8 +317763,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 8,
-        "sectSeatsAvail": 17,
+        "sectEnrl": 10,
+        "sectSeatsAvail": 15,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -318176,8 +317860,8 @@
         "sectInsmCode": "04",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 11,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 12,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -319008,16 +318692,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 10,
-        "sectEnrl": 11,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 12,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 6,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAW",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 35,
-                "xlstSeatsAvail": 0
+                "xlstEnrl": 37,
+                "xlstSeatsAvail": -2
             }
         ],
         "sectPtrmCode": "NF",
@@ -319101,9 +318785,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
-        "sectWaitCount": 8,
+        "sectEnrl": 37,
+        "sectSeatsAvail": -2,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -319174,7 +318858,7 @@
         "my_custom_title": "Introduction to Public Health (formerly KIN 280 C)",
         "my_custom_units": 3,
         "my_custom_description": "In  this course, students will discuss contemporary public health challenges focusing on eliminating health disparities in chronic conditions, infectious diseases and behavioral health. Transfer info: CSU/UC, AA GE, CalGTEC, C-ID: PHS 101",
-        "my_custom_wait_count": 8,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319444,16 +319128,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 26,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
                 "xlstGrp": "HAY",
                 "xlstMaxEnrl": 70,
-                "xlstEnrl": 64,
-                "xlstSeatsAvail": 6
+                "xlstEnrl": 66,
+                "xlstSeatsAvail": 4
             }
         ],
         "sectPtrmCode": "NF",
@@ -319883,8 +319567,8 @@
             {
                 "xlstGrp": "HAN",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 46,
-                "xlstSeatsAvail": -1
+                "xlstEnrl": 47,
+                "xlstSeatsAvail": -2
             }
         ],
         "sectPtrmCode": "NF",
@@ -320714,8 +320398,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 10,
-        "sectSeatsAvail": 15,
+        "sectEnrl": 11,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -321437,8 +321121,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -321553,8 +321237,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 23,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -323929,8 +323613,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -324019,8 +323703,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 24,
+        "sectSeatsAvail": 21,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -324107,7 +323791,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 7,
+        "sectWaitCount": 8,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -324178,7 +323862,7 @@
         "my_custom_title": "Human Sexuality",
         "my_custom_units": 3,
         "my_custom_description": "Advisory (ies): Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C This course is an overview of the psychological and psychobiological aspects of human sexuality. Transfer info: UC/CSU, AA GE, CalGETC, C-ID:PSY 130",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 8,
         "my_custom_wait_capacity": 15
     },
     {
@@ -324655,8 +324339,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -324977,8 +324661,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 31,
-        "sectSeatsAvail": 14,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -325946,8 +325630,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 13,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 14,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326550,8 +326234,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 8,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -326806,8 +326490,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -326891,8 +326575,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 68,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 70,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327633,8 +327317,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 26,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 25,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -327799,7 +327483,7 @@
         "sectMaxEnrl": 68,
         "sectEnrl": 67,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 10,
+        "sectWaitCount": 9,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -327866,7 +327550,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 10,
+        "my_custom_wait_count": 9,
         "my_custom_wait_capacity": 15
     },
     {
@@ -328123,8 +327807,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -328207,7 +327891,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 41,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 2,
+        "sectWaitCount": 1,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
         "sectAcctCode": "IW",
@@ -328274,7 +327958,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 1,
         "my_custom_wait_capacity": 15
     },
     {
@@ -328447,7 +328131,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 44,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 7,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -328514,7 +328198,7 @@
         "my_custom_title": "Introduction to Psychology",
         "my_custom_units": 3,
         "my_custom_description": "(formerly: PSY 101 C -  Introduction to Psychology). Advisory: Eligibility for college-level writing (C-ID ENGL 100) and reading (a course with an existing  skill of ability to read a college level text). This course is an introduction to psychology, which is the study of the mind and behavior. Students focus on theories and concepts of biological, cognitive, developmental, environmental, social, and cultural influences; their applications; and their research foundations. Duplicate credit not granted for PSYC C1000H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:PSY 110.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 7,
         "my_custom_wait_capacity": 15
     },
     {
@@ -328527,8 +328211,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 12,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -328609,8 +328293,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 18,
-        "sectSeatsAvail": 27,
+        "sectEnrl": 22,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -329827,8 +329511,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 40,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "1",
@@ -331643,8 +331327,8 @@
         "sectInsmCode": "71",
         "sectSstsCode": "A",
         "sectMaxEnrl": 60,
-        "sectEnrl": 73,
-        "sectSeatsAvail": -13,
+        "sectEnrl": 72,
+        "sectSeatsAvail": -12,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -332458,8 +332142,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 41,
-        "sectSeatsAvail": 4,
+        "sectEnrl": 40,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -332942,7 +332626,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 45,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 5,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
         "sectAcctCode": "ID",
@@ -333013,7 +332697,7 @@
         "my_custom_title": "Introduction to Sociology",
         "my_custom_units": 3,
         "my_custom_description": "Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000E (ENGL 101 C) or ESL 110 C. This course analyzes human societies and relationships through a study of cultural origins, personality development, social interaction, and social change. Duplicate credit not granted for SOC 101HC. Transfer info: UC/CSU, AA GE, CalGETC, C-ID: SOCI 110.",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 5,
         "my_custom_wait_capacity": 15
     },
     {
@@ -333387,8 +333071,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 43,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -333490,8 +333174,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 43,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -334142,8 +333826,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 36,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "F8",
@@ -334220,8 +333904,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 44,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -334968,8 +334652,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -336241,8 +335925,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -337514,8 +337198,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 36,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 34,
+        "sectSeatsAvail": 1,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -338945,8 +338629,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 1,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 2,
         "sectWaitCount": 1,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -341139,8 +340823,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 10,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 11,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "F8",
@@ -341426,8 +341110,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 10,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 11,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "F8",
@@ -343389,16 +343073,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 3,
         "sectMaxEnrl": 25,
-        "sectEnrl": 1,
-        "sectSeatsAvail": 24,
+        "sectEnrl": 2,
+        "sectSeatsAvail": 23,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 10,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 11,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "F8",
@@ -343575,8 +343259,8 @@
             {
                 "xlstGrp": "CAW",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 10,
-                "xlstSeatsAvail": 15
+                "xlstEnrl": 11,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "F8",
