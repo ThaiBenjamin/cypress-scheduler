@@ -229059,8 +229059,8 @@
             {
                 "xlstGrp": "AT",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 25,
-                "xlstSeatsAvail": 10
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 11
             }
         ],
         "sectPtrmCode": "S8",
@@ -234326,8 +234326,8 @@
             {
                 "xlstGrp": "GQ",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 13,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "OE",
@@ -234410,16 +234410,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 2,
         "sectMaxEnrl": 15,
-        "sectEnrl": 6,
-        "sectSeatsAvail": 9,
+        "sectEnrl": 7,
+        "sectSeatsAvail": 8,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GQ",
                 "xlstMaxEnrl": 15,
-                "xlstEnrl": 13,
-                "xlstSeatsAvail": 2
+                "xlstEnrl": 14,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "OE",
@@ -239805,8 +239805,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 33,
-        "sectSeatsAvail": 2,
+        "sectEnrl": 28,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -239876,8 +239876,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 30,
+        "sectSeatsAvail": 5,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -260610,16 +260610,16 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 28,
-        "sectSeatsAvail": 17,
+        "sectEnrl": 27,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": 13
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "S8",
@@ -263322,8 +263322,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 12,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 11,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
@@ -274941,8 +274941,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -279367,16 +279367,16 @@
         "sectSstsCode": "A",
         "sectCredHrs": 0.5,
         "sectMaxEnrl": 100,
-        "sectEnrl": 81,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 82,
+        "sectSeatsAvail": 18,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "EA",
                 "xlstMaxEnrl": 100,
-                "xlstEnrl": 146,
-                "xlstSeatsAvail": -46
+                "xlstEnrl": 147,
+                "xlstSeatsAvail": -47
             }
         ],
         "sectPtrmCode": "OE",
@@ -279497,8 +279497,8 @@
             {
                 "xlstGrp": "EA",
                 "xlstMaxEnrl": 100,
-                "xlstEnrl": 146,
-                "xlstSeatsAvail": -46
+                "xlstEnrl": 147,
+                "xlstSeatsAvail": -47
             }
         ],
         "sectPtrmCode": "OE",
@@ -280870,8 +280870,8 @@
             {
                 "xlstGrp": "GB",
                 "xlstMaxEnrl": 45,
-                "xlstEnrl": 32,
-                "xlstSeatsAvail": 13
+                "xlstEnrl": 31,
+                "xlstSeatsAvail": 14
             }
         ],
         "sectPtrmCode": "S8",
@@ -295655,8 +295655,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 32,
-        "sectSeatsAvail": 3,
+        "sectEnrl": 31,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -308819,8 +308819,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 34,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 10,
         "sectWaitCount": 1,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -316217,8 +316217,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 58,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 57,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -320755,8 +320755,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 19,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -327351,8 +327351,8 @@
         "sectInsmCode": "OLZ",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 38,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 2,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "1",
@@ -327613,8 +327613,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 37,
-        "sectSeatsAvail": 31,
+        "sectEnrl": 35,
+        "sectSeatsAvail": 33,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
