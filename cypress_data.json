@@ -220178,8 +220178,8 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 15,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 14,
+        "sectSeatsAvail": 11,
         "sectWaitCount": 2,
         "sectWaitCapacity": 20,
         "sectPtrmCode": "1",
@@ -239876,8 +239876,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 30,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 29,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -249922,8 +249922,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 22,
-        "sectSeatsAvail": 8,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "NF",
@@ -262891,16 +262891,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 25,
-        "sectEnrl": 25,
-        "sectSeatsAvail": 0,
+        "sectEnrl": 21,
+        "sectSeatsAvail": 4,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectXlst": [
             {
                 "xlstGrp": "GC",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 28,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "NF",
@@ -262991,8 +262991,8 @@
             {
                 "xlstGrp": "GC",
                 "xlstMaxEnrl": 25,
-                "xlstEnrl": 28,
-                "xlstSeatsAvail": -3
+                "xlstEnrl": 24,
+                "xlstSeatsAvail": 1
             }
         ],
         "sectPtrmCode": "NF",
@@ -263147,8 +263147,8 @@
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 19
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 21
             }
         ],
         "sectPtrmCode": "NF",
@@ -263230,16 +263230,16 @@
         "sectInsmCode": "HYA",
         "sectSstsCode": "A",
         "sectMaxEnrl": 30,
-        "sectEnrl": 7,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 5,
+        "sectSeatsAvail": 25,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectXlst": [
             {
                 "xlstGrp": "GD",
                 "xlstMaxEnrl": 30,
-                "xlstEnrl": 11,
-                "xlstSeatsAvail": 19
+                "xlstEnrl": 9,
+                "xlstSeatsAvail": 21
             }
         ],
         "sectPtrmCode": "NF",
@@ -278766,8 +278766,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 90,
-        "sectEnrl": 71,
-        "sectSeatsAvail": 19,
+        "sectEnrl": 70,
+        "sectSeatsAvail": 20,
         "sectWaitCount": 4,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
@@ -298666,8 +298666,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 32,
+        "sectSeatsAvail": 13,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "S8",
@@ -314545,8 +314545,8 @@
         "sectInsmCode": "HYO",
         "sectSstsCode": "A",
         "sectMaxEnrl": 20,
-        "sectEnrl": 21,
-        "sectSeatsAvail": -1,
+        "sectEnrl": 20,
+        "sectSeatsAvail": 0,
         "sectWaitCount": 0,
         "sectWaitCapacity": 0,
         "sectPtrmCode": "NF",
@@ -319080,8 +319080,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 13,
-        "sectEnrl": 16,
-        "sectSeatsAvail": -3,
+        "sectEnrl": 15,
+        "sectSeatsAvail": -2,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
@@ -325075,8 +325075,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 35,
-        "sectEnrl": 24,
-        "sectSeatsAvail": 11,
+        "sectEnrl": 23,
+        "sectSeatsAvail": 12,
         "sectWaitCount": 3,
         "sectWaitCapacity": 5,
         "sectXlst": [
@@ -334196,8 +334196,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 39,
-        "sectSeatsAvail": 6,
+        "sectEnrl": 38,
+        "sectSeatsAvail": 7,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
