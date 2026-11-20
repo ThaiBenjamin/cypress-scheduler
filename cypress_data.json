@@ -198314,7 +198314,7 @@
         "sectMaxEnrl": 68,
         "sectEnrl": 68,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 6,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -198397,7 +198397,7 @@
         "my_custom_title": "Magic, Witchcraft and Religion",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL 100C or ENGL 101 C or ESL 110 C. This anthropology of religion course is a cross-cultural exploration of religious beliefs and practices including myth, symbolism, magic, sorcery, and witchcraft, among other topics. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 6,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 15
     },
     {
@@ -234924,7 +234924,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 35,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -234986,7 +234986,7 @@
         "my_custom_title": "Stress and Anxiety Management",
         "my_custom_units": 1,
         "my_custom_description": "This course is designed to increase the student's awareness of the effects of stress and anxiety on academic performance and daily life. Students will practice a variety of coping skills and management techniques. Transfer info: UC/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -235164,7 +235164,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 24,
         "sectSeatsAvail": -4,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -235228,7 +235228,7 @@
         "my_custom_title": "Honors Leadership",
         "my_custom_units": 3,
         "my_custom_description": "This is an enhanced leadership development course that includes the study and practical application of group and individual leadership techniques. Duplicate credit not granted for COUN 135 C. Transfer info: UC/CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -235811,7 +235811,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 32,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 3,
         "sectPtrmCode": "NF",
         "sectAcctCode": "D",
@@ -235868,7 +235868,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 3
     },
     {
@@ -235954,7 +235954,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 33,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -236010,7 +236010,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -236382,7 +236382,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 34,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -236438,7 +236438,7 @@
         "my_custom_title": "Educational Planning",
         "my_custom_units": 1,
         "my_custom_description": "Orientation to college life and responsibilities;  development of a student educational plan. Use of multiple  computer apps to develop and data-enter their plan. PASS/NO  PASS. Transfer info: CSU, UC",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -238588,7 +238588,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 27,
         "sectSeatsAvail": 8,
-        "sectWaitCount": 4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -238644,7 +238644,7 @@
         "my_custom_title": "Academic and Life Success",
         "my_custom_units": 3,
         "my_custom_description": "This course will give students practical skills and assistance in achieving personal, academic, and relational success. Optional assessments require a fee. Transfer info: UC/CSU",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239172,7 +239172,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 32,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -239228,7 +239228,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239458,7 +239458,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 33,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -239512,7 +239512,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239527,7 +239527,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 32,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -239581,7 +239581,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -239596,7 +239596,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 32,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -239650,7 +239650,7 @@
         "my_custom_title": "Career and Life Planning",
         "my_custom_units": 3,
         "my_custom_description": "Assists students in the analysis of lifestyles, self- assessment, career research, job search, resume preparation, interviewing skills, decision making and goal setting. Material Fees have been waived for this semester. Additional costs for career assessments may be required. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -252240,7 +252240,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 26,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -252316,7 +252316,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -254173,7 +254173,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 28,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -254249,7 +254249,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -256298,7 +256298,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 27,
         "sectSeatsAvail": 0,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -256361,7 +256361,7 @@
         "my_custom_title": "Academic Reading and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 100 C College Writing) Prerequisite: Placement as determined by the college\u2019s multiple measures assessment process. In this course, students receive instruction in academic reading and writing, including writing processes, effective use of language, analytical thinking, and the foundations of academic research. Duplicate credit not granted for ENGL C1000H. Transfer Info: UC Credit Limitation/CSU, AA GE C-ID:ENGL 100.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -257227,8 +257227,8 @@
         "sectInsmCode": "02",
         "sectSstsCode": "A",
         "sectMaxEnrl": 27,
-        "sectEnrl": 17,
-        "sectSeatsAvail": 10,
+        "sectEnrl": 18,
+        "sectSeatsAvail": 9,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "1",
@@ -259356,7 +259356,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 20,
         "sectSeatsAvail": 7,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -259427,7 +259427,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -259784,7 +259784,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 22,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -259855,7 +259855,7 @@
         "my_custom_title": "Critical Thinking and Writing",
         "my_custom_units": 4,
         "my_custom_description": "(formerly: ENGL 103 C Critical Reasoning and Writing). Prerequisite: College-level composition (ENGL C1000/ENGL C1000H/ENGLC1000E/C-ID ENGL 100) or equivalent or ESL 110 C with a grade of C or better. In this course, students receive instruction in critical thinking for purposes of constructing, evaluating, and composing arguments in a variety of rhetorical forms, using primarily non-fiction texts, refining writing skills and research strategies developed in ENGL C1000 College Reading and Writing (C-ID ENGL 100) or similar first-year college writing course. Transfer Info: UC/CSU, AA GE, Cal-GETC, RDG, C-ID: ENGL 105.",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260211,7 +260211,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 18,
         "sectSeatsAvail": 9,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -260282,7 +260282,7 @@
         "my_custom_title": "Critical Thinking and Writing through Literature",
         "my_custom_units": 4,
         "my_custom_description": "(formerly ENGL 104 C, Critical Analysis and Literature). Prerequisite: ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C with a grade of C or better. In this course, students receive instruction in analytical, critical, and argumentative writing. Students develop critical thinking, close reading and literary analysis skills, research strategies, information literacy, and knowledge of accurate documentation through the study of diverse literary works from a variety of literary genres, developing an appreciation for literature. Duplicate credit not granted for ENGL C1003H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, RDG, C-ID:ENGL 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -260297,7 +260297,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 24,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -260372,7 +260372,7 @@
         "my_custom_title": "Critical Thinking and Writing through Literature",
         "my_custom_units": 4,
         "my_custom_description": "(formerly ENGL 104 C, Critical Analysis and Literature). Prerequisite: ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or ESL 110 C with a grade of C or better. In this course, students receive instruction in analytical, critical, and argumentative writing. Students develop critical thinking, close reading and literary analysis skills, research strategies, information literacy, and knowledge of accurate documentation through the study of diverse literary works from a variety of literary genres, developing an appreciation for literature. Duplicate credit not granted for ENGL C1003H. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, RDG, C-ID:ENGL 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -261080,7 +261080,7 @@
         "sectMaxEnrl": 27,
         "sectEnrl": 19,
         "sectSeatsAvail": 8,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -261139,7 +261139,7 @@
         "my_custom_title": "Grammar and Usage",
         "my_custom_units": 3,
         "my_custom_description": "This is a course in English grammar and usage. The focus of the course is on parts of speech, parts of sentences, verb tenses, sentence types, syntax, usage, and the origin of English, as well as basic linguistic concepts. Transfer info: CSU",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -261693,7 +261693,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 30,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -261756,7 +261756,7 @@
         "my_custom_title": "Mythology",
         "my_custom_units": 3,
         "my_custom_description": "Prerequisite(s):  ENGL 100 C or ENGL 100HC or ENGL 101 C or  ESL 110 C with a grade of C or better.    This course  examines the mythology and folklore of various cultures of  the world as expressed in literature. Students will examine  myths, mythical elements, and their modern parallels in  both Eastern and Western civilizations. Transfer info: CSU,  UC",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -265804,7 +265804,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 42,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -265905,7 +265905,7 @@
         "my_custom_title": "American Ethnic Studies (formerly ETHS 100 C)",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Satisfactory completion of ENGL 100 C, ENGL 100HC, ENGL 101 C, or ESL 110 C. This course is an introduction to the study of race and ethnicity in the United States through a comparative and interdisciplinary examination of the historical experiences Native Americans, African Americans, Chicanas-os-xs/Latinas-os -xs, and Asian Pacific Americans from the colonial era to the present. Duplicate credit not granted for ETHS 101HC. Transfer info: UC Credit Limitation/CSU, AA GE, CalGETC, C-ID:SOCI 150, C-ID:SJS 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -266955,7 +266955,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 30,
         "sectSeatsAvail": 5,
-        "sectWaitCount": 4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -267062,7 +267062,7 @@
         "my_custom_title": "Chicana-o-x History II",
         "my_custom_units": 3,
         "my_custom_description": "Advisory:Satisfactory completion of ENGL C1000 (ENGL 100 C), ENGL C1000H (ENGL 100HC), ENGL C1000E (ENGL 101 C), or ESL 110 C. This course is a survey of the Chicana/o/x experience from the Mexican-American War to the present, emphasizing the roles of Chicanas/os/xs in the political, social, and economic development of American society. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -267675,7 +267675,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 29,
         "sectSeatsAvail": 6,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -267771,7 +267771,7 @@
         "my_custom_title": "Race, Ethnicity, and Popular Culture",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Satisfactory completion of ENGL C1001 (ENGL 103 C) , ENGL C1001H (ENGL 103HC), ENGL 104 C, or ENGL 104HC and ETHS 101 C or ETHS 101HC. This course examines the contributions and representations of African Americans, Asian Pacific Americans, Latinas/os/xs, Native Americans, and other \"racialized\" populations in film and popular culture and surveys the cultural, economic, social, and political forces that shape their representations in media and their experiences in the United States. Transfer info: UC/CSU, AA GE, CalGETC",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -268049,7 +268049,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 7,
         "sectSeatsAvail": 23,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -268104,7 +268104,7 @@
         "my_custom_title": "Elementary French I",
         "my_custom_units": 5,
         "my_custom_description": "This course emphasizes the acquisition of the four skills in language learning: listening comprehension, speaking, reading, and writing. Included are the basics of French pronunciation and regional varieties of French. Students will also be introduced to the culture, customs, history, and geography of the French-speaking world. Letter Grade or Pass/No Pass Option. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -274401,7 +274401,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 33,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -274477,7 +274477,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -274668,7 +274668,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 22,
         "sectSeatsAvail": 3,
-        "sectWaitCount": 7,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -274752,7 +274752,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 7,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -274855,7 +274855,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 24,
         "sectSeatsAvail": 11,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -274928,7 +274928,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -275123,7 +275123,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 25,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -275196,7 +275196,7 @@
         "my_custom_title": "Nutrition",
         "my_custom_units": 3,
         "my_custom_description": "This course examines the role of macronutrients, micronutrients and water as contributing factors to good health and well-being. Emphasis is on the practical application of nutritional requirements and physical activity across the lifespan, as well as the role of nutrients in disease prevention and overall health. Duplicate credit will not be granted for HRC 100 HC. Transfer info: UC/CSU, AA GE, C-ID: NUTR 110",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278594,9 +278594,9 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 38,
-        "sectSeatsAvail": 7,
-        "sectWaitCount": 4,
+        "sectEnrl": 37,
+        "sectSeatsAvail": 8,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -278667,7 +278667,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278768,7 +278768,7 @@
         "sectMaxEnrl": 90,
         "sectEnrl": 70,
         "sectSeatsAvail": 20,
-        "sectWaitCount": 4,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -278839,7 +278839,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 4,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -278940,7 +278940,7 @@
         "sectMaxEnrl": 45,
         "sectEnrl": 35,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -279011,7 +279011,7 @@
         "my_custom_title": "Survey of Medical Terminology",
         "my_custom_units": 3,
         "my_custom_description": "The emphasis for this course will be on building a  professional vocabulary needed for working with health care  providers or with the court system. Transfer info: CSU  ",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -283723,7 +283723,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 26,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "IW",
@@ -283809,7 +283809,7 @@
         "my_custom_title": "Global Media",
         "my_custom_units": 3,
         "my_custom_description": "This course is a survey of global mass communication and the interrelationships of media with society including history, structure and trends in a digital age. Transfer info: UC/CSU, AA GE, C-ID: JOUR 100",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -285840,7 +285840,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 23,
         "sectSeatsAvail": 2,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -285928,7 +285928,7 @@
         "my_custom_title": "Yoga (formerly PE 102 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course, as defined by Patanjali, means \"citta vrtti nirodha\", the stilling of all states of citta, roughly, the stilling of mind. Students will develop an understanding of the goal of yoga, primarily through the significance of yoga asana. In this respect, yoga is a practice, , and in this course we will focus on developing a yoga practice, represented through asana, that reflects the goals of yoga, and the stilling of mind. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -289845,7 +289845,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 26,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "IW",
@@ -289920,7 +289920,7 @@
         "my_custom_title": "Total Body Fitness (formerly PE 187 C)",
         "my_custom_units": 1,
         "my_custom_description": "This course emphasizes physical fitness that will be achieved through the use of resistance exercises and body building routines. Pass/No Pass/Letter Grade Option. Transfer info: UC Credit Limitation/CSU, AA GE",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -295307,8 +295307,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 70,
-        "sectEnrl": 65,
-        "sectSeatsAvail": 5,
+        "sectEnrl": 64,
+        "sectSeatsAvail": 6,
         "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "S8",
@@ -296180,7 +296180,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 20,
         "sectSeatsAvail": 10,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -296272,7 +296272,7 @@
         "my_custom_title": "Yoga and the Subtle Body",
         "my_custom_units": 3,
         "my_custom_description": "In this course, students will learn that the subtle body refers to the energy systems of the body. Students will look at what energy (prana) is, and hot it is stored and is moved throughout the body as a form of information. Students will consider principles such as prana, nadis, chakras, we all as the koshas; further, students will approach the energy system as foundational for health, and as such, will look at foundational Ayurvedic principles. Transfer info: UC/CSU, AA GE",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -309467,8 +309467,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 45,
-        "sectEnrl": 27,
-        "sectSeatsAvail": 18,
+        "sectEnrl": 26,
+        "sectSeatsAvail": 19,
         "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "1",
@@ -318553,7 +318553,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 31,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -318628,7 +318628,7 @@
         "my_custom_title": "Nutrition and World Food Issue",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly BIOL 107 C) A study of the biological basis of basic nutritional requirements as they relate to human health, disease prevention, the world food supply and ecology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC C-ID: NUTR 110.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318643,7 +318643,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 31,
         "sectSeatsAvail": 4,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -318717,7 +318717,7 @@
         "my_custom_title": "Nutrition and World Food Issue",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly BIOL 107 C) A study of the biological basis of basic nutritional requirements as they relate to human health, disease prevention, the world food supply and ecology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC C-ID: NUTR 110.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318732,7 +318732,7 @@
         "sectMaxEnrl": 10,
         "sectEnrl": 9,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -318810,7 +318810,7 @@
         "my_custom_title": "Nutrition and World Food Issue",
         "my_custom_units": 3,
         "my_custom_description": "(Formerly BIOL 107 C) A study of the biological basis of basic nutritional requirements as they relate to human health, disease prevention, the world food supply and ecology. Pass/No Pass/Letter Grade Option. Transfer info: UC/CSU, AA GE, CalGETC C-ID: NUTR 110.",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -318825,7 +318825,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 36,
         "sectSeatsAvail": -1,
-        "sectWaitCount": 5,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -318896,7 +318896,7 @@
         "my_custom_title": "Introduction to Public Health (formerly KIN 280 C)",
         "my_custom_units": 3,
         "my_custom_description": "In  this course, students will discuss contemporary public health challenges focusing on eliminating health disparities in chronic conditions, infectious diseases and behavioral health. Transfer info: CSU/UC, AA GE, CalGTEC, C-ID: PHS 101",
-        "my_custom_wait_count": 5,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319088,8 +319088,8 @@
             {
                 "xlstGrp": "HAP",
                 "xlstMaxEnrl": 75,
-                "xlstEnrl": 54,
-                "xlstSeatsAvail": 21
+                "xlstEnrl": 53,
+                "xlstSeatsAvail": 22
             }
         ],
         "sectPtrmCode": "S8",
@@ -319170,7 +319170,7 @@
         "sectMaxEnrl": 20,
         "sectEnrl": 24,
         "sectSeatsAvail": -4,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -319241,7 +319241,7 @@
         "my_custom_title": "Honors Introduction to Public Health (formerly KIN 280HC)",
         "my_custom_units": 3,
         "my_custom_description": "Formerly: KIN 280HC This Honors-enhanced course will provide students with enhanced comprehensive discussion of contemporary public health challenges, focusing on eliminating health disparities in chronic conditions, infectious diseases and and behavioral health. Duplicate credit not granted for KIN 280 C. Transfer info: CSU/UC, AA GE, CalGETC, C-ID: PHS 101",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -319351,7 +319351,7 @@
         "sectMaxEnrl": 35,
         "sectEnrl": 20,
         "sectSeatsAvail": 15,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -319401,7 +319401,7 @@
         "my_custom_title": "Health Disparities",
         "my_custom_units": 3,
         "my_custom_description": "Advisory: Eligibility for ENGL C1000 (ENGL 100 C) or ENGL C1000H (ENGL 100HC) or ENGL C1000E (ENGL 101 C) or or ESL 110 C. This course will examine personal and social determinants of health through the examination of the role individuals play in their own health and wellbeing, along with the impact of environmental, social, structural, and cultural factors that play a role both in individual and community and public health. Health disparities and inequities in sexually diverse, gender, racial, and minority populations will be explored, and culturally competent ideas to bridge the health equity gap and improve population health will be developed. Transfer info: UC/CSU, C-ID PH 113",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319588,7 +319588,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 24,
         "sectSeatsAvail": 6,
-        "sectWaitCount": 2,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -319672,7 +319672,7 @@
         "my_custom_title": "Interpersonal Neurobiology and the Mind-Body Connection",
         "my_custom_units": 3,
         "my_custom_description": "This course will explore research that provides insight into how contemplative practices such as mindfulness and meditation, contemporary psychological approaches, exercise, diet, and sleep alter brain function in positive ways to promote mental health and wellbeing. In addition to xamining diseases related to stress response, the course will focus on how lifestyle choices can alter brain function and lead to enhanced states of mental health wellbeing, resilience and likelihood of decreasing mental health disorders in the future, through underlying neurobiological mechanisms that allow one to lead a life of fulfillment and wellbeing. Stress, the stress response, the relaxation response, and implications of neuroplasticity through the lens of interpersonal neurobiology will be examined. Transfer info: CSU/UC, AA GE, C-ID: PH 107",
-        "my_custom_wait_count": 2,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319687,7 +319687,7 @@
         "sectMaxEnrl": 28,
         "sectEnrl": 12,
         "sectSeatsAvail": 16,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -319739,7 +319739,7 @@
         "my_custom_title": "Civic Engagement  in Public Health (formerly KIN 289 C)",
         "my_custom_units": 3,
         "my_custom_description": "This course focuses on community as a unit of identity,  community, well-being, and social justice perspectives and  initiatives to promote community health. This course  addresses community change and improvements in community  well-being, with a focus on health equity research for  action.Transfer info: CSU, UC ",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -319754,7 +319754,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 18,
         "sectSeatsAvail": 7,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 10,
         "sectXlst": [
             {
@@ -319822,7 +319822,7 @@
         "my_custom_title": "Whole Systems Integrative Health",
         "my_custom_units": 3,
         "my_custom_description": "his course examines health, disease, healing, and medicine from an interdisciplinary perspective. Concepts and philosophies from traditional cultural healing systems and contemporary western medicine will be examined from psychological, sociological, biological, historical, and cultural perspectives. Topics covered include the history of western medical practices, principles of indigenous healing systems, the role of gender in healing, the effects of personality and emotions on health and disease, and and integrative medicine. Transfer info: UC/CSU, AA GE, C-ID: PH 106",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 10
     },
     {
@@ -324787,8 +324787,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 45,
-        "sectSeatsAvail": 23,
+        "sectEnrl": 39,
+        "sectSeatsAvail": 29,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -325083,8 +325083,8 @@
             {
                 "xlstGrp": "JF",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 29,
-                "xlstSeatsAvail": 6
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": 7
             }
         ],
         "sectPtrmCode": "1",
@@ -327613,8 +327613,8 @@
         "sectInsmCode": "72",
         "sectSstsCode": "A",
         "sectMaxEnrl": 68,
-        "sectEnrl": 35,
-        "sectSeatsAvail": 33,
+        "sectEnrl": 33,
+        "sectSeatsAvail": 35,
         "sectWaitCount": 0,
         "sectWaitCapacity": 15,
         "sectPtrmCode": "S8",
@@ -333827,8 +333827,8 @@
             {
                 "xlstGrp": "JF",
                 "xlstMaxEnrl": 35,
-                "xlstEnrl": 29,
-                "xlstSeatsAvail": 6
+                "xlstEnrl": 28,
+                "xlstSeatsAvail": 7
             }
         ],
         "sectPtrmCode": "1",
@@ -335115,7 +335115,7 @@
         "sectMaxEnrl": 30,
         "sectEnrl": 18,
         "sectSeatsAvail": 12,
-        "sectWaitCount": 3,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "ID",
@@ -335174,7 +335174,7 @@
         "my_custom_title": "Spanish for Spanish Speakers I",
         "my_custom_units": 5,
         "my_custom_description": "Advisory: A native or near-native speaking knowledge of Spanish for those who have had little or no education in a Spanish-speaking country or recency and other measures of readiness or SPAN 102 C This course is for Spanish-speaking students comfortable with oral communication. It offers vocabulary development, grammar, spelling, accents, and registers, as well as dialectal variations and cultural readings. Included is an introduction to Spanish language literature of South America , Spain and Latinos in the United States. Through writing practice, students will enhance critical thinking while increasing their understanding of and appreciation for diverse Spanish-speaking cultures. Class conducted entirely in Spanish. Duplicate credit not given for SPAN 101 C or SPAN 102 C. Pass/No Pass/Letter Grade Option.",
-        "my_custom_wait_count": 3,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
@@ -339317,7 +339317,7 @@
         "sectMaxEnrl": 25,
         "sectEnrl": 24,
         "sectSeatsAvail": 1,
-        "sectWaitCount": 1,
+        "sectWaitCount": 0,
         "sectWaitCapacity": 5,
         "sectPtrmCode": "NF",
         "sectAcctCode": "D",
@@ -339375,7 +339375,7 @@
         "my_custom_title": "College Orientation",
         "my_custom_units": 1,
         "my_custom_description": "Advisory: This course includes information on disability management in college, and accommodations offered and accessed through the Disability Support Services (DSS) department. New students will learn about campus policies , procedures, and resources. Emphasis will be placed on learning academic requirements. Students will develop an education plan for their goal. PASS/NO PASS. Transfer info: UC/CSU",
-        "my_custom_wait_count": 1,
+        "my_custom_wait_count": 0,
         "my_custom_wait_capacity": 5
     },
     {
